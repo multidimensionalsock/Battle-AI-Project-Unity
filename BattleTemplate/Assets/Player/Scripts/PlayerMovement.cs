@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float m_movementSpeed;
     Rigidbody m_rigidBody;
     Vector3 m_movementDirection;
+    int jumpNo;
+    [SerializeField] float m_jumpForce;
     
     void Start()
     {
@@ -18,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
         m_rigidBody = GetComponent<Rigidbody>();
         m_input.currentActionMap.FindAction("Movement").performed += MoveStart;
         m_input.currentActionMap.FindAction("Movement").canceled += MoveEnd;
+        m_input.currentActionMap.FindAction("Jump").performed += Jump;
     }
 
     void MoveStart(InputAction.CallbackContext context)
@@ -34,6 +37,16 @@ public class PlayerMovement : MonoBehaviour
         StopCoroutine(m_movementCoroutine);
     }
 
+    void Jump(InputAction.CallbackContext context)
+    {
+        if (jumpNo < 2)
+        {
+            m_rigidBody.AddForce(new Vector3(0f, m_jumpForce - m_rigidBody.velocity.y, 0f), ForceMode.Impulse);
+            jumpNo++;
+        }
+    }
+
+
     IEnumerator Move()
     {
         while (m_movementDirection != Vector3.zero)
@@ -44,5 +57,10 @@ public class PlayerMovement : MonoBehaviour
            
             yield return new WaitForFixedUpdate();
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        jumpNo = 0;
     }
 }
