@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-59132
+  m_Name: pb_Mesh24774
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -439,6 +439,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Asougi
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 2abe80813a2e0da48b78346f200aeb4c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 031d44c96ffb0e245a6870f869d4105b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2abe80813a2e0da48b78346f200aeb4c, type: 3}
 --- !u!1 &428449370 stripped
@@ -520,6 +524,18 @@ CapsuleCollider:
   m_Height: 1.2156019
   m_Direction: 1
   m_Center: {x: -0.035381675, y: 0.57455707, z: 0.02908206}
+--- !u!114 &428449379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428449370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3985404a2debe6045b968dbdd05dc312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
