@@ -21,6 +21,7 @@ public class PlayerAnimator : MonoBehaviour
         m_input.currentActionMap.FindAction("Attack").performed += Attack;
         m_input.currentActionMap.FindAction("Defence").performed += DefenceStart;
         m_input.currentActionMap.FindAction("Defence").canceled += DefenceEnd;
+        
     }
 
     private void Update()
@@ -67,5 +68,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         m_animator.SetTrigger("Idle");
     }
+
+    
 
 }

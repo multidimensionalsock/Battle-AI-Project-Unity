@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
         m_input.currentActionMap.FindAction("Movement").performed += MoveStart;
         m_input.currentActionMap.FindAction("Movement").canceled += MoveEnd;
         m_input.currentActionMap.FindAction("Jump").performed += Jump;
+        m_input.currentActionMap.FindAction("Camera").performed += MoveCamera;
     }
 
     void MoveStart(InputAction.CallbackContext context)
@@ -51,10 +52,29 @@ public class PlayerMovement : MonoBehaviour
     {
         while (m_movementDirection != Vector3.zero)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(m_movementDirection), 1f);
-            transform.position += m_movementDirection * m_movementSpeed * Time.fixedDeltaTime;
+            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(m_movementDirection), 0.1f);
+            if (m_movementDirection.z > 0)
+            {
+                transform.position += transform.forward * m_movementSpeed * Time.fixedDeltaTime;
+            }
+            else if (m_movementDirection.z < 0)
+            {
+                transform.position -= transform.forward * m_movementSpeed * Time.fixedDeltaTime;
+            }
+
+            if (m_movementDirection.x > 0)
+            {
+                transform.position += transform.right * m_movementSpeed * Time.fixedDeltaTime;
+            }
+            else if (m_movementDirection.x < 0)
+            {
+                transform.position -= transform.right * m_movementSpeed * Time.fixedDeltaTime;
+            }
+
+
+            //transform.position += m_movementDirection * m_movementSpeed * Time.fixedDeltaTime;
             //m_rigidBody.velocity = new Vector3(m_movementDirection.x * m_movementSpeed * Time.fixedDeltaTime, m_rigidBody.velocity.y, m_movementDirection.z * m_movementSpeed * Time.fixedDeltaTime);
-           
+
             yield return new WaitForFixedUpdate();
         }
     }
@@ -63,4 +83,12 @@ public class PlayerMovement : MonoBehaviour
     {
         jumpNo = 0;
     }
+
+    void MoveCamera(InputAction.CallbackContext context)
+    {
+        Vector2 move = context.ReadValue<Vector2>();
+        Vector3 moveRot = new Vector3(move.x, 0f, 0f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveRot), 0.05f);
+    }
+
 }
