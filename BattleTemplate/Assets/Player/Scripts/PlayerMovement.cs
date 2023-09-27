@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 move = context.ReadValue<Vector2>();
         Vector3 moveRot = new Vector3(move.x, 0f, 0f);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveRot), 0.05f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * Quaternion.LookRotation(moveRot), 0.01f);
     }
 
 }
