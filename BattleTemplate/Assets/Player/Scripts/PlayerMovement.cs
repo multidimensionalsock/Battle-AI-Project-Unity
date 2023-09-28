@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Processors;
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float m_jumpForce;
     [SerializeField] GameObject m_camera;
     int m_angleOfRotation;
+    float m_distance;
     
     void Start()
     {
@@ -26,6 +28,9 @@ public class PlayerMovement : MonoBehaviour
         m_input.currentActionMap.FindAction("Movement").canceled += MoveEnd;
         m_input.currentActionMap.FindAction("Jump").performed += Jump;
         m_input.currentActionMap.FindAction("Camera").performed += MoveCamera;
+        m_distance = Mathf.Abs(Vector3.Distance(transform.position, m_camera.transform.position));
+
+           
     }
 
     void MoveStart(InputAction.CallbackContext context)
@@ -99,23 +104,8 @@ public class PlayerMovement : MonoBehaviour
 
         m_camera.transform.LookAt(gameObject.transform.position, Vector3.up);
         m_camera.transform.RotateAround(gameObject.transform.position, moveRot, 1f);
-       
-
-        //Vector3 cameraRotation = new Vector3(m_camera.transform.position.x, m_camera.transform.position.y, m_camera.transform.position.z);
-        ////cameraRotation.x += move.y;
-        ////cameraRotation.y -= move.x;
-        ////cameraRotation.x = Mathf.Clamp(cameraRotation.x, 0f, 80f); //stop going into the floor
-        ////m_camera.transform.RotateAround(gameObject.transform.position, cameraRotation, 1f);
-
-        //Vector3 cameraRotation = new Vector3(m_camera.transform.rotation.x, m_camera.transform.rotation.y, m_camera.transform.rotation.z);
-        //cameraRotation.x += move.x;
-        //cameraRotation.y -= move.y;
-        //cameraRotation.y = Mathf.Clamp(cameraRotation.y, 0f, 80f); //stop going into the floor
-
-        //Quaternion newRotation = Quaternion.Euler(cameraRotation.y, cameraRotation.x, 0f);
-        //m_camera.transform.rotation = Quaternion.Lerp(m_camera.transform.rotation, newRotation, 0.1f * Time.deltaTime);
-
-        //m_camera.transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * Quaternion.LookRotation(moveRot), 0.01f);
+        m_camera.transform.position = new Vector3(m_camera.transform.position.x, Mathf.Clamp(m_camera.transform.position.y , 1f, 180f), m_camera.transform.position.z);
+        m_camera.transform.position = (m_camera.transform.position - transform.position).normalized * m_distance + transform.position;
     }
 
 }
