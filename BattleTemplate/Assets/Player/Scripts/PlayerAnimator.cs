@@ -15,13 +15,13 @@ public class PlayerAnimator : MonoBehaviour
     {
         m_animator = GetComponent<Animator>();  
         m_input = GetComponent<PlayerInput>();
+        m_rigidbody = GetComponent<Rigidbody>();
         m_input.currentActionMap.FindAction("Movement").performed += MoveStart;
         m_input.currentActionMap.FindAction("Movement").canceled += MoveEnd;
-        m_input.currentActionMap.FindAction("Jump").performed += Jump;
-        m_input.currentActionMap.FindAction("Attack").performed += Attack;
-        m_input.currentActionMap.FindAction("Defence").performed += DefenceStart;
-        m_input.currentActionMap.FindAction("Defence").canceled += DefenceEnd;
-        
+        //m_input.currentActionMap.FindAction("Jump").performed += Jump;
+        //m_input.currentActionMap.FindAction("Attack").performed += Attack;
+        //m_input.currentActionMap.FindAction("Defence").performed += DefenceStart;
+        //m_input.currentActionMap.FindAction("Defence").canceled += DefenceEnd;
     }
 
     private void Update()
@@ -61,6 +61,7 @@ public class PlayerAnimator : MonoBehaviour
 
     void MoveStart(InputAction.CallbackContext context)
     {
+        Debug.Log("walk");
         m_animator.SetTrigger("Walk");
     }
 

@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Processors;
 using UnityEngine.Windows;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     Vector3 m_movementDirection;
     int jumpNo;
     [SerializeField] float m_jumpForce;
+    [SerializeField] GameObject m_camera;
+    int m_angleOfRotation;
     
     void Start()
     {
@@ -52,22 +56,26 @@ public class PlayerMovement : MonoBehaviour
     {
         while (m_movementDirection != Vector3.zero)
         {
-            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(m_movementDirection), 0.1f);
+            
             if (m_movementDirection.z > 0)
             {
+                transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * Quaternion.LookRotation(m_movementDirection), 0.01f);
                 transform.position += transform.forward * m_movementSpeed * Time.fixedDeltaTime;
             }
             else if (m_movementDirection.z < 0)
             {
+                
                 transform.position -= transform.forward * m_movementSpeed * Time.fixedDeltaTime;
             }
 
             if (m_movementDirection.x > 0)
             {
+                transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * Quaternion.LookRotation(m_movementDirection), 0.01f);
                 transform.position += transform.right * m_movementSpeed * Time.fixedDeltaTime;
             }
             else if (m_movementDirection.x < 0)
             {
+                transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * Quaternion.LookRotation(m_movementDirection), 0.01f);
                 transform.position -= transform.right * m_movementSpeed * Time.fixedDeltaTime;
             }
 
@@ -87,8 +95,27 @@ public class PlayerMovement : MonoBehaviour
     void MoveCamera(InputAction.CallbackContext context)
     {
         Vector2 move = context.ReadValue<Vector2>();
-        Vector3 moveRot = new Vector3(move.x, 0f, 0f);
-        transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * Quaternion.LookRotation(moveRot), 0.01f);
+        Vector3 moveRot = new Vector3(move.y, move.x, 0f);
+
+        m_camera.transform.LookAt(gameObject.transform.position, Vector3.up);
+        m_camera.transform.RotateAround(gameObject.transform.position, moveRot, 1f);
+       
+
+        //Vector3 cameraRotation = new Vector3(m_camera.transform.position.x, m_camera.transform.position.y, m_camera.transform.position.z);
+        ////cameraRotation.x += move.y;
+        ////cameraRotation.y -= move.x;
+        ////cameraRotation.x = Mathf.Clamp(cameraRotation.x, 0f, 80f); //stop going into the floor
+        ////m_camera.transform.RotateAround(gameObject.transform.position, cameraRotation, 1f);
+
+        //Vector3 cameraRotation = new Vector3(m_camera.transform.rotation.x, m_camera.transform.rotation.y, m_camera.transform.rotation.z);
+        //cameraRotation.x += move.x;
+        //cameraRotation.y -= move.y;
+        //cameraRotation.y = Mathf.Clamp(cameraRotation.y, 0f, 80f); //stop going into the floor
+
+        //Quaternion newRotation = Quaternion.Euler(cameraRotation.y, cameraRotation.x, 0f);
+        //m_camera.transform.rotation = Quaternion.Lerp(m_camera.transform.rotation, newRotation, 0.1f * Time.deltaTime);
+
+        //m_camera.transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * Quaternion.LookRotation(moveRot), 0.01f);
     }
 
 }
