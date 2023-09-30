@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator LockMovement()
     {
         m_movementLock = true;
-        yield return new WaitForSeconds(m_animator.GetCurrentAnimatorClipInfo(0).Length);
+        yield return new WaitForSeconds(m_animator.GetCurrentAnimatorClipInfo(0).Length * 1.5f);
         m_movementLock = false;
     }
 

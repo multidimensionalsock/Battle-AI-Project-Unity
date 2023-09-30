@@ -89,22 +89,20 @@ public class PlayerAnimator : MonoBehaviour
 
     void MoveStart(InputAction.CallbackContext context)
     {
+        m_queued = AnimationStates.walk;
         if (lockState)
-        {
-            m_queued = AnimationStates.walk;
             return;
-        }
+        
         Debug.Log("walk");
         m_animator.SetInteger("State", (int)AnimationStates.walk);
     }
 
     void MoveEnd(InputAction.CallbackContext context)
     {
+        m_queued -= AnimationStates.walk;
         if (lockState)
-        {
-            m_queued -= AnimationStates.walk;
             return;
-        }
+        
         m_animator.SetInteger("State", (int)AnimationStates.idle);
     }
 
@@ -115,10 +113,11 @@ public class PlayerAnimator : MonoBehaviour
         lockState = false;
         if (m_queued == AnimationStates.walk)
         {
+            Debug.Log("run run");
             m_animator.SetInteger("State", (int)AnimationStates.walk);
         }
         else
-        {
+        {Debug.Log("run end");
             m_animator.SetInteger("State", (int)AnimationStates.idle);
         }
     }
