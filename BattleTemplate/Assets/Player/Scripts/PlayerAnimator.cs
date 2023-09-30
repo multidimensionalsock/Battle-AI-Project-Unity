@@ -33,10 +33,10 @@ public class PlayerAnimator : MonoBehaviour
         m_rigidbody = GetComponent<Rigidbody>();
         m_input.currentActionMap.FindAction("Movement").performed += MoveStart;
         m_input.currentActionMap.FindAction("Movement").canceled += MoveEnd;
-        //m_input.currentActionMap.FindAction("Jump").performed += Jump;
+        m_input.currentActionMap.FindAction("Jump").performed += Jump;
         m_input.currentActionMap.FindAction("Attack").performed += Attack;
-        //m_input.currentActionMap.FindAction("Defence").performed += DefenceStart;
-        //m_input.currentActionMap.FindAction("Defence").canceled += DefenceEnd;
+        m_input.currentActionMap.FindAction("Defence").performed += DefenceStart;
+        m_input.currentActionMap.FindAction("Defence").canceled += DefenceEnd;
     }
 
     private void Update()
@@ -63,15 +63,25 @@ public class PlayerAnimator : MonoBehaviour
             return;
 
         m_animator.SetInteger("State", (int)AnimationStates.defence);
-        StartCoroutine( LockCurrentState());
+        lockState = true;
     }
 
     void DefenceEnd(InputAction.CallbackContext context)
     {
-        if (lockState)
+        if (lockState && m_animator.GetInteger("State") != 5)
             return;
 
-        m_animator.SetInteger("State", (int)AnimationStates.idle);
+        lockState = false;
+        if (m_queued == AnimationStates.walk)
+        {
+            Debug.Log("run run");
+            m_animator.SetInteger("State", (int)AnimationStates.walk);
+        }
+        else
+        {
+            Debug.Log("run end");
+            m_animator.SetInteger("State", (int)AnimationStates.idle);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -108,9 +118,11 @@ public class PlayerAnimator : MonoBehaviour
 
     IEnumerator LockCurrentState()
     {
+        Debug.Log("codfidg");
         lockState = true;
         yield return new WaitForSeconds(m_animator.GetCurrentAnimatorClipInfo(0).Length);
         lockState = false;
+        Debug.Log("runninignirngilrgj");
         if (m_queued == AnimationStates.walk)
         {
             Debug.Log("run run");
