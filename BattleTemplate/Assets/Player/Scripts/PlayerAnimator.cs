@@ -23,6 +23,8 @@ public class PlayerAnimator : MonoBehaviour
     PlayerInput m_input;
     Rigidbody m_rigidbody;
     bool lockState = false;
+    AnimationStates m_queued;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,18 +50,28 @@ public class PlayerAnimator : MonoBehaviour
 
     void Attack(InputAction.CallbackContext context)
     {
+        if (lockState)
+            return;
+
         m_animator.SetInteger("State", (int)AnimationStates.attack);
+        StartCoroutine(LockCurrentState());
     }
 
     void DefenceStart(InputAction.CallbackContext context)
     {
+        if (lockState)
+            return;
+
         m_animator.SetInteger("State", (int)AnimationStates.defence);
+        StartCoroutine( LockCurrentState());
     }
 
     void DefenceEnd(InputAction.CallbackContext context)
     {
-        m_animator.SetInteger("State", (int)AnimationStates.idle);
+        if (lockState)
+            return;
 
+        m_animator.SetInteger("State", (int)AnimationStates.idle);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -69,17 +81,30 @@ public class PlayerAnimator : MonoBehaviour
 
     void Jump(InputAction.CallbackContext context)
     {
+        if (lockState)
+            return;
+
         m_animator.SetInteger("State", (int)AnimationStates.jump);
     }
 
     void MoveStart(InputAction.CallbackContext context)
     {
+        if (lockState)
+        {
+            m_queued = AnimationStates.walk;
+            return;
+        }
         Debug.Log("walk");
         m_animator.SetInteger("State", (int)AnimationStates.walk);
     }
 
     void MoveEnd(InputAction.CallbackContext context)
     {
+        if (lockState)
+        {
+            m_queued -= AnimationStates.walk;
+            return;
+        }
         m_animator.SetInteger("State", (int)AnimationStates.idle);
     }
 
@@ -88,6 +113,14 @@ public class PlayerAnimator : MonoBehaviour
         lockState = true;
         yield return new WaitForSeconds(m_animator.GetCurrentAnimatorClipInfo(0).Length);
         lockState = false;
+        if (m_queued == AnimationStates.walk)
+        {
+            m_animator.SetInteger("State", (int)AnimationStates.walk);
+        }
+        else
+        {
+            m_animator.SetInteger("State", (int)AnimationStates.idle);
+        }
     }
 
     
