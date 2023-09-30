@@ -11,23 +11,26 @@ public class PlayerMovement : MonoBehaviour
 {
     PlayerInput m_input;
     Coroutine m_movementCoroutine;
+    Animator m_animator;
     [SerializeField] float m_movementSpeed;
     Rigidbody m_rigidBody;
     Vector3 m_movementDirection;
     int jumpNo;
     [SerializeField] float m_jumpForce;
     [SerializeField] GameObject m_camera;
-    int m_angleOfRotation;
     float m_distance;
+    bool m_movementLock = false;
     
     void Start()
     {
         m_input = GetComponent<PlayerInput>();
         m_rigidBody = GetComponent<Rigidbody>();
+        m_animator = GetComponent<Animator>();
         m_input.currentActionMap.FindAction("Movement").performed += MoveStart;
         m_input.currentActionMap.FindAction("Movement").canceled += MoveEnd;
         m_input.currentActionMap.FindAction("Jump").performed += Jump;
         m_input.currentActionMap.FindAction("Camera").performed += MoveCamera;
+        m_input.currentActionMap.FindAction("Attack").performed += Attack;
         m_distance = Mathf.Abs(Vector3.Distance(transform.position, m_camera.transform.position));
 
            
@@ -47,6 +50,18 @@ public class PlayerMovement : MonoBehaviour
         StopCoroutine(m_movementCoroutine);
     }
 
+    void Attack(InputAction.CallbackContext context)
+    {
+        StartCoroutine(LockMovement());
+    }
+
+    IEnumerator LockMovement()
+    {
+        m_movementLock = true;
+        yield return new WaitForSeconds(m_animator.GetCurrentAnimatorClipInfo(0).Length);
+        m_movementLock = false;
+    }
+
     void Jump(InputAction.CallbackContext context)
     {
         if (jumpNo < 2)
@@ -61,7 +76,11 @@ public class PlayerMovement : MonoBehaviour
     {
         while (m_movementDirection != Vector3.zero)
         {
-            
+            if (m_movementLock)
+            {
+                yield return new WaitForFixedUpdate();
+                continue;
+            }
             if (m_movementDirection.z > 0)
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * Quaternion.LookRotation(m_movementDirection), 0.01f);
@@ -84,10 +103,6 @@ public class PlayerMovement : MonoBehaviour
                 transform.position -= transform.right * m_movementSpeed * Time.fixedDeltaTime;
             }
 
-
-            //transform.position += m_movementDirection * m_movementSpeed * Time.fixedDeltaTime;
-            //m_rigidBody.velocity = new Vector3(m_movementDirection.x * m_movementSpeed * Time.fixedDeltaTime, m_rigidBody.velocity.y, m_movementDirection.z * m_movementSpeed * Time.fixedDeltaTime);
-
             yield return new WaitForFixedUpdate();
         }
     }
@@ -104,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
 
         m_camera.transform.LookAt(gameObject.transform.position, Vector3.up);
         m_camera.transform.RotateAround(gameObject.transform.position, moveRot, 1f);
-        m_camera.transform.position = new Vector3(m_camera.transform.position.x, Mathf.Clamp(m_camera.transform.position.y , 1f, 180f), m_camera.transform.position.z);
+        m_camera.transform.position = new Vector3(m_camera.transform.position.x, Mathf.Clamp(m_camera.transform.position.y , 1f, 5f), m_camera.transform.position.z);
         m_camera.transform.position = (m_camera.transform.position - transform.position).normalized * m_distance + transform.position;
     }
 

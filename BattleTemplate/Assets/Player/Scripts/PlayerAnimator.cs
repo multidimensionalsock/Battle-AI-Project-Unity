@@ -1,8 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
+
+enum AnimationStates 
+{ 
+    idle, 
+    walk, 
+    jump,
+    attack,
+    specialAttack,
+    defence
+}
+
 
 public class PlayerAnimator : MonoBehaviour
 {
@@ -10,6 +22,7 @@ public class PlayerAnimator : MonoBehaviour
     Animator m_animator;
     PlayerInput m_input;
     Rigidbody m_rigidbody;
+    bool lockState = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +32,7 @@ public class PlayerAnimator : MonoBehaviour
         m_input.currentActionMap.FindAction("Movement").performed += MoveStart;
         m_input.currentActionMap.FindAction("Movement").canceled += MoveEnd;
         //m_input.currentActionMap.FindAction("Jump").performed += Jump;
-        //m_input.currentActionMap.FindAction("Attack").performed += Attack;
+        m_input.currentActionMap.FindAction("Attack").performed += Attack;
         //m_input.currentActionMap.FindAction("Defence").performed += DefenceStart;
         //m_input.currentActionMap.FindAction("Defence").canceled += DefenceEnd;
     }
@@ -35,17 +48,17 @@ public class PlayerAnimator : MonoBehaviour
 
     void Attack(InputAction.CallbackContext context)
     {
-        m_animator.SetTrigger("Attack");
+        m_animator.SetInteger("State", (int)AnimationStates.attack);
     }
 
     void DefenceStart(InputAction.CallbackContext context)
     {
-        m_animator.SetTrigger("Defence");
+        m_animator.SetInteger("State", (int)AnimationStates.defence);
     }
 
     void DefenceEnd(InputAction.CallbackContext context)
     {
-        m_animator.SetTrigger("Idle");
+        m_animator.SetInteger("State", (int)AnimationStates.idle);
 
     }
 
@@ -56,18 +69,25 @@ public class PlayerAnimator : MonoBehaviour
 
     void Jump(InputAction.CallbackContext context)
     {
-        m_animator.SetTrigger("Jump");
+        m_animator.SetInteger("State", (int)AnimationStates.jump);
     }
 
     void MoveStart(InputAction.CallbackContext context)
     {
         Debug.Log("walk");
-        m_animator.SetTrigger("Walk");
+        m_animator.SetInteger("State", (int)AnimationStates.walk);
     }
 
     void MoveEnd(InputAction.CallbackContext context)
     {
-        m_animator.SetTrigger("Idle");
+        m_animator.SetInteger("State", (int)AnimationStates.idle);
+    }
+
+    IEnumerator LockCurrentState()
+    {
+        lockState = true;
+        yield return new WaitForSeconds(m_animator.GetCurrentAnimatorClipInfo(0).Length);
+        lockState = false;
     }
 
     
