@@ -41,7 +41,8 @@ public class PlayerMovement : MonoBehaviour
 
     void SpecialAttack(InputAction.CallbackContext context)
     {
-
+        if (m_movementLock)
+            return;
     }
 
     void DefenceStart(InputAction.CallbackContext context)

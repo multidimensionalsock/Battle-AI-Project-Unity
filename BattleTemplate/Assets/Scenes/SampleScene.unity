@@ -1668,7 +1668,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!136 &428449376
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -22475,6 +22475,7 @@ GameObject:
   - component: {fileID: 428449371}
   - component: {fileID: 428449372}
   - component: {fileID: 5866666021510050202}
+  - component: {fileID: 5866666021510050203}
   m_Layer: 0
   m_Name: Asougi
   m_TagString: Untagged
@@ -25929,6 +25930,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.26824328, y: 0.4427598, z: 0.2388385}
   m_Center: {x: -0.012198434, y: -0.26536196, z: 0.00945115}
+--- !u!114 &5866666021510050203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149560930648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ced1bdf0d1eb3e42a27886a23d14a1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HP: 0
+  m_TP: 0
+  m_Attack: 0
+  m_Defence: 0
+  m_SpecialAttack: 0
+  m_SpecialDefence: 0
 --- !u!1 &5873752596106607448
 GameObject:
   m_ObjectHideFlags: 0
