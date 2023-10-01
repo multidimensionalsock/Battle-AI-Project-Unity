@@ -1680,9 +1680,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.12756652
-  m_Height: 1.2156019
+  m_Height: 1.1792804
   m_Direction: 1
-  m_Center: {x: -0.035381675, y: 0.57455707, z: 0.02908206}
+  m_Center: {x: -0.035381675, y: 0.59271836, z: 0.02908206}
 --- !u!4 &435441609 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2a5e649cde00dd847885c694eb77f1fb, type: 3}
@@ -22474,6 +22474,7 @@ GameObject:
   - component: {fileID: 428449376}
   - component: {fileID: 428449371}
   - component: {fileID: 428449372}
+  - component: {fileID: 5866666021510050202}
   m_Layer: 0
   m_Name: Asougi
   m_TagString: Untagged
@@ -25915,6 +25916,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3985404a2debe6045b968dbdd05dc312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &5866666021510050202
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149560930648}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.26824328, y: 0.4427598, z: 0.2388385}
+  m_Center: {x: -0.012198434, y: -0.26536196, z: 0.00945115}
 --- !u!1 &5873752596106607448
 GameObject:
   m_ObjectHideFlags: 0

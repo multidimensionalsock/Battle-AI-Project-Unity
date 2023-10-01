@@ -85,9 +85,24 @@ public class PlayerAnimator : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
+    private void OnTriggerEnter(Collider other)
+    { 
+        
+    //}
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
         m_animator.SetBool("Grounded", true);
+        if (m_queued == AnimationStates.walk)
+        {
+            Debug.Log("run run");
+            m_animator.SetInteger("State", (int)AnimationStates.walk);
+        }
+        else
+        {
+            Debug.Log("run end");
+            m_animator.SetInteger("State", (int)AnimationStates.idle);
+        }
     }
 
     private void OnCollisionExit(Collision collision)
