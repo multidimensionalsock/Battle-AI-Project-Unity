@@ -31,11 +31,17 @@ public class PlayerMovement : MonoBehaviour
         m_input.currentActionMap.FindAction("Jump").performed += Jump;
         m_input.currentActionMap.FindAction("Camera").performed += MoveCamera;
         m_input.currentActionMap.FindAction("Attack").performed += Attack;
+        m_input.currentActionMap.FindAction("SpecialAttack").performed += SpecialAttack;
         m_input.currentActionMap.FindAction("Defence").performed += DefenceStart;
         m_input.currentActionMap.FindAction("Defence").canceled += DefenceEnd;
         m_distance = Mathf.Abs(Vector3.Distance(transform.position, m_camera.transform.position));
 
            
+    }
+
+    void SpecialAttack(InputAction.CallbackContext context)
+    {
+
     }
 
     void DefenceStart(InputAction.CallbackContext context)
