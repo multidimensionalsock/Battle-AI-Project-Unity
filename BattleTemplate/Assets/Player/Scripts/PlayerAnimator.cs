@@ -42,10 +42,11 @@ public class PlayerAnimator : MonoBehaviour
     private void Update()
     {
         m_animator.SetFloat("Ymovement", m_rigidbody.velocity.y);
-        if (m_rigidbody.velocity.y != 0)
-        {
-            m_animator.SetBool("Grounded", false);
-        }
+        Debug.Log(m_animator.GetFloat("Ymovement"));
+        //if (m_rigidbody.velocity.y != 0)
+        //{
+        //    m_animator.SetBool("Grounded", false);
+        //}
     }
 
     void Attack(InputAction.CallbackContext context)
@@ -87,6 +88,11 @@ public class PlayerAnimator : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         m_animator.SetBool("Grounded", true);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        m_animator.SetBool("Grounded", false);
     }
 
     void Jump(InputAction.CallbackContext context)
