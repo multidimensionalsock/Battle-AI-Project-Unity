@@ -37,4 +37,9 @@ public class BattleScript : MonoBehaviour
         }
         m_HP -= hpDecrease;
     }
+
+    public float GetHp()
+    {
+        return m_HP;
+    }
 }

@@ -385,7 +385,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7135206447066447765, guid: 6a60d1fda8086954a8a0b4943e7663f7, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7135206447066447765, guid: 6a60d1fda8086954a8a0b4943e7663f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5332,7 +5332,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6146476872980608452, guid: 464a9b62e495f324bb6f0cbf9290c04d, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6146476872980608452, guid: 464a9b62e495f324bb6f0cbf9290c04d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5733,7 +5733,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27330
+  m_Name: pb_Mesh25264
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22649,7 +22649,7 @@ GameObject:
   - component: {fileID: 5866666021510050203}
   m_Layer: 0
   m_Name: Asougi
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
