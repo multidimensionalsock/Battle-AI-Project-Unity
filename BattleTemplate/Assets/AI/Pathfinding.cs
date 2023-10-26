@@ -44,6 +44,9 @@ public class Pathfinding : MonoBehaviour
 			case pathfindingState.evade:
                 StartCoroutine("Evade");
                 break;
+			case pathfindingState.nullptr:
+				StopAllCoroutines();
+				break;
 
 		}
 	}
@@ -58,6 +61,9 @@ public class Pathfinding : MonoBehaviour
                 break;
             case pathfindingState.repel:
                 StartCoroutine("Repel");
+                break;
+            case pathfindingState.nullptr:
+                StopAllCoroutines();
                 break;
 
         }
@@ -82,50 +88,49 @@ public class Pathfinding : MonoBehaviour
 	IEnumerator Flee()
 	{
 		m_currentState = pathfindingState.flee;
-
-		Vector3 angleToPlayer = m_objectToPathfind.transform.position - transform.position; //angle from platey as a vector 3, destination - origin
-
-        if (Physics.Raycast(transform.position, angleToPlayer, m_distanceToFlee))
-		{
-			RaycastHit hit;
-			Ray ray = new Ray(transform.position, angleToPlayer);
-			if (Physics.Raycast(ray, out hit))
-			{
-				m_targetPosition = m_targetPosition - (angleToPlayer * hit.distance);
-			}
-		}
-		//if less than min distance then flee to max
-		else
-		{
-			m_targetPosition = m_targetPosition - (angleToPlayer * m_distanceToFlee);
-		}
-
-        m_agent.SetDestination(m_targetPosition);
-
         while (m_currentState == pathfindingState.flee)
         {
-            if (gameObject.transform.position == m_targetPosition)
-            {
-                m_currentState = pathfindingState.nullptr;
-            }
-            yield return new WaitForFixedUpdate();
+            Vector3 angleToPlayer = (transform.position - m_objectToPathfind.transform.position).normalized; //angle from platey as a vector 3, destination - origin
+
+			if (Physics.Raycast(transform.position, angleToPlayer, m_distanceToFlee))
+			{
+				RaycastHit hit;
+				Ray ray = new Ray(transform.position, angleToPlayer);
+				if (Physics.Raycast(ray, out hit))
+				{
+					m_targetPosition = transform.position + (angleToPlayer * (hit.distance - 0.1f));
+				}
+			}
+			//if less than min distance then flee to max
+			else
+			{
+				m_targetPosition = transform.position + (angleToPlayer * m_distanceToFlee);
+			}
+
+			m_agent.SetDestination(m_targetPosition);
+
+			yield return new WaitForFixedUpdate();
         }
     }
-
- //   IEnumerator Arrive()
-	//{
-
-	//}
 
 	//IEnumerator Evade()
 	//{
 
 	//}
 
-	//IEnumerator Wander()
-	//{
-	//	//wander around the scene
-	//}
+	IEnumerator Wander()
+	{
+		while (m_currentState == pathfindingState.wander)
+		{
+			if (m_targetPosition == transform.position)
+			{
+				
+                //get a random point within the radius of the circle and set to targtet position
+                m_agent.SetDestination(m_targetPosition);
+            }
+			yield return new WaitForFixedUpdate();
+		}
+	}
 
 	//IEnumerator Repel()
 	//{
