@@ -21,10 +21,12 @@ public class Pathfinding : MonoBehaviour
 	Vector3 m_targetPosition;
 	[SerializeField] float m_distanceToFlee;
 	GameObject m_objectToPathfind;
+	Rigidbody m_rigidbody;
 
     private void Start()
     {
         m_agent = GetComponent<NavMeshAgent>();
+		m_rigidbody = GetComponent<Rigidbody>();
     }
 
 	public void SetNewNavigation(pathfindingState newState, GameObject objectPos)
@@ -42,7 +44,7 @@ public class Pathfinding : MonoBehaviour
                 StartCoroutine("Arrive");
                 break;
 			case pathfindingState.evade:
-                StartCoroutine("Evade");
+				Evade();
                 break;
 			case pathfindingState.nullptr:
 				StopAllCoroutines();
@@ -113,20 +115,49 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
-	//IEnumerator Evade()
-	//{
+	void Evade()
+	{
+		//thius isnt working but im not sure why, it might be ebcause im testing while the player isnt movign 
+		float predictionTime = Vector3.Distance(transform.position, m_objectToPathfind.transform.position)/ (m_agent.speed + m_objectToPathfind.GetComponent<PlayerMovement>().GetSpeed());
+		Vector3 fleePosition = m_objectToPathfind.transform.position + (m_objectToPathfind.GetComponent<Rigidbody>().velocity * predictionTime);
+        Vector3 angleToFlee = (transform.position - fleePosition).normalized; 
 
-	//}
+        if (Physics.Raycast(transform.position, angleToFlee, m_distanceToFlee))
+        {
+            RaycastHit hit;
+            Ray ray = new Ray(transform.position, angleToFlee);
+            if (Physics.Raycast(ray, out hit))
+            {
+                m_targetPosition = transform.position + (angleToFlee * (hit.distance - 0.1f));
+            }
+        }
+        //if less than min distance then flee to max
+        else
+        {
+            m_targetPosition = transform.position + (angleToFlee * m_distanceToFlee);
+        }
+
+        m_agent.SetDestination(m_targetPosition);
+		m_currentState = pathfindingState.nullptr;
+
+    }
 
 	IEnumerator Wander()
 	{
-		while (m_currentState == pathfindingState.wander)
+		Vector2 pointInCircle = Random.insideUnitCircle * 7;
+        m_targetPosition = new Vector3(pointInCircle.x, -1.51f, pointInCircle.y);
+        m_agent.SetDestination(m_targetPosition);
+        Debug.Log(m_targetPosition);
+        while (m_currentState == pathfindingState.wander)
 		{
-			if (m_targetPosition == transform.position)
-			{
+			if ((transform.position - m_targetPosition).magnitude < 0.5f)
 				
-                //get a random point within the radius of the circle and set to targtet position
+			{
+                
+                pointInCircle = Random.insideUnitCircle * 10;
+                m_targetPosition = new Vector3(pointInCircle.x, -1.51f, pointInCircle.y);
                 m_agent.SetDestination(m_targetPosition);
+				Debug.Log("resrt pos" + m_targetPosition);
             }
 			yield return new WaitForFixedUpdate();
 		}

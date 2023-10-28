@@ -10,7 +10,7 @@ public class FoxAIcontroller : MonoBehaviour
     void Start()
     {
         m_pathfinder = GetComponent<Pathfinding>();
-        m_pathfinder.SetNewNavigation(pathfindingState.wander, m_playerReference);
+        m_pathfinder.SetNewNavigation(pathfindingState.evade, m_playerReference);
     }
 
     // Update is called once per frame

@@ -20,6 +20,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject m_camera;
     float m_distance;
     bool m_movementLock = false;
+
+    public float GetSpeed()
+    {
+        return m_movementSpeed;
+    }
     
     void Start()
     {
