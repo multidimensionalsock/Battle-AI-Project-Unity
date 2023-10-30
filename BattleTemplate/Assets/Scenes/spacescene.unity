@@ -2370,20 +2370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d93816de327e3a41aa9c1f59ee4773d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_distanceToFlee: 0.1
---- !u!114 &637022995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637022993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 441f993987b92e54ba12a373b896006b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_playerReference: {fileID: 318349187}
 --- !u!195 &637022996
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6157,5 +6143,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8723001032170371695, guid: 5f6d347b030d9124a92e8bb5607ee5b9, type: 3}
+      propertyPath: m_playerReference
+      value: 
+      objectReference: {fileID: 318349187}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f6d347b030d9124a92e8bb5607ee5b9, type: 3}
