@@ -1705,6 +1705,9 @@ GameObject:
   - component: {fileID: 4401836126460498357}
   - component: {fileID: 3917469830203607817}
   - component: {fileID: 3917469830203607816}
+  - component: {fileID: 8723001032170371695}
+  - component: {fileID: 5285874042996557623}
+  - component: {fileID: 8526268140234754651}
   m_Layer: 0
   m_Name: FoxBossAI 1
   m_TagString: Untagged
@@ -1757,7 +1760,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!136 &3917469830203607816
 CapsuleCollider:
@@ -1773,6 +1776,54 @@ CapsuleCollider:
   m_Height: 1.1913252
   m_Direction: 1
   m_Center: {x: 0.002422035, y: 0.58418214, z: -0.0013010701}
+--- !u!114 &8723001032170371695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3917469830203607823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 441f993987b92e54ba12a373b896006b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerReference: {fileID: 0}
+  battlePhases:
+  - {fileID: 5285874042996557623}
+  - {fileID: 5285874042996557623}
+--- !u!114 &5285874042996557623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3917469830203607823}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 169943149ecb68d4fbc9e08512500130, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackData: {fileID: 0}
+  distanceFromPlayerToFlee: 2
+--- !u!114 &8526268140234754651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3917469830203607823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c09174b1bed504eb252b001470d2ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HP: 10
+  m_TP: 0
+  m_Attack: 0
+  m_Defence: 0
+  m_SpecialAttack: 0
+  m_SpecialDefence: 0
 --- !u!1 &4072359777962619928
 GameObject:
   m_ObjectHideFlags: 0

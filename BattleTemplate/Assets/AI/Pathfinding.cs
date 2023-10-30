@@ -19,7 +19,7 @@ public class Pathfinding : MonoBehaviour
     private NavMeshAgent m_agent = null;
 	pathfindingState m_currentState;
 	Vector3 m_targetPosition;
-	[SerializeField] float m_distanceToFlee;
+	float m_distanceToFlee;
 	GameObject m_objectToPathfind;
 	Rigidbody m_rigidbody;
 
@@ -28,6 +28,11 @@ public class Pathfinding : MonoBehaviour
         m_agent = GetComponent<NavMeshAgent>();
 		m_rigidbody = GetComponent<Rigidbody>();
     }
+
+	public void SetDistanceToFlee(float distance)
+	{
+		m_distanceToFlee = distance;
+	}
 
 	public void SetNewNavigation(pathfindingState newState, GameObject objectPos)
 	{

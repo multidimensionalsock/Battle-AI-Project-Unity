@@ -12,6 +12,7 @@ public class BattleScript : MonoBehaviour
     [SerializeField] protected int m_SpecialDefence;
     protected bool defenseActivated;
 
+    public event System.Action<float> HPreduce;
     public void Attack(float hpDecrease)
     {
         if (defenseActivated)
@@ -23,6 +24,7 @@ public class BattleScript : MonoBehaviour
             hpDecrease = hpDecrease * (m_Defence / 100);
         }
         m_HP -= hpDecrease;
+        HPreduce?.Invoke(m_HP);
     }
 
     public void SpecialAttack(float hpDecrease)
@@ -41,5 +43,10 @@ public class BattleScript : MonoBehaviour
     public float GetHp()
     {
         return m_HP;
+    }
+
+    public float GetTP()
+    {
+        return m_TP;
     }
 }
