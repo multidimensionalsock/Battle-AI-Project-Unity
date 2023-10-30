@@ -40,10 +40,10 @@ public class Pathfinding : MonoBehaviour
 		switch (newState)
 		{
 			case pathfindingState.seek:
-                StartCoroutine("Seek");
+                StartCoroutine("SeekObject");
                 break;
 			case pathfindingState.flee:
-                StartCoroutine("Flee");
+                StartCoroutine("FleeObject");
                 break;
 			case pathfindingState.arrive:
                 StartCoroutine("Arrive");
@@ -57,6 +57,24 @@ public class Pathfinding : MonoBehaviour
 
 		}
 	}
+
+    public void SetNewNavigation(pathfindingState newState, Vector3 targetpos)
+    {
+        m_targetPosition = targetpos;
+        switch (newState)
+        {
+            case pathfindingState.seek:
+                StartCoroutine("SeekLocation");
+                break;
+            case pathfindingState.flee:
+                StartCoroutine("FleeLocation");
+                break;
+            case pathfindingState.nullptr:
+                StopAllCoroutines();
+                break;
+
+        }
+    }
 
     public void SetNewNavigation(pathfindingState newState)
     {
@@ -76,7 +94,7 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
-    IEnumerator Seek()
+    IEnumerator SeekObject()
 	{
 		m_currentState = pathfindingState.seek;
 		//run towards target location
@@ -92,7 +110,22 @@ public class Pathfinding : MonoBehaviour
 		}
 	}
 
-	IEnumerator Flee()
+    IEnumerator SeekLocation()
+    {
+        m_currentState = pathfindingState.seek;
+        //run towards target location
+        while (m_currentState == pathfindingState.seek)
+        {
+            m_agent.SetDestination(m_targetPosition);
+            if (gameObject.transform.position == m_targetPosition)
+            {
+                m_currentState = pathfindingState.nullptr;
+            }
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    IEnumerator FleeObject()
 	{
 		m_currentState = pathfindingState.flee;
         while (m_currentState == pathfindingState.flee)
@@ -118,9 +151,39 @@ public class Pathfinding : MonoBehaviour
 
 			yield return new WaitForFixedUpdate();
         }
+		//turn to face player
     }
 
-	void Evade()
+    IEnumerator FleePosition()
+    {
+        m_currentState = pathfindingState.flee;
+        while (m_currentState == pathfindingState.flee)
+        {
+            Vector3 angleToTarget = (transform.position - m_targetPosition).normalized; //angle from platey as a vector 3, destination - origin
+
+            if (Physics.Raycast(transform.position, angleToTarget, m_distanceToFlee))
+            {
+                RaycastHit hit;
+                Ray ray = new Ray(transform.position, angleToTarget);
+                if (Physics.Raycast(ray, out hit))
+                {
+                    m_targetPosition = transform.position + (angleToTarget * (hit.distance - 0.1f));
+                }
+            }
+            //if less than min distance then flee to max
+            else
+            {
+                m_targetPosition = transform.position + (angleToTarget * m_distanceToFlee);
+            }
+
+            m_agent.SetDestination(m_targetPosition);
+
+            yield return new WaitForFixedUpdate();
+        }
+        //turn to face player
+    }
+
+    void Evade()
 	{
 		//thius isnt working but im not sure why, it might be ebcause im testing while the player isnt movign 
 		float predictionTime = Vector3.Distance(transform.position, m_objectToPathfind.transform.position)/ (m_agent.speed + m_objectToPathfind.GetComponent<PlayerMovement>().GetSpeed());
@@ -144,6 +207,7 @@ public class Pathfinding : MonoBehaviour
 
         m_agent.SetDestination(m_targetPosition);
 		m_currentState = pathfindingState.nullptr;
+		//turn to face player
 
     }
 

@@ -10,6 +10,7 @@ public class BattlePhaseTemplate : MonoBehaviour
     protected Pathfinding pathfinderRef;
     protected Rigidbody m_playerRigidBody;
     [SerializeField] protected float distanceFromPlayerToFlee;
+    protected bool pauseMovement = false; //pause movement behaviour algorithm (used if performing attack that requires them stay still)
     public void Enable(GameObject playerreference, int battlePhase)
     {
         
