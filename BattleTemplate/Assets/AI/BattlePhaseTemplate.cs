@@ -4,25 +4,21 @@ using UnityEngine;
 
 public class BattlePhaseTemplate : MonoBehaviour
 {
-    protected List<Attack> attacks;
+    protected List<Attack> meleeAttacks;
+    protected List<Attack> rangeAttacks;
+    protected List<Attack> specialAttacks;
     [SerializeField] protected Attacks attackData;
     protected GameObject playerRef;
     protected Pathfinding pathfinderRef;
     protected Rigidbody m_playerRigidBody;
     [SerializeField] protected float distanceFromPlayerToFlee;
     protected bool pauseMovement = false; //pause movement behaviour algorithm (used if performing attack that requires them stay still)
-    public void Enable(GameObject playerreference, int battlePhase)
+    public void Enable(GameObject playerreference)
     {
-        
         playerRef = playerreference;
-        
-        attacks = new List<Attack>();
-        //LoadAttacks(battlePhase);
-        
+        //LoadAttacks();
         m_playerRigidBody = playerRef.GetComponent<Rigidbody>();
-        
         pathfinderRef = GetComponent<Pathfinding>();
-        
         pathfinderRef.SetDistanceToFlee(distanceFromPlayerToFlee);
     }
 
@@ -36,13 +32,24 @@ public class BattlePhaseTemplate : MonoBehaviour
 
     }
 
-    virtual public void LoadAttacks(int stage)
+    virtual public void LoadAttacks()
     {
+        meleeAttacks = new List<Attack>();
+        rangeAttacks = new List<Attack>();
+        specialAttacks = new List<Attack>();
         for (int i = 0; i < attackData.attackDetails.Length; i++)
         {
-            if (attackData.attackDetails[i].attackStage <= stage)
+            switch (attackData.attackDetails[i].attackType)
             {
-                attacks.Add(attackData.attackDetails[i]);
+                case AttackType.melee:
+                    meleeAttacks.Add(attackData.attackDetails[i]);
+                    break;
+                case AttackType.range:
+                    rangeAttacks.Add(attackData.attackDetails[i]);
+                    break;
+                case AttackType.special:
+                    specialAttacks.Add(attackData.attackDetails[i]);
+                    break;
             }
         }
     }

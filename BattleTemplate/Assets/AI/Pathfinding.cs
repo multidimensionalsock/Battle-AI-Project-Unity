@@ -37,6 +37,7 @@ public class Pathfinding : MonoBehaviour
 	public void SetNewNavigation(pathfindingState newState, GameObject objectPos)
 	{
 		m_objectToPathfind = objectPos;
+        StopAllCoroutines();
 		switch (newState)
 		{
 			case pathfindingState.seek:
@@ -61,6 +62,7 @@ public class Pathfinding : MonoBehaviour
     public void SetNewNavigation(pathfindingState newState, Vector3 targetpos)
     {
         m_targetPosition = targetpos;
+        StopAllCoroutines();
         switch (newState)
         {
             case pathfindingState.seek:
@@ -113,10 +115,10 @@ public class Pathfinding : MonoBehaviour
     IEnumerator SeekLocation()
     {
         m_currentState = pathfindingState.seek;
+        m_agent.SetDestination(m_targetPosition);
         //run towards target location
         while (m_currentState == pathfindingState.seek)
         {
-            m_agent.SetDestination(m_targetPosition);
             if (gameObject.transform.position == m_targetPosition)
             {
                 m_currentState = pathfindingState.nullptr;
@@ -131,6 +133,8 @@ public class Pathfinding : MonoBehaviour
         while (m_currentState == pathfindingState.flee)
         {
             Vector3 angleToPlayer = (transform.position - m_objectToPathfind.transform.position).normalized; //angle from platey as a vector 3, destination - origin
+            //issue, if angle to player is angle to wall then they keep moving at the wall so the angle needs to be changed more in that circumstance
+            //maybe if distance is less than x then change angle 
 
 			if (Physics.Raycast(transform.position, angleToPlayer, m_distanceToFlee))
 			{
@@ -157,27 +161,27 @@ public class Pathfinding : MonoBehaviour
     IEnumerator FleePosition()
     {
         m_currentState = pathfindingState.flee;
-        while (m_currentState == pathfindingState.flee)
-        {
-            Vector3 angleToTarget = (transform.position - m_targetPosition).normalized; //angle from platey as a vector 3, destination - origin
+        
+        Vector3 angleToTarget = (transform.position - m_targetPosition).normalized; //angle from platey as a vector 3, destination - origin
 
-            if (Physics.Raycast(transform.position, angleToTarget, m_distanceToFlee))
+        if (Physics.Raycast(transform.position, angleToTarget, m_distanceToFlee))
+        {
+            RaycastHit hit;
+            Ray ray = new Ray(transform.position, angleToTarget);
+            if (Physics.Raycast(ray, out hit))
             {
-                RaycastHit hit;
-                Ray ray = new Ray(transform.position, angleToTarget);
-                if (Physics.Raycast(ray, out hit))
-                {
-                    m_targetPosition = transform.position + (angleToTarget * (hit.distance - 0.1f));
-                }
+                m_targetPosition = transform.position + (angleToTarget * (hit.distance - 0.1f));
             }
-            //if less than min distance then flee to max
-            else
-            {
-                m_targetPosition = transform.position + (angleToTarget * m_distanceToFlee);
-            }
+        }
+        //if less than min distance then flee to max
+        else
+        {
+            m_targetPosition = transform.position + (angleToTarget * m_distanceToFlee);
+        }
 
             m_agent.SetDestination(m_targetPosition);
-
+        while (transform.position == m_targetPosition)
+        {
             yield return new WaitForFixedUpdate();
         }
         //turn to face player
