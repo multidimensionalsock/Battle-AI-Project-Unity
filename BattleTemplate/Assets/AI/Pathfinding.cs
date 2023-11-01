@@ -7,10 +7,9 @@ public enum pathfindingState
 {
 	seek,
 	flee,
-	arrive,
 	evade,
 	wander,
-	repel,
+    seekAttack,
 	nullptr
 }
 
@@ -21,12 +20,11 @@ public class Pathfinding : MonoBehaviour
 	Vector3 m_targetPosition;
 	float m_distanceToFlee;
 	GameObject m_objectToPathfind;
-	Rigidbody m_rigidbody;
+    public event System.Action callAttack;
 
     private void Start()
     {
         m_agent = GetComponent<NavMeshAgent>();
-		m_rigidbody = GetComponent<Rigidbody>();
     }
 
 	public void SetDistanceToFlee(float distance)
@@ -45,9 +43,6 @@ public class Pathfinding : MonoBehaviour
                 break;
 			case pathfindingState.flee:
                 StartCoroutine("FleeObject");
-                break;
-			case pathfindingState.arrive:
-                StartCoroutine("Arrive");
                 break;
 			case pathfindingState.evade:
 				Evade();
@@ -86,14 +81,17 @@ public class Pathfinding : MonoBehaviour
             case pathfindingState.wander:
                 StartCoroutine("Wander");
                 break;
-            case pathfindingState.repel:
-                StartCoroutine("Repel");
-                break;
             case pathfindingState.nullptr:
                 StopAllCoroutines();
                 break;
 
         }
+    }
+
+    public void SetNewNavigation(Attack attack, float distance)
+    {
+        m_currentState = pathfindingState.seekAttack;
+        SeekToAttack(attack, distance);
     }
 
     IEnumerator SeekObject()
@@ -110,6 +108,7 @@ public class Pathfinding : MonoBehaviour
 			}
 			yield return new WaitForFixedUpdate();
 		}
+        m_currentState = pathfindingState.nullptr;
 	}
 
     IEnumerator SeekLocation()
@@ -123,6 +122,18 @@ public class Pathfinding : MonoBehaviour
             {
                 m_currentState = pathfindingState.nullptr;
             }
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    IEnumerator SeekToAttack(Attack attack, float distance)
+    {
+        float distanceFromPlayer = Mathf.Abs(Vector3.Distance(m_objectToPathfind.transform.position, transform.position));
+        while (distanceFromPlayer > attack.minDistanceToPerform && distanceFromPlayer < attack.maxDistanceToPerform)
+        {
+            Vector3 anglefromPlayer = (m_objectToPathfind.transform.position - transform.position).normalized;
+            Vector3 pos = m_objectToPathfind.transform.position + (anglefromPlayer * (attack.maxDistanceToPerform - attack.minDistanceToPerform));
+            SetNewNavigation(pathfindingState.seek, pos);
             yield return new WaitForFixedUpdate();
         }
     }

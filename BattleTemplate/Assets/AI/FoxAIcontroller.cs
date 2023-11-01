@@ -16,10 +16,16 @@ public class FoxAIcontroller : MonoBehaviour
     void Start()
     {
         m_pathfinder = GetComponent<Pathfinding>();
+        m_pathfinder.callAttack += CallAttack;
         m_battleInformation = GetComponent<BattleScript>();
         m_currentBattlePhase = battlePhases[0];
         m_currentBattlePhase.Enable(m_playerReference);
         m_battleInformation.HPreduce += checkPhaseUpdate;
+    }
+
+    void CallAttack()
+    {
+        m_currentBattlePhase.StartCoroutine("InitiateAttack");
     }
 
     // Update is called once per frame

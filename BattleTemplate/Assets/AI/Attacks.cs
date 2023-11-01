@@ -10,14 +10,16 @@ public enum AttackType
 }
 
 [System.Serializable]
-public struct Attack 
+public struct Attack
 {
     public string attackName;
     public float attackDamage;
     public GameObject attackObject;
     public Animation associatedAnimation;
     public AttackType attackType;
-    public float distanceFromPlayerToPerform;
+    public float minDistanceToPerform;
+    public float maxDistanceToPerform;
+    public float freezeTime;
 }
 
 [CreateAssetMenu(fileName = "Attacks", menuName = "ScriptableObjects/Attacks", order = 2)]
