@@ -16,10 +16,16 @@ public class FoxAIcontroller : MonoBehaviour
     void Start()
     {
         m_pathfinder = GetComponent<Pathfinding>();
+        m_pathfinder.callAttack += CallAttack;
         m_battleInformation = GetComponent<BattleScript>();
         m_currentBattlePhase = battlePhases[0];
-        m_currentBattlePhase.Enable(m_playerReference, 1);
+        m_currentBattlePhase.Enable(m_playerReference);
         m_battleInformation.HPreduce += checkPhaseUpdate;
+    }
+
+    void CallAttack()
+    {
+        m_currentBattlePhase.StartCoroutine("InitiateAttack");
     }
 
     // Update is called once per frame
@@ -43,14 +49,14 @@ public class FoxAIcontroller : MonoBehaviour
         if (hp < 5 && m_currentBattlePhase == battlePhases[0])
         {
             m_currentBattlePhase = battlePhases[1];
-            m_currentBattlePhase.Enable(m_playerReference, 2);
+            m_currentBattlePhase.Enable(m_playerReference);
 
             //any other behaviours on the switch
         }
         else if (hp < 2.5 && m_currentBattlePhase == battlePhases[1])
         {
             m_currentBattlePhase= battlePhases[2];
-            m_currentBattlePhase.Enable(m_playerReference, 3);
+            m_currentBattlePhase.Enable(m_playerReference);
             //any others behaviours on the switch
         }
         m_currentBattlePhase.SetPlayerReference(m_playerReference);

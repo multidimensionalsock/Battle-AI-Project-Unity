@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum AttackType
+{
+    melee,
+    range,
+    special
+}
+
 [System.Serializable]
-public struct Attack 
+public struct Attack
 {
     public string attackName;
     public float attackDamage;
     public GameObject attackObject;
     public Animation associatedAnimation;
-    public int attackStage;
-
+    public AttackType attackType;
+    public float minDistanceToPerform;
+    public float maxDistanceToPerform;
+    public float freezeTime;
 }
-
 
 [CreateAssetMenu(fileName = "Attacks", menuName = "ScriptableObjects/Attacks", order = 2)]
 public class Attacks : ScriptableObject
