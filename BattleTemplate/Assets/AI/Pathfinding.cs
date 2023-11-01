@@ -136,6 +136,7 @@ public class Pathfinding : MonoBehaviour
             SetNewNavigation(pathfindingState.seek, pos);
             yield return new WaitForFixedUpdate();
         }
+        callAttack.Invoke();
     }
 
     IEnumerator FleeObject()
