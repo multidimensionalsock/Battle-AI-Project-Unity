@@ -18,6 +18,7 @@ public class BossAIAnimation : MonoBehaviour
         m_overrideController = new AnimatorOverrideController(m_animator.runtimeAnimatorController);
         m_animator.runtimeAnimatorController = m_overrideController;
         lastPos = transform.position;
+        gameObject.GetComponentInParent<Pathfinding>().callAttack += AttackAnimation;
     }
 
     // Update is called once per frame
@@ -39,6 +40,7 @@ public class BossAIAnimation : MonoBehaviour
     void AttackAnimation(Attack attack)
     {
         m_overrideController["Attack"] = attack.associatedAnimation; //set attack aniamtion to current attacks animation 
+        m_animator.SetTrigger("Attack");
     }
 
     private void OnCollisionEnter(Collision collision)

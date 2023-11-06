@@ -20,7 +20,7 @@ public class Pathfinding : MonoBehaviour
 	Vector3 m_targetPosition;
 	float m_distanceToFlee;
 	GameObject m_objectToPathfind;
-    public event System.Action callAttack;
+    public event System.Action<Attack> callAttack;
 
     private void Start()
     {
@@ -136,7 +136,7 @@ public class Pathfinding : MonoBehaviour
             SetNewNavigation(pathfindingState.seek, pos);
             yield return new WaitForFixedUpdate();
         }
-        callAttack.Invoke();
+        callAttack.Invoke(attack);
     }
 
     IEnumerator FleeObject()

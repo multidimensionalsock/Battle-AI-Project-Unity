@@ -23,7 +23,7 @@ public class FoxAIcontroller : MonoBehaviour
         m_battleInformation.HPreduce += checkPhaseUpdate;
     }
 
-    void CallAttack()
+    void CallAttack(Attack attack)
     {
         m_currentBattlePhase.StartCoroutine("InitiateAttack");
     }
