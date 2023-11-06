@@ -47,11 +47,13 @@ public class PlayerAnimator : MonoBehaviour
 
     void Attack(InputAction.CallbackContext context)
     {
+        Debug.Log("Attack");
         m_animator.SetTrigger("Attack");
     }
 
     void DefenceStart(InputAction.CallbackContext context)
     {
+        Debug.Log("dfef");
         m_animator.SetBool("Defence", true);
     }
     
