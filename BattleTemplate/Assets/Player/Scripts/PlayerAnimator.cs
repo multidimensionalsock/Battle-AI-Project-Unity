@@ -34,10 +34,11 @@ public class PlayerAnimator : MonoBehaviour
 
 
     //void DefenceStart(InputAction.CallbackContext context)
-    
+
     void MoveStart(InputAction.CallbackContext context)
     {
         m_animator.SetBool("Moving", true);
+        m_animator.SetBool("Defence", false);
     }
 
     void MoveEnd(InputAction.CallbackContext context)
@@ -47,13 +48,13 @@ public class PlayerAnimator : MonoBehaviour
 
     void Attack(InputAction.CallbackContext context)
     {
-        Debug.Log("Attack");
+        m_animator.SetBool("Moving", false);
+        m_animator.SetBool("Defence", false);
         m_animator.SetTrigger("Attack");
     }
 
     void DefenceStart(InputAction.CallbackContext context)
     {
-        Debug.Log("dfef");
         m_animator.SetBool("Defence", true);
     }
     
@@ -64,6 +65,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        m_animator.SetTrigger("Collision");
         m_animator.SetBool("Grounded", true);
         if (CurrentCollisions < 0) { CurrentCollisions = 0; }
         CurrentCollisions += 1;
