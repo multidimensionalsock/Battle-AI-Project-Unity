@@ -5,25 +5,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
 
-enum AnimationStates 
-{ 
-    idle, 
-    walk, 
-    jump,
-    attack,
-    specialAttack,
-    defence
-}
-
-
 public class PlayerAnimator : MonoBehaviour
 {
 
     Animator m_animator;
     PlayerInput m_input;
     Rigidbody m_rigidbody;
-    bool lockState = false;
-    AnimationStates m_queued;
+    int CurrentCollisions = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +21,7 @@ public class PlayerAnimator : MonoBehaviour
         m_rigidbody = GetComponent<Rigidbody>();
         m_input.currentActionMap.FindAction("Movement").performed += MoveStart;
         m_input.currentActionMap.FindAction("Movement").canceled += MoveEnd;
-        m_input.currentActionMap.FindAction("Jump").performed += Jump;
+        //m_input.currentActionMap.FindAction("Jump").performed += Jump;
         m_input.currentActionMap.FindAction("Attack").performed += Attack;
         m_input.currentActionMap.FindAction("Defence").performed += DefenceStart;
         m_input.currentActionMap.FindAction("Defence").canceled += DefenceEnd;
@@ -41,111 +29,52 @@ public class PlayerAnimator : MonoBehaviour
 
     private void Update()
     {
-        m_animator.SetFloat("Ymovement", m_rigidbody.velocity.y);
-        Debug.Log(m_animator.GetFloat("Ymovement"));
+        m_animator.SetFloat("YMovement", m_rigidbody.velocity.y);
     }
 
-    void Attack(InputAction.CallbackContext context)
-    {
-        if (lockState)
-            return;
 
-        m_animator.SetInteger("State", (int)AnimationStates.attack);
-        StartCoroutine(LockCurrentState());
-    }
-
-    void DefenceStart(InputAction.CallbackContext context)
-    {
-        if (lockState)
-            return;
-
-        m_animator.SetInteger("State", (int)AnimationStates.defence);
-        lockState = true;
-    }
-
-    void DefenceEnd(InputAction.CallbackContext context)
-    {
-        if (lockState && m_animator.GetInteger("State") != 5)
-            return;
-
-        lockState = false;
-        if (m_queued == AnimationStates.walk)
-        {
-            Debug.Log("run run");
-            m_animator.SetInteger("State", (int)AnimationStates.walk);
-        }
-        else
-        {
-            Debug.Log("run end");
-            m_animator.SetInteger("State", (int)AnimationStates.idle);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    { 
-        m_animator.SetBool("Grounded", true);
-        if (m_queued == AnimationStates.walk)
-        {
-            Debug.Log("run run");
-            m_animator.SetInteger("State", (int)AnimationStates.walk);
-        }
-        else
-        {
-            Debug.Log("run end");
-            m_animator.SetInteger("State", (int)AnimationStates.idle);
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        m_animator.SetBool("Grounded", false);
-    }
-
-    void Jump(InputAction.CallbackContext context)
-    {
-        if (lockState)
-            return;
-
-        m_animator.SetInteger("State", (int)AnimationStates.jump);
-    }
-
+    //void DefenceStart(InputAction.CallbackContext context)
+    
     void MoveStart(InputAction.CallbackContext context)
     {
-        m_queued = AnimationStates.walk;
-        if (lockState)
-            return;
-        
-        Debug.Log("walk");
-        m_animator.SetInteger("State", (int)AnimationStates.walk);
+        m_animator.SetBool("Moving", true);
     }
 
     void MoveEnd(InputAction.CallbackContext context)
     {
-        m_queued -= AnimationStates.walk;
-        if (lockState)
-            return;
-        
-        m_animator.SetInteger("State", (int)AnimationStates.idle);
+        m_animator.SetBool("Moving", false);
     }
 
-    IEnumerator LockCurrentState()
+    void Attack(InputAction.CallbackContext context)
     {
-        Debug.Log("codfidg");
-        lockState = true;
-        yield return new WaitForSeconds(m_animator.GetCurrentAnimatorClipInfo(0).Length);
-        lockState = false;
-        Debug.Log("runninignirngilrgj");
-        if (m_queued == AnimationStates.walk)
-        {
-            Debug.Log("run run");
-            m_animator.SetInteger("State", (int)AnimationStates.walk);
-        }
-        else
-        {Debug.Log("run end");
-            m_animator.SetInteger("State", (int)AnimationStates.idle);
-        }
+        m_animator.SetTrigger("Attack");
     }
 
+    void DefenceStart(InputAction.CallbackContext context)
+    {
+        m_animator.SetBool("Defence", true);
+    }
     
+    void DefenceEnd(InputAction.CallbackContext context)
+    {
+        m_animator.SetBool("Defence", false);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        m_animator.SetBool("Grounded", true);
+        if (CurrentCollisions < 0) { CurrentCollisions = 0; }
+        CurrentCollisions += 1;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        CurrentCollisions -= 1;
+        if (CurrentCollisions <= 0) 
+        { 
+            CurrentCollisions = 0;
+            m_animator.SetBool("Grounded", false);
+        }
+    }
 
 }
