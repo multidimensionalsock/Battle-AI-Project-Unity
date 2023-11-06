@@ -17,8 +17,6 @@ public class PlayerMovement : MonoBehaviour
     Vector3 m_movementDirection;
     int jumpNo;
     [SerializeField] float m_jumpForce;
-    [SerializeField] GameObject m_camera;
-    float m_distance;
     bool m_movementLock = false;
 
     public float GetSpeed()
@@ -39,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         m_input.currentActionMap.FindAction("SpecialAttack").performed += SpecialAttack;
         m_input.currentActionMap.FindAction("Defence").performed += DefenceStart;
         m_input.currentActionMap.FindAction("Defence").canceled += DefenceEnd;
-        m_distance = Mathf.Abs(Vector3.Distance(transform.position, m_camera.transform.position));
+        //m_distance = Mathf.Abs(Vector3.Distance(transform.position, m_camera.transform.position));
 
            
     }
@@ -136,15 +134,5 @@ public class PlayerMovement : MonoBehaviour
         jumpNo = 0;
     }
 
-    //void MoveCamera(InputAction.CallbackContext context)
-    //{
-    //    Vector2 move = context.ReadValue<Vector2>();
-    //    Vector3 moveRot = new Vector3(move.y, move.x, 0f);
-
-    //    m_camera.transform.LookAt(gameObject.transform.position, Vector3.up);
-    //    m_camera.transform.RotateAround(gameObject.transform.position, moveRot, 1f);
-    //    m_camera.transform.position = new Vector3(m_camera.transform.position.x, Mathf.Clamp(m_camera.transform.position.y , 1f, 5f), m_camera.transform.position.z);
-    //    m_camera.transform.position = (m_camera.transform.position - transform.position).normalized * m_distance + transform.position;
-    //}
 
 }

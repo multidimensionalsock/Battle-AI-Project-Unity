@@ -38,7 +38,7 @@ public class FoxAIcontroller : MonoBehaviour
     private void FixedUpdate()
     {
         
-            m_currentBattlePhase.MovementStrategy();
+        m_currentBattlePhase.MovementStrategy();
         
     }
 

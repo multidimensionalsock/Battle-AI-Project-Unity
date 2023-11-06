@@ -15,11 +15,12 @@ public struct Attack
     public string attackName;
     public float attackDamage;
     public GameObject attackObject;
-    public Animation associatedAnimation;
+    public AnimationClip associatedAnimation;
     public AttackType attackType;
     public float minDistanceToPerform;
     public float maxDistanceToPerform;
     public float freezeTime;
+    public int TPDecrease;
 }
 
 [CreateAssetMenu(fileName = "Attacks", menuName = "ScriptableObjects/Attacks", order = 2)]

@@ -6,9 +6,9 @@ public class BattleScript : MonoBehaviour
 {
     [SerializeField] protected float m_HP;
     [SerializeField] protected int m_TP;
-    [SerializeField] protected int m_Attack;
+    [SerializeField] public int m_Attack;
     [SerializeField] protected int m_Defence;
-    [SerializeField] protected int m_SpecialAttack;
+    [SerializeField] public int m_SpecialAttack;
     [SerializeField] protected int m_SpecialDefence;
     protected bool defenseActivated;
 
@@ -48,5 +48,11 @@ public class BattleScript : MonoBehaviour
     public float GetTP()
     {
         return m_TP;
+    }
+
+    public void SetTP(int TPdecrease)
+    {
+        m_TP -= TPdecrease;
+        //call this when you do a speical attack
     }
 }
