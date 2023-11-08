@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class SimpleDistanceAttackScript : AttackTemplate
 {
+
+    private void Start()
+    {
+        transform.position = new Vector3 (transform.position.x, transform.position.y + 1, transform.position.z);
+    }
     private void FixedUpdate()
     {
         transform.position += transform.forward * speed * Time.fixedDeltaTime;

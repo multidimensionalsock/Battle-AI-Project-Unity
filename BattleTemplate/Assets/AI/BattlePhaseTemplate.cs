@@ -34,6 +34,7 @@ public class BattlePhaseTemplate : MonoBehaviour
         m_playerRigidBody = playerRef.GetComponent<Rigidbody>();
         pathfinderRef = GetComponent<Pathfinding>();
         pathfinderRef.SetDistanceToFlee(distanceFromPlayerToFlee);
+        pathfinderRef.callAttack += StartAttack;
         navmeshSpeed = GetComponent<NavMeshAgent>().speed;
         battleScript = GetComponent<BattleScript>();
         shouldAttack = true;
@@ -56,6 +57,11 @@ public class BattlePhaseTemplate : MonoBehaviour
     virtual public void ActivateSpecialAttack()
     {
 
+    }
+
+    public void StartAttack(Attack attack)
+    {
+        StartCoroutine(InitiateAttack());
     }
 
     protected IEnumerator InitiateAttack()

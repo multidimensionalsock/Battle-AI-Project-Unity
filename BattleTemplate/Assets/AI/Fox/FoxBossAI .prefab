@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 4335497134409209895}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8362071504382174512}
@@ -47,10 +47,21 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4335497134409209895}
-  serializedVersion: 2
+  serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -64,12 +75,21 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4335497134409209895}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_Radius: 0.11357815
-  m_Height: 1.1913252
+  serializedVersion: 2
+  m_Radius: 0.14279427
+  m_Height: 1.7583374
   m_Direction: 1
-  m_Center: {x: 0.002422035, y: 0.58418214, z: -0.0013010701}
+  m_Center: {x: 0.0022063255, y: 0.8676879, z: 0.024710357}
 --- !u!114 &8320737426693073223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +140,7 @@ MonoBehaviour:
   m_SpecialDefence: 0
 --- !u!95 &637023003
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -137,7 +157,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &637022994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d93816de327e3a41aa9c1f59ee4773d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_objectToPathfind: {fileID: 0}
 --- !u!195 &637022996
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -177,6 +199,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 3990496036943495837}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
@@ -292,6 +315,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 9a66d4127f4ebf74bb776ebe411de10d, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 65702495048144492, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9074697775734129680}
   m_SourcePrefab: {fileID: 100100000, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
 --- !u!4 &8362071504382174512 stripped
 Transform:

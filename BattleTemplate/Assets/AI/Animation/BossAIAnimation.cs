@@ -39,7 +39,7 @@ public class BossAIAnimation : MonoBehaviour
 
     void AttackAnimation(Attack attack)
     {
-        m_overrideController["Attack"] = attack.associatedAnimation; //set attack aniamtion to current attacks animation 
+        m_overrideController["attack"] = attack.associatedAnimation; //set attack aniamtion to current attacks animation 
         m_animator.SetTrigger("Attack");
     }
 
