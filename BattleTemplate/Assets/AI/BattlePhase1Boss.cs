@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using UnityEngine;
 
 public class BattlePhase1Boss : BattlePhaseTemplate
 {
     override public void MovementStrategy()
     {
-        if(pauseMovement) { return; }
+        if(pauseMovement == true) { return; }
         if (m_playerRigidBody == null) { m_playerRigidBody = playerRef.GetComponent<Rigidbody>(); }
         float distanceFromPlayer = Vector3.Distance(playerRef.transform.position, transform.position);
         float degrees = Mathf.Atan2(playerRef.transform.position.y - transform.position.y, playerRef.transform.position.x - transform.position.x) * Mathf.Rad2Deg; 
@@ -38,15 +39,28 @@ public class BattlePhase1Boss : BattlePhaseTemplate
         //if current attack hasnt been performed then break here
         if (collidingWithPlayer)
         {
-            //melee attack
-            int random = UnityEngine.Random.Range(0, meleeAttacks.Count);
-            StartCoroutine(AnimationDelay(meleeAttacks[random]));
-            //perform animation here
+            if (pauseMovement == true) { return; }
 
-            //the below shouldnt be done until the animation has played, when it ends if still colliding then inflict damage 
+            //rotate to face player
+            Vector3 lookRot = playerRef.transform.position - transform.position;
+            transform.rotation = Quaternion.LookRotation(lookRot);
             
+            pauseMovement = true;
+            //melee attack
+            int random;
+            if (meleeAttacks.Count < 1)
+            {
+                random = 0;
+            }
+            else
+            {
+                random = UnityEngine.Random.Range(0, meleeAttacks.Count);
+            }
+            playerRef.GetComponent<BattleScript>().Attack(meleeAttacks[random].attackDamage);
+            pathfinderRef.CallAttackAnimation(meleeAttacks[random]);
+            StartCoroutine(UnlockMovement(meleeAttacks[random].freezeTime));
         }
-        if (nextAttack.Any() == true) { return;  } //check if an attack is already loaded 
+        //if (nextAttack.Any() == true) { return;  } //check if an attack is already loaded 
         if ((playerRef.transform.position - transform.position).magnitude < distanceFromPlayerToFlee)
         {
             //flee
@@ -56,10 +70,7 @@ public class BattlePhase1Boss : BattlePhaseTemplate
         {
             //select and perform a special attack
             int random = UnityEngine.Random.Range(0, specialAttacks.Count);
-            GameObject attack = GameObject.Instantiate(specialAttacks[random].attackObject, transform.position, transform.rotation);
-            attack.GetComponent<AttackTemplate>().CreateAttack(specialAttacks[random], gameObject.GetComponent<BattleScript>());
-            InitiateAttack();
-            battleScript.SetTP(specialAttacks[random].TPDecrease);
+            pathfinderRef.SetNewNavigation(specialAttacks[random]); //attack, distance
         }
         else if (shouldAttack == true)
         {
@@ -70,8 +81,6 @@ public class BattlePhase1Boss : BattlePhaseTemplate
             InitiateAttack();
         }
     }
-
-    
 
     override public void ActivateAttack()
     {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ public class BattlePhaseTemplate : MonoBehaviour
     public void Enable(GameObject playerreference)
     {
         playerRef = playerreference;
-        //LoadAttacks();
+        LoadAttacks();
         m_playerRigidBody = playerRef.GetComponent<Rigidbody>();
         pathfinderRef = GetComponent<Pathfinding>();
         pathfinderRef.SetDistanceToFlee(distanceFromPlayerToFlee);
@@ -60,20 +61,28 @@ public class BattlePhaseTemplate : MonoBehaviour
         if (!nextAttack.Any()) { yield break; } //if nothing in attack list then do nothing 
         //face the player
         pauseMovement = true;
+        pathfinderRef.SetNewNavigation(pathfindingState.nullptr);
+        GameObject attack = GameObject.Instantiate(nextAttack[0].attackObject, transform.position, transform.rotation);
+        attack.GetComponent<AttackTemplate>().CreateAttack(nextAttack[0], gameObject.GetComponent<BattleScript>());
+        if (nextAttack[0].attackType == AttackType.special)
+        {
+            battleScript.SetTP(nextAttack[0].TPDecrease);
+        }
+        nextAttack.Clear();
+        //create the attack or and perform aniamtin
         yield return new WaitForSeconds(nextAttack[0].freezeTime);
         pauseMovement = false;
-        nextAttack.Clear();
     }
 
-    protected IEnumerator AnimationDelay(Attack attack)
-    {
-        //play animation
-        yield return new WaitForSeconds(attack.associatedAnimation.length);
-        if (collidingWithPlayer)
-        {
-            playerRef.GetComponent<BattleScript>().Attack(attack.attackDamage + battleScript.m_Attack);
-        }
-    }
+    //protected IEnumerator AnimationDelay(Attack attack)
+    //{
+    //    //play animation
+    //    yield return new WaitForSeconds(attack.associatedAnimation.length);
+    //    if (collidingWithPlayer)
+    //    {
+    //        playerRef.GetComponent<BattleScript>().Attack(attack.attackDamage + battleScript.m_Attack);
+    //    }
+    //}
 
 
     virtual public void LoadAttacks()
@@ -99,6 +108,12 @@ public class BattlePhaseTemplate : MonoBehaviour
         }
     }
 
+    protected IEnumerator UnlockMovement(float time)
+    {
+        yield return new WaitForSeconds(time);
+        pauseMovement = false;
+    }
+
     public void SetPlayerReference(GameObject playerreference)
     {
         playerRef = playerreference;
@@ -111,7 +126,7 @@ public class BattlePhaseTemplate : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.GetComponent<PlayerAnimator>() != null)
         {
             collidingWithPlayer = true;
         }
@@ -119,9 +134,10 @@ public class BattlePhaseTemplate : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.GetComponent<PlayerAnimator>() != null)
         {
             collidingWithPlayer = false;
+            pauseMovement = false;
         }
     }
 }

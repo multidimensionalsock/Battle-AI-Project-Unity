@@ -88,10 +88,11 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
-    public void SetNewNavigation(Attack attack, float distance)
+    public void SetNewNavigation(Attack attack)
     {
         m_currentState = pathfindingState.seekAttack;
-        SeekToAttack(attack, distance);
+        StopAllCoroutines();
+        StartCoroutine(SeekToAttack(attack));
     }
 
     IEnumerator SeekObject()
@@ -126,7 +127,7 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
-    IEnumerator SeekToAttack(Attack attack, float distance)
+    IEnumerator SeekToAttack(Attack attack)
     {
         float distanceFromPlayer = Mathf.Abs(Vector3.Distance(m_objectToPathfind.transform.position, transform.position));
         while (distanceFromPlayer > attack.minDistanceToPerform && distanceFromPlayer < attack.maxDistanceToPerform)
@@ -252,4 +253,9 @@ public class Pathfinding : MonoBehaviour
 	//{
 	//	//check if anything is in trigger collision distance, if so repel from it 
 	//}
+
+    public void CallAttackAnimation(Attack attack)
+    {
+        callAttack(attack);
+    }
 }

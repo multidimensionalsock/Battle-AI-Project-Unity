@@ -84,16 +84,16 @@ public class BattlePhase2Boss : BattlePhaseTemplate
     override public void AttackStrategy()
     {
         if (nextAttack.Any()) { return; }
-        float distanceFromPlayer = 0;
-        //choose attack (if necessary)
-        ////add attack to list
-        ////choose how far from the player you need to be to attack (look at above function and rewrite here)
+        //float distanceFromPlayer = 0;
+        ////choose attack (if necessary)
+        //////add attack to list
+        //////choose how far from the player you need to be to attack (look at above function and rewrite here)
 
-        if(nextAttack.Any())
-        {
-            pathfinderRef.SetNewNavigation(nextAttack[0], distanceFromPlayer);
-            //pathfind to attack distance
-        }
+        //if(nextAttack.Any())
+        //{
+        //    pathfinderRef.SetNewNavigation(nextAttack[0], distanceFromPlayer);
+        //    //pathfind to attack distance
+        //}
 
     }
 }

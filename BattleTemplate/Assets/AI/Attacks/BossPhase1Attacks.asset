@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27eb16274495d0447845d2acfe79d3c5, type: 3}
   m_Name: BossPhase1Attacks
   m_EditorClassIdentifier: 
-  attackDetails: []
+  attackDetails:
+  - attackName: Roundhouse Kick
+    attackDamage: 5
+    attackObject: {fileID: 0}
+    associatedAnimation: {fileID: 0}
+    attackType: 0
+    minDistanceToPerform: 0
+    maxDistanceToPerform: 0
+    freezeTime: 0
+    TPDecrease: 0

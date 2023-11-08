@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BattleScript : MonoBehaviour
 {
-    [SerializeField] protected float m_HP;
+    [SerializeField] public float m_HP;
     [SerializeField] protected int m_TP;
     [SerializeField] public int m_Attack;
     [SerializeField] protected int m_Defence;
@@ -15,16 +15,18 @@ public class BattleScript : MonoBehaviour
     public event System.Action<float> HPreduce;
     public void Attack(float hpDecrease)
     {
-        if (defenseActivated)
-        {
-            hpDecrease = hpDecrease * 0.5f * (m_Defence / 100);
-        }
-        else
-        {
-            hpDecrease = hpDecrease * (m_Defence / 100);
-        }
+        Debug.Log(hpDecrease);
+        //if (defenseActivated)
+        //{
+        //    hpDecrease = hpDecrease * 0.5f * (m_Defence / 100);
+        //}
+        //else
+        //{
+        //    hpDecrease = hpDecrease * (m_Defence / 100);
+        //}
         m_HP -= hpDecrease;
         HPreduce?.Invoke(m_HP);
+        
     }
 
     public void SpecialAttack(float hpDecrease)

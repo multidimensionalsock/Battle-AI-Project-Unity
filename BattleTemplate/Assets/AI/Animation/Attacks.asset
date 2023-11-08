@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Attacks
   m_EditorClassIdentifier: 
   attackDetails:
-  - attackName: 
-    attackDamage: 0
+  - attackName: Kick
+    attackDamage: 5
     attackObject: {fileID: 0}
-    associatedAnimation: {fileID: 0}
-    attackStage: 0
+    associatedAnimation: {fileID: -203655887218126122, guid: 057e3bb305402674a8c9727b408d60db, type: 3}
+    attackType: 0
+    minDistanceToPerform: 0
+    maxDistanceToPerform: 0
+    freezeTime: 2
+    TPDecrease: 0
