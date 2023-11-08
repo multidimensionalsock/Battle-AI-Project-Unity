@@ -20,5 +20,14 @@ MonoBehaviour:
     attackType: 0
     minDistanceToPerform: 0
     maxDistanceToPerform: 0
-    freezeTime: 0
+    freezeTime: 2
+    TPDecrease: 0
+  - attackName: Simple Distance Attack
+    attackDamage: 10
+    attackObject: {fileID: 5007704334088862137, guid: 3910fda84fc2ef34b90300b3afddf8d5, type: 3}
+    associatedAnimation: {fileID: 4723146814002874508, guid: 2abe80813a2e0da48b78346f200aeb4c, type: 3}
+    attackType: 1
+    minDistanceToPerform: 2
+    maxDistanceToPerform: 5
+    freezeTime: 1
     TPDecrease: 0

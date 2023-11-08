@@ -14000,6 +14000,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 637022994, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
+      propertyPath: m_objectToPathfind
+      value: 
+      objectReference: {fileID: 1514811546}
     - target: {fileID: 3990496036943495837, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -14051,7 +14055,7 @@ PrefabInstance:
     - target: {fileID: 4840335843324548127, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
       propertyPath: attackData
       value: 
-      objectReference: {fileID: 11400000, guid: 18af3270ebbd71f4fb8f8e12d44e5e5d, type: 2}
+      objectReference: {fileID: 11400000, guid: 5fc31f575f562504ab924266b051a4b1, type: 2}
     - target: {fileID: 8320737426693073223, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
       propertyPath: m_playerReference
       value: 

@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class BattlePhase1Boss : BattlePhaseTemplate
 {
+
     override public void MovementStrategy()
     {
         if(pauseMovement == true) { return; }
@@ -36,13 +37,15 @@ public class BattlePhase1Boss : BattlePhaseTemplate
 
     override public void AttackStrategy()
     {
+        if (AttacksLoaded == false) { return; }
+        Vector3 lookRot = playerRef.transform.position - transform.position;
         //if current attack hasnt been performed then break here
         if (collidingWithPlayer)
         {
             if (pauseMovement == true) { return; }
 
             //rotate to face player
-            Vector3 lookRot = playerRef.transform.position - transform.position;
+            
             transform.rotation = Quaternion.LookRotation(lookRot);
             
             pauseMovement = true;
@@ -69,21 +72,37 @@ public class BattlePhase1Boss : BattlePhaseTemplate
         else if (shouldSpecialAttack == true)
         {
             //select and perform a special attack
+
+
             int random = UnityEngine.Random.Range(0, specialAttacks.Count);
             pathfinderRef.SetNewNavigation(specialAttacks[random]); //attack, distance
+            shouldSpecialAttack = false;
         }
         else if (shouldAttack == true)
         {
-            //select and perform an attack 
-            int random = UnityEngine.Random.Range(0, rangeAttacks.Count);
-            GameObject attack = GameObject.Instantiate(rangeAttacks[random].attackObject, transform.position, transform.rotation);
-            attack.GetComponent<AttackTemplate>().CreateAttack(rangeAttacks[random], gameObject.GetComponent<BattleScript>());
-            InitiateAttack();
+            int random;
+            
+            if (rangeAttacks.Count < 1)
+            {
+                random = 0;
+            }
+            else
+            {
+                random = UnityEngine.Random.Range(0, rangeAttacks.Count);
+            }
+            shouldAttack = false;
+            nextAttack.Add( rangeAttacks[random]);
+            pathfinderRef.SetNewNavigation(rangeAttacks[random]);
+            
+            //GameObject attack = GameObject.Instantiate(rangeAttacks[random].attackObject, transform.position, transform.rotation);
+            //attack.GetComponent<AttackTemplate>().CreateAttack(rangeAttacks[random], gameObject.GetComponent<BattleScript>(), Quaternion.LookRotation(lookRot));
+            //InitiateAttack();
         }
     }
 
     override public void ActivateAttack()
     {
+
         //conditions to activate attack
     }
     override public void ActivateSpecialAttack()

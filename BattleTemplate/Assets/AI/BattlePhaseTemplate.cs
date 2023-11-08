@@ -24,6 +24,7 @@ public class BattlePhaseTemplate : MonoBehaviour
     protected bool shouldSpecialAttack = false;
     protected bool shouldAttack = false;
     protected bool collidingWithPlayer;
+    protected bool AttacksLoaded = false;
     
 
     public void Enable(GameObject playerreference)
@@ -35,6 +36,7 @@ public class BattlePhaseTemplate : MonoBehaviour
         pathfinderRef.SetDistanceToFlee(distanceFromPlayerToFlee);
         navmeshSpeed = GetComponent<NavMeshAgent>().speed;
         battleScript = GetComponent<BattleScript>();
+        shouldAttack = true;
     }
 
     virtual public void MovementStrategy()
@@ -63,7 +65,8 @@ public class BattlePhaseTemplate : MonoBehaviour
         pauseMovement = true;
         pathfinderRef.SetNewNavigation(pathfindingState.nullptr);
         GameObject attack = GameObject.Instantiate(nextAttack[0].attackObject, transform.position, transform.rotation);
-        attack.GetComponent<AttackTemplate>().CreateAttack(nextAttack[0], gameObject.GetComponent<BattleScript>());
+        Vector3 lookRot = playerRef.transform.position - transform.position;
+        attack.GetComponent<AttackTemplate>().CreateAttack(nextAttack[0], gameObject.GetComponent<BattleScript>(), Quaternion.LookRotation(lookRot)); //no rwef setr 
         if (nextAttack[0].attackType == AttackType.special)
         {
             battleScript.SetTP(nextAttack[0].TPDecrease);
@@ -106,6 +109,7 @@ public class BattlePhaseTemplate : MonoBehaviour
                     break;
             }
         }
+        AttacksLoaded = true;
     }
 
     protected IEnumerator UnlockMovement(float time)

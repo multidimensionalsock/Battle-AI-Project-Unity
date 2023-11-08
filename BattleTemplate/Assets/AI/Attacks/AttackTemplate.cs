@@ -5,24 +5,15 @@ using UnityEngine;
 
 public class AttackTemplate : MonoBehaviour
 {
-    float hpDecrease;
-    public float speed;
-    public Vector3 direction;
+    protected float hpDecrease;
+    [SerializeField] protected float speed;
+    protected Vector3 direction;
+    protected Attack attackData;
 
-    // Start is called before the first frame update
-    void Start()
+    public void CreateAttack(Attack attack, BattleScript creatorObject, Quaternion rotation)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void CreateAttack(Attack attack, BattleScript creatorObject)
-    {
+        attackData = attack;
+        transform.rotation = rotation;
         if (attack.attackType == AttackType.special)
         {
             hpDecrease = attack.attackDamage + creatorObject.m_SpecialAttack;
@@ -31,18 +22,27 @@ public class AttackTemplate : MonoBehaviour
         {
             hpDecrease = attack.attackDamage + creatorObject.m_Attack;
         }
+        //StartCoroutine(AutoKill());
     }
+
+    
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<BattleScript>() != null)
+        if (collision.gameObject.GetComponent<PlayerAnimator>() != null)
         {
             collision.gameObject.GetComponent<BattleScript>().Attack(hpDecrease);
             Destroy(gameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
+    }
+
+    protected IEnumerator AutoKill()
+    {
+        yield return new WaitForSeconds(attackData.freezeTime);
+        Destroy(gameObject);
     }
 }
