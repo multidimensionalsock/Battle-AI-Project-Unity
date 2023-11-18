@@ -102,7 +102,7 @@ public class Pathfinding : MonoBehaviour
 		{
 			m_targetPosition = m_objectToPathfind.transform.position;
             m_agent.SetDestination(m_targetPosition);
-            if (gameObject.transform.position == m_targetPosition)
+            if (transform.position == m_targetPosition)
 			{
 				m_currentState = pathfindingState.nullptr;
 			}

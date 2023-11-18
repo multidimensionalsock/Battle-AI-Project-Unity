@@ -25,7 +25,7 @@ public class FoxAIcontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_currentBattlePhase.AttackStrategy();
+        //m_currentBattlePhase.AttackStrategy();
         
     }
 

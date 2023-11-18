@@ -41,6 +41,9 @@ public class MiniEnemyFSM : MonoBehaviour
         m_battleScript.HPreduce += TransitionAny;
         m_collidingWith = new List<GameObject>();
         m_attackDamage = Random.Range(1,5);
+        StateChange += CallStateChange;
+        m_currentState = MiniEnemyStates.Idle;
+        CallStateChange(MiniEnemyStates.Idle);
     }
 
     public void SetUp(GameObject bossRef, GameObject playerRef)
@@ -65,8 +68,9 @@ public class MiniEnemyFSM : MonoBehaviour
         }
     }
 
-    IEnumerable Idle()
+    IEnumerator Idle()
     {
+        Debug.Log("running idle");
         while (m_currentState == MiniEnemyStates.Idle)
         {
             TransitionIdle();
@@ -91,9 +95,9 @@ public class MiniEnemyFSM : MonoBehaviour
 
     }
 
-    IEnumerable Seek()
+    IEnumerator Seek()
     {
-        m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef);
+        m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef;
         while (m_currentState == MiniEnemyStates.Seek)
         {
             TransitionSeek();
@@ -110,23 +114,22 @@ public class MiniEnemyFSM : MonoBehaviour
             StateChange?.Invoke(m_currentState);
         }
         //if player is in boss verciitnity, switch to defend
-        else if (PlayerInBossVercinity()) 
+        else if (PlayerInBossVercinity())
         {
             m_currentState = MiniEnemyStates.Defend;
             StateChange?.Invoke(m_currentState);
         }
         //if no longer in player vercinity, go to wander 
-        else if (InPlayerVercinity())
+        else if (!InPlayerVercinity())
         {
             m_currentState = MiniEnemyStates.Wander;
             StateChange?.Invoke(m_currentState);
         }
-        
     }
 
-    IEnumerable Wander()
+    IEnumerator Wander()
     {
-        m_pathfinder.SetNewNavigation(pathfindingState.wander);
+        //m_pathfinder.SetNewNavigation(pathfindingState.wander);
         while (m_currentState == MiniEnemyStates.Wander)
         {
             TransitionWander();
@@ -150,7 +153,7 @@ public class MiniEnemyFSM : MonoBehaviour
         }
     }
 
-    IEnumerable Attack()
+    IEnumerator Attack()
     {
         //take away HP if colliding
         if (m_collidingWith.Any())
@@ -178,9 +181,12 @@ public class MiniEnemyFSM : MonoBehaviour
 
     }
 
-    IEnumerable Defend()
+    IEnumerator Defend()
     {
         //naviagte to player path 
+        //evade kinda but seek to evade 
+        //seeking instead because thats easier maybe change later
+        m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef);
         while (m_currentState == MiniEnemyStates.Defend)
         {
             TransitionDefend();
@@ -242,5 +248,27 @@ public class MiniEnemyFSM : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    void CallStateChange(MiniEnemyStates state)
+    {
+        switch (state)
+        {
+            case MiniEnemyStates.Idle:
+                StartCoroutine("Idle");
+                break;
+            case MiniEnemyStates.Seek:
+                StartCoroutine("Seek");
+                break;
+            case MiniEnemyStates.Wander:
+                StartCoroutine("Wander");
+                break;
+            case MiniEnemyStates.Attack:
+                StartCoroutine("Attack");
+                break;
+            case MiniEnemyStates.Defend:
+                StartCoroutine("Defend");
+                break;
+        }
     }
 }
