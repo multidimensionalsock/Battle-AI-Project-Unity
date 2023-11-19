@@ -129,7 +129,7 @@ public class MiniEnemyFSM : MonoBehaviour
 
     IEnumerator Wander()
     {
-        //m_pathfinder.SetNewNavigation(pathfindingState.wander);
+        m_pathfinder.SetNewNavigation(pathfindingState.wander);
         while (m_currentState == MiniEnemyStates.Wander)
         {
             TransitionWander();
@@ -204,7 +204,7 @@ public class MiniEnemyFSM : MonoBehaviour
             m_currentState = MiniEnemyStates.Attack;
             StateChange?.Invoke(m_currentState);
         }
-        else if (!InPlayerVercinity())
+        else if (InPlayerVercinity() && !PlayerInBossVercinity())
         {
             m_currentState = MiniEnemyStates.Seek;
             StateChange?.Invoke(m_currentState);
@@ -244,7 +244,7 @@ public class MiniEnemyFSM : MonoBehaviour
 
     bool PlayerInBossVercinity()
     {
-        if (Mathf.Abs(Vector3.Distance(m_playerRef.transform.position, m_bossRef.transform.position)) < m_distanceToSeek)
+        if (Mathf.Abs(Vector3.Distance(m_playerRef.transform.position, m_bossRef.transform.position)) < m_distanceToDefend)
         {
             return true;
         }

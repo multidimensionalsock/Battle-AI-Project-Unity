@@ -231,6 +231,7 @@ public class Pathfinding : MonoBehaviour
 
 	IEnumerator Wander()
 	{
+        Debug.Log(gameObject.name + "wnadering");
 		Vector2 pointInCircle = Random.insideUnitCircle * 7;
         m_targetPosition = new Vector3(pointInCircle.x, -1.51f, pointInCircle.y);
         m_agent.SetDestination(m_targetPosition);
