@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum MiniEnemyStates 
 { 
@@ -22,8 +23,6 @@ public class MiniEnemyFSM : MonoBehaviour
     MiniEnemyStates m_currentState;
     BattleScript m_battleScript;
     Pathfinding m_pathfinder;
-    Rigidbody m_rigidbody;
-    bool m_HPDecreased;
     public GameObject m_playerRef;
     public GameObject m_bossRef;
     [SerializeField] float m_distanceToSeek;
@@ -31,13 +30,14 @@ public class MiniEnemyFSM : MonoBehaviour
     List<GameObject> m_collidingWith;
     float m_attackDamage;
     bool lockAttack;
+    NavMeshAgent m_agent;
 
     // Start is called before the first frame update
     void Start()
     {
         m_battleScript = GetComponent<BattleScript>();
         m_pathfinder = GetComponent<Pathfinding>();
-        m_rigidbody = GetComponent<Rigidbody>();
+        m_agent = GetComponent<NavMeshAgent>();
         m_battleScript.HPreduce += TransitionAny;
         m_collidingWith = new List<GameObject>();
         m_attackDamage = Random.Range(1,5);
@@ -63,7 +63,6 @@ public class MiniEnemyFSM : MonoBehaviour
         else
         {
             StopAllCoroutines();
-            m_HPDecreased = false;
             StateChange?.Invoke(MiniEnemyStates.Attacked);
         }
     }
@@ -74,7 +73,7 @@ public class MiniEnemyFSM : MonoBehaviour
         while (m_currentState == MiniEnemyStates.Idle)
         {
             TransitionIdle();
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForFixedUpdate();
         }
     }
 
@@ -97,11 +96,12 @@ public class MiniEnemyFSM : MonoBehaviour
 
     IEnumerator Seek()
     {
-        m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef;
+        m_agent.SetDestination(m_playerRef.transform.position);
+        //m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef);
         while (m_currentState == MiniEnemyStates.Seek)
         {
             TransitionSeek();
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForFixedUpdate();
         }
     }
 
@@ -133,7 +133,7 @@ public class MiniEnemyFSM : MonoBehaviour
         while (m_currentState == MiniEnemyStates.Wander)
         {
             TransitionWander();
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForFixedUpdate();
         }
     }
 
@@ -163,7 +163,7 @@ public class MiniEnemyFSM : MonoBehaviour
         while (m_currentState == MiniEnemyStates.Attack)
         {
             TransitionAttack();
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForFixedUpdate();
         }
     }
     void TransitionAttack()
@@ -186,11 +186,12 @@ public class MiniEnemyFSM : MonoBehaviour
         //naviagte to player path 
         //evade kinda but seek to evade 
         //seeking instead because thats easier maybe change later
-        m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef);
+        m_agent.SetDestination(m_playerRef.transform.position);
+        //m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef);
         while (m_currentState == MiniEnemyStates.Defend)
         {
             TransitionDefend();
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForFixedUpdate();
         }
     }
 

@@ -22,7 +22,8 @@ public class Pathfinding : MonoBehaviour
 	[SerializeField] GameObject m_objectToPathfind;
     public event System.Action<Attack> callAttack;
 
-    private void Start()
+
+    private void OnEnable()
     {
         m_agent = GetComponent<NavMeshAgent>();
     }
@@ -76,6 +77,7 @@ public class Pathfinding : MonoBehaviour
     public void SetNewNavigation(pathfindingState newState)
     {
         m_currentState = newState;
+        StopAllCoroutines();
         switch (newState)
         {
             case pathfindingState.wander:
