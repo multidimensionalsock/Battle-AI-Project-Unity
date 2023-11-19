@@ -28,7 +28,7 @@ public class MiniEnemyAnim : MonoBehaviour
 
     private void Update()
     {
-        if (Mathf.Abs( m_rigidbody.velocity.x) <= 0.1 || Mathf.Abs(m_rigidbody.velocity.z) <= 0.1)
+        if (Mathf.Abs( m_rigidbody.velocity.x) == 0 || Mathf.Abs(m_rigidbody.velocity.z) == 0)
         {
             m_animator.SetBool("Moving", false);
         }

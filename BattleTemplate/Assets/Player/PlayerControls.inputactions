@@ -172,31 +172,9 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "f1b14c8d-136a-43b5-bd47-36fae334cbc3",
-                    "path": "<Mouse>/delta/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Camera",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "217f3460-ea26-4100-9c58-0a6e27b69c2f",
-                    "path": "<Mouse>/delta/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Camera",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "left",
                     "id": "2d5e39c9-f871-464b-b72a-1d5a3ea178a8",
-                    "path": "<Mouse>/delta/left",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -207,7 +185,7 @@
                 {
                     "name": "right",
                     "id": "8ee0478a-bce3-4bf6-9bf4-562b6723b180",
-                    "path": "<Mouse>/delta/right",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

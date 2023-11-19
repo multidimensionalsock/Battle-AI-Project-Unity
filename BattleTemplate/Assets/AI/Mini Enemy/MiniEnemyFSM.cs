@@ -96,13 +96,13 @@ public class MiniEnemyFSM : MonoBehaviour
 
     IEnumerator Seek()
     {
-        m_agent.SetDestination(m_playerRef.transform.position);
-        //m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef);
+        m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef);
         while (m_currentState == MiniEnemyStates.Seek)
         {
             TransitionSeek();
             yield return new WaitForFixedUpdate();
         }
+        FacePlayer();
     }
 
     void TransitionSeek()
@@ -155,6 +155,7 @@ public class MiniEnemyFSM : MonoBehaviour
 
     IEnumerator Attack()
     {
+        FacePlayer();
         //take away HP if colliding
         if (m_collidingWith.Any())
         {
@@ -186,13 +187,13 @@ public class MiniEnemyFSM : MonoBehaviour
         //naviagte to player path 
         //evade kinda but seek to evade 
         //seeking instead because thats easier maybe change later
-        m_agent.SetDestination(m_playerRef.transform.position);
-        //m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef);
+        m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef);
         while (m_currentState == MiniEnemyStates.Defend)
         {
             TransitionDefend();
             yield return new WaitForFixedUpdate();
         }
+        FacePlayer();
     }
 
     void TransitionDefend()
@@ -249,6 +250,12 @@ public class MiniEnemyFSM : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    void FacePlayer()
+    {
+        Vector3 lookRot = m_playerRef.transform.position - transform.position;
+        transform.rotation = Quaternion.LookRotation(lookRot);
     }
 
     void CallStateChange(MiniEnemyStates state)

@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     int jumpNo;
     [SerializeField] float m_jumpForce;
     bool m_movementLock = false;
+    Coroutine cameraMovco;
 
     public float GetSpeed()
     {
@@ -32,7 +33,8 @@ public class PlayerMovement : MonoBehaviour
         m_input.currentActionMap.FindAction("Movement").performed += MoveStart;
         m_input.currentActionMap.FindAction("Movement").canceled += MoveEnd;
         m_input.currentActionMap.FindAction("Jump").performed += Jump;
-       // m_input.currentActionMap.FindAction("Camera").performed += MoveCamera;
+        m_input.currentActionMap.FindAction("Camera").performed += MoveCamera;
+        m_input.currentActionMap.FindAction("Camera").canceled += StopCamera;
         m_input.currentActionMap.FindAction("Attack").performed += Attack;
         m_input.currentActionMap.FindAction("SpecialAttack").performed += SpecialAttack;
         m_input.currentActionMap.FindAction("Defence").performed += DefenceStart;
@@ -92,6 +94,28 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void MoveCamera(InputAction.CallbackContext context)
+    {
+        Vector2 rotateCameraBy = context.ReadValue<Vector2>();
+        if (cameraMovco != null) { StopCoroutine(cameraMovco); }
+        cameraMovco = StartCoroutine(CameraMoveCoroutine(new Vector3(rotateCameraBy.x, 0, rotateCameraBy.y)));
+        
+    }
+
+    void StopCamera(InputAction.CallbackContext context)
+    {
+        StopCoroutine(cameraMovco);
+    }
+
+    IEnumerator CameraMoveCoroutine(Vector3 cameraMove)
+    {
+        Transform child = transform.GetChild(0).gameObject.transform;
+        while (cameraMove != Vector3.zero)
+        {
+            child.rotation = Quaternion.Slerp(child.rotation, child.rotation * Quaternion.LookRotation(cameraMove), 0.01f);
+            yield return new WaitForFixedUpdate();
+        }
+    }
 
     IEnumerator Move()
     {
@@ -104,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (m_movementDirection.z > 0)
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * Quaternion.LookRotation(m_movementDirection), 0.01f);
+                //transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * Quaternion.LookRotation(m_movementDirection), 0.01f);
                 transform.position += transform.forward * m_movementSpeed * Time.fixedDeltaTime;
             }
             else if (m_movementDirection.z < 0)
@@ -115,12 +139,12 @@ public class PlayerMovement : MonoBehaviour
 
             if (m_movementDirection.x > 0)
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * Quaternion.LookRotation(m_movementDirection), 0.01f);
+                //transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * Quaternion.LookRotation(m_movementDirection), 0.01f);
                 transform.position += transform.right * m_movementSpeed * Time.fixedDeltaTime;
             }
             else if (m_movementDirection.x < 0)
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * Quaternion.LookRotation(m_movementDirection), 0.01f);
+                //transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * Quaternion.LookRotation(m_movementDirection), 0.01f);
                 transform.position -= transform.right * m_movementSpeed * Time.fixedDeltaTime;
             }
 
