@@ -15,7 +15,6 @@ public class BattleScript : MonoBehaviour
     public event System.Action<float> HPreduce;
     public void Attack(float hpDecrease)
     {
-        Debug.Log(hpDecrease);
         //if (defenseActivated)
         //{
         //    hpDecrease = hpDecrease * 0.5f * (m_Defence / 100);

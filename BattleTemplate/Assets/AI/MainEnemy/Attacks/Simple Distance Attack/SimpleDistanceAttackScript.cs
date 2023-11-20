@@ -14,7 +14,7 @@ public class SimpleDistanceAttackScript : AttackTemplate
         transform.position += transform.forward * speed * Time.fixedDeltaTime;
     }
 
-    protected IEnumerator AutoKill()
+    override protected IEnumerator AutoKill()
     {
         yield return new WaitForSeconds(10);
         Destroy(gameObject);
