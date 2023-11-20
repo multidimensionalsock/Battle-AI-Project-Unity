@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 m_movementDirection;
     int jumpNo;
     [SerializeField] float m_jumpForce;
+    [SerializeField] float m_rotationSpeed;
     bool m_movementLock = false;
     Coroutine cameraMovco;
 
@@ -122,6 +123,7 @@ public class PlayerMovement : MonoBehaviour
         GameObject cameraLook = transform.GetChild(0).gameObject;
         GameObject model = transform.GetChild(1).gameObject;
 
+        
         while (m_movementDirection != Vector3.zero)
         {
             if (m_movementLock)
@@ -131,20 +133,29 @@ public class PlayerMovement : MonoBehaviour
             }
             if (m_movementDirection.z > 0)
             {
+                //rotate to look away from camera
+                model.transform.rotation = Quaternion.Slerp(model.transform.rotation, cameraLook.transform.rotation, m_rotationSpeed);
                 
                 transform.position += cameraLook.transform.forward * m_movementSpeed * Time.fixedDeltaTime;
             }
             else if (m_movementDirection.z < 0)
             {
+                //rotate to look towards camera
+                model.transform.rotation = Quaternion.Slerp(model.transform.rotation, cameraLook.transform.rotation * Quaternion.Euler(0, 180f, 0), m_rotationSpeed);
+                
                 transform.position -= cameraLook.transform.forward * m_movementSpeed * Time.fixedDeltaTime;
             }
 
             if (m_movementDirection.x > 0)
             {
+                //rotate to camera right 
+                model.transform.rotation = Quaternion.Slerp(model.transform.rotation, cameraLook.transform.rotation * Quaternion.Euler(0, 90f, 0), m_rotationSpeed);
                 transform.position += cameraLook.transform.right * m_movementSpeed * Time.fixedDeltaTime;
             }
             else if (m_movementDirection.x < 0)
             {
+                //rotate to camerta left 
+                model.transform.rotation = Quaternion.Slerp(model.transform.rotation, cameraLook.transform.rotation * Quaternion.Euler(0, -90f, 0), m_rotationSpeed);
                 transform.position -= cameraLook.transform.right * m_movementSpeed * Time.fixedDeltaTime;
             }
 
