@@ -119,6 +119,10 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Move()
     {
+        GameObject cameraLook = transform.GetChild(0).gameObject;
+        GameObject model = transform.GetChild(1).gameObject;
+
+        model.transform.rotation = Quaternion.Slerp(model.transform.rotation, model.transform.rotation * Quaternion.LookRotation(m_movementDirection), 1f);
         while (m_movementDirection != Vector3.zero)
         {
             if (m_movementLock)
@@ -128,24 +132,21 @@ public class PlayerMovement : MonoBehaviour
             }
             if (m_movementDirection.z > 0)
             {
-                //transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * Quaternion.LookRotation(m_movementDirection), 0.01f);
-                transform.position += transform.forward * m_movementSpeed * Time.fixedDeltaTime;
+                
+                transform.position += cameraLook.transform.forward * m_movementSpeed * Time.fixedDeltaTime;
             }
             else if (m_movementDirection.z < 0)
             {
-                
-                transform.position -= transform.forward * m_movementSpeed * Time.fixedDeltaTime;
+                transform.position -= cameraLook.transform.forward * m_movementSpeed * Time.fixedDeltaTime;
             }
 
             if (m_movementDirection.x > 0)
             {
-                //transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * Quaternion.LookRotation(m_movementDirection), 0.01f);
-                transform.position += transform.right * m_movementSpeed * Time.fixedDeltaTime;
+                transform.position += cameraLook.transform.right * m_movementSpeed * Time.fixedDeltaTime;
             }
             else if (m_movementDirection.x < 0)
             {
-                //transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * Quaternion.LookRotation(m_movementDirection), 0.01f);
-                transform.position -= transform.right * m_movementSpeed * Time.fixedDeltaTime;
+                transform.position -= cameraLook.transform.right * m_movementSpeed * Time.fixedDeltaTime;
             }
 
             yield return new WaitForFixedUpdate();
