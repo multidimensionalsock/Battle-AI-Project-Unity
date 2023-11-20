@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveCamera(InputAction.CallbackContext context)
     {
-        Vector2 rotateCameraBy = context.ReadValue<Vector2>();
+        Vector2 rotateCameraBy = context.ReadValue<Vector2>() * Time.deltaTime;
         if (cameraMovco != null) { StopCoroutine(cameraMovco); }
         cameraMovco = StartCoroutine(CameraMoveCoroutine(new Vector3(rotateCameraBy.x, 0, rotateCameraBy.y)));
         

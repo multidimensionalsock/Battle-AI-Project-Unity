@@ -26,7 +26,7 @@ public class BattleScript : MonoBehaviour
         //}
         m_HP -= hpDecrease;
         HPreduce?.Invoke(m_HP);
-        
+        Death();
     }
 
     public void SpecialAttack(float hpDecrease)
@@ -40,6 +40,7 @@ public class BattleScript : MonoBehaviour
             hpDecrease = hpDecrease * (m_Defence / 100);
         }
         m_HP -= hpDecrease;
+        Death();
     }
 
     public float GetHp()
@@ -56,5 +57,13 @@ public class BattleScript : MonoBehaviour
     {
         m_TP -= TPdecrease;
         //call this when you do a speical attack
+    }
+
+    void Death()
+    {
+        if (m_HP <= 0)
+        {
+            Destroy(gameObject); 
+        }
     }
 }

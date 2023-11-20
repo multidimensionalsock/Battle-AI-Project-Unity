@@ -5035,9 +5035,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.12756652
-  m_Height: 1.0978934
+  m_Height: 1.1829288
   m_Direction: 1
-  m_Center: {x: -0.035381675, y: 0.63341135, z: 0.02908206}
+  m_Center: {x: -0.035381675, y: 0.5908936, z: 0.02908206}
 --- !u!114 &936855986119947705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5064,6 +5064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_movementSpeed: 1
   m_jumpForce: 4
+  m_rotationSpeed: 0
 --- !u!114 &5910065917347830142
 MonoBehaviour:
   m_ObjectHideFlags: 0
