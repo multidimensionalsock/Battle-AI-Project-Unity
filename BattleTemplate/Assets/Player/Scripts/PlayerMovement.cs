@@ -113,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
         Transform child = transform.GetChild(0).gameObject.transform;
         while (cameraMove != Vector3.zero)
         {
-            child.rotation = Quaternion.Slerp(child.rotation, child.rotation * Quaternion.LookRotation(cameraMove), 0.01f);
+            child.rotation = Quaternion.Slerp(child.rotation, child.rotation * Quaternion.LookRotation(cameraMove), m_rotationSpeed / 5f);
             yield return new WaitForFixedUpdate();
         }
     }
@@ -135,7 +135,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 //rotate to look away from camera
                 model.transform.rotation = Quaternion.Slerp(model.transform.rotation, cameraLook.transform.rotation, m_rotationSpeed);
-                
                 transform.position += cameraLook.transform.forward * m_movementSpeed * Time.fixedDeltaTime;
             }
             else if (m_movementDirection.z < 0)
@@ -158,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
                 model.transform.rotation = Quaternion.Slerp(model.transform.rotation, cameraLook.transform.rotation * Quaternion.Euler(0, -90f, 0), m_rotationSpeed);
                 transform.position -= cameraLook.transform.right * m_movementSpeed * Time.fixedDeltaTime;
             }
-
+            
             yield return new WaitForFixedUpdate();
         }
     }
