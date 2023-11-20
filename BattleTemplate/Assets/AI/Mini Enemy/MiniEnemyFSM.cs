@@ -153,7 +153,7 @@ public class MiniEnemyFSM : MonoBehaviour
         }
     }
 
-    void Attack()
+    IEnumerator Attack()
     {
         FacePlayer();
         //take away HP if colliding
@@ -161,8 +161,10 @@ public class MiniEnemyFSM : MonoBehaviour
         {
             m_collidingWith[0].GetComponent<BattleScript>().Attack(m_attackDamage);
             Debug.Log("Attack");
-            StartCoroutine("lockTimer");
         }
+        lockAttack = true;
+        yield return new WaitForSeconds(0.5f);
+        lockAttack = false;
         TransitionAttack();
     }
     void TransitionAttack()
@@ -170,14 +172,6 @@ public class MiniEnemyFSM : MonoBehaviour
         if (lockAttack) { return; }
         m_currentState = MiniEnemyStates.Idle;
         StateChange?.Invoke(m_currentState);
-    }
-
-    IEnumerator lockTimer()
-    {
-        lockAttack = true;
-        yield return new WaitForSeconds(0.5f);
-        lockAttack = false;
-
     }
 
     IEnumerator Defend()
@@ -270,7 +264,7 @@ public class MiniEnemyFSM : MonoBehaviour
                 StartCoroutine("Wander");
                 break;
             case MiniEnemyStates.Attack:
-                Attack();
+                StartCoroutine("Attack");
                 break;
             case MiniEnemyStates.Defend:
                 StartCoroutine("Defend");
