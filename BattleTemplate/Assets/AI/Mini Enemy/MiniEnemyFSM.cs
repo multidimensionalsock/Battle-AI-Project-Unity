@@ -134,7 +134,9 @@ public class MiniEnemyFSM : MonoBehaviour
         {
             TransitionWander();
             yield return new WaitForFixedUpdate();
+            
         }
+        m_pathfinder.SetNewNavigation(pathfindingState.nullptr);
     }
 
     void TransitionWander()
@@ -143,12 +145,14 @@ public class MiniEnemyFSM : MonoBehaviour
         if (InPlayerVercinity())
         {
             m_currentState = MiniEnemyStates.Seek;
+            StopAllCoroutines();
             StateChange?.Invoke(m_currentState);
         }
         // if player in boss vercinity, defend 
         if (PlayerInBossVercinity())
         {
             m_currentState = MiniEnemyStates.Defend;
+            StopAllCoroutines();
             StateChange?.Invoke(m_currentState);
         }
     }
