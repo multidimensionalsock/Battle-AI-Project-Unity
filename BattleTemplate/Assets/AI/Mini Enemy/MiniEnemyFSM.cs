@@ -69,7 +69,6 @@ public class MiniEnemyFSM : MonoBehaviour
 
     IEnumerator Idle()
     {
-        Debug.Log("running idle");
         while (m_currentState == MiniEnemyStates.Idle)
         {
             TransitionIdle();
@@ -79,13 +78,14 @@ public class MiniEnemyFSM : MonoBehaviour
 
     void TransitionIdle()
     {
+        Debug.Log("transidle");
         // trnaition to seek if in player versinity 
-       if (InPlayerVercinity())
+        if (InPlayerVercinity())
         {
             m_currentState = MiniEnemyStates.Seek; 
             StateChange?.Invoke(m_currentState);
         }
-        //transition to wander if in idle if not 
+        //transition to wander if in idle if not
         else
         {
             m_currentState = MiniEnemyStates.Wander;
@@ -107,6 +107,7 @@ public class MiniEnemyFSM : MonoBehaviour
 
     void TransitionSeek()
     {
+        Debug.Log("transseek");
         //if colliding with player then attack
         if (m_collidingWith.Any() && lockAttack != true)
         {
@@ -114,12 +115,8 @@ public class MiniEnemyFSM : MonoBehaviour
             StateChange?.Invoke(m_currentState);
         }
         //if player is in boss verciitnity, switch to defend
-        else if (PlayerInBossVercinity())
-        {
-            m_currentState = MiniEnemyStates.Defend;
-            StateChange?.Invoke(m_currentState);
-        }
-        //if no longer in player vercinity, go to wander 
+
+        //if no longer in player vercinity, go to wander
         else if (!InPlayerVercinity())
         {
             m_currentState = MiniEnemyStates.Wander;
@@ -141,6 +138,7 @@ public class MiniEnemyFSM : MonoBehaviour
 
     void TransitionWander()
     {
+        Debug.Log("transwander");
         // if in player vercinity, seek 
         if (InPlayerVercinity())
         {
@@ -159,6 +157,8 @@ public class MiniEnemyFSM : MonoBehaviour
 
     IEnumerator Attack()
     {
+        
+        if (lockAttack) { yield break; }
         FacePlayer();
         //take away HP if colliding
         if (m_collidingWith.Any())
@@ -173,7 +173,8 @@ public class MiniEnemyFSM : MonoBehaviour
     }
     void TransitionAttack()
     {
-        if (lockAttack) { return; }
+        Debug.Log("transattack");
+        if (lockAttack || m_playerRef == null) { return; }
         m_currentState = MiniEnemyStates.Idle;
         StateChange?.Invoke(m_currentState);
     }
@@ -194,6 +195,7 @@ public class MiniEnemyFSM : MonoBehaviour
 
     void TransitionDefend()
     {
+        Debug.Log("trsansdef");
         //if player no longer in vercitinity and is in your vercinity, seek 
         //if colliding with player then attack
         if (m_collidingWith.Any() && lockAttack != true)
@@ -207,11 +209,11 @@ public class MiniEnemyFSM : MonoBehaviour
             StateChange?.Invoke(m_currentState);
         }
         //if player in niether vercinity, wander
-        if (!InPlayerVercinity() && !PlayerInBossVercinity())
-        {
-            m_currentState = MiniEnemyStates.Wander;
-            StateChange?.Invoke(m_currentState);
-        }
+        //if (!InPlayerVercinity() && !PlayerInBossVercinity())
+        //{
+        //    m_currentState = MiniEnemyStates.Wander;
+        //    StateChange?.Invoke(m_currentState);
+        //}
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -232,6 +234,7 @@ public class MiniEnemyFSM : MonoBehaviour
 
     bool InPlayerVercinity()
     {
+        if (m_playerRef == null) { return false; }
         if (Mathf.Abs(Vector3.Distance(m_playerRef.transform.position, transform.position)) <= m_distanceToSeek)
         {
             return true;
@@ -241,6 +244,7 @@ public class MiniEnemyFSM : MonoBehaviour
 
     bool PlayerInBossVercinity()
     {
+        if (m_playerRef == null || m_bossRef == null) { return false;  }
         if (Mathf.Abs(Vector3.Distance(m_playerRef.transform.position, m_bossRef.transform.position)) < m_distanceToDefend)
         {
             return true;
@@ -250,6 +254,7 @@ public class MiniEnemyFSM : MonoBehaviour
 
     void FacePlayer()
     {
+        if (m_playerRef == null) return;
         Vector3 lookRot = m_playerRef.transform.position - transform.position;
         transform.rotation = Quaternion.LookRotation(lookRot);
     }
@@ -265,7 +270,7 @@ public class MiniEnemyFSM : MonoBehaviour
                 StartCoroutine("Seek");
                 break;
             case MiniEnemyStates.Wander:
-                StartCoroutine("Wander");
+                StartCoroutine(Wander());
                 break;
             case MiniEnemyStates.Attack:
                 StartCoroutine("Attack");

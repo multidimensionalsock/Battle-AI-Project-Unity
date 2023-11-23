@@ -68,6 +68,7 @@ public class Pathfinding : MonoBehaviour
                 StartCoroutine("FleeLocation");
                 break;
             case pathfindingState.nullptr:
+                m_targetPosition = transform.position;
                 StopAllCoroutines();
                 break;
 
@@ -102,6 +103,7 @@ public class Pathfinding : MonoBehaviour
 		//run towards target location
 		while (m_currentState == pathfindingState.seek)
 		{
+            if (m_objectToPathfind == null) { m_currentState = pathfindingState.nullptr; m_targetPosition = transform.position; break; }
 			m_targetPosition = m_objectToPathfind.transform.position;
             m_agent.SetDestination(m_targetPosition);
             if (transform.position == m_targetPosition)
