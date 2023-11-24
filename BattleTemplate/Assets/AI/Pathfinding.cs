@@ -18,7 +18,7 @@ public class Pathfinding : MonoBehaviour
     private NavMeshAgent m_agent = null;
 	pathfindingState m_currentState;
 	Vector3 m_targetPosition;
-	float m_distanceToFlee;
+    float m_distanceToFlee;
 	[SerializeField] GameObject m_objectToPathfind;
     public event System.Action<Attack> callAttack;
 
@@ -50,7 +50,8 @@ public class Pathfinding : MonoBehaviour
                 break;
 			case pathfindingState.nullptr:
 				StopAllCoroutines();
-				break;
+                m_agent.Stop();
+                break;
 
 		}
 	}
@@ -70,6 +71,7 @@ public class Pathfinding : MonoBehaviour
             case pathfindingState.nullptr:
                 m_targetPosition = transform.position;
                 StopAllCoroutines();
+                m_agent.Stop();
                 break;
 
         }
@@ -86,6 +88,7 @@ public class Pathfinding : MonoBehaviour
                 break;
             case pathfindingState.nullptr:
                 StopAllCoroutines();
+                m_agent.Stop();
                 break;
 
         }
