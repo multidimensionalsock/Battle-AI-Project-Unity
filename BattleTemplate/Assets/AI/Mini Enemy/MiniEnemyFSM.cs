@@ -5,16 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum MiniEnemyStates 
-{ 
-    Idle, //default state
-    Seek, //Seek towards player
-    Wander, //wander randomly when not in players versinity
-    Attack, //attack the player (only mellee when in range)
-    Attacked,
-    Defend, //go around main enemy and block player path to prevent them being attacked
-    Death
-}
+
 
 
 public class MiniEnemyFSM : MonoBehaviour
