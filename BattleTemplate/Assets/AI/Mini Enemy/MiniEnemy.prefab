@@ -683,9 +683,8 @@ GameObject:
   - component: {fileID: 8623718820650081252}
   - component: {fileID: 4002724182975468475}
   - component: {fileID: 8340553903596301226}
-  - component: {fileID: 2884192089133122938}
-  - component: {fileID: 6568425741233604437}
   - component: {fileID: 4770973074372941732}
+  - component: {fileID: 7129271214926754890}
   - component: {fileID: 6020086140756091014}
   - component: {fileID: 6900560556672485268}
   - component: {fileID: 5653627769867098204}
@@ -763,34 +762,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2884192089133122938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2653641988187876908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d70c8e67100c46429f23d18013bcd54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_playerRef: {fileID: 0}
-  m_bossRef: {fileID: 0}
-  m_distanceToSeek: 2
-  m_distanceToDefend: 3
---- !u!114 &6568425741233604437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2653641988187876908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7c54d9ffdebc274691d8379f3651c09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &4770973074372941732
 Animator:
   serializedVersion: 5
@@ -800,7 +771,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2653641988187876908}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 398e0795fafcab543b1a569782e56c27, type: 3}
   m_Controller: {fileID: 9100000, guid: 76bb5b6cca808c243a4d8a816fa0469f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -812,6 +783,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7129271214926754890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2653641988187876908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46add4ba34ada242b7b358d378373b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerRef: {fileID: 0}
+  m_bossRef: {fileID: 0}
+  m_distanceToSeek: 0
+  m_distanceToDefend: 0
 --- !u!114 &6020086140756091014
 MonoBehaviour:
   m_ObjectHideFlags: 0

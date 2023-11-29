@@ -51,12 +51,13 @@ public class MiniEnemyFinite : MonoBehaviour
     IEnumerator Idle()
     {
         m_pathfinder.SetNewNavigation(pathfindingState.nullptr);
-        while (m_currentState == MiniEnemyStates.Idle)
-        {
-            IdleTransition();
-            yield return new WaitForFixedUpdate();
-        }
-    }
+		do
+		{
+			IdleTransition();
+			yield return new WaitForFixedUpdate();
+		} while (m_currentState == MiniEnemyStates.Idle);
+
+	}
 
     void IdleTransition()
     {
@@ -73,13 +74,15 @@ public class MiniEnemyFinite : MonoBehaviour
     IEnumerator Seek()
     {
         //seek to player
-        m_pathfinder.SetNewNavigation(pathfindingState.seek);
-        while (m_currentState == MiniEnemyStates.Seek)
-        {
+        m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef);
+        
+        do {
+			Debug.Log("seeking");
             SeekTransition();
             yield return new WaitForFixedUpdate();
-        }
-    }
+        } while (m_currentState == MiniEnemyStates.Seek) ;
+
+	}
 
     void SeekTransition()
     {
@@ -87,6 +90,10 @@ public class MiniEnemyFinite : MonoBehaviour
     ////attack
             //if not in player range
     ////wander
+		if (!InPlayerVercinity())
+		{
+			StateChange?.Invoke(MiniEnemyStates.Idle);
+		}
     }
 
     //IEnumerator Wander()
@@ -142,37 +149,37 @@ public class MiniEnemyFinite : MonoBehaviour
 
     void CallStateChange(MiniEnemyStates newState)
     {
+		m_currentState = newState;
         switch(newState)
         {
             case MiniEnemyStates.Idle:
-                m_currentState = newState;
-                StopCoroutine(m_currentStateCoroutine);
-                m_currentStateCoroutine = StartCoroutine("Idle");
+				StopAllCoroutines();
+				
+                m_currentStateCoroutine = StartCoroutine(Idle());
                 break;
             case MiniEnemyStates.Seek:
-                m_currentState = newState;
-                StopCoroutine(m_currentStateCoroutine);
-                m_currentStateCoroutine = StartCoroutine("Seek");
+				//if (m_currentStateCoroutine != null) { StopCoroutine(m_currentStateCoroutine); }
+				m_currentStateCoroutine = StartCoroutine(Seek());
                 break;
             case MiniEnemyStates.Wander: 
                 m_currentState = newState;
-                StopCoroutine(m_currentStateCoroutine);
-                m_currentStateCoroutine = StartCoroutine("Wander");
+				if (m_currentStateCoroutine != null) { StopCoroutine(m_currentStateCoroutine); }
+				m_currentStateCoroutine = StartCoroutine("Wander");
                 break;
             case MiniEnemyStates.Defend: 
                 m_currentState = newState;
-                StopCoroutine(m_currentStateCoroutine);
-                m_currentStateCoroutine = StartCoroutine("Defend");
+				if (m_currentStateCoroutine != null) { StopCoroutine(m_currentStateCoroutine); }
+				m_currentStateCoroutine = StartCoroutine("Defend");
                 break;
             case MiniEnemyStates.Attack:
                 m_currentState = newState;
-                StopCoroutine(m_currentStateCoroutine);
-                m_currentStateCoroutine = StartCoroutine("Attack");
+				if (m_currentStateCoroutine != null) { StopCoroutine(m_currentStateCoroutine); }
+				m_currentStateCoroutine = StartCoroutine("Attack");
                 break;
             case MiniEnemyStates.Attacked:
                 m_currentState = MiniEnemyStates.Flee;
-                StopCoroutine(m_currentStateCoroutine);
-                m_currentStateCoroutine = StartCoroutine("Flee");
+				if (m_currentStateCoroutine != null) { StopCoroutine(m_currentStateCoroutine); }
+				m_currentStateCoroutine = StartCoroutine("Flee");
                 break; 
         }
     }
