@@ -66,10 +66,10 @@ public class MiniEnemyFinite : MonoBehaviour
         {
             StateChange?.Invoke(MiniEnemyStates.Seek);
         }
-        //else if (!InPlayerVercinity())
-        //{
-        //    StateChange?.Invoke(MiniEnemyStates.Wander);
-        //}
+        else if (!InPlayerVercinity())
+        {
+            StateChange?.Invoke(MiniEnemyStates.Wander);
+        }
     }
 
     IEnumerator Seek()
@@ -97,18 +97,27 @@ public class MiniEnemyFinite : MonoBehaviour
 		}
     }
 
-    //IEnumerator Wander()
-    //{
+    IEnumerator Wander()
+    {
+        m_pathfinder.SetNewNavigation(pathfindingState.wander);
+        do
+        {
+            WanderTransition();
+            yield return new WaitForFixedUpdate();
+        } while (m_currentState == MiniEnemyStates.Wander);
+    }
 
-    //}
-
-    //void WanderTransition()
-    //{
-    //if player near boss 
+    void WanderTransition()
+    {
+        if (InPlayerVercinity())
+        {
+            StateChange.Invoke(MiniEnemyStates.Seek);
+        }
+    //    if player near boss
     //// defend
     //if player in range
     ////seek
-    //}
+    }
 
     //IEnumerator Defend()
     //{
