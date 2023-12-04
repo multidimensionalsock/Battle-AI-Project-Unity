@@ -97,13 +97,9 @@ public class MiniEnemyFinite : MonoBehaviour
         {
             StateChange?.Invoke(MiniEnemyStates.Attack);
         }
-    //    if colliding with player
-    ////attack
-            //if not in player range
-    ////wander
 		if (!InPlayerVercinity())
 		{
-			StateChange?.Invoke(MiniEnemyStates.Idle);
+			StateChange?.Invoke(MiniEnemyStates.Wander);
 		}
     }
 
@@ -123,25 +119,34 @@ public class MiniEnemyFinite : MonoBehaviour
         {
             StateChange.Invoke(MiniEnemyStates.Seek);
         }
-    //    if player near boss
-    //// defend
-    //if player in range
-    ////seek
+        if (PlayerInBossVercinity())
+        {
+            StateChange?.Invoke(MiniEnemyStates.Defend);
+        }
     }
 
-    //IEnumerator Defend()
-    //{
+    IEnumerator Defend()
+    {
+        m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef);
+        while (m_currentState == MiniEnemyStates.Defend)
+        {
+            DefendTransition();
+            yield return new WaitForFixedUpdate();
+        }
+        //FacePlayer();
+    }
 
-    //}
-
-    //void DefendTransition()
-    //{
-    //if colliding with player
-    ////attack
-    //if player not near boss
-    ////wander
-
-    //}
+    void DefendTransition()
+    {
+        if (m_playerCollision)
+        {
+            StateChange?.Invoke(MiniEnemyStates.Attack);
+        }
+        if (!PlayerInBossVercinity())
+        {
+            StateChange?.Invoke(MiniEnemyStates.Wander);
+        }
+    }
 
     IEnumerator Attack()
     {
