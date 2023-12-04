@@ -24,7 +24,12 @@ public class MiniEnemyFinite : MonoBehaviour
     [SerializeField] GameObject m_bossRef;
     [SerializeField] float m_distanceToSeek;
     [SerializeField] float m_distanceToDefend;
+    [SerializeField] float m_minAttackDamage;
+    [SerializeField] float m_maxAttackDamage;
+    float m_attackDamage;
     Coroutine m_currentStateCoroutine; //use it so theres no memory leaks or other coroutines runnign to delete it specificallt 
+    bool m_playerCollision = false;
+    bool lockAttack;
 
     private void Start()
     {
@@ -32,6 +37,7 @@ public class MiniEnemyFinite : MonoBehaviour
         m_pathfinder = GetComponent<Pathfinding>();
         m_pathfinder.SetDistanceToFlee(m_distanceToSeek * 1.25f);
         StateChange += CallStateChange;
+        m_attackDamage = Random.Range(m_minAttackDamage, m_maxAttackDamage);
 
         StateChange?.Invoke(MiniEnemyStates.Idle);
 
@@ -87,6 +93,10 @@ public class MiniEnemyFinite : MonoBehaviour
 
     void SeekTransition()
     {
+        if (m_playerCollision)
+        {
+            StateChange?.Invoke(MiniEnemyStates.Attack);
+        }
     //    if colliding with player
     ////attack
             //if not in player range
@@ -133,15 +143,26 @@ public class MiniEnemyFinite : MonoBehaviour
 
     //}
 
-    //IEnumerator Attack()
-    //{
+    IEnumerator Attack()
+    {
+        if (lockAttack) { yield break; }
+        FacePlayer();
+        //take away HP if colliding
+        if (m_playerCollision)
+        {
+            m_playerRef.GetComponent<BattleScript>().Attack(m_attackDamage);
+            Debug.Log("Attack");
+        }
+        lockAttack = true;
+        yield return new WaitForSeconds(2f);
+        lockAttack = false;
+        AttackTransition();
+    }
 
-    //}
-
-    //void AttackTransition()
-    //{
-    //auto to idle 
-    //}
+    void AttackTransition()
+    {
+        StateChange?.Invoke(MiniEnemyStates.Idle);
+    }
 
     //IEnumerator Flee()
     //{
@@ -159,6 +180,7 @@ public class MiniEnemyFinite : MonoBehaviour
 
     void CallStateChange(MiniEnemyStates newState)
     {
+        if (lockAttack) { return; }
 		m_currentState = newState;
         GetComponent<NavMeshAgent>().isStopped = false;
         switch (newState)
@@ -220,5 +242,21 @@ public class MiniEnemyFinite : MonoBehaviour
         if (m_playerRef == null) return;
         Vector3 lookRot = m_playerRef.transform.position - transform.position;
         transform.rotation = Quaternion.LookRotation(lookRot);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject == m_playerRef)
+        {
+            m_playerCollision = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject == m_playerRef)
+        {
+            m_playerCollision = false;
+        }
     }
 }
