@@ -49,8 +49,7 @@ public class Pathfinding : MonoBehaviour
 				Evade();
                 break;
 			case pathfindingState.nullptr:
-				StopAllCoroutines();
-                m_agent.Stop();
+                StopAllCoroutines();
                 break;
 
 		}
@@ -69,9 +68,7 @@ public class Pathfinding : MonoBehaviour
                 StartCoroutine("FleeLocation");
                 break;
             case pathfindingState.nullptr:
-                m_targetPosition = transform.position;
                 StopAllCoroutines();
-                m_agent.Stop();
                 break;
 
         }
@@ -88,7 +85,6 @@ public class Pathfinding : MonoBehaviour
                 break;
             case pathfindingState.nullptr:
                 StopAllCoroutines();
-                m_agent.Stop();
                 break;
 
         }

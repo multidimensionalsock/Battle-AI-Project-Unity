@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum MiniEnemyStates
 {
@@ -75,9 +76,9 @@ public class MiniEnemyFinite : MonoBehaviour
     {
         //seek to player
         m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef);
+        Debug.Log(m_playerRef.ToString());
         
         do {
-			Debug.Log("seeking");
             SeekTransition();
             yield return new WaitForFixedUpdate();
         } while (m_currentState == MiniEnemyStates.Seek) ;
@@ -150,11 +151,12 @@ public class MiniEnemyFinite : MonoBehaviour
     void CallStateChange(MiniEnemyStates newState)
     {
 		m_currentState = newState;
-        switch(newState)
+        GetComponent<NavMeshAgent>().isStopped = false;
+        switch (newState)
         {
             case MiniEnemyStates.Idle:
 				StopAllCoroutines();
-				
+                GetComponent<NavMeshAgent>().isStopped = true;
                 m_currentStateCoroutine = StartCoroutine(Idle());
                 break;
             case MiniEnemyStates.Seek:
