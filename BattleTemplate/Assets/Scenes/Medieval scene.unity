@@ -9358,6 +9358,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7129271214926754890, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_maxAttackDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129271214926754890, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_minAttackDamage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129271214926754890, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
       propertyPath: m_distanceToDefend
       value: 3
       objectReference: {fileID: 0}

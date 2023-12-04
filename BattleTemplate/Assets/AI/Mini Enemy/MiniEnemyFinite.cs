@@ -169,19 +169,29 @@ public class MiniEnemyFinite : MonoBehaviour
         StateChange?.Invoke(MiniEnemyStates.Idle);
     }
 
-    //IEnumerator Flee()
-    //{
+    //hasnt been tested
+    IEnumerator Flee()
+    {
+        m_pathfinder.SetNewNavigation(pathfindingState.flee, m_playerRef);
+        while (m_currentState == MiniEnemyStates.Flee)
+        {
+            FleeTransition();
+            yield return new WaitForFixedUpdate();
+        }
+    }
 
-    //}
+    void FleeTransition()
+    {
+        if (PlayerInBossVercinity())
+        {
+            StateChange?.Invoke(MiniEnemyStates.Defend);
+        }
+        if (Mathf.Abs(Vector3.Distance(m_playerRef.transform.position, transform.position)) <= m_distanceToSeek * 1.5f) //out of player range and a half
+        {
+            StateChange?.Invoke(MiniEnemyStates.Wander);
+        }
 
-    //void FleeTransition()
-    //{
-    //if player in boss range
-    //// defend 
-    //if no longer in player range
-    ////wander 
-
-    //}
+    }
 
     void CallStateChange(MiniEnemyStates newState)
     {
