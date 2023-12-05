@@ -26,7 +26,6 @@ public class BattlePhase1 : BattlePhaseTemplate
         if (playerVcinCo == null){ playerVcinCo = StartCoroutine(InPlayerVicinity()); }
         if (collidingWithPlayer)
         {
-            Debug.Log("Attacking");
             //melee attack
             Attack newAttack = meleeAttacks[Random.Range(0, meleeAttacks.Count)];
             nextAttack.Clear();
@@ -36,7 +35,6 @@ public class BattlePhase1 : BattlePhaseTemplate
         }
         else if (Mathf.Abs(Vector3.Distance(transform.position, playerRef.transform.position)) < distanceFromPlayerToFlee)
         {
-            Debug.Log("fleeing");
             //flee
             pathfinderRef.SetNewNavigation(pathfindingState.flee, playerRef);
             return;

@@ -12188,6 +12188,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4335497134409209895, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
   m_PrefabInstance: {fileID: 1965710811}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1695071251 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7523358693754536775, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
+  m_PrefabInstance: {fileID: 1965710811}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695071246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26f5f3b48338744ca5ef69a717459e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1696526804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1529183203402686330, guid: 3148b0057757c5e49a1d7284d605de90, type: 3}
@@ -31324,7 +31335,20 @@ PrefabInstance:
       propertyPath: m_playerReference
       value: 
       objectReference: {fileID: 1514811546}
-    m_RemovedComponents: []
+    - target: {fileID: 8320737426693073223, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
+      propertyPath: battlePhases.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8320737426693073223, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
+      propertyPath: battlePhases.Array.data[0]
+      value: 
+      objectReference: {fileID: 1695071251}
+    - target: {fileID: 8320737426693073223, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
+      propertyPath: battlePhases.Array.data[1]
+      value: 
+      objectReference: {fileID: 1695071251}
+    m_RemovedComponents:
+    - {fileID: 4840335843324548127, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
     m_RemovedGameObjects:
     - {fileID: 8318112047171851447, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
     - {fileID: 1179504926332195775, guid: 666ab3c1659f17746a03349182c29d84, type: 3}

@@ -20,7 +20,7 @@ MonoBehaviour:
     attackType: 0
     minDistanceToPerform: 0
     maxDistanceToPerform: 0
-    freezeTime: 2
+    freezeTime: 5
     TPDecrease: 0
   - attackName: Simple Distance Attack
     attackDamage: 10
