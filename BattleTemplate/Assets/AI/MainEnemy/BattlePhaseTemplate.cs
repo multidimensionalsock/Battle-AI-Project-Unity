@@ -19,7 +19,7 @@ public class BattlePhaseTemplate : MonoBehaviour
     protected BattleScript battleScript;
     [SerializeField] protected float distanceFromPlayerToFlee;
     protected bool pauseMovement = false; //pause movement behaviour algorithm (used if performing attack that requires them stay still)
-    protected float navmeshSpeed;
+    protected NavMeshAgent navmesh;
     protected List<Attack> nextAttack;
     protected bool shouldSpecialAttack = false;
     protected bool shouldAttack = false;
@@ -35,21 +35,12 @@ public class BattlePhaseTemplate : MonoBehaviour
         pathfinderRef = GetComponent<Pathfinding>();
         pathfinderRef.SetDistanceToFlee(distanceFromPlayerToFlee);
         pathfinderRef.callAttack += StartAttack;
-        navmeshSpeed = GetComponent<NavMeshAgent>().speed;
+        navmesh = GetComponent<NavMeshAgent>();
         battleScript = GetComponent<BattleScript>();
         shouldAttack = true;
     }
 
     virtual public void Strategy()
-    {
-
-    }
-
-    virtual public void ActivateAttack()
-    {
-
-    }
-    virtual public void ActivateSpecialAttack()
     {
 
     }
@@ -64,6 +55,7 @@ public class BattlePhaseTemplate : MonoBehaviour
         if (!nextAttack.Any()) { yield break; } //if nothing in attack list then do nothing 
         //face the player
         pauseMovement = true;
+        navmesh.isStopped = true;
         pathfinderRef.SetNewNavigation(pathfindingState.nullptr);
         GameObject attack = GameObject.Instantiate(nextAttack[0].attackObject, transform.position, transform.rotation);
         Vector3 lookRot = playerRef.transform.position - transform.position;
@@ -75,7 +67,9 @@ public class BattlePhaseTemplate : MonoBehaviour
         nextAttack.Clear();
         //create the attack or and perform aniamtin
         yield return new WaitForSeconds(nextAttack[0].freezeTime);
+        navmesh.isStopped = false;
         pauseMovement = false;
+        
     }
 
     //protected IEnumerator AnimationDelay(Attack attack)

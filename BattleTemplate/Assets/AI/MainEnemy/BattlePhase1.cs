@@ -16,36 +16,55 @@ public class BattlePhase1 : BattlePhaseTemplate
     {
         GetComponent<BattleScript>().HPreduce += Attacked;
         MiniEnemyFinite.Death += MiniEnemyDeath;
+        pauseMovement = false;
     }
+    
 
-    public void Strategy()
+    override public void Strategy()
     {
-        if (playerVcinCo != null){ playerVcinCo = StartCoroutine(InPlayerVicinity()); }
+        if (pauseMovement) { return;  }
+        if (playerVcinCo == null){ playerVcinCo = StartCoroutine(InPlayerVicinity()); }
         if (collidingWithPlayer)
         {
+            Debug.Log("Attacking");
             //melee attack
+            Attack newAttack = meleeAttacks[Random.Range(0, meleeAttacks.Count)];
+            nextAttack.Clear();
+            nextAttack.Add(newAttack);
+            pathfinderRef.SetNewNavigation(newAttack);
             return;
         }
         else if (Mathf.Abs(Vector3.Distance(transform.position, playerRef.transform.position)) < distanceFromPlayerToFlee)
         {
+            Debug.Log("fleeing");
             //flee
+            pathfinderRef.SetNewNavigation(pathfindingState.flee, playerRef);
             return;
         }
-        else if (shouldSpecialAttack)
-        {
-            //specialattack
-            return;
-        }
-        if (timeInVicinity >= timeToAttack)
-        {
-            //attack
-            return;
-        }
-        else
-        {
-            //flee
+        //else if (shouldSpecialAttack)
+        //{
+        //    //specialattack
+        //    Attack newAttack = specialAttacks[Random.Range(0, specialAttacks.Count)];
+        //    nextAttack.Clear();
+        //    nextAttack.Add(newAttack);
+        //    pathfinderRef.SetNewNavigation(newAttack);
+        //    return;
+        //}
+        //else if (timeInVicinity >= timeToAttack)
+        //{
+        //    //range attack
+        //    Attack newAttack = rangeAttacks[Random.Range(0, rangeAttacks.Count)];
+        //    nextAttack.Clear();
+        //    nextAttack.Add(newAttack);
+        //    pathfinderRef.SetNewNavigation(newAttack);
+        //    return;
+        //}
+        //else
+        //{
+        //    //wander
+        //    pathfinderRef.SetNewNavigation(pathfindingState.wander);
             
-        }
+        //}
     }
 
     private void Attacked(float hpred)

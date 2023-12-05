@@ -84,7 +84,6 @@ public class MiniEnemyFinite : MonoBehaviour
     {
         //seek to player
         m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef);
-        Debug.Log(m_playerRef.ToString());
         
         do {
             SeekTransition();

@@ -232,12 +232,9 @@ public class Pathfinding : MonoBehaviour
 
 	IEnumerator Wander()
 	{
-        Debug.Log(gameObject.name + "wnadering");
 		Vector2 pointInCircle = Random.insideUnitCircle * 10f;
         m_targetPosition = new Vector3(pointInCircle.x, -1.51f, pointInCircle.y);
-        Debug.Log(gameObject.name +  m_targetPosition);
         m_agent.SetDestination(m_targetPosition);
-        Debug.Log(m_targetPosition);
         while (m_currentState == pathfindingState.wander)
 		{
 			if (Mathf.Abs(transform.position.x - m_targetPosition.x) <= 0.5f || Mathf.Abs(transform.position.z - m_targetPosition.z) <= 0.5f)
@@ -245,7 +242,6 @@ public class Pathfinding : MonoBehaviour
                 pointInCircle = Random.insideUnitCircle * 10;
                 m_targetPosition = new Vector3(pointInCircle.x, -1.51f, pointInCircle.y);
                 m_agent.SetDestination(m_targetPosition);
-				Debug.Log("resrt pos" + m_targetPosition);
             }
 			yield return new WaitForFixedUpdate();
 		}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4335497134409209889}
   - component: {fileID: 4335497134409209888}
   - component: {fileID: 8320737426693073223}
-  - component: {fileID: 4840335843324548127}
+  - component: {fileID: 7523358693754536775}
   - component: {fileID: 8945277033460242803}
   - component: {fileID: 637023003}
   - component: {fileID: 637022994}
@@ -104,22 +104,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerReference: {fileID: 0}
   battlePhases:
-  - {fileID: 4840335843324548127}
-  - {fileID: 4840335843324548127}
---- !u!114 &4840335843324548127
+  - {fileID: 7523358693754536775}
+--- !u!114 &7523358693754536775
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4335497134409209895}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 169943149ecb68d4fbc9e08512500130, type: 3}
+  m_Script: {fileID: 11500000, guid: d26f5f3b48338744ca5ef69a717459e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackData: {fileID: 0}
-  distanceFromPlayerToFlee: 2
+  attackData: {fileID: 11400000, guid: 5fc31f575f562504ab924266b051a4b1, type: 2}
+  distanceFromPlayerToFlee: 5
+  powerUpMax: 5
+  timeToAttack: 5
 --- !u!114 &8945277033460242803
 MonoBehaviour:
   m_ObjectHideFlags: 0
