@@ -40,12 +40,7 @@ public class BattlePhaseTemplate : MonoBehaviour
         shouldAttack = true;
     }
 
-    virtual public void MovementStrategy()
-    {
-
-    }
-
-    virtual public void AttackStrategy()
+    virtual public void Strategy()
     {
 
     }
@@ -118,8 +113,9 @@ public class BattlePhaseTemplate : MonoBehaviour
         AttacksLoaded = true;
     }
 
-    protected IEnumerator UnlockMovement(float time)
+    protected IEnumerator MovementPause(float time)
     {
+        pauseMovement = true;
         yield return new WaitForSeconds(time);
         pauseMovement = false;
     }
@@ -127,11 +123,6 @@ public class BattlePhaseTemplate : MonoBehaviour
     public void SetPlayerReference(GameObject playerreference)
     {
         playerRef = playerreference;
-    }
-
-    public void SetPathfinding(Pathfinding pathfinder)
-    {
-        pathfinderRef = pathfinder;
     }
 
     private void OnCollisionEnter(Collision collision)

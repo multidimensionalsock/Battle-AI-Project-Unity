@@ -19,6 +19,7 @@ public class MiniEnemyFinite : MonoBehaviour
 {
     MiniEnemyStates m_currentState;
     public event System.Action<MiniEnemyStates> StateChange;
+    public static event System.Action Death;
     Pathfinding m_pathfinder;
     [SerializeField] GameObject m_playerRef;
     [SerializeField] GameObject m_bossRef;
@@ -50,6 +51,7 @@ public class MiniEnemyFinite : MonoBehaviour
         if (HP <= 0)
         {
             StateChange?.Invoke(MiniEnemyStates.Death);
+            Death?.Invoke();
             return;
         }
         StateChange?.Invoke(MiniEnemyStates.Attacked);

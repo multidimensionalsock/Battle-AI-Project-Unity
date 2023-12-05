@@ -25,16 +25,10 @@ public class FoxAIcontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //m_currentBattlePhase.AttackStrategy();
+        m_currentBattlePhase.Strategy();
         
     }
 
-    private void FixedUpdate()
-    {
-        
-        m_currentBattlePhase.MovementStrategy();
-        
-    }
 
     //make an event whemn hp falls.
     void checkPhaseUpdate(float hp)
@@ -55,6 +49,5 @@ public class FoxAIcontroller : MonoBehaviour
         }
         m_currentBattlePhase.SetPlayerReference(m_playerReference);
         m_currentBattlePhase.enabled = true;
-        m_currentBattlePhase.SetPathfinding(m_pathfinder);
     }
 }
