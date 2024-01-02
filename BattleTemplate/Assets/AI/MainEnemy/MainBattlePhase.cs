@@ -42,6 +42,7 @@ public class MainBattlePhase : BattlePhaseTemplate
 
     void FleeStrategy()
     {
+        if (pauseMovement) return;
         float distance = DistanceFromPlayer();
         if (distance < distanceFromPlayerToSpawn)
         {
@@ -77,6 +78,7 @@ public class MainBattlePhase : BattlePhaseTemplate
 
     void AttackStategy()
     {
+        if (pauseMovement) { return; }
 
     }
 
@@ -148,7 +150,8 @@ public class MainBattlePhase : BattlePhaseTemplate
 
     IEnumerator MovementPause(float time)
     {
-        pauseMovement = true; 
+        pauseMovement = true;
+        pathfinderRef.SetNewNavigation(pathfindingState.nullptr);
         yield return new WaitForSeconds(time);
         pauseMovement = false;
 
