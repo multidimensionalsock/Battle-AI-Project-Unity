@@ -12188,17 +12188,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4335497134409209895, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
   m_PrefabInstance: {fileID: 1965710811}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1695071251 stripped
+--- !u!114 &1695071247
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7523358693754536775, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
-  m_PrefabInstance: {fileID: 1965710811}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695071246}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26f5f3b48338744ca5ef69a717459e3, type: 3}
+  m_Script: {fileID: 11500000, guid: aa73f49a30d124a448c30d6a8e687e1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackData: {fileID: 11400000, guid: 5fc31f575f562504ab924266b051a4b1, type: 2}
+  distanceFromPlayerToFlee: 5
+  timeToSwitchModes: 10
+  distanceFromPlayerToSpawn: 10
+  distanceFromPlayerToAttack: 5
+  TimeInDistanceToAttack: 2
+  TimeBetweenAttacks: 5
+  TimeBetweenSpecialAttacks: 10
 --- !u!4 &1696526804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1529183203402686330, guid: 3148b0057757c5e49a1d7284d605de90, type: 3}
@@ -31342,18 +31351,42 @@ PrefabInstance:
     - target: {fileID: 8320737426693073223, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
       propertyPath: battlePhases.Array.data[0]
       value: 
-      objectReference: {fileID: 1695071251}
+      objectReference: {fileID: 1695071247}
     - target: {fileID: 8320737426693073223, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
       propertyPath: battlePhases.Array.data[1]
       value: 
-      objectReference: {fileID: 1695071251}
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945277033460242803, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
+      propertyPath: m_TP
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945277033460242803, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
+      propertyPath: m_Attack
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945277033460242803, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
+      propertyPath: m_Defence
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945277033460242803, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
+      propertyPath: m_SpecialAttack
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945277033460242803, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
+      propertyPath: m_SpecialDefence
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4840335843324548127, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
+    - {fileID: 7523358693754536775, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
     m_RemovedGameObjects:
     - {fileID: 8318112047171851447, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
     - {fileID: 1179504926332195775, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4335497134409209895, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1695071247}
   m_SourcePrefab: {fileID: 100100000, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
 --- !u!4 &1979118462 stripped
 Transform:

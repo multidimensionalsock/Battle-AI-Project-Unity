@@ -15,9 +15,8 @@ public class BattlePhaseTemplate : MonoBehaviour
     [SerializeField] protected Attacks attackData;
     protected GameObject playerRef;
     protected Pathfinding pathfinderRef;
-    protected Rigidbody m_playerRigidBody;
     protected BattleScript battleScript;
-    [SerializeField] protected float distanceFromPlayerToFlee;
+    
     protected bool pauseMovement = false; //pause movement behaviour algorithm (used if performing attack that requires them stay still)
     protected NavMeshAgent navmesh;
     protected List<Attack> nextAttack;
@@ -25,13 +24,15 @@ public class BattlePhaseTemplate : MonoBehaviour
     protected bool shouldAttack = false;
     protected bool collidingWithPlayer;
     protected bool AttacksLoaded = false;
-    
+    [SerializeField] protected float distanceFromPlayerToFlee;
+
+
 
     public void Enable(GameObject playerreference)
     {
         playerRef = playerreference;
         LoadAttacks();
-        m_playerRigidBody = playerRef.GetComponent<Rigidbody>();
+        //_playerRigidBody = playerRef.GetComponent<Rigidbody>();
         pathfinderRef = GetComponent<Pathfinding>();
         pathfinderRef.SetDistanceToFlee(distanceFromPlayerToFlee);
         pathfinderRef.callAttack += StartAttack;
@@ -105,6 +106,12 @@ public class BattlePhaseTemplate : MonoBehaviour
             }
         }
         AttacksLoaded = true;
+    }
+
+    protected Attack PickRandomAttack(List<Attack> attacks)
+    {
+        int Index = UnityEngine.Random.Range(0, attacks.Count);
+        return attacks[Index];
     }
 
     protected IEnumerator MovementPause(float time)

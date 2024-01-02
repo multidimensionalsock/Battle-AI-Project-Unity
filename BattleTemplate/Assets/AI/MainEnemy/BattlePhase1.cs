@@ -23,7 +23,7 @@ public class BattlePhase1 : BattlePhaseTemplate
     override public void Strategy()
     {
         if (pauseMovement) { return;  }
-        if (playerVcinCo == null){ playerVcinCo = StartCoroutine(InPlayerVicinity()); }
+        //i//f (playerVcinCo == null){ playerVcinCo = StartCoroutine(InPlayerVicinity()); }
         if (collidingWithPlayer)
         {
             //melee attack
@@ -33,12 +33,12 @@ public class BattlePhase1 : BattlePhaseTemplate
             pathfinderRef.SetNewNavigation(newAttack);
             return;
         }
-        else if (Mathf.Abs(Vector3.Distance(transform.position, playerRef.transform.position)) < distanceFromPlayerToFlee)
-        {
-            //flee
-            pathfinderRef.SetNewNavigation(pathfindingState.flee, playerRef);
-            return;
-        }
+        //else if (Mathf.Abs(Vector3.Distance(transform.position, playerRef.transform.position)) < distanceFromPlayerToFlee)
+        //{
+        //    //flee
+        //    pathfinderRef.SetNewNavigation(pathfindingState.flee, playerRef);
+        //    return;
+        //}
         //else if (shouldSpecialAttack)
         //{
         //    //specialattack
@@ -85,14 +85,14 @@ public class BattlePhase1 : BattlePhaseTemplate
         }
     }
 
-    IEnumerator InPlayerVicinity()
-    {
-        while (Mathf.Abs(Vector3.Distance(transform.position, playerRef.transform.position)) < distanceFromPlayerToFlee * 2)
-        {
-            timeInVicinity ++;
-            yield return new WaitForSeconds(1f);
-        }
-        timeInVicinity = 0;
-        playerVcinCo = null;
-    }
+    //IEnumerator InPlayerVicinity()
+    //{
+    //    //while (Mathf.Abs(Vector3.Distance(transform.position, playerRef.transform.position)) < distanceFromPlayerToFlee * 2)
+    //    //{
+    //    //    timeInVicinity ++;
+    //    //    yield return new WaitForSeconds(1f);
+    //    //}
+    //    timeInVicinity = 0;
+    //    playerVcinCo = null;
+    //}
 }

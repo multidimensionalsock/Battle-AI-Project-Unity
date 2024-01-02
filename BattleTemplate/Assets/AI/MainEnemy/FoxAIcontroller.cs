@@ -19,7 +19,7 @@ public class FoxAIcontroller : MonoBehaviour
         m_battleInformation = GetComponent<BattleScript>();
         m_currentBattlePhase = battlePhases[0];
         m_currentBattlePhase.Enable(m_playerReference);
-        m_battleInformation.HPreduce += checkPhaseUpdate;
+        //m_battleInformation.HPreduce += checkPhaseUpdate;
     }
 
     // Update is called once per frame
@@ -31,23 +31,23 @@ public class FoxAIcontroller : MonoBehaviour
 
 
     //make an event whemn hp falls.
-    void checkPhaseUpdate(float hp)
-    {
-        //current values are placeholders;
-        if (hp < 5 && m_currentBattlePhase == battlePhases[0])
-        {
-            m_currentBattlePhase = battlePhases[1];
-            m_currentBattlePhase.Enable(m_playerReference);
+    //void checkPhaseUpdate(float hp)
+    //{
+    //    //current values are placeholders;
+    //    if (hp < 5 && m_currentBattlePhase == battlePhases[0])
+    //    {
+    //        m_currentBattlePhase = battlePhases[1];
+    //        m_currentBattlePhase.Enable(m_playerReference);
 
-            //any other behaviours on the switch
-        }
-        else if (hp < 2.5 && m_currentBattlePhase == battlePhases[1])
-        {
-            m_currentBattlePhase= battlePhases[2];
-            m_currentBattlePhase.Enable(m_playerReference);
-            //any others behaviours on the switch
-        }
-        m_currentBattlePhase.SetPlayerReference(m_playerReference);
-        m_currentBattlePhase.enabled = true;
-    }
+    //        //any other behaviours on the switch
+    //    }
+    //    else if (hp < 2.5 && m_currentBattlePhase == battlePhases[1])
+    //    {
+    //        m_currentBattlePhase= battlePhases[2];
+    //        m_currentBattlePhase.Enable(m_playerReference);
+    //        //any others behaviours on the switch
+    //    }
+    //    m_currentBattlePhase.SetPlayerReference(m_playerReference);
+    //    m_currentBattlePhase.enabled = true;
+    //}
 }
