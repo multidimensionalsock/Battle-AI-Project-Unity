@@ -132,11 +132,12 @@ public class BattlePhaseTemplate : MonoBehaviour
         {
             collidingWithPlayer = true;
         }
+
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.GetComponent<PlayerAnimator>() != null)
+        if (collision.gameObject.tag == "Player")
         {
             collidingWithPlayer = false;
             pauseMovement = false;

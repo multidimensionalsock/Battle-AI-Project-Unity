@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
+using UnityEngine.Rendering.PostProcessing;
 
 public class MainBattlePhase : BattlePhaseTemplate
 {
@@ -24,6 +23,7 @@ public class MainBattlePhase : BattlePhaseTemplate
         fleeMode = true;
         modeSwitchCoroutine = StartCoroutine(SwitchModes());
         TimeInDistanceToAttack = TimeInDistanceToAttack * 50;
+        StartCoroutine(AttackCooldown());
     }
 
 
@@ -124,19 +124,34 @@ public class MainBattlePhase : BattlePhaseTemplate
     {
         yield return new WaitForSeconds(timeToSwitchModes);
         fleeMode = !fleeMode;
+        modeSwitchCoroutine = StartCoroutine (SwitchModes());
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("colliding");
+        if (collision.gameObject.tag != "Player") return; 
         if (ableToAttack) 
         {
+            
             //get random mellee attack 
             Attack temp = PickRandomAttack(meleeAttacks);
+            if (pauseMovement != true)
+            {
+                StartCoroutine(MovementPause(temp.freezeTime));
+            }
             Debug.Log(temp.ToString());
             StartAttack(PickRandomAttack(meleeAttacks));
             AttackCooldown();
         }
+    }
+
+    IEnumerator MovementPause(float time)
+    {
+        pauseMovement = true; 
+        yield return new WaitForSeconds(time);
+        pauseMovement = false;
+
     }
 
 

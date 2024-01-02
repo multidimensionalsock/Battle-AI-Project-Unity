@@ -9345,6 +9345,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiniEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2653641988187876908, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7129271214926754890, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
       propertyPath: m_bossRef
       value: 
@@ -12206,7 +12210,7 @@ MonoBehaviour:
   distanceFromPlayerToSpawn: 10
   distanceFromPlayerToAttack: 5
   TimeInDistanceToAttack: 2
-  TimeBetweenAttacks: 5
+  TimeBetweenAttacks: 0
   TimeBetweenSpecialAttacks: 10
 --- !u!4 &1696526804 stripped
 Transform:
