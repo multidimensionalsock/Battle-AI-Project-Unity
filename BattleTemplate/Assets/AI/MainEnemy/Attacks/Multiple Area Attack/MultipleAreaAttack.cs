@@ -14,9 +14,10 @@ public class MultipleAreaAttack : MonoBehaviour
         for (int i = 0; i < numBolts; i++)
         {
             Vector2 pointInCircle = Random.insideUnitCircle * 10f;
+            Vector3 dimpointInCircle = new Vector3(pointInCircle.x, 0, pointInCircle.y);
             GameObject bolt = Instantiate(objectToSpawn);
             bolt.transform.parent = this.transform; 
-            bolt.transform.position = pointInCircle;
+            bolt.transform.position = dimpointInCircle;
         }
     }
 

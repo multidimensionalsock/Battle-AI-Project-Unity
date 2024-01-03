@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class SimpleDistanceAttackScript : AttackTemplate
 {
+    public float AttackDamage;
 
     private void Start()
     {
         transform.position = new Vector3 (transform.position.x, transform.position.y + 1, transform.position.z);
     }
+
     private void FixedUpdate()
     {
         transform.position += transform.forward * speed * Time.fixedDeltaTime;
@@ -18,5 +20,14 @@ public class SimpleDistanceAttackScript : AttackTemplate
     {
         yield return new WaitForSeconds(10);
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<BattleScript>().Attack(AttackDamage);
+            Destroy(gameObject);
+        }
     }
 }
