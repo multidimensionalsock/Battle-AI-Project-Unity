@@ -31,3 +31,12 @@ MonoBehaviour:
     maxDistanceToPerform: 5
     freezeTime: 1
     TPDecrease: 0
+  - attackName: ' 3 Bolt Attack'
+    attackDamage: 5
+    attackObject: {fileID: 2945111965641052108, guid: 6cf3a35c04591834a8dbc9e9dda28ea7, type: 3}
+    associatedAnimation: {fileID: -203655887218126122, guid: 05898b59a8e84e04fa349b62dfed593b, type: 3}
+    attackType: 2
+    minDistanceToPerform: 2
+    maxDistanceToPerform: 20
+    freezeTime: 6
+    TPDecrease: 0

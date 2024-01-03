@@ -40,9 +40,5 @@ public class AttackTemplate : MonoBehaviour
         //}
     }
 
-    virtual protected IEnumerator AutoKill()
-    {
-        yield return new WaitForSeconds(attackData.freezeTime);
-        Destroy(gameObject);
-    }
+    
 }

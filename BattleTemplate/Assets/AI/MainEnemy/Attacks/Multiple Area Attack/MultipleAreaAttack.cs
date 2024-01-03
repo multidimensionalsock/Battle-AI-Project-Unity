@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MultipleAreaAttack : MonoBehaviour
+public class MultipleAreaAttack : AttackTemplate
 {
     [SerializeField] int numBolts;
     [SerializeField] GameObject objectToSpawn;

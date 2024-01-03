@@ -9,6 +9,7 @@ public class SimpleDistanceAttackScript : AttackTemplate
     private void Start()
     {
         transform.position = new Vector3 (transform.position.x, transform.position.y + 1, transform.position.z);
+        StartCoroutine(AutoKill());
     }
 
     private void FixedUpdate()
@@ -16,9 +17,9 @@ public class SimpleDistanceAttackScript : AttackTemplate
         transform.position += transform.forward * speed * Time.fixedDeltaTime;
     }
 
-    override protected IEnumerator AutoKill()
+    protected IEnumerator AutoKill()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(8);
         Destroy(gameObject);
     }
 
