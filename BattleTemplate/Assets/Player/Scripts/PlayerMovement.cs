@@ -131,35 +131,44 @@ public class PlayerMovement : MonoBehaviour
                 yield return new WaitForFixedUpdate();
                 continue;
             }
+
+            m_rigidBody.AddForce(cameraLook.transform.forward * m_movementDirection.z * m_movementSpeed);
+            m_rigidBody.AddForce(cameraLook.transform.right * m_movementDirection.x * m_movementSpeed);
+
+            Vector3.ClampMagnitude(m_rigidBody.velocity, m_movementSpeed);
+
+
             if (m_movementDirection.z > 0)
             {
                 //rotate to look away from camera
                 model.transform.rotation = Quaternion.Slerp(model.transform.rotation, cameraLook.transform.rotation, m_rotationSpeed);
-                transform.position += cameraLook.transform.forward * m_movementSpeed * Time.fixedDeltaTime;
+                
+                //transform.position += cameraLook.transform.forward * m_movementSpeed * Time.fixedDeltaTime;
             }
             else if (m_movementDirection.z < 0)
             {
                 //rotate to look towards camera
                 model.transform.rotation = Quaternion.Slerp(model.transform.rotation, cameraLook.transform.rotation * Quaternion.Euler(0, 180f, 0), m_rotationSpeed);
                 
-                transform.position -= cameraLook.transform.forward * m_movementSpeed * Time.fixedDeltaTime;
+                //transform.position -= cameraLook.transform.forward * m_movementSpeed * Time.fixedDeltaTime;
             }
 
             if (m_movementDirection.x > 0)
             {
                 //rotate to camera right 
                 model.transform.rotation = Quaternion.Slerp(model.transform.rotation, cameraLook.transform.rotation * Quaternion.Euler(0, 90f, 0), m_rotationSpeed);
-                transform.position += cameraLook.transform.right * m_movementSpeed * Time.fixedDeltaTime;
+                //transform.position += cameraLook.transform.right * m_movementSpeed * Time.fixedDeltaTime;
             }
             else if (m_movementDirection.x < 0)
             {
                 //rotate to camerta left 
                 model.transform.rotation = Quaternion.Slerp(model.transform.rotation, cameraLook.transform.rotation * Quaternion.Euler(0, -90f, 0), m_rotationSpeed);
-                transform.position -= cameraLook.transform.right * m_movementSpeed * Time.fixedDeltaTime;
+                //transform.position -= cameraLook.transform.right * m_movementSpeed * Time.fixedDeltaTime;
             }
             
             yield return new WaitForFixedUpdate();
         }
+        //m_rigidBody.velocity = Vector3.zero;
     }
 
     private void OnCollisionEnter(Collision collision)
