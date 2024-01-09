@@ -20,11 +20,13 @@ public class SpecialSlashAttack : MonoBehaviour
 		transform.position += transform.forward * m_attackSpeed;
 	}
 
-	private void OnCollisionEnter(Collision collision)
+
+	private void OnTriggerEnter(Collider other)
 	{
-		if (collision.gameObject.tag == "Enemy")
+		if (other.gameObject.tag == "Enemy")
 		{
-			collision.gameObject.GetComponent<BattleScript>().Attack(m_attackDamage);
+			Debug.Log("attakckede");
+			other.gameObject.GetComponent<BattleScript>().Attack(m_attackDamage);
 		}
 
 		//activate end particle effect
