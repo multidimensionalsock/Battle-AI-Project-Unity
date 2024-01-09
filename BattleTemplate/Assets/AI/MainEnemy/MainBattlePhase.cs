@@ -16,6 +16,8 @@ public class MainBattlePhase : BattlePhaseTemplate
     [SerializeField] protected float TimeBetweenSpecialAttacks;
     bool ableToAttack;
     bool ableToSpecialAttack;
+    bool justAttacked = false;
+    bool playerInView = false;
 
     // Start is called before the first frame update
     void Start()
@@ -79,6 +81,12 @@ public class MainBattlePhase : BattlePhaseTemplate
     void AttackStategy()
     {
         if (pauseMovement) { return; }
+
+        //if just attacked
+        ////turn to player
+        ///return
+        //else can atttack?
+        ////
 
     }
 
