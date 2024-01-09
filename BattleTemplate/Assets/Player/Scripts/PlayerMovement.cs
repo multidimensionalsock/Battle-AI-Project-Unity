@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float m_rotationSpeed;
     bool m_movementLock = false;
     Coroutine cameraMovco;
+	[SerializeField] GameObject m_SpecialAttackObject;
 
     public float GetSpeed()
     {
@@ -36,8 +37,6 @@ public class PlayerMovement : MonoBehaviour
         m_input.currentActionMap.FindAction("Jump").performed += Jump;
         m_input.currentActionMap.FindAction("Camera").performed += MoveCamera;
         m_input.currentActionMap.FindAction("Camera").canceled += StopCamera;
-        m_input.currentActionMap.FindAction("Attack").performed += Attack;
-        m_input.currentActionMap.FindAction("SpecialAttack").performed += SpecialAttack;
         m_input.currentActionMap.FindAction("Defence").performed += DefenceStart;
         m_input.currentActionMap.FindAction("Defence").canceled += DefenceEnd;
         //m_distance = Mathf.Abs(Vector3.Distance(transform.position, m_camera.transform.position));
@@ -45,11 +44,6 @@ public class PlayerMovement : MonoBehaviour
            
     }
 
-    void SpecialAttack(InputAction.CallbackContext context)
-    {
-        if (m_movementLock)
-            return;
-    }
 
     void DefenceStart(InputAction.CallbackContext context)
     {
@@ -72,11 +66,6 @@ public class PlayerMovement : MonoBehaviour
     {
         m_movementDirection = Vector3.zero;
         StopCoroutine(m_movementCoroutine);
-    }
-
-    void Attack(InputAction.CallbackContext context)
-    {
-        StartCoroutine(LockMovement());
     }
 
     IEnumerator LockMovement()

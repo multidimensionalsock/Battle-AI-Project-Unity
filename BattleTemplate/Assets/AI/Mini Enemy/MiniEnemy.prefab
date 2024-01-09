@@ -690,7 +690,7 @@ GameObject:
   - component: {fileID: 5653627769867098204}
   m_Layer: 0
   m_Name: MiniEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -799,6 +799,8 @@ MonoBehaviour:
   m_bossRef: {fileID: 0}
   m_distanceToSeek: 0
   m_distanceToDefend: 0
+  m_minAttackDamage: 0
+  m_maxAttackDamage: 0
 --- !u!114 &6020086140756091014
 MonoBehaviour:
   m_ObjectHideFlags: 0
