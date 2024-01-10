@@ -53,7 +53,7 @@ public class BattlePhaseTemplate : MonoBehaviour
     {
         if (!nextAttack.Any()) { return; } //if nothing in attack list then do nothing 
         //face the player
-        MovementPause(nextAttack[0].freezeTime);
+        StartCoroutine(MovementPause(nextAttack[0].freezeTime));
         StartCoroutine(AttackCooldown(nextAttack[0].freezeTime));
         navmesh.isStopped = true;
         pathfinderRef.SetNewNavigation(pathfindingState.nullptr);
@@ -112,11 +112,13 @@ public class BattlePhaseTemplate : MonoBehaviour
     protected IEnumerator MovementPause(float time)
     {
         pauseMovement = true;
+        pathfinderRef.SetNewNavigation(pathfindingState.nullptr);
         yield return new WaitForSeconds(time);
         pauseMovement = false;
+
     }
 
-    public void SetPlayerReference(GameObject playerreference)
+public void SetPlayerReference(GameObject playerreference)
     {
         playerRef = playerreference;
     }

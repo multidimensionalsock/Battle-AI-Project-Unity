@@ -27,8 +27,6 @@ public class MainBattlePhase : BattlePhaseTemplate
         ableToAttack = true;
     }
 
-
-
     public override void Strategy()
     {
         if (fleeMode)
@@ -198,14 +196,7 @@ public class MainBattlePhase : BattlePhaseTemplate
     }
 
 
-    IEnumerator MovementPause(float time)
-    {
-        pauseMovement = true;
-        pathfinderRef.SetNewNavigation(pathfindingState.nullptr);
-        yield return new WaitForSeconds(time);
-        pauseMovement = false;
-
-    }
+    
 
     void Attacked(float damage)
     {
