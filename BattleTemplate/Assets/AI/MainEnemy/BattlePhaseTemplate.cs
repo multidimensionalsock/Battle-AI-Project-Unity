@@ -20,8 +20,6 @@ public class BattlePhaseTemplate : MonoBehaviour
     protected bool pauseMovement = false; //pause movement behaviour algorithm (used if performing attack that requires them stay still)
     protected NavMeshAgent navmesh;
     protected List<Attack> nextAttack;
-    protected bool shouldSpecialAttack = false;
-    protected bool shouldAttack = false;
     protected bool collidingWithPlayer;
     protected bool AttacksLoaded = false;
     [SerializeField] protected float distanceFromPlayerToFlee;
@@ -38,7 +36,7 @@ public class BattlePhaseTemplate : MonoBehaviour
         pathfinderRef.callAttack += StartAttack;
         navmesh = GetComponent<NavMeshAgent>();
         battleScript = GetComponent<BattleScript>();
-        shouldAttack = true;
+        //shouldAttack = true;
     }
 
     virtual public void Strategy()

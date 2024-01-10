@@ -82,11 +82,64 @@ public class MainBattlePhase : BattlePhaseTemplate
     {
         if (pauseMovement) { return; }
 
-        //if just attacked
-        ////turn to player
-        ///return
-        //else can atttack?
-        ////
+        if (justAttacked)
+        {
+            justAttacked = false;
+            //turn to player
+            return;
+        }
+        if (ableToAttack)
+        {
+            if (collidingWithPlayer)
+            {
+                //mellee attack
+                return;
+            }
+            else if (ableToSpecialAttack)
+            {
+                //special attack 
+
+                //get attack
+                //set attack to nextattack 
+                //pathfind to attack
+            }
+            else if (DistanceFromPlayer() <= distanceFromPlayerToAttack)
+            {
+                //attack
+
+                //get attack
+                //set attack to nextattack 
+                //pathfind to attack
+            }
+            else if (playerInView)
+            {
+                //seek
+                pathfinderRef.SetNewNavigation(pathfindingState.seek, playerRef);
+            }
+            else
+            {
+                StartCoroutine(WaitMode()); //this needs coding still, see below 
+            }
+        }
+        else if (DistanceFromPlayer() <= distanceFromPlayerToFlee)
+        {
+            //flee
+            pathfinderRef.SetNewNavigation(pathfindingState.flee, playerRef);
+        }
+        else
+        {
+            //wander
+        }
+
+    }
+
+    IEnumerator WaitMode()
+    {
+        //lock movement 
+        //look round for 0.5 seconds 
+        //unlock movement 
+        //wander 
+        yield return new WaitForEndOfFrame();
 
     }
 
@@ -163,6 +216,11 @@ public class MainBattlePhase : BattlePhaseTemplate
         yield return new WaitForSeconds(time);
         pauseMovement = false;
 
+    }
+
+    void Attacked(float damage)
+    {
+        justAttacked = true;
     }
 
 
