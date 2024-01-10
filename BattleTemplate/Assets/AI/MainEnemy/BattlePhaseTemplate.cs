@@ -55,8 +55,8 @@ public class BattlePhaseTemplate : MonoBehaviour
         //face the player
         StartCoroutine(MovementPause(nextAttack[0].freezeTime));
         StartCoroutine(AttackCooldown(nextAttack[0].freezeTime));
-        navmesh.isStopped = true;
-        pathfinderRef.SetNewNavigation(pathfindingState.nullptr);
+        //navmesh.isStopped = true;
+        //pathfinderRef.SetNewNavigation(pathfindingState.nullptr);
         GameObject attack = GameObject.Instantiate(nextAttack[0].attackObject, transform.position, transform.rotation);
         Vector3 lookRot = playerRef.transform.position - transform.position;
         attack.GetComponent<AttackTemplate>().CreateAttack(nextAttack[0], gameObject.GetComponent<BattleScript>(), Quaternion.LookRotation(lookRot)); //no rwef setr 

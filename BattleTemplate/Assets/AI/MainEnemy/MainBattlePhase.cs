@@ -117,11 +117,11 @@ public class MainBattlePhase : BattlePhaseTemplate
                 //seek
                 pathfinderRef.SetNewNavigation(pathfindingState.seek, playerRef);
             }
-            else
-            {
-                StartCoroutine(MovementPause(0.5f)); //this needs coding still, see below 
-                //need to add look around animation to this
-            }
+            //else
+            //{
+            //    StartCoroutine(MovementPause(0.5f)); 
+            //    //need to add look around animation to this
+            //}
         }
         else if (DistanceFromPlayer() <= distanceFromPlayerToFlee)
         {
