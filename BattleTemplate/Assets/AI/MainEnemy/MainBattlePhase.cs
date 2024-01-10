@@ -14,20 +14,17 @@ public class MainBattlePhase : BattlePhaseTemplate
     [SerializeField] protected float distanceFromPlayerToSpawn; //distane to spawn enemies (further)
     [SerializeField] protected float distanceFromPlayerToAttack; //distance to flee/attack (closer)
     [SerializeField] protected float TimeInDistanceToAttack; //how long the player has to be in close distance to swap to attack
-    [SerializeField] protected float TimeBetweenAttacks;
     [SerializeField] protected float TimeBetweenSpecialAttacks;
-    bool ableToAttack;
-    bool ableToSpecialAttack;
     bool justAttacked = false;
     bool playerInView = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        fleeMode = true;
-        modeSwitchCoroutine = StartCoroutine(SwitchModes());
+        fleeMode = false;
+        //modeSwitchCoroutine = StartCoroutine(SwitchModes());
         TimeInDistanceToAttack = TimeInDistanceToAttack * 50;
-        StartCoroutine(AttackCooldown());
+        ableToAttack = true;
     }
 
 
@@ -98,8 +95,8 @@ public class MainBattlePhase : BattlePhaseTemplate
                 Attack temp = PickRandomAttack(meleeAttacks);
             
                 StartCoroutine(MovementPause(temp.freezeTime));
-                StartAttack(PickRandomAttack(meleeAttacks));
-                AttackCooldown();
+                nextAttack.Add(temp);
+                InitiateAttack(temp);
         
                 return;
             }
@@ -148,12 +145,7 @@ public class MainBattlePhase : BattlePhaseTemplate
         return Mathf.Abs(Vector3.Distance(playerRef.transform.position, transform.position));
     }
 
-    IEnumerator AttackCooldown()
-    {
-        ableToAttack = false;
-        yield return new WaitForSeconds(TimeBetweenAttacks);
-        ableToAttack = true;
-    }
+    
 
     IEnumerator SpecialAttackCooldown()
     {
@@ -188,6 +180,7 @@ public class MainBattlePhase : BattlePhaseTemplate
         yield return new WaitForSeconds(timeToSwitchModes);
         fleeMode = !fleeMode;
         modeSwitchCoroutine = StartCoroutine (SwitchModes());
+        Debug.Log(fleeMode);
     }
 
     private void OnCollisionEnter(Collision collision)

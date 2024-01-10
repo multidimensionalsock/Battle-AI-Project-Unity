@@ -16,13 +16,16 @@ public class BattlePhaseTemplate : MonoBehaviour
     protected GameObject playerRef;
     protected Pathfinding pathfinderRef;
     protected BattleScript battleScript;
-    
+    [SerializeField] protected float TimeBetweenAttacks;
     protected bool pauseMovement = false; //pause movement behaviour algorithm (used if performing attack that requires them stay still)
     protected NavMeshAgent navmesh;
     protected List<Attack> nextAttack;
     protected bool collidingWithPlayer;
     protected bool AttacksLoaded = false;
     [SerializeField] protected float distanceFromPlayerToFlee;
+
+    protected bool ableToAttack;
+    protected bool ableToSpecialAttack;
 
 
 
@@ -33,7 +36,7 @@ public class BattlePhaseTemplate : MonoBehaviour
         //_playerRigidBody = playerRef.GetComponent<Rigidbody>();
         pathfinderRef = GetComponent<Pathfinding>();
         pathfinderRef.SetDistanceToFlee(distanceFromPlayerToFlee);
-        pathfinderRef.callAttack += StartAttack;
+        pathfinderRef.callAttack += InitiateAttack;
         navmesh = GetComponent<NavMeshAgent>();
         battleScript = GetComponent<BattleScript>();
         //shouldAttack = true;
@@ -44,16 +47,14 @@ public class BattlePhaseTemplate : MonoBehaviour
 
     }
 
-    public void StartAttack(Attack attack)
-    {
-        StartCoroutine(InitiateAttack());
-    }
+    
 
-    protected IEnumerator InitiateAttack()
+    protected void InitiateAttack(Attack attackToPerform)
     {
-        if (!nextAttack.Any()) { yield break; } //if nothing in attack list then do nothing 
+        if (!nextAttack.Any()) { return; } //if nothing in attack list then do nothing 
         //face the player
-        pauseMovement = true;
+        MovementPause(nextAttack[0].freezeTime);
+        StartCoroutine(AttackCooldown(nextAttack[0].freezeTime));
         navmesh.isStopped = true;
         pathfinderRef.SetNewNavigation(pathfindingState.nullptr);
         GameObject attack = GameObject.Instantiate(nextAttack[0].attackObject, transform.position, transform.rotation);
@@ -64,10 +65,6 @@ public class BattlePhaseTemplate : MonoBehaviour
             battleScript.SetTP(nextAttack[0].TPDecrease);
         }
         nextAttack.Clear();
-        //create the attack or and perform aniamtin
-        yield return new WaitForSeconds(nextAttack[0].freezeTime);
-        navmesh.isStopped = false;
-        pauseMovement = false;
         
     }
 
@@ -122,6 +119,13 @@ public class BattlePhaseTemplate : MonoBehaviour
     public void SetPlayerReference(GameObject playerreference)
     {
         playerRef = playerreference;
+    }
+
+    protected IEnumerator AttackCooldown(float AttackTime)
+    {
+        ableToAttack = false;
+        yield return new WaitForSeconds(TimeBetweenAttacks + AttackTime);
+        ableToAttack = true;
     }
 
     private void OnCollisionEnter(Collision collision)
