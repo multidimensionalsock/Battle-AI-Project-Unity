@@ -70,7 +70,7 @@ public class BattlePhase1 : BattlePhaseTemplate
         playerAttacks++;
         if (playerAttacks >= powerUpMax) 
         { 
-            shouldSpecialAttack = true;
+            //shouldSpecialAttack = true;
             playerAttacks = 0;
         }
     }
@@ -79,7 +79,7 @@ public class BattlePhase1 : BattlePhaseTemplate
     {
         currentMinis++;
         if (spawnedInMinis/4 >= currentMinis) {
-            shouldSpecialAttack = true;
+            //shouldSpecialAttack = true;
             spawnedInMinis = currentMinis;
             playerAttacks = 0;
         }

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.Rendering.PostProcessing;
 
 public class MainBattlePhase : BattlePhaseTemplate
@@ -92,24 +94,28 @@ public class MainBattlePhase : BattlePhaseTemplate
         {
             if (collidingWithPlayer)
             {
-                //mellee attack
+                //mellee attack 
+                Attack temp = PickRandomAttack(meleeAttacks);
+            
+                StartCoroutine(MovementPause(temp.freezeTime));
+                StartAttack(PickRandomAttack(meleeAttacks));
+                AttackCooldown();
+        
                 return;
             }
             else if (ableToSpecialAttack)
             {
                 //special attack 
-
-                //get attack
-                //set attack to nextattack 
-                //pathfind to attack
+                Attack temp = PickRandomAttack(specialAttacks);
+                nextAttack.Add(temp);
+                pathfinderRef.SetNewNavigation(temp);
             }
             else if (DistanceFromPlayer() <= distanceFromPlayerToAttack)
             {
                 //attack
-
-                //get attack
-                //set attack to nextattack 
-                //pathfind to attack
+                Attack temp = PickRandomAttack(rangeAttacks);
+                nextAttack.Add(temp);
+                pathfinderRef.SetNewNavigation(temp);
             }
             else if (playerInView)
             {
@@ -118,7 +124,8 @@ public class MainBattlePhase : BattlePhaseTemplate
             }
             else
             {
-                StartCoroutine(WaitMode()); //this needs coding still, see below 
+                StartCoroutine(MovementPause(0.5f)); //this needs coding still, see below 
+                //need to add look around animation to this
             }
         }
         else if (DistanceFromPlayer() <= distanceFromPlayerToFlee)
@@ -129,19 +136,12 @@ public class MainBattlePhase : BattlePhaseTemplate
         else
         {
             //wander
+            pathfinderRef.SetNewNavigation(pathfindingState.wander);
         }
 
     }
 
-    IEnumerator WaitMode()
-    {
-        //lock movement 
-        //look round for 0.5 seconds 
-        //unlock movement 
-        //wander 
-        yield return new WaitForEndOfFrame();
-
-    }
+   
 
     float DistanceFromPlayer()
     {
@@ -193,21 +193,17 @@ public class MainBattlePhase : BattlePhaseTemplate
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("colliding");
-        if (collision.gameObject.tag != "Player") return; 
-        if (ableToAttack) 
-        {
-            
-            //get random mellee attack 
-            Attack temp = PickRandomAttack(meleeAttacks);
-            if (pauseMovement != true)
-            {
-                StartCoroutine(MovementPause(temp.freezeTime));
-            }
-            Debug.Log(temp.ToString());
-            StartAttack(PickRandomAttack(meleeAttacks));
-            AttackCooldown();
-        }
+        if (collision.gameObject.tag != "Player") return;
+        collidingWithPlayer = true;
+        
     }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag != "Player") return;
+        collidingWithPlayer = false;
+    }
+
 
     IEnumerator MovementPause(float time)
     {
