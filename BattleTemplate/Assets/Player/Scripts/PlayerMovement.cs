@@ -12,7 +12,8 @@ public class PlayerMovement : MonoBehaviour
     PlayerInput m_input;
     Coroutine m_movementCoroutine;
     Animator m_animator;
-    [SerializeField] float m_movementSpeed;
+    [SerializeField] float m_movementForce;
+    [SerializeField] float m_maxSpeed;
     Rigidbody m_rigidBody;
     Vector3 m_movementDirection;
     int jumpNo;
@@ -24,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float GetSpeed()
     {
-        return m_movementSpeed;
+        return m_rigidBody.velocity.magnitude;
     }
     
     void Start()
@@ -121,11 +122,9 @@ public class PlayerMovement : MonoBehaviour
                 continue;
             }
 
-            m_rigidBody.AddForce(cameraLook.transform.forward * m_movementDirection.z * m_movementSpeed);
-            m_rigidBody.AddForce(cameraLook.transform.right * m_movementDirection.x * m_movementSpeed);
-
-            Vector3.ClampMagnitude(m_rigidBody.velocity, m_movementSpeed);
-
+            m_rigidBody.AddForce(cameraLook.transform.forward * m_movementDirection.z * m_movementForce);
+            m_rigidBody.AddForce(cameraLook.transform.right * m_movementDirection.x * m_movementForce);
+            m_rigidBody.velocity = Vector3.ClampMagnitude(m_rigidBody.velocity, m_maxSpeed);
 
             if (m_movementDirection.z > 0)
             {

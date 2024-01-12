@@ -39,6 +39,7 @@ public class BattlePhaseTemplate : MonoBehaviour
         pathfinderRef.callAttack += InitiateAttack;
         navmesh = GetComponent<NavMeshAgent>();
         battleScript = GetComponent<BattleScript>();
+        pathfinderRef.SetNewNavigation(pathfindingState.wander);
         //shouldAttack = true;
     }
 

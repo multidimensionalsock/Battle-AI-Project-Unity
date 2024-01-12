@@ -45,7 +45,10 @@ public class Pathfinding : MonoBehaviour
 			case pathfindingState.flee:
                 StartCoroutine("FleeObject");
                 break;
-			case pathfindingState.evade:
+            case pathfindingState.wander:
+                StartCoroutine("Wander");
+                break;
+            case pathfindingState.evade:
 				Evade();
                 break;
 			case pathfindingState.nullptr:
@@ -232,25 +235,40 @@ public class Pathfinding : MonoBehaviour
 
 	IEnumerator Wander()
 	{
-		Vector2 pointInCircle = Random.insideUnitCircle * 10f;
-        m_targetPosition = new Vector3(pointInCircle.x, -1.51f, pointInCircle.y);
+        m_targetPosition = FindRandomPosition();
         m_agent.SetDestination(m_targetPosition);
         while (m_currentState == pathfindingState.wander)
 		{
-			if (Mathf.Abs(transform.position.x - m_targetPosition.x) <= 0.5f || Mathf.Abs(transform.position.z - m_targetPosition.z) <= 0.5f)
+			if (Mathf.Abs(transform.position.x - m_targetPosition.x) <= 0.1f && Mathf.Abs(transform.position.z - m_targetPosition.z) <= 0.1f)
 			{
-                pointInCircle = Random.insideUnitCircle * 10;
-                m_targetPosition = new Vector3(pointInCircle.x, -1.51f, pointInCircle.y);
+                m_targetPosition = FindRandomPosition();
                 m_agent.SetDestination(m_targetPosition);
             }
 			yield return new WaitForFixedUpdate();
 		}
 	}
 
-	//IEnumerator Repel()
-	//{
-	//	//check if anything is in trigger collision distance, if so repel from it 
-	//}
+    Vector3 FindRandomPosition()
+    {
+        Vector3 pos;
+        Vector2 pointInCircle = Random.insideUnitCircle * 10f;
+        pos = new Vector3(pointInCircle.x, -1.51f, pointInCircle.y);
+
+        while (Mathf.Abs((pos - m_objectToPathfind.transform.position).magnitude) < 5f)
+        {
+            pointInCircle = Random.insideUnitCircle * 10f;
+            pos = new Vector3(pointInCircle.x, -1.51f, pointInCircle.y);
+        }
+        
+        return pos;
+
+        //still causes issues with flee
+    }
+
+    //IEnumerator Repel()
+    //{
+    //	//check if anything is in trigger collision distance, if so repel from it 
+    //}
 
     public void CallAttackAnimation(Attack attack)
     {

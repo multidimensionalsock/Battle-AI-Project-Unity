@@ -1600,6 +1600,14 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5910065917347830137, guid: d2a198c4cfe32244299c19d14622be9e, type: 3}
+      propertyPath: m_maxSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5910065917347830137, guid: d2a198c4cfe32244299c19d14622be9e, type: 3}
+      propertyPath: m_movementForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5910065917347830137, guid: d2a198c4cfe32244299c19d14622be9e, type: 3}
       propertyPath: m_movementSpeed
       value: 10
       objectReference: {fileID: 0}
@@ -12422,12 +12430,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackData: {fileID: 11400000, guid: 5fc31f575f562504ab924266b051a4b1, type: 2}
+  TimeBetweenAttacks: 4
   distanceFromPlayerToFlee: 5
   timeToSwitchModes: 10
   distanceFromPlayerToSpawn: 10
   distanceFromPlayerToAttack: 5
   TimeInDistanceToAttack: 2
-  TimeBetweenAttacks: 0
   TimeBetweenSpecialAttacks: 10
 --- !u!4 &1696526804 stripped
 Transform:

@@ -68,10 +68,12 @@ public class MainBattlePhase : BattlePhaseTemplate
             {
                 StopCoroutine(InPlayerRange);
                 InPlayerRange = null;
-               
+
             }
-            //wander
-            pathfinderRef.SetNewNavigation(pathfindingState.wander);
+            
+                //wander
+                pathfinderRef.SetNewNavigation(pathfindingState.wander);
+            
         }
     }
 
@@ -90,6 +92,7 @@ public class MainBattlePhase : BattlePhaseTemplate
             if (collidingWithPlayer)
             {
                 //mellee attack 
+                Debug.Log("mellee");
                 Attack temp = PickRandomAttack(meleeAttacks);
             
                 StartCoroutine(MovementPause(temp.freezeTime));
@@ -101,6 +104,7 @@ public class MainBattlePhase : BattlePhaseTemplate
             else if (ableToSpecialAttack)
             {
                 //special attack 
+                Debug.Log("special attack");
                 Attack temp = PickRandomAttack(specialAttacks);
                 nextAttack.Add(temp);
                 pathfinderRef.SetNewNavigation(temp);
@@ -108,6 +112,7 @@ public class MainBattlePhase : BattlePhaseTemplate
             else if (DistanceFromPlayer() <= distanceFromPlayerToAttack)
             {
                 //attack
+                Debug.Log("attakx rnage");
                 Attack temp = PickRandomAttack(rangeAttacks);
                 nextAttack.Add(temp);
                 pathfinderRef.SetNewNavigation(temp);
@@ -115,6 +120,7 @@ public class MainBattlePhase : BattlePhaseTemplate
             else if (playerInView)
             {
                 //seek
+                Debug.Log("Seek");
                 pathfinderRef.SetNewNavigation(pathfindingState.seek, playerRef);
             }
             //else
@@ -125,12 +131,14 @@ public class MainBattlePhase : BattlePhaseTemplate
         }
         else if (DistanceFromPlayer() <= distanceFromPlayerToFlee)
         {
+            Debug.Log("Flee");
             //flee
             pathfinderRef.SetNewNavigation(pathfindingState.flee, playerRef);
         }
         else
         {
             //wander
+            Debug.Log("wander");
             pathfinderRef.SetNewNavigation(pathfindingState.wander);
         }
 
