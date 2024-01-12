@@ -35,7 +35,8 @@ public class Pathfinding : MonoBehaviour
 
 	public void SetNewNavigation(pathfindingState newState, GameObject objectPos)
 	{
-		m_objectToPathfind = objectPos;
+        if (objectPos != null)
+		    m_objectToPathfind = objectPos;
         StopAllCoroutines();
 		switch (newState)
 		{
@@ -274,4 +275,6 @@ public class Pathfinding : MonoBehaviour
     {
         callAttack(attack);
     }
+
+    //do colisions here to tell custrom behaviours if collidin with player, if you are trhen no longer need to seek and set colliding var to true 
 }
