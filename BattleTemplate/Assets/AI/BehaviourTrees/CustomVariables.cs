@@ -14,5 +14,7 @@ public class AgentReference : Variable<NavMeshAgent>
     }
 }
 
+
+
 #endregion
 

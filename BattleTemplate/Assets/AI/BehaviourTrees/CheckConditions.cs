@@ -11,10 +11,14 @@ public class CheckConditions : MonoBehaviour
     public List<Attack> meleeAttacks;
     public List<Attack> rangeAttacks;
     public List<Attack> specialAttacks;
+    public float distanceToFlee;
+    public bool ableToAttack;
+    public bool ableToSpecialAttack;
+    public Attack nextAttack;
 
     private void OnEnable()
     {
-        //LoadAttacks();
+        LoadAttacks();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -49,25 +53,30 @@ public class CheckConditions : MonoBehaviour
         }
     }
 
-    //virtual public void LoadAttacks()
-    //{
-    //    meleeAttacks = new List<Attack>();
-    //    rangeAttacks = new List<Attack>();
-    //    specialAttacks = new List<Attack>();
-    //    for (int i = 0; i < AttackList.attackDetails.Length; i++)
-    //    {
-    //        switch (AttackList.attackDetails[i].attackType)
-    //        {
-    //            case AttackType.melee:
-    //                meleeAttacks.Add(AttackList.attackDetails[i]);
-    //                break;
-    //            case AttackType.range:
-    //                rangeAttacks.Add(AttackList.attackDetails[i]);
-    //                break;
-    //            case AttackType.special:
-    //                specialAttacks.Add(AttackList.attackDetails[i]);
-    //                break;
-    //        }
-    //    }
-    //}
+    virtual public void LoadAttacks()
+    {
+        meleeAttacks = new List<Attack>();
+        rangeAttacks = new List<Attack>();
+        specialAttacks = new List<Attack>();
+        for (int i = 0; i < AttackList.attackDetails.Length; i++)
+        {
+            switch (AttackList.attackDetails[i].attackType)
+            {
+                case AttackType.melee:
+                    meleeAttacks.Add(AttackList.attackDetails[i]);
+                    break;
+                case AttackType.range:
+                    rangeAttacks.Add(AttackList.attackDetails[i]);
+                    break;
+                case AttackType.special:
+                    specialAttacks.Add(AttackList.attackDetails[i]);
+                    break;
+            }
+        }
+    }
+
+    public void StartAttackCooldown()
+    {
+       //make a coroutine for this 
+    }
 }
