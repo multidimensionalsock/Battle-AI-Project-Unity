@@ -4512,6 +4512,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
+--- !u!115 &574532841
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: FacePlayer
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &585462453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33341,6 +33356,7 @@ GameObject:
   - component: {fileID: 907858615550413021}
   - component: {fileID: 907858615550413022}
   - component: {fileID: 907858615550413023}
+  - component: {fileID: 907858615550413024}
   m_Layer: 0
   m_Name: Jacob 1
   m_TagString: Untagged
@@ -33373,7 +33389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 907858615550413018}
+  selectedEditorNode: {fileID: 0}
   repeatOnFinish: 0
   maxExecutionsPerTick: 1000
   parent: {fileID: 0}
@@ -33442,7 +33458,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!195 &907858615550413015
 NavMeshAgent:
@@ -33454,11 +33470,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -33481,13 +33497,14 @@ MonoBehaviour:
   title: Selector
   rect:
     serializedVersion: 2
-    x: 340
+    x: 360
     y: 200
     width: 160
     height: 45
   parent: {fileID: 907858615550413017}
   children:
   - {fileID: 907858615550413018}
+  - {fileID: 907858615550413024}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -33507,7 +33524,7 @@ MonoBehaviour:
   title: Root
   rect:
     serializedVersion: 2
-    x: 360
+    x: 460
     y: 80
     width: 160
     height: 45
@@ -33532,8 +33549,8 @@ MonoBehaviour:
   title: Seek
   rect:
     serializedVersion: 2
-    x: 320
-    y: 340
+    x: 160
+    y: 300
     width: 160
     height: 45
   parent: {fileID: 907858615550413016}
@@ -33616,7 +33633,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collidingWithPlayer: 0
+  triggerWithPlayer: 0
   playerRef: {fileID: 1514811546}
+--- !u!114 &907858615550413024
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 574532841}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: FacePlayer
+  rect:
+    serializedVersion: 2
+    x: 360
+    y: 300
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413016}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
 --- !u!33 &970637480377313901
 MeshFilter:
   m_ObjectHideFlags: 0

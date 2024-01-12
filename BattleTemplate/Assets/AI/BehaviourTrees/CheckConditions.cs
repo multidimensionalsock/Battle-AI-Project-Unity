@@ -5,6 +5,7 @@ using UnityEngine;
 public class CheckConditions : MonoBehaviour
 {
     public bool collidingWithPlayer;
+    public bool triggerWithPlayer;
     public GameObject playerRef;
 
     private void OnCollisionEnter(Collision collision)
@@ -22,4 +23,22 @@ public class CheckConditions : MonoBehaviour
             collidingWithPlayer = false;
         }
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            triggerWithPlayer = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            triggerWithPlayer = false;
+        }
+    }
+
 }
