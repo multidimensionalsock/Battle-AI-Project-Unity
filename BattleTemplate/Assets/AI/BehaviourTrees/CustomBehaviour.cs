@@ -6,21 +6,16 @@ using UnityEngine.AI;
 using JetBrains.Annotations;
 
 [AddComponentMenu("CustomBehaviour")]
+
+#region custom_behaviour
 [MBTNode(name = "CustomNode/Seek")]
 public class Seek : Leaf
 {
     public BoolReference somePropertyRef = new BoolReference();
-    public Blackboard blackboard;
     //Transform playerRef;
 
     // These two methods are optional, override only when needed
     // public override void OnAllowInterrupt() {}
-    public override void OnEnter() 
-    {
-        blackboard = GetComponent<Blackboard>();
-        //playerRef = blackboard.GetVariable<TransformVariable>("PlayerT").transform;
-       // Debug.Log(playerRef.gameObject.name);
-    }
 
     // This is called every tick as long as node is executed
     public override NodeResult Execute()
@@ -35,7 +30,7 @@ public class Seek : Leaf
             
         }
         GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
-        return NodeResult.failure;
+        return NodeResult.success;
     }
 
     // These two methods are optional, override only when needed
@@ -81,7 +76,7 @@ public class FacePlayer : Leaf
     }
 }
 
-[MBTNode(name = "CustomNode/FacePlayer")]
+[MBTNode(name = "CustomNode/Flee")]
 public class Flee : Leaf
 {
     public BoolReference somePropertyRef = new BoolReference();
@@ -93,6 +88,8 @@ public class Flee : Leaf
     // This is called every tick as long as node is executed
     public override NodeResult Execute()
     {
+        //check distance from player 
+        //while player is not x distance away then flee or attack 
         Debug.Log("Flee");
         GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.flee, GetComponent<CheckConditions>().playerRef);
         return NodeResult.success;
@@ -110,12 +107,5 @@ public class Flee : Leaf
     }
 }
 
-//custom variables 
-[AddComponentMenu("CustomVar")]
-public class AgentReference : Variable<NavMeshAgent>
-{
-    protected override bool ValueEquals(NavMeshAgent val1, NavMeshAgent val2)
-    {
-        return val1 == val2;
-    }
-}
+#endregion
+

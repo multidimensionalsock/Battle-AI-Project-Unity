@@ -732,21 +732,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2e14d87834a62041a457f0dcc62b265, type: 3}
---- !u!115 &99470329
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: AgentReference
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &99648152
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1632,7 +1617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5910065917347830141, guid: d2a198c4cfe32244299c19d14622be9e, type: 3}
       propertyPath: m_Constraints
-      value: 112
+      value: 116
       objectReference: {fileID: 0}
     - target: {fileID: 5939463707210366666, guid: d2a198c4cfe32244299c19d14622be9e, type: 3}
       propertyPath: m_Layer
@@ -11483,11 +11468,6 @@ MonoBehaviour:
   m_SpecialAttack: 0
   m_SpecialDefence: 0
   m_battleObject: {fileID: 4063635816943371586, guid: ccdecd56f1d30e94d806700f09b75277, type: 3}
---- !u!4 &1514811562 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6165002236828626112, guid: d2a198c4cfe32244299c19d14622be9e, type: 3}
-  m_PrefabInstance: {fileID: 151250432}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1528529513
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33348,15 +33328,14 @@ GameObject:
   - component: {fileID: 907858615550413012}
   - component: {fileID: 907858615550413011}
   - component: {fileID: 907858615550413010}
-  - component: {fileID: 907858615550413019}
   - component: {fileID: 907858615550413018}
   - component: {fileID: 907858615550413017}
-  - component: {fileID: 907858615550413016}
   - component: {fileID: 907858615550413020}
-  - component: {fileID: 907858615550413021}
-  - component: {fileID: 907858615550413022}
   - component: {fileID: 907858615550413023}
   - component: {fileID: 907858615550413024}
+  - component: {fileID: 907858615550413025}
+  - component: {fileID: 907858615550413028}
+  - component: {fileID: 907858615550413029}
   m_Layer: 0
   m_Name: Jacob 1
   m_TagString: Untagged
@@ -33406,9 +33385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   variables:
-  - {fileID: 907858615550413019}
-  - {fileID: 907858615550413021}
-  - {fileID: 907858615550413022}
+  - {fileID: 907858615550413028}
   masterBlackboard: {fileID: 0}
 --- !u!136 &907858615550413013
 CapsuleCollider:
@@ -33482,33 +33459,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &907858615550413016
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Selector
-  rect:
-    serializedVersion: 2
-    x: 360
-    y: 200
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413017}
-  children:
-  - {fileID: 907858615550413018}
-  - {fileID: 907858615550413024}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
 --- !u!114 &907858615550413017
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -33524,13 +33474,13 @@ MonoBehaviour:
   title: Root
   rect:
     serializedVersion: 2
-    x: 460
-    y: 80
+    x: 480
+    y: 100
     width: 160
     height: 45
   parent: {fileID: 0}
   children:
-  - {fileID: 907858615550413016}
+  - {fileID: 907858615550413029}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -33549,11 +33499,11 @@ MonoBehaviour:
   title: Seek
   rect:
     serializedVersion: 2
-    x: 160
-    y: 300
+    x: 240
+    y: 400
     width: 160
     height: 45
-  parent: {fileID: 907858615550413016}
+  parent: {fileID: 907858615550413025}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -33564,21 +33514,6 @@ MonoBehaviour:
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
-  blackboard: {fileID: 907858615550413012}
---- !u!114 &907858615550413019
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cdb61a66fcb1c549a844f093811f6c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: Player
-  val: {fileID: 1514811546}
 --- !u!114 &907858615550413020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33592,34 +33527,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_objectToPathfind: {fileID: 1514811546}
---- !u!114 &907858615550413021
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 99470329}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: m_agent
-  val: {fileID: 907858615550413015}
---- !u!114 &907858615550413022
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc98ff6538275b4c9a8383882546ee9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: PlayerT
-  val: {fileID: 1514811562}
 --- !u!114 &907858615550413023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33635,6 +33542,10 @@ MonoBehaviour:
   collidingWithPlayer: 0
   triggerWithPlayer: 0
   playerRef: {fileID: 1514811546}
+  AttackList: {fileID: 0}
+  meleeAttacks: []
+  rangeAttacks: []
+  specialAttacks: []
 --- !u!114 &907858615550413024
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -33650,11 +33561,11 @@ MonoBehaviour:
   title: FacePlayer
   rect:
     serializedVersion: 2
-    x: 360
-    y: 300
+    x: 440
+    y: 400
     width: 160
     height: 45
-  parent: {fileID: 907858615550413016}
+  parent: {fileID: 907858615550413025}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -33662,6 +33573,79 @@ MonoBehaviour:
   somePropertyRef:
     useConstant: 0
     mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413025
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: 340
+    y: 320
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413029}
+  children:
+  - {fileID: 907858615550413018}
+  - {fileID: 907858615550413024}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &907858615550413028
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e5f4db414f0ab4c82c187a7653e99d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: DistanceToFlee
+  val: 0
+--- !u!114 &907858615550413029
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e36215bdf40be324691d202ad1cfefb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Not in player Trigger Zone?
+  rect:
+    serializedVersion: 2
+    x: 420
+    y: 180
+    width: 160
+    height: 59
+  parent: {fileID: 907858615550413017}
+  children:
+  - {fileID: 907858615550413025}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  abort: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 1
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
