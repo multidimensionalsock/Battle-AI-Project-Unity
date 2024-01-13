@@ -259,7 +259,7 @@ public class AttackNavigate : Leaf
 
 
 [MBTNode(name = "CustomNode/Perform Attack")]
-public class PerformAttack : Leaf //broken 
+public class PerformAttack : Leaf 
 {
     public BoolReference somePropertyRef = new BoolReference();
 
@@ -309,8 +309,35 @@ public class PerformAttack : Leaf //broken
         return !somePropertyRef.isInvalid;
     }
 }
-//perform attack fucntion 
-//as it says on the tin 
+
+
+[MBTNode(name = "CustomNode/Destroy Self")]
+public class DestroySelf : Leaf 
+{
+    public BoolReference somePropertyRef = new BoolReference();
+
+    // These two methods are optional, override only when needed
+    // public override void OnAllowInterrupt() {}
+    // public override void OnEnter() {}
+
+    // This is called every tick as long as node is executed
+    public override NodeResult Execute()
+    {
+        Destroy(gameObject);
+        return NodeResult.success;
+    }
+
+    // These two methods are optional, override only when needed
+    // public override void OnExit() {}
+    // public override void OnDisallowInterrupt() {}
+
+    // Usually there is no needed to override this method
+    public override bool IsValid()
+    {
+        // You can do some custom validation here
+        return !somePropertyRef.isInvalid;
+    }
+}
 
 #endregion
 

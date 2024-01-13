@@ -11,6 +11,7 @@ public class BattleScript : MonoBehaviour
     [SerializeField] public int m_SpecialAttack;
     [SerializeField] protected int m_SpecialDefence;
     protected bool defenseActivated;
+    [SerializeField] protected bool deathByScript = true;
 
     public event System.Action<float> HPreduce;
     public void Attack(float hpDecrease)
@@ -60,6 +61,7 @@ public class BattleScript : MonoBehaviour
 
     void Death()
     {
+        if (!deathByScript) { return;  }
         if (m_HP <= 0)
         {
             Destroy(gameObject); 
