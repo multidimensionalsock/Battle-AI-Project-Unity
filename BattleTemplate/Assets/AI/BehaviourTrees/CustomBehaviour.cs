@@ -122,6 +122,7 @@ public class GetMelleeAttack : Leaf
     public override NodeResult Execute()
     {
         CheckConditions condition = GetComponent<CheckConditions>();
+        if (!condition.ableToAttack) { return NodeResult.failure; } 
         if (!condition.meleeAttacks.Any()) { return NodeResult.failure; }
         condition.nextAttack = condition.meleeAttacks[UnityEngine.Random.Range(0, condition.meleeAttacks.Count)];
         return NodeResult.success;
@@ -152,6 +153,7 @@ public class GetRangeAttack : Leaf
     public override NodeResult Execute()
     {
         CheckConditions condition = GetComponent<CheckConditions>();
+        if (!condition.ableToAttack) { return NodeResult.failure; }
         if (!condition.rangeAttacks.Any()) { return NodeResult.failure; }
         condition.nextAttack = condition.rangeAttacks[UnityEngine.Random.Range(0, condition.rangeAttacks.Count)];
         return NodeResult.success;
@@ -182,6 +184,7 @@ public class GetSpecialAttack : Leaf
     public override NodeResult Execute()
     {
         CheckConditions condition = GetComponent<CheckConditions>();
+        if (!condition.ableToSpecialAttack) { return NodeResult.failure; }
         if (!condition.specialAttacks.Any()) { return NodeResult.failure; }
         condition.nextAttack = condition.specialAttacks[UnityEngine.Random.Range(0, condition.specialAttacks.Count)];
         Debug.Log(condition.nextAttack);
@@ -270,7 +273,7 @@ public class PerformAttack : Leaf //broken
         Debug.Log("performattack");
         CheckConditions conditions = GetComponent<CheckConditions>();
         Attack attack = conditions.nextAttack;
-        if (attack.attackType == AttackType.special && GetComponent<BattleScript>().GetTP() < attack.TPDecrease) { return NodeResult.failure; }
+        if (GetComponent<BattleScript>().GetTP() < attack.TPDecrease) { return NodeResult.failure; }
         if (attack.attackObject == null)
         {
             //perform animation 
