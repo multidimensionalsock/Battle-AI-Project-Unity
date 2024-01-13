@@ -21,7 +21,7 @@ public class CheckConditions : MonoBehaviour
     public float damageInTheLastMinute;
     private List<float[,]> LastMinuteStatList;
     private float[,] lastAttackStat; //hp lost, attack no
-    bool attacked = false;
+    bool attacked = true;
 
     public bool GetWasAttacked()
     {

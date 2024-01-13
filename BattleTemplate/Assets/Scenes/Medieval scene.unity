@@ -33898,8 +33898,8 @@ MonoBehaviour:
   title: Was attacked?
   rect:
     serializedVersion: 2
-    x: -280
-    y: 200
+    x: -200
+    y: 220
     width: 160
     height: 45
   parent: {fileID: 907858615550413048}
@@ -33990,7 +33990,7 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: -280
+    x: -200
     y: 280
     width: 160
     height: 45
@@ -34134,8 +34134,8 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: -440
-    y: 420
+    x: -360
+    y: 400
     width: 160
     height: 45
   parent: {fileID: 907858615550413059}
@@ -34159,8 +34159,8 @@ MonoBehaviour:
   title: Check if AI dead?
   rect:
     serializedVersion: 2
-    x: -440
-    y: 360
+    x: -360
+    y: 340
     width: 160
     height: 45
   parent: {fileID: 907858615550413052}
