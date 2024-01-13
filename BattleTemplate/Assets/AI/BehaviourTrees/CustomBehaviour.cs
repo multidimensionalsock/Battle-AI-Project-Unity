@@ -139,6 +139,66 @@ public class GetMelleeAttack : Leaf
     }
 } //needs testing
 
+[MBTNode(name = "CustomNode/Get Range Attack")]
+public class GetRangeAttack : Leaf
+{
+    public BoolReference somePropertyRef = new BoolReference();
+    //Transform playerRef;
+
+    // These two methods are optional, override only when needed
+    // public override void OnAllowInterrupt() {}
+
+    // This is called every tick as long as node is executed
+    public override NodeResult Execute()
+    {
+        CheckConditions condition = GetComponent<CheckConditions>();
+        if (!condition.rangeAttacks.Any()) { return NodeResult.failure; }
+        condition.nextAttack = condition.rangeAttacks[UnityEngine.Random.Range(0, condition.rangeAttacks.Count)];
+        return NodeResult.success;
+    }
+
+    // These two methods are optional, override only when needed
+    // public override void OnExit() {}
+    // public override void OnDisallowInterrupt() {}
+
+    // Usually there is no needed to override this method
+    public override bool IsValid()
+    {
+        // You can do some custom validation here
+        return !somePropertyRef.isInvalid;
+    }
+} //needs testing
+
+[MBTNode(name = "CustomNode/Get Special Attack")]
+public class GetSpecialAttack : Leaf
+{
+    public BoolReference somePropertyRef = new BoolReference();
+    //Transform playerRef;
+
+    // These two methods are optional, override only when needed
+    // public override void OnAllowInterrupt() {}
+
+    // This is called every tick as long as node is executed
+    public override NodeResult Execute()
+    {
+        CheckConditions condition = GetComponent<CheckConditions>();
+        if (!condition.specialAttacks.Any()) { return NodeResult.failure; }
+        condition.nextAttack = condition.specialAttacks[UnityEngine.Random.Range(0, condition.specialAttacks.Count)];
+        Debug.Log(condition.nextAttack);
+        return NodeResult.success;
+    }
+
+    // These two methods are optional, override only when needed
+    // public override void OnExit() {}
+    // public override void OnDisallowInterrupt() {}
+
+    // Usually there is no needed to override this method
+    public override bool IsValid()
+    {
+        // You can do some custom validation here
+        return !somePropertyRef.isInvalid;
+    }
+} //needs testing
 
 [MBTNode(name = "CustomNode/Navigate To Attack")]
 public class AttackNavigate : Leaf
@@ -152,11 +212,10 @@ public class AttackNavigate : Leaf
     // This is called every tick as long as node is executed
     public override NodeResult Execute()
     {
-        Debug.Log(GetComponent<CheckConditions>().triggerWithPlayer);
         Attack attack = GetComponent<CheckConditions>().nextAttack;
         //if (attack.attackType == AttackType.melee) { GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.seek, GetComponent<CheckConditions>().playerRef); return NodeResult.running; }
         float distanceFromPlayer = Mathf.Abs(Vector3.Distance(GetComponent<CheckConditions>().playerRef.transform.position, transform.position));
-        if (attack.attackType == AttackType.melee )
+        if (attack.attackType == AttackType.melee)
         {
             if (GetComponent<CheckConditions>().triggerWithPlayer)
             {
@@ -173,6 +232,11 @@ public class AttackNavigate : Leaf
             GetComponent<Pathfinding>().SetNewNavigation(attack);
             return NodeResult.running;
 
+        }
+        else if (distanceFromPlayer <= attack.maxDistanceToPerform || distanceFromPlayer >= attack.minDistanceToPerform)
+        {
+            GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
+            return NodeResult.success;
         }
         GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
         return NodeResult.failure;
