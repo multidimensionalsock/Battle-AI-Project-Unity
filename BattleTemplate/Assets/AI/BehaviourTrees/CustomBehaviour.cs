@@ -152,11 +152,21 @@ public class AttackNavigate : Leaf
     // This is called every tick as long as node is executed
     public override NodeResult Execute()
     {
-        Debug.Log("nav to attack");
+        Debug.Log(GetComponent<CheckConditions>().triggerWithPlayer);
         Attack attack = GetComponent<CheckConditions>().nextAttack;
         //if (attack.attackType == AttackType.melee) { GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.seek, GetComponent<CheckConditions>().playerRef); return NodeResult.running; }
         float distanceFromPlayer = Mathf.Abs(Vector3.Distance(GetComponent<CheckConditions>().playerRef.transform.position, transform.position));
-        if (distanceFromPlayer > attack.maxDistanceToPerform || distanceFromPlayer < attack.minDistanceToPerform)
+        if (attack.attackType == AttackType.melee )
+        {
+            if (GetComponent<CheckConditions>().triggerWithPlayer)
+            {
+                GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
+                return NodeResult.success;
+            }
+            GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.seek, GetComponent<CheckConditions>().playerRef);
+            return NodeResult.running;
+        }
+        else if (distanceFromPlayer > attack.maxDistanceToPerform || distanceFromPlayer < attack.minDistanceToPerform)
         {
             //Vector3 PlayerLocation = blackboard.get
             //pathfinderRef.SetNewNavigation(pathfindingState.seek, playerRef);
@@ -165,7 +175,7 @@ public class AttackNavigate : Leaf
 
         }
         GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
-        return NodeResult.success;
+        return NodeResult.failure;
     }
 
     // These two methods are optional, override only when needed
@@ -182,7 +192,7 @@ public class AttackNavigate : Leaf
 
 
 [MBTNode(name = "CustomNode/Perform Attack")]
-public class PerformAttack : Leaf
+public class PerformAttack : Leaf //broken 
 {
     public BoolReference somePropertyRef = new BoolReference();
 
@@ -192,13 +202,18 @@ public class PerformAttack : Leaf
 
     // This is called every tick as long as node is executed
     public override NodeResult Execute()
-    { 
+    {
+        Debug.Log("performattack");
         CheckConditions conditions = GetComponent<CheckConditions>();
         Attack attack = conditions.nextAttack;
         if (attack.attackType == AttackType.special && GetComponent<BattleScript>().GetTP() < attack.TPDecrease) { return NodeResult.failure; }
         if (attack.attackObject == null)
         {
             //perform animation 
+            if (conditions.triggerWithPlayer == true)
+            {
+                conditions.playerRef.GetComponent<BattleScript>().Attack(attack.attackDamage);
+            }
             //attack player via their battle script if still colliding 
             return NodeResult.success;
         }

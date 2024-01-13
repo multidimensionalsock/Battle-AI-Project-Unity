@@ -44,7 +44,7 @@ public class PlayerBattleScript : BattleScript
 
 	void Attacked(float hpLost)
 	{
-
+        Debug.Log("ATTACKED" + gameObject.name);
 	}
 
     private void OnTriggerEnter(Collider other) ///enemies and player need a secondary collision thats a trigger thats the attack radius

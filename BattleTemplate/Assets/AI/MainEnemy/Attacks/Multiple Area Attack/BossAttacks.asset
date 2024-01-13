@@ -18,8 +18,8 @@ MonoBehaviour:
     attackObject: {fileID: 0}
     associatedAnimation: {fileID: 0}
     attackType: 0
-    minDistanceToPerform: 0
-    maxDistanceToPerform: 0
+    minDistanceToPerform: 1
+    maxDistanceToPerform: 1
     freezeTime: 0
     TPDecrease: 0
   - attackName: Simple Distance Attack
