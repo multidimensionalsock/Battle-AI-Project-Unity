@@ -136,14 +136,14 @@ public class Pathfinding : MonoBehaviour
     IEnumerator SeekToAttack(Attack attack)
     {
         float distanceFromPlayer = Mathf.Abs(Vector3.Distance(m_objectToPathfind.transform.position, transform.position));
-        while (distanceFromPlayer > attack.minDistanceToPerform && distanceFromPlayer < attack.maxDistanceToPerform)
+        while (distanceFromPlayer < attack.minDistanceToPerform || distanceFromPlayer > attack.maxDistanceToPerform)
         {
             Vector3 anglefromPlayer = (m_objectToPathfind.transform.position - transform.position).normalized;
             Vector3 pos = m_objectToPathfind.transform.position + (anglefromPlayer * (attack.maxDistanceToPerform - attack.minDistanceToPerform));
             SetNewNavigation(pathfindingState.seek, pos);
             yield return new WaitForFixedUpdate();
         }
-        callAttack.Invoke(attack);
+        callAttack?.Invoke(attack);
     }
 
     IEnumerator FleeObject()

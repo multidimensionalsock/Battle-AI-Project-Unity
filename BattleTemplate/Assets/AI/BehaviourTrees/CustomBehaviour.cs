@@ -45,9 +45,9 @@ public class Seek : Leaf
         // You can do some custom validation here
         return !somePropertyRef.isInvalid;
     }
-}
+} //working
 
-[MBTNode(name = "CustomNode/FacePlayer")]
+[MBTNode(name = "CustomNode/FacePlayer")] //working?
 public class FacePlayer : Leaf
 {
     public BoolReference somePropertyRef = new BoolReference();
@@ -107,7 +107,7 @@ public class Flee : Leaf
         // You can do some custom validation here
         return !somePropertyRef.isInvalid;
     }
-}
+} //need testing
 
 [MBTNode(name = "CustomNode/Get Mellee Attack")]
 public class GetMelleeAttack : Leaf
@@ -137,7 +137,7 @@ public class GetMelleeAttack : Leaf
         // You can do some custom validation here
         return !somePropertyRef.isInvalid;
     }
-}
+} //needs testing
 
 
 [MBTNode(name = "CustomNode/Navigate To Attack")]
@@ -152,8 +152,9 @@ public class AttackNavigate : Leaf
     // This is called every tick as long as node is executed
     public override NodeResult Execute()
     {
-        Debug.Log("Seeking");
+        Debug.Log("nav to attack");
         Attack attack = GetComponent<CheckConditions>().nextAttack;
+        //if (attack.attackType == AttackType.melee) { GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.seek, GetComponent<CheckConditions>().playerRef); return NodeResult.running; }
         float distanceFromPlayer = Mathf.Abs(Vector3.Distance(GetComponent<CheckConditions>().playerRef.transform.position, transform.position));
         if (distanceFromPlayer > attack.maxDistanceToPerform || distanceFromPlayer < attack.minDistanceToPerform)
         {
@@ -177,8 +178,55 @@ public class AttackNavigate : Leaf
         // You can do some custom validation here
         return !somePropertyRef.isInvalid;
     }
-}
+} //needs testing
 
+
+[MBTNode(name = "CustomNode/Perform Attack")]
+public class PerformAttack : Leaf
+{
+    public BoolReference somePropertyRef = new BoolReference();
+
+    // These two methods are optional, override only when needed
+    // public override void OnAllowInterrupt() {}
+    // public override void OnEnter() {}
+
+    // This is called every tick as long as node is executed
+    public override NodeResult Execute()
+    { 
+        CheckConditions conditions = GetComponent<CheckConditions>();
+        Attack attack = conditions.nextAttack;
+        if (attack.attackType == AttackType.special && GetComponent<BattleScript>().GetTP() < attack.TPDecrease) { return NodeResult.failure; }
+        if (attack.attackObject == null)
+        {
+            //perform animation 
+            //attack player via their battle script if still colliding 
+            return NodeResult.success;
+        }
+        else
+        {
+            GameObject attackObj = GameObject.Instantiate(attack.attackObject, transform.position, transform.rotation);
+            Vector3 lookRot = conditions.playerRef.transform.position - transform.position;
+            attackObj.GetComponent<AttackTemplate>().CreateAttack(attack, gameObject.GetComponent<BattleScript>(), Quaternion.LookRotation(lookRot));
+            if (attack.attackType == AttackType.special)
+            {
+                GetComponent<BattleScript>().SetTP(attack.TPDecrease);
+            }
+            return NodeResult.success;
+        }
+        //return NodeResult.failure;
+    }
+
+    // These two methods are optional, override only when needed
+    // public override void OnExit() {}
+    // public override void OnDisallowInterrupt() {}
+
+    // Usually there is no needed to override this method
+    public override bool IsValid()
+    {
+        // You can do some custom validation here
+        return !somePropertyRef.isInvalid;
+    }
+}
 //perform attack fucntion 
 //as it says on the tin 
 
