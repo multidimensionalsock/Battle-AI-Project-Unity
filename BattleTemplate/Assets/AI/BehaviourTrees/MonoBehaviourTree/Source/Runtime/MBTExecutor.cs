@@ -21,6 +21,7 @@ namespace MBT
             monoBehaviourTree.Tick();
         }
 
+
         void OnValidate()
         {
             if (monoBehaviourTree != null && monoBehaviourTree.parent != null)
