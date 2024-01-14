@@ -123,7 +123,7 @@ public class CheckConditions : MonoBehaviour
     IEnumerator SpecialAttackCooldown(Attack attackdata)
     {
         ableToSpecialAttack = false;
-        SpecialAttackCoolDownTimeRemaining = specialAttackCoolDownTime * 50; //fixed update == 50 times a second 
+        SpecialAttackCoolDownTimeRemaining = specialAttackCoolDownTime; 
         while (SpecialAttackCoolDownTimeRemaining > 0)
         {
             if (attacksInTheLastMinute > attacksInLastMinuteToUnlockSpecialAttack)
@@ -136,7 +136,7 @@ public class CheckConditions : MonoBehaviour
                 ableToSpecialAttack = true;
                 yield break;
             }
-            specialAttackCoolDownTime -= 1f * Time.fixedDeltaTime;
+            SpecialAttackCoolDownTimeRemaining -= 1f * Time.fixedDeltaTime;
             yield return new WaitForFixedUpdate();
         }
         ableToSpecialAttack = true;
@@ -145,7 +145,7 @@ public class CheckConditions : MonoBehaviour
     IEnumerator StartSpecialAttackCooldown()
     {
         ableToSpecialAttack = false;
-        SpecialAttackCoolDownTimeRemaining = specialAttackCoolDownTime * 50; //fixed update == 50 times a second 
+        SpecialAttackCoolDownTimeRemaining = specialAttackCoolDownTime; 
         while (SpecialAttackCoolDownTimeRemaining > 0)
         {
             if (attacksInTheLastMinute > attacksInLastMinuteToUnlockSpecialAttack)
@@ -158,7 +158,8 @@ public class CheckConditions : MonoBehaviour
                 ableToSpecialAttack = true;
                 yield break;
             }
-            specialAttackCoolDownTime -= 1f * Time.fixedDeltaTime;
+            SpecialAttackCoolDownTimeRemaining -= 1f * Time.fixedDeltaTime;
+            Debug.Log(SpecialAttackCoolDownTimeRemaining);
             yield return new WaitForFixedUpdate();
         }
         ableToSpecialAttack = true;

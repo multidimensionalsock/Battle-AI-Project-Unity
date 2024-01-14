@@ -23,7 +23,7 @@ public class BTAnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //m_animator.SetFloat("YVelocity", m_agent.velocity.y);
+        //need to check speed maybe bc too sow and stil running
         if (m_agent.velocity.x != 0 || m_agent.velocity.z != 0 ) 
         {
             m_animator.SetBool("Moving", true);
