@@ -43,6 +43,7 @@ public class CheckConditions : MonoBehaviour
         GetComponent<BattleScript>().HPreduce += Attacked;
         ableToAttack = true;
         ableToSpecialAttack = false;
+        StartCoroutine(StartSpecialAttackCooldown());
         transform.GetChild(0).GetComponent<BTAnimationController>().AttackAnimFinished += EndMovementLock;
 
         LastMinuteStatList = new List<float[,]>();
@@ -120,6 +121,28 @@ public class CheckConditions : MonoBehaviour
     }
 
     IEnumerator SpecialAttackCooldown(Attack attackdata)
+    {
+        ableToSpecialAttack = false;
+        SpecialAttackCoolDownTimeRemaining = specialAttackCoolDownTime * 50; //fixed update == 50 times a second 
+        while (SpecialAttackCoolDownTimeRemaining > 0)
+        {
+            if (attacksInTheLastMinute > attacksInLastMinuteToUnlockSpecialAttack)
+            {
+                ableToSpecialAttack = true;
+                yield break;
+            }
+            if (damageInTheLastMinute > damageInLastMinuteToUnlockSpecialAttack)
+            {
+                ableToSpecialAttack = true;
+                yield break;
+            }
+            specialAttackCoolDownTime -= 1f * Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        ableToSpecialAttack = true;
+    }
+
+    IEnumerator StartSpecialAttackCooldown()
     {
         ableToSpecialAttack = false;
         SpecialAttackCoolDownTimeRemaining = specialAttackCoolDownTime * 50; //fixed update == 50 times a second 
