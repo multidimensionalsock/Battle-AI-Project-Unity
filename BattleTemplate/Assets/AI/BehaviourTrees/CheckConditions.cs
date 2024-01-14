@@ -43,7 +43,7 @@ public class CheckConditions : MonoBehaviour
         GetComponent<BattleScript>().HPreduce += Attacked;
         ableToAttack = true;
         ableToSpecialAttack = false;
-        GetComponent<BTAnimationController>().AttackAnimFinished += EndMovementLock;
+        transform.GetChild(0).GetComponent<BTAnimationController>().AttackAnimFinished += EndMovementLock;
 
         LastMinuteStatList = new List<float[,]>();
         float[,] empty = { { 0, 0 } };

@@ -32,6 +32,10 @@ public class BTAnimationController : MonoBehaviour
         {
             m_animator.SetBool("Moving", false);
         }
+        if (m_agent.velocity.y == 0)
+        {
+            m_animator.SetBool("Grounded", true);
+        }
     }
 
     void AttackAnimation(Attack attackData)
@@ -43,9 +47,9 @@ public class BTAnimationController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.tag == "Floor")
         {
-            Debug.Log("grounded");
             m_animator.SetBool("Grounded", true);
         }
     }
@@ -54,7 +58,6 @@ public class BTAnimationController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Floor")
         {
-            Debug.Log("ungrounded");
             m_animator.SetBool("Grounded", false);
         }
     }
