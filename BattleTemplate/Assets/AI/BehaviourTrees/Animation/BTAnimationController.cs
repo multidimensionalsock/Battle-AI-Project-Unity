@@ -14,7 +14,7 @@ public class BTAnimationController : MonoBehaviour
     private void OnEnable()
     {
         m_animator = GetComponent<Animator>();
-        m_agent = GetComponent<NavMeshAgent>(); 
+        m_agent = transform.parent.GetComponent<NavMeshAgent>(); 
         //m_controller = new AnimatorOverrideController(m_animator.runtimeAnimatorController);
         //m_animator.GetComponent<Animator>().runtimeAnimatorController = m_controller;
         GetComponent<CheckConditions>().AttackImplem += AttackAnimation;
@@ -23,15 +23,13 @@ public class BTAnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_animator.SetFloat("YVelocity", m_agent.velocity.y);
+        //m_animator.SetFloat("YVelocity", m_agent.velocity.y);
         if (m_agent.velocity.x != 0 || m_agent.velocity.z != 0 ) 
         {
-            Debug.Log("moving");
             m_animator.SetBool("Moving", true);
         }
         else
         {
-            Debug.Log("umoving");
             m_animator.SetBool("Moving", false);
         }
     }
