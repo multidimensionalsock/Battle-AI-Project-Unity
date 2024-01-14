@@ -16,12 +16,20 @@ public class CheckConditions : MonoBehaviour
     public bool ableToAttack = true;
     public bool ableToSpecialAttack = false;
     public Attack nextAttack;
+    public bool MovementLocked;
+    [SerializeField] float attackCoolDownTime;
+    [SerializeField] float specialAttackCoolDownTime;
+    float SpecialAttackCoolDownTimeRemaining;
 
     public int attacksInTheLastMinute;
     public float damageInTheLastMinute;
     private List<float[,]> LastMinuteStatList;
     private float[,] lastAttackStat; //hp lost, attack no
-    bool attacked = true;
+    bool attacked = false;
+    [SerializeField] float damageInLastMinuteToUnlockSpecialAttack;
+    [SerializeField] float attacksInLastMinuteToUnlockSpecialAttack;
+
+    public event System.Action<Attack> AttackImplem;
 
     public bool GetWasAttacked()
     {
@@ -35,6 +43,7 @@ public class CheckConditions : MonoBehaviour
         GetComponent<BattleScript>().HPreduce += Attacked;
         ableToAttack = true;
         ableToSpecialAttack = false;
+        GetComponent<BTAnimationController>().AttackAnimFinished += EndMovementLock;
 
         //make the list and add 60 empty 2d arrays
     }
@@ -98,6 +107,35 @@ public class CheckConditions : MonoBehaviour
        //make a coroutine for this 
     }
 
+    IEnumerator AttackCooldown(Attack attackdata)
+    {
+        ableToAttack = false;
+        yield return new WaitForSeconds(attackCoolDownTime);
+        ableToAttack = true;
+    }
+
+    IEnumerator SpecialAttackCooldown(Attack attackdata)
+    {
+        ableToSpecialAttack = false;
+        SpecialAttackCoolDownTimeRemaining = specialAttackCoolDownTime * 50; //fixed update == 50 times a second 
+        while (SpecialAttackCoolDownTimeRemaining > 0)
+        {
+            if (attacksInTheLastMinute > attacksInLastMinuteToUnlockSpecialAttack)
+            {
+                ableToSpecialAttack = true;
+                yield break;
+            }
+            if (damageInTheLastMinute > damageInLastMinuteToUnlockSpecialAttack)
+            {
+                ableToSpecialAttack = true;
+                yield break;
+            }
+            specialAttackCoolDownTime -= 1f * Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        ableToSpecialAttack = true;
+    }
+
     private void Attacked(float hpLost)
     {
         float[,] temp = { { hpLost, 1 } };
@@ -123,5 +161,28 @@ public class CheckConditions : MonoBehaviour
             LastMinuteStatList.RemoveAt(0);
             yield return new WaitForSeconds(1.0f);
         }
+    }
+
+    public void CallAttackEvent(Attack attackData)
+    {
+        MovementLocked = true;
+        AttackImplem?.Invoke(attackData);
+        if (attackData.attackType == AttackType.special)
+        {
+            StartCoroutine(SpecialAttackCooldown(attackData));
+            return;
+        }
+        StartCoroutine(AttackCooldown(attackData));
+        if (attackData.attackType == AttackType.melee)
+        {
+            GetComponent<BattleScript>().SetTP(-1);
+        }
+    }
+
+    public void EndMovementLock()
+    {
+        //when animation stops playing 
+        //or if this doesnt work then corotuine here and use the freeze time 
+        MovementLocked = false;
     }
 }

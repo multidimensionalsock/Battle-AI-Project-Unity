@@ -143,6 +143,7 @@ public class Pathfinding : MonoBehaviour
             SetNewNavigation(pathfindingState.seek, pos);
             yield return new WaitForFixedUpdate();
         }
+        SetNewNavigation(pathfindingState.nullptr);
         callAttack?.Invoke(attack);
     }
 

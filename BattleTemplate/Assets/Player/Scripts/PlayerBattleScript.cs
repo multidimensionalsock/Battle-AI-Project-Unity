@@ -21,13 +21,19 @@ public class PlayerBattleScript : BattleScript
 
     void AttackOther(InputAction.CallbackContext context)
     {
+        m_TP += 1;
         currentCollision.Attack(m_Attack);
     }
 
     void SpecialAttackOther(InputAction.CallbackContext context)
     {
-		//currentCollision.SpecialAttack(m_SpecialAttack);
-		//create distance attack
+        //currentCollision.SpecialAttack(m_SpecialAttack);
+        //create distance attack
+        m_TP -= 4;
+        if (m_TP < 4)
+        {
+            return;
+        }
 		GameObject m_attackObj = Instantiate(m_battleObject);
 		m_attackObj.transform.position = transform.position;
 		m_attackObj.GetComponent<SpecialSlashAttack>().CreateAttack(m_Attack, gameObject.transform.GetChild(1).gameObject.transform.rotation);

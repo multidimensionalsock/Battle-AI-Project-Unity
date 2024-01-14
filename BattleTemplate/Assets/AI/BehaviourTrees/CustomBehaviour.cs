@@ -91,9 +91,15 @@ public class Flee : Leaf
     public override NodeResult Execute()
     {
         //check distance from player 
-        //while player is not x distance away then flee or attack 
-        Debug.Log("Flee");
-        GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.flee, GetComponent<CheckConditions>().playerRef);
+        Pathfinding pathfinder = GetComponent<Pathfinding>();
+        CheckConditions checkConditions = GetComponent<CheckConditions>();
+        pathfinder.SetDistanceToFlee(checkConditions.distanceToFlee);
+        if (Mathf.Abs(Vector3.Distance(checkConditions.playerRef.transform.position, transform.position)) < checkConditions.distanceToFlee)
+        {
+            pathfinder.SetNewNavigation(pathfindingState.flee, checkConditions.playerRef);
+            return NodeResult.running;
+
+        }
         return NodeResult.success;
     }
 
@@ -273,20 +279,19 @@ public class PerformAttack : Leaf
         Debug.Log("performattack");
         CheckConditions conditions = GetComponent<CheckConditions>();
         Attack attack = conditions.nextAttack;
+        conditions.CallAttackEvent(attack);
         if (GetComponent<BattleScript>().GetTP() < attack.TPDecrease) { return NodeResult.failure; }
         if (attack.attackObject == null)
         {
-            //perform animation 
             if (conditions.triggerWithPlayer == true)
             {
                 conditions.playerRef.GetComponent<BattleScript>().Attack(attack.attackDamage);
             }
-            //attack player via their battle script if still colliding 
             return NodeResult.success;
         }
         else
         {
-            GameObject attackObj = GameObject.Instantiate(attack.attackObject, transform.position, transform.rotation);
+            GameObject attackObj = Instantiate(attack.attackObject, transform.position, transform.rotation);
             Vector3 lookRot = conditions.playerRef.transform.position - transform.position;
             attackObj.GetComponent<AttackTemplate>().CreateAttack(attack, gameObject.GetComponent<BattleScript>(), Quaternion.LookRotation(lookRot));
             if (attack.attackType == AttackType.special)
@@ -324,6 +329,35 @@ public class DestroySelf : Leaf
     public override NodeResult Execute()
     {
         Destroy(gameObject);
+        return NodeResult.success;
+    }
+
+    // These two methods are optional, override only when needed
+    // public override void OnExit() {}
+    // public override void OnDisallowInterrupt() {}
+
+    // Usually there is no needed to override this method
+    public override bool IsValid()
+    {
+        // You can do some custom validation here
+        return !somePropertyRef.isInvalid;
+    }
+}
+
+[MBTNode(name = "CustomNode/Lock Movement")]
+public class LockMovement : Leaf
+{
+    public BoolReference somePropertyRef = new BoolReference();
+
+    // These two methods are optional, override only when needed
+    // public override void OnAllowInterrupt() {}
+    // public override void OnEnter() {}
+
+    // This is called every tick as long as node is executed
+    public override NodeResult Execute()
+    {
+        if (GetComponent<CheckConditions>() == null) { return NodeResult.failure; }
+        if (GetComponent <CheckConditions>().MovementLocked == true ) { return NodeResult.running; }
         return NodeResult.success;
     }
 
