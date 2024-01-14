@@ -15,9 +15,9 @@ public class BTAnimationController : MonoBehaviour
     {
         m_animator = GetComponent<Animator>();
         m_agent = transform.parent.GetComponent<NavMeshAgent>(); 
-        //m_controller = new AnimatorOverrideController(m_animator.runtimeAnimatorController);
-        //m_animator.GetComponent<Animator>().runtimeAnimatorController = m_controller;
-        GetComponent<CheckConditions>().AttackImplem += AttackAnimation;
+        m_controller = new AnimatorOverrideController(m_animator.runtimeAnimatorController);
+        m_animator.GetComponent<Animator>().runtimeAnimatorController = m_controller;
+        transform.parent.GetComponent<CheckConditions>().AttackImplem += AttackAnimation;
     }
 
     // Update is called once per frame
@@ -37,8 +37,8 @@ public class BTAnimationController : MonoBehaviour
     void AttackAnimation(Attack attackData)
     {
         //code to switch in attack anim once this anim is finisghed anim attack finished needs calling 
-        //m_controller["Attack"] = attackData.associatedAnimation;
-        //m_animator.SetTrigger("Attack");
+        m_controller["Attack"] = attackData.associatedAnimation;
+        m_animator.SetTrigger("Attack");
     }
 
     private void OnCollisionEnter(Collision collision)
