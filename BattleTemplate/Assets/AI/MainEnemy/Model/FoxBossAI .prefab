@@ -505,7 +505,6 @@ GameObject:
   - component: {fileID: 4335497134409209889}
   - component: {fileID: 4335497134409209888}
   - component: {fileID: 8320737426693073223}
-  - component: {fileID: 7523358693754536775}
   - component: {fileID: 8945277033460242803}
   - component: {fileID: 637023003}
   - component: {fileID: 637022994}
@@ -599,23 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerReference: {fileID: 0}
   battlePhases:
-  - {fileID: 7523358693754536775}
---- !u!114 &7523358693754536775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4335497134409209895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26f5f3b48338744ca5ef69a717459e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackData: {fileID: 11400000, guid: 5fc31f575f562504ab924266b051a4b1, type: 2}
-  distanceFromPlayerToFlee: 5
-  powerUpMax: 5
-  timeToAttack: 5
+  - {fileID: 0}
 --- !u!114 &8945277033460242803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,10 +613,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HP: 10
   m_TP: 0
+  m_MaxTP: 0
   m_Attack: 0
   m_Defence: 0
   m_SpecialAttack: 0
   m_SpecialDefence: 0
+  deathByScript: 1
 --- !u!95 &637023003
 Animator:
   serializedVersion: 5

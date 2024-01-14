@@ -3837,7 +3837,7 @@ GameObject:
   - component: {fileID: 459858437}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -3916,6 +3916,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!115 &461181401
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: Flee
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!4 &461478206 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8467678467893697617, guid: 021bfbcf15abb7543a51a487fa1c05ef, type: 3}
@@ -31868,8 +31883,7 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 4840335843324548127, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
-    - {fileID: 7523358693754536775, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
+    - {fileID: 0}
     m_RemovedGameObjects:
     - {fileID: 8318112047171851447, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
     - {fileID: 1179504926332195775, guid: 666ab3c1659f17746a03349182c29d84, type: 3}
@@ -33187,7 +33201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907858615550413009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 4.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33395,6 +33409,10 @@ GameObject:
   - component: {fileID: 907858615550413062}
   - component: {fileID: 907858615550413061}
   - component: {fileID: 907858615550413060}
+  - component: {fileID: 907858615550413066}
+  - component: {fileID: 907858615550413065}
+  - component: {fileID: 907858615550413067}
+  - component: {fileID: 907858615550413068}
   m_Layer: 0
   m_Name: Jacob 1
   m_TagString: Untagged
@@ -33534,7 +33552,7 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 460
-    y: 0
+    y: -120
     width: 160
     height: 45
   parent: {fileID: 0}
@@ -33953,7 +33971,7 @@ MonoBehaviour:
   - {fileID: 907858615550413044}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
-  breakpoint: 1
+  breakpoint: 0
   random: 0
 --- !u!114 &907858615550413047
 MonoBehaviour:
@@ -34063,13 +34081,14 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: -584
-    y: 284
+    x: -580
+    y: 280
     width: 160
     height: 45
   parent: {fileID: 907858615550413047}
   children:
   - {fileID: 907858615550413059}
+  - {fileID: 907858615550413066}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -34399,6 +34418,95 @@ MonoBehaviour:
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
+--- !u!114 &907858615550413065
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 461181401}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Flee
+  rect:
+    serializedVersion: 2
+    x: -820
+    y: 680
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413066}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413066
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Selector
+  rect:
+    serializedVersion: 2
+    x: -580
+    y: 540
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413052}
+  children:
+  - {fileID: 907858615550413065}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 1
+--- !u!95 &907858615550413067
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 830f9554ee1a1e04099b992bcaabcacd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &907858615550413068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3302627891a718146909fe707b4baa70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &970637480377313901
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -45,7 +45,12 @@ public class CheckConditions : MonoBehaviour
         ableToSpecialAttack = false;
         GetComponent<BTAnimationController>().AttackAnimFinished += EndMovementLock;
 
-        //make the list and add 60 empty 2d arrays
+        LastMinuteStatList = new List<float[,]>();
+        float[,] empty = { { 0, 0 } };
+        for (int i = 0; i < 60; i++)
+        {
+            LastMinuteStatList.Add(empty);
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
