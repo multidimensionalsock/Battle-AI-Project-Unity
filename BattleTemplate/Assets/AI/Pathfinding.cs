@@ -18,11 +18,12 @@ public class Pathfinding : MonoBehaviour
     private NavMeshAgent m_agent = null;
 	pathfindingState m_currentState;
 	Vector3 m_targetPosition;
-	float m_distanceToFlee;
-	GameObject m_objectToPathfind;
-    public event System.Action callAttack;
+    float m_distanceToFlee;
+	[SerializeField] GameObject m_objectToPathfind;
+    public event System.Action<Attack> callAttack;
 
-    private void Start()
+
+    private void OnEnable()
     {
         m_agent = GetComponent<NavMeshAgent>();
     }
@@ -34,7 +35,8 @@ public class Pathfinding : MonoBehaviour
 
 	public void SetNewNavigation(pathfindingState newState, GameObject objectPos)
 	{
-		m_objectToPathfind = objectPos;
+        if (objectPos != null)
+		    m_objectToPathfind = objectPos;
         StopAllCoroutines();
 		switch (newState)
 		{
@@ -44,12 +46,15 @@ public class Pathfinding : MonoBehaviour
 			case pathfindingState.flee:
                 StartCoroutine("FleeObject");
                 break;
-			case pathfindingState.evade:
+            case pathfindingState.wander:
+                StartCoroutine("Wander");
+                break;
+            case pathfindingState.evade:
 				Evade();
                 break;
 			case pathfindingState.nullptr:
-				StopAllCoroutines();
-				break;
+                StopAllCoroutines();
+                break;
 
 		}
 	}
@@ -76,6 +81,7 @@ public class Pathfinding : MonoBehaviour
     public void SetNewNavigation(pathfindingState newState)
     {
         m_currentState = newState;
+        StopAllCoroutines();
         switch (newState)
         {
             case pathfindingState.wander:
@@ -88,10 +94,10 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
-    public void SetNewNavigation(Attack attack, float distance)
+    public void SetNewNavigation(Attack attack)
     {
-        m_currentState = pathfindingState.seekAttack;
-        SeekToAttack(attack, distance);
+        StopAllCoroutines();
+        StartCoroutine(SeekToAttack(attack));
     }
 
     IEnumerator SeekObject()
@@ -100,9 +106,10 @@ public class Pathfinding : MonoBehaviour
 		//run towards target location
 		while (m_currentState == pathfindingState.seek)
 		{
+            if (m_objectToPathfind == null) { m_currentState = pathfindingState.nullptr; m_targetPosition = transform.position; break; }
 			m_targetPosition = m_objectToPathfind.transform.position;
             m_agent.SetDestination(m_targetPosition);
-            if (gameObject.transform.position == m_targetPosition)
+            if (transform.position == m_targetPosition)
 			{
 				m_currentState = pathfindingState.nullptr;
 			}
@@ -126,16 +133,18 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
-    IEnumerator SeekToAttack(Attack attack, float distance)
+    IEnumerator SeekToAttack(Attack attack)
     {
         float distanceFromPlayer = Mathf.Abs(Vector3.Distance(m_objectToPathfind.transform.position, transform.position));
-        while (distanceFromPlayer > attack.minDistanceToPerform && distanceFromPlayer < attack.maxDistanceToPerform)
+        while (distanceFromPlayer < attack.minDistanceToPerform || distanceFromPlayer > attack.maxDistanceToPerform)
         {
             Vector3 anglefromPlayer = (m_objectToPathfind.transform.position - transform.position).normalized;
             Vector3 pos = m_objectToPathfind.transform.position + (anglefromPlayer * (attack.maxDistanceToPerform - attack.minDistanceToPerform));
             SetNewNavigation(pathfindingState.seek, pos);
             yield return new WaitForFixedUpdate();
         }
+        SetNewNavigation(pathfindingState.nullptr);
+        callAttack?.Invoke(attack);
     }
 
     IEnumerator FleeObject()
@@ -228,27 +237,45 @@ public class Pathfinding : MonoBehaviour
 
 	IEnumerator Wander()
 	{
-		Vector2 pointInCircle = Random.insideUnitCircle * 7;
-        m_targetPosition = new Vector3(pointInCircle.x, -1.51f, pointInCircle.y);
+        m_targetPosition = FindRandomPosition();
         m_agent.SetDestination(m_targetPosition);
-        Debug.Log(m_targetPosition);
         while (m_currentState == pathfindingState.wander)
 		{
-			if ((transform.position - m_targetPosition).magnitude < 0.5f)
-				
+			if (Mathf.Abs(transform.position.x - m_targetPosition.x) <= 0.1f && Mathf.Abs(transform.position.z - m_targetPosition.z) <= 0.1f)
 			{
-                
-                pointInCircle = Random.insideUnitCircle * 10;
-                m_targetPosition = new Vector3(pointInCircle.x, -1.51f, pointInCircle.y);
+                m_targetPosition = FindRandomPosition();
                 m_agent.SetDestination(m_targetPosition);
-				Debug.Log("resrt pos" + m_targetPosition);
             }
 			yield return new WaitForFixedUpdate();
 		}
 	}
 
-	//IEnumerator Repel()
-	//{
-	//	//check if anything is in trigger collision distance, if so repel from it 
-	//}
+    Vector3 FindRandomPosition()
+    {
+        Vector3 pos;
+        Vector2 pointInCircle = Random.insideUnitCircle * 10f;
+        pos = new Vector3(pointInCircle.x, -1.51f, pointInCircle.y);
+
+        while (Mathf.Abs((pos - m_objectToPathfind.transform.position).magnitude) < 5f)
+        {
+            pointInCircle = Random.insideUnitCircle * 10f;
+            pos = new Vector3(pointInCircle.x, -1.51f, pointInCircle.y);
+        }
+        
+        return pos;
+
+        //still causes issues with flee
+    }
+
+    //IEnumerator Repel()
+    //{
+    //	//check if anything is in trigger collision distance, if so repel from it 
+    //}
+
+    public void CallAttackAnimation(Attack attack)
+    {
+        callAttack(attack);
+    }
+
+    //do colisions here to tell custrom behaviours if collidin with player, if you are trhen no longer need to seek and set colliding var to true 
 }
