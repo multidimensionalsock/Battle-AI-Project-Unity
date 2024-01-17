@@ -139,7 +139,7 @@ public class Pathfinding : MonoBehaviour
         while (distanceFromPlayer < attack.minDistanceToPerform || distanceFromPlayer > attack.maxDistanceToPerform)
         {
             Vector3 anglefromPlayer = (m_objectToPathfind.transform.position - transform.position).normalized;
-            Vector3 pos = m_objectToPathfind.transform.position + (anglefromPlayer * (attack.maxDistanceToPerform - attack.minDistanceToPerform));
+            Vector3 pos = m_objectToPathfind.transform.position + (anglefromPlayer * ((attack.maxDistanceToPerform + attack.minDistanceToPerform)/2));
             SetNewNavigation(pathfindingState.seek, pos);
             yield return new WaitForFixedUpdate();
         }

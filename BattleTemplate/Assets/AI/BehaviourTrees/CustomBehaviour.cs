@@ -357,7 +357,7 @@ public class LockMovement : Leaf
     public override NodeResult Execute()
     {
         if (GetComponent<CheckConditions>() == null) { return NodeResult.failure; }
-        if (GetComponent <CheckConditions>().MovementLocked == true ) { return NodeResult.running; }
+        if (GetComponent<CheckConditions>().MovementLocked == true ) { return NodeResult.running; }
         return NodeResult.success;
     }
 
@@ -371,6 +371,55 @@ public class LockMovement : Leaf
         // You can do some custom validation here
         return !somePropertyRef.isInvalid;
     }
+}
+
+[MBTNode(name = "CustomNode/Wait Mode")]
+public class StandStill : Leaf
+{
+	public BoolReference somePropertyRef = new BoolReference();
+	float timeToFreeze;
+
+	// These two methods are optional, override only when needed
+	// public override void OnAllowInterrupt() {}
+	public override void OnEnter() 
+	{
+		//get distance from player and player velocity
+		//work out how long it will take the player to get to you
+		//then -1 so you have time to make a choice 
+		//this is how long you freeze for 
+		GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
+		CheckConditions conditions= GetComponent<CheckConditions>();
+		float distanceFromPlayer = Mathf.Abs(Vector3.Distance(conditions.playerRef.transform.position, transform.position));
+		float playerSpeed = conditions.playerRef.GetComponent<Rigidbody>().velocity.magnitude;
+		timeToFreeze = (distanceFromPlayer / playerSpeed) - 1;
+		if (playerSpeed == 0)
+		{
+			timeToFreeze = distanceFromPlayer;
+		}
+
+	}
+
+	// This is called every tick as long as node is executed
+	public override NodeResult Execute()
+	{
+		timeToFreeze -= Time.deltaTime;
+		if (timeToFreeze <-0)
+		{
+			return NodeResult.success;
+		}
+		return NodeResult.running;
+	}
+
+	// These two methods are optional, override only when needed
+	// public override void OnExit() {}
+	// public override void OnDisallowInterrupt() {}
+
+	// Usually there is no needed to override this method
+	public override bool IsValid()
+	{
+		// You can do some custom validation here
+		return !somePropertyRef.isInvalid;
+	}
 }
 
 #endregion

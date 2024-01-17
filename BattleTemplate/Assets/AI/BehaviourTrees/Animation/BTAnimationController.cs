@@ -13,16 +13,17 @@ public class BTAnimationController : MonoBehaviour
     // Start is called before the first frame update
     private void OnEnable()
     {
-        m_animator = GetComponent<Animator>();
-        m_agent = transform.parent.GetComponent<NavMeshAgent>(); 
+		m_agent = transform.parent.GetComponent<NavMeshAgent>();
+		m_animator = GetComponent<Animator>();
         m_controller = new AnimatorOverrideController(m_animator.runtimeAnimatorController);
-        m_animator.GetComponent<Animator>().runtimeAnimatorController = m_controller;
+        m_animator.runtimeAnimatorController = m_controller;
         transform.parent.GetComponent<CheckConditions>().AttackImplem += AttackAnimation;
     }
 
     // Update is called once per frame
     void Update()
     {
+		transform.rotation = transform.parent.transform.rotation;
         //need to check speed maybe bc too sow and stil running
         if (m_agent.velocity.x != 0 || m_agent.velocity.z != 0 ) 
         {

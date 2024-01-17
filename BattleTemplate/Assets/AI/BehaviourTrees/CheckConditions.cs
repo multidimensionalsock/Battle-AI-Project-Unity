@@ -20,6 +20,7 @@ public class CheckConditions : MonoBehaviour
     [SerializeField] float attackCoolDownTime;
     [SerializeField] float specialAttackCoolDownTime;
     float SpecialAttackCoolDownTimeRemaining;
+	[SerializeField] float lockMovementTime;
 
     public int attacksInTheLastMinute;
     public float damageInTheLastMinute;
@@ -31,7 +32,12 @@ public class CheckConditions : MonoBehaviour
 
     public event System.Action<Attack> AttackImplem;
 
-    public bool GetWasAttacked()
+	private void Update()
+	{
+		Debug.Log(MovementLocked);
+	}
+
+	public bool GetWasAttacked()
     {
         if (attacked == false) return false;
         if (attacked == true) attacked = false; return true;
@@ -44,7 +50,7 @@ public class CheckConditions : MonoBehaviour
         ableToAttack = true;
         ableToSpecialAttack = false;
         StartCoroutine(StartSpecialAttackCooldown());
-        transform.GetChild(0).GetComponent<BTAnimationController>().AttackAnimFinished += EndMovementLock;
+        //transform.GetChild(0).GetComponent<BTAnimationController>().AttackAnimFinished += EndMovementLock;
 
         LastMinuteStatList = new List<float[,]>();
         float[,] empty = { { 0, 0 } };
@@ -194,7 +200,7 @@ public class CheckConditions : MonoBehaviour
 
     public void CallAttackEvent(Attack attackData)
     {
-        MovementLocked = true;
+        StartCoroutine(MovementLockCoroutine(attackData.freezeTime));
         AttackImplem?.Invoke(attackData);
         if (attackData.attackType == AttackType.special)
         {
@@ -208,10 +214,10 @@ public class CheckConditions : MonoBehaviour
         }
     }
 
-    public void EndMovementLock()
+    IEnumerator MovementLockCoroutine(float time)
     {
-        //when animation stops playing 
-        //or if this doesnt work then corotuine here and use the freeze time 
+        MovementLocked = true;
+        yield return new WaitForSeconds(lockMovementTime + time);
         MovementLocked = false;
     }
 }

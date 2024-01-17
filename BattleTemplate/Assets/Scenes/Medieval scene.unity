@@ -128,21 +128,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2965727061204253852, guid: 787d900468610e0488384494dc77d1b1, type: 3}
   m_PrefabInstance: {fileID: 1718793468}
   m_PrefabAsset: {fileID: 0}
---- !u!115 &2066969
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: GetSpecialAttack
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!4 &2930520 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5495456392353531464, guid: 7bbef63b5bd52bc4bb03cdc6cbb94a6f, type: 3}
@@ -295,21 +280,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5495456392353531464, guid: 7bbef63b5bd52bc4bb03cdc6cbb94a6f, type: 3}
   m_PrefabInstance: {fileID: 1008561420}
   m_PrefabAsset: {fileID: 0}
---- !u!115 &57416399
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: GetMelleeAttack
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &58952324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -635,21 +605,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
   m_PrefabInstance: {fileID: 1675955420}
   m_PrefabAsset: {fileID: 0}
---- !u!115 &80633032
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: Flee
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!4 &80921373 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2426846095409649158, guid: a917f6843cc222145828cefe2f799e67, type: 3}
@@ -777,21 +732,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2e14d87834a62041a457f0dcc62b265, type: 3}
---- !u!115 &96005024
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: DeathCheck
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &99648152
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2366,41 +2306,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20613689bafb4544cb770f64d1a03714, type: 3}
---- !u!115 &235605645
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: PerformAttack
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!4 &244840733 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3748976667609132821, guid: 20613689bafb4544cb770f64d1a03714, type: 3}
   m_PrefabInstance: {fileID: 1612942270}
   m_PrefabAsset: {fileID: 0}
---- !u!115 &248612888
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: TriggeringPlayer
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!4 &248947574 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
@@ -2665,6 +2575,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3148b0057757c5e49a1d7284d605de90, type: 3}
+--- !u!115 &329522605
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: PerformAttack
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &334152128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3961,21 +3886,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!115 &461181401
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: Flee
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!4 &461478206 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8467678467893697617, guid: 021bfbcf15abb7543a51a487fa1c05ef, type: 3}
@@ -4057,21 +3967,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
---- !u!115 &496255482
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: DestroySelf
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!4 &514433270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
@@ -4500,16 +4395,73 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 629191978634209992, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a66d4127f4ebf74bb776ebe411de10d, type: 2}
+    - target: {fileID: 629191978634209992, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a66d4127f4ebf74bb776ebe411de10d, type: 2}
     - target: {fileID: 919132149155446097, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
       propertyPath: m_Name
       value: T-Pose(3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1045297075425545389, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a66d4127f4ebf74bb776ebe411de10d, type: 2}
+    - target: {fileID: 1045297075425545389, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a66d4127f4ebf74bb776ebe411de10d, type: 2}
+    - target: {fileID: 1720966537516070881, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a96cc11f3d4e92a4e8cc56b4eba9601d, type: 2}
+    - target: {fileID: 1720966537516070881, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: a96cc11f3d4e92a4e8cc56b4eba9601d, type: 2}
+    - target: {fileID: 3252307730639242730, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a66d4127f4ebf74bb776ebe411de10d, type: 2}
+    - target: {fileID: 3252307730639242730, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a66d4127f4ebf74bb776ebe411de10d, type: 2}
+    - target: {fileID: 3274461008682179344, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a66d4127f4ebf74bb776ebe411de10d, type: 2}
+    - target: {fileID: 3274461008682179344, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a66d4127f4ebf74bb776ebe411de10d, type: 2}
+    - target: {fileID: 4277358412046013989, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a66d4127f4ebf74bb776ebe411de10d, type: 2}
+    - target: {fileID: 4277358412046013989, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a66d4127f4ebf74bb776ebe411de10d, type: 2}
     - target: {fileID: 5866666021909216657, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 830f9554ee1a1e04099b992bcaabcacd, type: 2}
+    - target: {fileID: 6241316887286113319, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a66d4127f4ebf74bb776ebe411de10d, type: 2}
+    - target: {fileID: 6241316887286113319, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a66d4127f4ebf74bb776ebe411de10d, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 65702495048144492, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
@@ -4686,6 +4638,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
+--- !u!115 &566109041
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: LockMovement
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &585462453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5062,21 +5029,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a917f6843cc222145828cefe2f799e67, type: 3}
---- !u!115 &643218427
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: PerformAttack
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!4 &648386838 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
@@ -5346,6 +5298,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bbef63b5bd52bc4bb03cdc6cbb94a6f, type: 3}
+--- !u!115 &684852348
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: PerformAttack
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &693331587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5661,6 +5628,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
+--- !u!115 &738040089
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: Flee
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1 &739234200
 GameObject:
   m_ObjectHideFlags: 3
@@ -5743,21 +5725,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8b78ac948f05a46a6d8339a503172b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!115 &740516613
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: AttackNavigate
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &747434402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6573,41 +6540,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1529183203402686330, guid: 3148b0057757c5e49a1d7284d605de90, type: 3}
   m_PrefabInstance: {fileID: 889666608}
   m_PrefabAsset: {fileID: 0}
---- !u!115 &836707496
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: FacePlayer
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!4 &836733817 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1164602935277360391, guid: d90c349721b4e694fad80a76d87b2578, type: 3}
   m_PrefabInstance: {fileID: 2025447108}
   m_PrefabAsset: {fileID: 0}
---- !u!115 &839383896
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: GetRangeAttack
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!4 &841305916 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
@@ -6958,21 +6895,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20613689bafb4544cb770f64d1a03714, type: 3}
---- !u!115 &862377169
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: AttackNavigate
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!4 &862556084 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
@@ -7242,6 +7164,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bbef63b5bd52bc4bb03cdc6cbb94a6f, type: 3}
+--- !u!115 &900624245
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: StandStill
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!4 &906528774 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
@@ -7661,21 +7598,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
---- !u!115 &955885048
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: NotTriggeringPlayer
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &964031368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9704,6 +9626,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
+--- !u!115 &1245124602
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: AttackNavigate
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &1248410104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9990,21 +9927,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bbef63b5bd52bc4bb03cdc6cbb94a6f, type: 3}
---- !u!115 &1268658706
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: PerformAttack
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &1274955162
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10604,21 +10526,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
---- !u!115 &1343557651
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: AttackCheck
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &1344110475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11076,21 +10983,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b66385ecc3e6b34e82ee78058e90aea, type: 3}
---- !u!115 &1416181823
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: GetMelleeAttack
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &1429245086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11482,6 +11374,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1529183203402686330, guid: 3148b0057757c5e49a1d7284d605de90, type: 3}
   m_PrefabInstance: {fileID: 440435078}
   m_PrefabAsset: {fileID: 0}
+--- !u!115 &1466318557
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: GetMelleeAttack
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!4 &1467013205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1529183203402686330, guid: 3148b0057757c5e49a1d7284d605de90, type: 3}
@@ -11770,7 +11677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ced1bdf0d1eb3e42a27886a23d14a1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HP: 10
+  m_HP: 50
   m_TP: 4
   m_MaxTP: 20
   m_Attack: 2
@@ -11992,21 +11899,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
   m_PrefabInstance: {fileID: 1759757113}
   m_PrefabAsset: {fileID: 0}
---- !u!115 &1562684986
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: GetMelleeAttack
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!4 &1568963446 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3748976667609132821, guid: 20613689bafb4544cb770f64d1a03714, type: 3}
@@ -12357,6 +12249,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
   m_PrefabInstance: {fileID: 482577049}
   m_PrefabAsset: {fileID: 0}
+--- !u!115 &1632256779
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: LockMovement
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!4 &1632992880 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5495456392353531464, guid: 7bbef63b5bd52bc4bb03cdc6cbb94a6f, type: 3}
@@ -12423,11 +12330,41 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
+--- !u!115 &1635636679
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: LockMovement
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!4 &1637264786 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2426846095409649158, guid: a917f6843cc222145828cefe2f799e67, type: 3}
   m_PrefabInstance: {fileID: 1725443045}
   m_PrefabAsset: {fileID: 0}
+--- !u!115 &1644741889
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: StandStill
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!4 &1646457226 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9103171939639073637, guid: c80fbf850ad97a34694544deb65b7fa2, type: 3}
@@ -13570,21 +13507,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 787d900468610e0488384494dc77d1b1, type: 3}
---- !u!115 &1780593127
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: GetSpecialAttack
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!4 &1782270865 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3748976667609132821, guid: 20613689bafb4544cb770f64d1a03714, type: 3}
@@ -31410,6 +31332,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20613689bafb4544cb770f64d1a03714, type: 3}
+--- !u!115 &1867124894
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: PerformAttack
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &1868894679
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31679,6 +31616,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
+--- !u!115 &1913134073
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: TriggeringPlayer
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &1927317046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32160,6 +32112,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3148b0057757c5e49a1d7284d605de90, type: 3}
+--- !u!115 &2007661609
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: NotTriggeringPlayer
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &2011059554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32226,21 +32193,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
   m_PrefabInstance: {fileID: 1207480486}
   m_PrefabAsset: {fileID: 0}
---- !u!115 &2015529576
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: TPCheck
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!4 &2017000675 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5495456392353531464, guid: 7bbef63b5bd52bc4bb03cdc6cbb94a6f, type: 3}
@@ -32703,7 +32655,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3385958044552582957, guid: 2b66385ecc3e6b34e82ee78058e90aea, type: 3}
   m_PrefabInstance: {fileID: 723190863}
   m_PrefabAsset: {fileID: 0}
---- !u!115 &2078704050
+--- !u!115 &2077387360
 MonoScript:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -32715,7 +32667,7 @@ MonoScript:
   m_Icon: {fileID: 0}
   m_Type: 0
   m_ExecutionOrder: 0
-  m_ClassName: PerformAttack
+  m_ClassName: GetSpecialAttack
   m_Namespace: 
   m_AssemblyName: Assembly-CSharp
 --- !u!4 &2084970425 stripped
@@ -32855,6 +32807,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
+--- !u!115 &2097914162
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: GetRangeAttack
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!4 &2116639913 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
@@ -33012,6 +32979,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
   m_PrefabInstance: {fileID: 938898011}
   m_PrefabAsset: {fileID: 0}
+--- !u!115 &2140204678
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: AttackNavigate
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!4 &2141729243 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
@@ -33147,7 +33129,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907858615550413009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.41, z: 0}
+  m_LocalPosition: {x: 0, y: 1.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33174,42 +33156,33 @@ GameObject:
   - component: {fileID: 907858615550413020}
   - component: {fileID: 907858615550413023}
   - component: {fileID: 907858615550413028}
-  - component: {fileID: 907858615550413030}
   - component: {fileID: 907858615550413035}
-  - component: {fileID: 907858615550413048}
-  - component: {fileID: 907858615550413047}
-  - component: {fileID: 907858615550413045}
-  - component: {fileID: 907858615550413044}
-  - component: {fileID: 907858615550413043}
-  - component: {fileID: 907858615550413042}
-  - component: {fileID: 907858615550413041}
-  - component: {fileID: 907858615550413040}
-  - component: {fileID: 907858615550413039}
-  - component: {fileID: 907858615550413038}
-  - component: {fileID: 907858615550413037}
-  - component: {fileID: 907858615550413036}
-  - component: {fileID: 907858615550413051}
   - component: {fileID: 907858615550413052}
-  - component: {fileID: 907858615550413059}
-  - component: {fileID: 907858615550413057}
-  - component: {fileID: 907858615550413056}
+  - component: {fileID: 907858615550413051}
+  - component: {fileID: 907858615550413050}
+  - component: {fileID: 907858615550413049}
   - component: {fileID: 907858615550413055}
-  - component: {fileID: 907858615550413054}
-  - component: {fileID: 907858615550413064}
-  - component: {fileID: 907858615550413063}
-  - component: {fileID: 907858615550413062}
   - component: {fileID: 907858615550413061}
   - component: {fileID: 907858615550413060}
   - component: {fileID: 907858615550413066}
   - component: {fileID: 907858615550413065}
-  - component: {fileID: 907858615550413075}
-  - component: {fileID: 907858615550413074}
-  - component: {fileID: 907858615550413073}
-  - component: {fileID: 907858615550413072}
+  - component: {fileID: 907858615550413064}
+  - component: {fileID: 907858615550413063}
+  - component: {fileID: 907858615550413062}
   - component: {fileID: 907858615550413071}
   - component: {fileID: 907858615550413070}
   - component: {fileID: 907858615550413069}
+  - component: {fileID: 907858615550413068}
+  - component: {fileID: 907858615550413067}
+  - component: {fileID: 907858615550413072}
+  - component: {fileID: 907858615550413075}
+  - component: {fileID: 907858615550413074}
   - component: {fileID: 907858615550413076}
+  - component: {fileID: 907858615550413077}
+  - component: {fileID: 907858615550413079}
+  - component: {fileID: 907858615550413078}
+  - component: {fileID: 907858615550413081}
+  - component: {fileID: 907858615550413080}
   m_Layer: 0
   m_Name: Jacob 1
   m_TagString: Untagged
@@ -33242,7 +33215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 907858615550413056}
+  selectedEditorNode: {fileID: 0}
   repeatOnFinish: 1
   maxExecutionsPerTick: 1
   parent: {fileID: 0}
@@ -33321,7 +33294,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -33348,13 +33321,13 @@ MonoBehaviour:
   title: Root
   rect:
     serializedVersion: 2
-    x: 460
-    y: -120
+    x: 80
+    y: -100
     width: 160
     height: 45
   parent: {fileID: 0}
   children:
-  - {fileID: 907858615550413048}
+  - {fileID: 907858615550413075}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -33406,6 +33379,7 @@ MonoBehaviour:
   MovementLocked: 0
   attackCoolDownTime: 2
   specialAttackCoolDownTime: 20
+  lockMovementTime: 0
   attacksInTheLastMinute: 0
   damageInTheLastMinute: 0
   damageInLastMinuteToUnlockSpecialAttack: 0
@@ -33424,38 +33398,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: DistanceToFlee
   val: 0
---- !u!114 &907858615550413030
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 248612888}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Not in player Trigger Zone?
-  rect:
-    serializedVersion: 2
-    x: 460
-    y: 240
-    width: 160
-    height: 59
-  parent: {fileID: 907858615550413048}
-  children:
-  - {fileID: 907858615550413045}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  abort: 0
-  somePropertyRef:
-    useConstant: 0
-    mode: 1
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
 --- !u!114 &907858615550413035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33476,97 +33418,7 @@ MonoBehaviour:
   m_SpecialAttack: 5
   m_SpecialDefence: 5
   deathByScript: 0
---- !u!114 &907858615550413036
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1268658706}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Perform Attack
-  rect:
-    serializedVersion: 2
-    x: 580
-    y: 520
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413039}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  somePropertyRef:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
---- !u!114 &907858615550413037
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 862377169}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Navigate To Attack
-  rect:
-    serializedVersion: 2
-    x: 480
-    y: 600
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413039}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  somePropertyRef:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
---- !u!114 &907858615550413038
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 839383896}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Get Range Attack
-  rect:
-    serializedVersion: 2
-    x: 380
-    y: 520
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413039}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  somePropertyRef:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
---- !u!114 &907858615550413039
+--- !u!114 &907858615550413049
 MonoBehaviour:
   m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
@@ -33581,256 +33433,51 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: 460
-    y: 460
+    x: 360
+    y: 280
     width: 160
     height: 45
-  parent: {fileID: 907858615550413045}
+  parent: {fileID: 907858615550413077}
   children:
-  - {fileID: 907858615550413038}
-  - {fileID: 907858615550413037}
-  - {fileID: 907858615550413036}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
---- !u!114 &907858615550413040
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1268658706}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Perform Attack
-  rect:
-    serializedVersion: 2
-    x: 200
-    y: 520
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413043}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  somePropertyRef:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
---- !u!114 &907858615550413041
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 862377169}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Navigate To Attack
-  rect:
-    serializedVersion: 2
-    x: 120
-    y: 580
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413043}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  somePropertyRef:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
---- !u!114 &907858615550413042
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1780593127}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Get Special Attack
-  rect:
-    serializedVersion: 2
-    x: 40
-    y: 520
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413043}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  somePropertyRef:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
---- !u!114 &907858615550413043
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Sequence
-  rect:
-    serializedVersion: 2
-    x: 120
-    y: 460
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413045}
-  children:
-  - {fileID: 907858615550413042}
-  - {fileID: 907858615550413041}
-  - {fileID: 907858615550413040}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
---- !u!114 &907858615550413044
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d13909f3077cbdf47b6431f5ee6db39a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Seek
-  rect:
-    serializedVersion: 2
-    x: 780
-    y: 460
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413045}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  somePropertyRef:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
---- !u!114 &907858615550413045
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Selector
-  rect:
-    serializedVersion: 2
-    x: 460
-    y: 320
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413030}
-  children:
-  - {fileID: 907858615550413043}
-  - {fileID: 907858615550413039}
-  - {fileID: 907858615550413044}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
---- !u!114 &907858615550413047
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1343557651}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Was attacked?
-  rect:
-    serializedVersion: 2
-    x: -580
-    y: 220
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413048}
-  children:
-  - {fileID: 907858615550413052}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  abort: 0
-  somePropertyRef:
-    useConstant: 0
-    mode: 1
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
---- !u!114 &907858615550413048
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Selector
-  rect:
-    serializedVersion: 2
-    x: 460
-    y: 100
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413017}
-  children:
-  - {fileID: 907858615550413047}
-  - {fileID: 907858615550413064}
-  - {fileID: 907858615550413030}
   - {fileID: 907858615550413051}
+  - {fileID: 907858615550413050}
+  - {fileID: 907858615550413055}
+  - {fileID: 907858615550413079}
+  - {fileID: 907858615550413081}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
   random: 0
+--- !u!114 &907858615550413050
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 684852348}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Perform Attack
+  rect:
+    serializedVersion: 2
+    x: 220
+    y: 420
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413049}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
 --- !u!114 &907858615550413051
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -33840,26 +33487,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 907858615550413009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 955885048}
+  m_Script: {fileID: 1466318557}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: In player Trigger Zone?
+  title: Get Mellee Attack
   rect:
     serializedVersion: 2
-    x: 980
-    y: 220
+    x: 180
+    y: 340
     width: 160
     height: 45
-  parent: {fileID: 907858615550413048}
-  children:
-  - {fileID: 907858615550413055}
+  parent: {fileID: 907858615550413049}
+  children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  abort: 0
   somePropertyRef:
     useConstant: 0
-    mode: 1
+    mode: 0
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
@@ -33872,51 +33517,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 907858615550413009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Script: {fileID: 2007661609}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Sequence
+  title: In player Trigger Zone?
   rect:
     serializedVersion: 2
-    x: -580
-    y: 280
+    x: 360
+    y: 140
     width: 160
     height: 45
-  parent: {fileID: 907858615550413047}
+  parent: {fileID: 907858615550413075}
   children:
-  - {fileID: 907858615550413059}
-  - {fileID: 907858615550413066}
+  - {fileID: 907858615550413077}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  random: 0
---- !u!114 &907858615550413054
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 643218427}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Perform Attack
-  rect:
-    serializedVersion: 2
-    x: 1060
-    y: 420
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413055}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
+  abort: 0
   somePropertyRef:
     useConstant: 0
-    mode: 0
+    mode: 1
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
@@ -33929,46 +33549,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 907858615550413009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Script: {fileID: 566109041}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Sequence
+  title: Lock Movement
   rect:
     serializedVersion: 2
-    x: 980
-    y: 280
+    x: 360
+    y: 480
     width: 160
     height: 45
-  parent: {fileID: 907858615550413051}
-  children:
-  - {fileID: 907858615550413057}
-  - {fileID: 907858615550413056}
-  - {fileID: 907858615550413054}
-  - {fileID: 907858615550413076}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
---- !u!114 &907858615550413056
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 57416399}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Get Mellee Attack
-  rect:
-    serializedVersion: 2
-    x: 880
-    y: 420
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413055}
+  parent: {fileID: 907858615550413049}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -33976,68 +33567,6 @@ MonoBehaviour:
   somePropertyRef:
     useConstant: 0
     mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
---- !u!114 &907858615550413057
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 836707496}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: FacePlayer
-  rect:
-    serializedVersion: 2
-    x: 780
-    y: 340
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413055}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  somePropertyRef:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
---- !u!114 &907858615550413059
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 96005024}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Check if AI dead?
-  rect:
-    serializedVersion: 2
-    x: -900
-    y: 420
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413052}
-  children:
-  - {fileID: 907858615550413069}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  abort: 0
-  somePropertyRef:
-    useConstant: 0
-    mode: 1
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
@@ -34050,27 +33579,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 907858615550413009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 2078704050}
+  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Perform Attack
+  title: Selector
   rect:
     serializedVersion: 2
-    x: -180
-    y: 540
+    x: -220
+    y: 320
     width: 160
     height: 45
   parent: {fileID: 907858615550413061}
-  children: []
+  children:
+  - {fileID: 907858615550413074}
+  - {fileID: 907858615550413076}
+  - {fileID: 907858615550413066}
+  - {fileID: 907858615550413071}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  somePropertyRef:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
+  random: 1
 --- !u!114 &907858615550413061
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -34080,25 +33608,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 907858615550413009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Script: {fileID: 1913134073}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Sequence
+  title: Not in player Trigger Zone?
   rect:
     serializedVersion: 2
     x: -220
-    y: 360
+    y: 220
     width: 160
-    height: 45
-  parent: {fileID: 907858615550413064}
+    height: 59
+  parent: {fileID: 907858615550413075}
   children:
-  - {fileID: 907858615550413063}
-  - {fileID: 907858615550413062}
   - {fileID: 907858615550413060}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  random: 0
+  abort: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
 --- !u!114 &907858615550413062
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -34108,17 +33640,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 907858615550413009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 740516613}
+  m_Script: {fileID: 1632256779}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Navigate To Attack
+  title: Lock Movement
   rect:
     serializedVersion: 2
-    x: -280
-    y: 500
+    x: -340
+    y: 720
     width: 160
     height: 45
-  parent: {fileID: 907858615550413061}
+  parent: {fileID: 907858615550413066}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -34138,17 +33670,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 907858615550413009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1562684986}
+  m_Script: {fileID: 329522605}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Get Mellee Attack
+  title: Perform Attack
   rect:
     serializedVersion: 2
-    x: -380
-    y: 420
+    x: -440
+    y: 660
     width: 160
     height: 45
-  parent: {fileID: 907858615550413061}
+  parent: {fileID: 907858615550413066}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -34168,26 +33700,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 907858615550413009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 2015529576}
+  m_Script: {fileID: 2140204678}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Is TP low?
+  title: Navigate To Attack
   rect:
     serializedVersion: 2
-    x: -220
-    y: 280
+    x: -540
+    y: 600
     width: 160
     height: 45
-  parent: {fileID: 907858615550413048}
-  children:
-  - {fileID: 907858615550413061}
+  parent: {fileID: 907858615550413066}
+  children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  abort: 0
   somePropertyRef:
     useConstant: 0
-    mode: 1
+    mode: 0
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
@@ -34200,14 +33730,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 907858615550413009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 461181401}
+  m_Script: {fileID: 2097914162}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Flee
+  title: Get Range Attack
   rect:
     serializedVersion: 2
-    x: -800
-    y: 700
+    x: -560
+    y: 520
     width: 160
     height: 45
   parent: {fileID: 907858615550413066}
@@ -34230,25 +33760,86 @@ MonoBehaviour:
   m_GameObject: {fileID: 907858615550413009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Selector
+  title: Sequence
   rect:
     serializedVersion: 2
-    x: -580
-    y: 540
+    x: -340
+    y: 480
     width: 160
     height: 45
-  parent: {fileID: 907858615550413052}
+  parent: {fileID: 907858615550413060}
   children:
   - {fileID: 907858615550413065}
-  - {fileID: 907858615550413075}
-  - {fileID: 907858615550413072}
+  - {fileID: 907858615550413064}
+  - {fileID: 907858615550413063}
+  - {fileID: 907858615550413062}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  random: 1
+  random: 0
+--- !u!114 &907858615550413067
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1635636679}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Lock Movement
+  rect:
+    serializedVersion: 2
+    x: 160
+    y: 540
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413071}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413068
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1867124894}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Perform Attack
+  rect:
+    serializedVersion: 2
+    x: 100
+    y: 600
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413071}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
 --- !u!114 &907858615550413069
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -34258,17 +33849,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 907858615550413009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 496255482}
+  m_Script: {fileID: 1245124602}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Destroy Self
+  title: Navigate To Attack
   rect:
     serializedVersion: 2
-    x: -900
-    y: 500
+    x: -0
+    y: 660
     width: 160
     height: 45
-  parent: {fileID: 907858615550413059}
+  parent: {fileID: 907858615550413071}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -34288,17 +33879,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 907858615550413009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 235605645}
+  m_Script: {fileID: 2077387360}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Perform Attack
+  title: Get Special Attack
   rect:
     serializedVersion: 2
-    x: -240
-    y: 800
+    x: -120
+    y: 720
     width: 160
     height: 45
-  parent: {fileID: 907858615550413072}
+  parent: {fileID: 907858615550413071}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -34318,27 +33909,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 907858615550413009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 2066969}
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Get Special Attack
+  title: Sequence
   rect:
     serializedVersion: 2
-    x: -440
-    y: 800
+    x: -120
+    y: 480
     width: 160
     height: 45
-  parent: {fileID: 907858615550413072}
-  children: []
+  parent: {fileID: 907858615550413060}
+  children:
+  - {fileID: 907858615550413070}
+  - {fileID: 907858615550413069}
+  - {fileID: 907858615550413068}
+  - {fileID: 907858615550413067}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  somePropertyRef:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
+  random: 0
 --- !u!114 &907858615550413072
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -34348,44 +33938,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 907858615550413009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Script: {fileID: 11500000, guid: d13909f3077cbdf47b6431f5ee6db39a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Sequence
+  title: Seek
   rect:
     serializedVersion: 2
-    x: -340
-    y: 700
+    x: -860
+    y: 540
     width: 160
     height: 45
-  parent: {fileID: 907858615550413066}
-  children:
-  - {fileID: 907858615550413071}
-  - {fileID: 907858615550413070}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
---- !u!114 &907858615550413073
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 235605645}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Perform Attack
-  rect:
-    serializedVersion: 2
-    x: -460
-    y: 880
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413075}
+  parent: {fileID: 907858615550413080}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -34405,17 +33968,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 907858615550413009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1416181823}
+  m_Script: {fileID: 1644741889}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Get Mellee Attack
+  title: Wait Mode
   rect:
     serializedVersion: 2
-    x: -700
-    y: 880
+    x: -760
+    y: 400
     width: 160
     height: 45
-  parent: {fileID: 907858615550413075}
+  parent: {fileID: 907858615550413060}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -34435,20 +33998,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 907858615550413009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Sequence
+  title: Selector
   rect:
     serializedVersion: 2
-    x: -580
-    y: 760
+    x: 84
+    y: 61.200012
     width: 160
     height: 45
-  parent: {fileID: 907858615550413066}
+  parent: {fileID: 907858615550413017}
   children:
-  - {fileID: 907858615550413074}
-  - {fileID: 907858615550413073}
+  - {fileID: 907858615550413061}
+  - {fileID: 907858615550413052}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -34462,17 +34025,170 @@ MonoBehaviour:
   m_GameObject: {fileID: 907858615550413009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 80633032}
+  m_Script: {fileID: 11500000, guid: 2370820ab6f42c8449d09456ac02d66d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Cooldown
+  rect:
+    serializedVersion: 2
+    x: -540
+    y: 420
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413060}
+  children:
+  - {fileID: 907858615550413080}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  abort: 0
+  time:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 2
+  resetOnChildFailure: 1
+--- !u!114 &907858615550413077
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Selector
+  rect:
+    serializedVersion: 2
+    x: 360
+    y: 220
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413052}
+  children:
+  - {fileID: 907858615550413049}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &907858615550413078
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 738040089}
   m_Name: 
   m_EditorClassIdentifier: 
   title: Flee
   rect:
     serializedVersion: 2
-    x: 1180
-    y: 340
+    x: 600
+    y: 460
     width: 160
     height: 45
-  parent: {fileID: 907858615550413055}
+  parent: {fileID: 907858615550413079}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413079
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cab6356732c8c443a6fa2d180a5697b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Time Limit
+  rect:
+    serializedVersion: 2
+    x: 460
+    y: 360
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413049}
+  children:
+  - {fileID: 907858615550413078}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  time:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 5
+  randomDeviation: 0
+--- !u!114 &907858615550413080
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cab6356732c8c443a6fa2d180a5697b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Time Limit
+  rect:
+    serializedVersion: 2
+    x: -720
+    y: 480
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413076}
+  children:
+  - {fileID: 907858615550413072}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  time:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 2.5
+  randomDeviation: 0
+--- !u!114 &907858615550413081
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 900624245}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Wait Mode
+  rect:
+    serializedVersion: 2
+    x: 680
+    y: 360
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413049}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
