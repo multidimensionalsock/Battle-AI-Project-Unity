@@ -1,0 +1,39 @@
+untested:
+last minute stats 
+condition: is health high?
+condition: is health low?
+
+
+needs coding:
+Attack aniamtion
+fast and slow run (depending on speed)
+make new conditions based on AI strategy questionaire 
+apply things in the questionaire to behaviour tree and change chances 
+work on finite state machine enemy
+work on finite state machine animation 
+change time limit for wait mode (make it serialze field?)
+hp and tp UI (player and AI)
+player only regain TP when attack actually hits
+sapwn helpers function 
+check how offensively the player is playing 
+maybe a way to pick attacks based on TP?
+
+
+done: 
+response to being attacked
+child rotation issue 
+fix pathfinding for range attacks
+make it so range attacks can lose tp
+make a check distance node 
+
+check if youve been attacked 
+check if colliding 
+or not colliding 
+then check health 
+
+after attack 
+check how ffensively playing is 
+if very then special attack 
+if not then range 
+flee if hp low first 
+if not low then mellee 
