@@ -130,7 +130,7 @@ public class GetMelleeAttack : Leaf
         CheckConditions condition = GetComponent<CheckConditions>();
         if (!condition.ableToAttack) { return NodeResult.failure; } 
         if (!condition.meleeAttacks.Any()) { return NodeResult.failure; }
-        condition.nextAttack = condition.meleeAttacks[UnityEngine.Random.Range(0, condition.meleeAttacks.Count)];
+        condition.SetNextAttack(condition.meleeAttacks[UnityEngine.Random.Range(0, condition.meleeAttacks.Count)]);
         return NodeResult.success;
     }
 
@@ -161,7 +161,7 @@ public class GetRangeAttack : Leaf
         CheckConditions condition = GetComponent<CheckConditions>();
         if (!condition.ableToAttack) { return NodeResult.failure; }
         if (!condition.rangeAttacks.Any()) { return NodeResult.failure; }
-        condition.nextAttack = condition.rangeAttacks[UnityEngine.Random.Range(0, condition.rangeAttacks.Count)];
+        condition.SetNextAttack(condition.rangeAttacks[UnityEngine.Random.Range(0, condition.rangeAttacks.Count)]);
         return NodeResult.success;
     }
 
@@ -192,8 +192,7 @@ public class GetSpecialAttack : Leaf
         CheckConditions condition = GetComponent<CheckConditions>();
         if (!condition.ableToSpecialAttack) { return NodeResult.failure; }
         if (!condition.specialAttacks.Any()) { return NodeResult.failure; }
-        condition.nextAttack = condition.specialAttacks[UnityEngine.Random.Range(0, condition.specialAttacks.Count)];
-        Debug.Log(condition.nextAttack);
+        condition.SetNextAttack(condition.specialAttacks[UnityEngine.Random.Range(0, condition.specialAttacks.Count)]);
         return NodeResult.success;
     }
 
@@ -221,7 +220,7 @@ public class AttackNavigate : Leaf
     // This is called every tick as long as node is executed
     public override NodeResult Execute()
     {
-        Attack attack = GetComponent<CheckConditions>().nextAttack;
+        Attack attack = GetComponent<CheckConditions>().GetNextAttack();
         //if (attack.attackType == AttackType.melee) { GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.seek, GetComponent<CheckConditions>().playerRef); return NodeResult.running; }
         float distanceFromPlayer = Mathf.Abs(Vector3.Distance(GetComponent<CheckConditions>().playerRef.transform.position, transform.position));
         if (attack.attackType == AttackType.melee)
@@ -278,7 +277,7 @@ public class PerformAttack : Leaf
     {
         Debug.Log("performattack");
         CheckConditions conditions = GetComponent<CheckConditions>();
-        Attack attack = conditions.nextAttack;
+        Attack attack = conditions.GetNextAttack();
         conditions.CallAttackEvent(attack);
         if (GetComponent<BattleScript>().GetTP() < attack.TPDecrease) { return NodeResult.failure; }
         if (attack.attackObject == null)

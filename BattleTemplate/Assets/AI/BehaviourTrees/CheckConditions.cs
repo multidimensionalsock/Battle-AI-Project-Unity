@@ -15,7 +15,7 @@ public class CheckConditions : MonoBehaviour
     public float distanceToFlee;
     public bool ableToAttack = true;
     public bool ableToSpecialAttack = false;
-    public Attack nextAttack;
+    protected Attack nextAttack;
     public bool MovementLocked;
     [SerializeField] float attackCoolDownTime;
     [SerializeField] float specialAttackCoolDownTime;
@@ -31,6 +31,7 @@ public class CheckConditions : MonoBehaviour
     [SerializeField] float attacksInLastMinuteToUnlockSpecialAttack;
 
     public event System.Action<Attack> AttackImplem;
+    public event System.Action<AnimationClip> NextAttackAnimChange;
 
 	private void Update()
 	{
@@ -219,5 +220,16 @@ public class CheckConditions : MonoBehaviour
         MovementLocked = true;
         yield return new WaitForSeconds(lockMovementTime + time);
         MovementLocked = false;
+    }
+
+    public void SetNextAttack(Attack newAttack)
+    {
+        NextAttackAnimChange?.Invoke(newAttack.associatedAnimation);
+        nextAttack = newAttack;
+    }
+
+    public Attack GetNextAttack()
+    {
+        return nextAttack;
     }
 }

@@ -4451,6 +4451,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 830f9554ee1a1e04099b992bcaabcacd, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
+      propertyPath: m_CullingMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6241316887286113319, guid: 9fb10f4c4ee5e7d4b99e972673b5f3a7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -33183,6 +33191,7 @@ GameObject:
   - component: {fileID: 907858615550413078}
   - component: {fileID: 907858615550413081}
   - component: {fileID: 907858615550413080}
+  - component: {fileID: 907858615550413082}
   m_Layer: 0
   m_Name: Jacob 1
   m_TagString: Untagged
@@ -33215,9 +33224,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 0}
+  selectedEditorNode: {fileID: 907858615550413082}
   repeatOnFinish: 1
-  maxExecutionsPerTick: 1
+  maxExecutionsPerTick: 2
   parent: {fileID: 0}
 --- !u!114 &907858615550413012
 MonoBehaviour:
@@ -33366,16 +33375,6 @@ MonoBehaviour:
   distanceToFlee: 3
   ableToAttack: 0
   ableToSpecialAttack: 0
-  nextAttack:
-    attackName: 
-    attackDamage: 0
-    attackObject: {fileID: 0}
-    associatedAnimation: {fileID: 0}
-    attackType: 0
-    minDistanceToPerform: 0
-    maxDistanceToPerform: 0
-    freezeTime: 0
-    TPDecrease: 0
   MovementLocked: 0
   attackCoolDownTime: 2
   specialAttackCoolDownTime: 20
@@ -33646,8 +33645,8 @@ MonoBehaviour:
   title: Lock Movement
   rect:
     serializedVersion: 2
-    x: -340
-    y: 720
+    x: -280
+    y: 660
     width: 160
     height: 45
   parent: {fileID: 907858615550413066}
@@ -33676,8 +33675,8 @@ MonoBehaviour:
   title: Perform Attack
   rect:
     serializedVersion: 2
-    x: -440
-    y: 660
+    x: -380
+    y: 760
     width: 160
     height: 45
   parent: {fileID: 907858615550413066}
@@ -33774,6 +33773,7 @@ MonoBehaviour:
   children:
   - {fileID: 907858615550413065}
   - {fileID: 907858615550413064}
+  - {fileID: 907858615550413082}
   - {fileID: 907858615550413063}
   - {fileID: 907858615550413062}
   behaviourTree: {fileID: 0}
@@ -34199,3 +34199,35 @@ MonoBehaviour:
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
+--- !u!114 &907858615550413082
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58fe7bc6a9b18e148b82820c7c1c0a90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Wait
+  rect:
+    serializedVersion: 2
+    x: -480
+    y: 683
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413066}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  time:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 2
+  randomDeviation: 0
+  continueOnRestart: 0
