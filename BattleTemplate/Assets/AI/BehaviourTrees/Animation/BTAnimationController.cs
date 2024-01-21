@@ -17,7 +17,6 @@ public class BTAnimationController : MonoBehaviour
 		m_animator = GetComponent<Animator>();
         m_controller = new AnimatorOverrideController(m_animator.runtimeAnimatorController);
         m_animator.runtimeAnimatorController = m_controller;
-        transform.parent.GetComponent<CheckConditions>().NextAttackAnimChange += ChangeAttackAnimation;
         transform.parent.GetComponent<CheckConditions>().AttackImplem += AttackAnimation;
     }
 
@@ -41,14 +40,9 @@ public class BTAnimationController : MonoBehaviour
         }
     }
 
-    void ChangeAttackAnimation(AnimationClip clip)
-    {
-        //m_controller["Attack"] = clip;
-        m_controller["Attack"].Serialize(clip);
-    }
-
     void AttackAnimation(Attack attackData)
     {
+        m_controller["Attack"] = attackData.associatedAnimation;
         m_animator.SetTrigger("Attack");
     }
 
