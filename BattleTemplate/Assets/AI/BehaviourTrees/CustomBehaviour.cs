@@ -220,9 +220,11 @@ public class AttackNavigate : Leaf
     // This is called every tick as long as node is executed
     public override NodeResult Execute()
     {
-        Attack attack = GetComponent<CheckConditions>().GetNextAttack();
+        CheckConditions conditions = GetComponent<CheckConditions>();
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        Attack attack = conditions.GetNextAttack();
         //if (attack.attackType == AttackType.melee) { GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.seek, GetComponent<CheckConditions>().playerRef); return NodeResult.running; }
-        float distanceFromPlayer = Mathf.Abs(Vector3.Distance(GetComponent<CheckConditions>().playerRef.transform.position, transform.position));
+        float distanceFromPlayer = Mathf.Abs(Vector3.Distance(conditions.playerRef.transform.position, transform.position));
         if (attack.attackType == AttackType.melee)
         {
             if (GetComponent<CheckConditions>().triggerWithPlayer)
@@ -233,11 +235,16 @@ public class AttackNavigate : Leaf
             GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.seek, GetComponent<CheckConditions>().playerRef);
             return NodeResult.running;
         }
-        else if (distanceFromPlayer > attack.maxDistanceToPerform || distanceFromPlayer < attack.minDistanceToPerform)
+        else if (distanceFromPlayer > attack.maxDistanceToPerform)
+        {
+            GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.seek, conditions.playerRef);
+            return NodeResult.running;
+        }
+        else if (distanceFromPlayer < attack.minDistanceToPerform)
         {
             //Vector3 PlayerLocation = blackboard.get
             //pathfinderRef.SetNewNavigation(pathfindingState.seek, playerRef);
-            GetComponent<Pathfinding>().SetNewNavigation(attack);
+            GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.flee, conditions.playerRef);
             return NodeResult.running;
 
         }
