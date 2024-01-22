@@ -33,10 +33,6 @@ public class CheckConditions : MonoBehaviour
     public event System.Action<Attack> AttackImplem;
     public event System.Action<AnimationClip> NextAttackAnimChange;
 
-	private void Update()
-	{
-		Debug.Log(MovementLocked);
-	}
 
 	public bool GetWasAttacked()
     {

@@ -2,6 +2,7 @@ untested:
 last minute stats 
 condition: is health high?
 condition: is health low?
+check how offensively the player is playing 
 
 
 needs coding:
@@ -15,8 +16,9 @@ change time limit for wait mode (make it serialze field?)
 hp and tp UI (player and AI)
 player only regain TP when attack actually hits
 sapwn helpers function 
-check how offensively the player is playing 
 maybe a way to pick attacks based on TP?
+was attacked not working (or attacks not working?)
+player jump not working 
 
 
 done: 

@@ -407,21 +407,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
---- !u!115 &60820143
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: Flee
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &62526077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3321,6 +3306,21 @@ MonoScript:
   m_ClassName: PlayerDistanceRange
   m_Namespace: 
   m_AssemblyName: Assembly-CSharp
+--- !u!115 &423185407
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: StandStill
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &429583481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4721,6 +4721,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
+--- !u!115 &570115816
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: HPlow
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &585462453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5036,6 +5051,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a917f6843cc222145828cefe2f799e67, type: 3}
+--- !u!115 &623563237
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: GetRangeAttack
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &631792111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5427,6 +5457,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bbef63b5bd52bc4bb03cdc6cbb94a6f, type: 3}
+--- !u!115 &703351755
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: PerformAttack
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!4 &703702779 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
@@ -9739,6 +9784,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
+--- !u!115 &1245795585
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: PlayerOffensiveCheck
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &1248410104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10624,6 +10684,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
+--- !u!115 &1342851587
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: GetMelleeAttack
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &1344110475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10969,6 +11044,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
   m_PrefabInstance: {fileID: 1439287049}
   m_PrefabAsset: {fileID: 0}
+--- !u!115 &1403337150
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: LockMovement
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &1404221488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11573,6 +11663,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3748976667609132821, guid: 20613689bafb4544cb770f64d1a03714, type: 3}
   m_PrefabInstance: {fileID: 674206852}
   m_PrefabAsset: {fileID: 0}
+--- !u!115 &1484536233
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: HPhigh
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!4 &1498743448 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
@@ -12255,6 +12360,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1164602935277360391, guid: d90c349721b4e694fad80a76d87b2578, type: 3}
   m_PrefabInstance: {fileID: 1183677138}
   m_PrefabAsset: {fileID: 0}
+--- !u!115 &1597533045
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: GetMelleeAttack
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &1605571827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12377,21 +12497,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20613689bafb4544cb770f64d1a03714, type: 3}
---- !u!115 &1620920984
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: GetRangeAttack
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!4 &1623890703 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9103171939639073637, guid: c80fbf850ad97a34694544deb65b7fa2, type: 3}
@@ -13635,6 +13740,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 787d900468610e0488384494dc77d1b1, type: 3}
+--- !u!115 &1781757564
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: Flee
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!4 &1782270865 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3748976667609132821, guid: 20613689bafb4544cb770f64d1a03714, type: 3}
@@ -32169,11 +32289,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
   m_PrefabInstance: {fileID: 76368231}
   m_PrefabAsset: {fileID: 0}
+--- !u!115 &1980169374
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: Flee
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!4 &1983333040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3748976667609132821, guid: 20613689bafb4544cb770f64d1a03714, type: 3}
   m_PrefabInstance: {fileID: 1536265531}
   m_PrefabAsset: {fileID: 0}
+--- !u!115 &1986749217
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: GetSpecialAttack
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!4 &1990370479 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
@@ -32240,6 +32390,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3148b0057757c5e49a1d7284d605de90, type: 3}
+--- !u!115 &2006044139
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: LockMovement
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &2011059554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32631,21 +32796,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9103171939639073637, guid: c80fbf850ad97a34694544deb65b7fa2, type: 3}
   m_PrefabInstance: {fileID: 1382893577}
   m_PrefabAsset: {fileID: 0}
---- !u!115 &2037568040
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: Flee
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!4 &2042021706 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7773147088347383820, guid: d9ec8d9e687cf0648b90ca1157463338, type: 3}
@@ -32935,6 +33085,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
+--- !u!115 &2098737617
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: AttackNavigate
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!4 &2116639913 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
@@ -32955,6 +33120,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
   m_PrefabInstance: {fileID: 433271160}
   m_PrefabAsset: {fileID: 0}
+--- !u!115 &2128755925
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: PerformAttack
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &2129250550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33282,15 +33462,42 @@ GameObject:
   - component: {fileID: 907858615550413059}
   - component: {fileID: 907858615550413058}
   - component: {fileID: 907858615550413057}
-  - component: {fileID: 907858615550413065}
   - component: {fileID: 907858615550413073}
   - component: {fileID: 907858615550413072}
   - component: {fileID: 907858615550413071}
   - component: {fileID: 907858615550413070}
   - component: {fileID: 907858615550413069}
   - component: {fileID: 907858615550413068}
-  - component: {fileID: 907858615550413067}
-  - component: {fileID: 907858615550413066}
+  - component: {fileID: 907858615550413074}
+  - component: {fileID: 907858615550413075}
+  - component: {fileID: 907858615550413076}
+  - component: {fileID: 907858615550413077}
+  - component: {fileID: 907858615550413085}
+  - component: {fileID: 907858615550413084}
+  - component: {fileID: 907858615550413083}
+  - component: {fileID: 907858615550413082}
+  - component: {fileID: 907858615550413081}
+  - component: {fileID: 907858615550413080}
+  - component: {fileID: 907858615550413079}
+  - component: {fileID: 907858615550413078}
+  - component: {fileID: 907858615550413088}
+  - component: {fileID: 907858615550413105}
+  - component: {fileID: 907858615550413104}
+  - component: {fileID: 907858615550413103}
+  - component: {fileID: 907858615550413102}
+  - component: {fileID: 907858615550413101}
+  - component: {fileID: 907858615550413100}
+  - component: {fileID: 907858615550413099}
+  - component: {fileID: 907858615550413098}
+  - component: {fileID: 907858615550413097}
+  - component: {fileID: 907858615550413096}
+  - component: {fileID: 907858615550413095}
+  - component: {fileID: 907858615550413094}
+  - component: {fileID: 907858615550413093}
+  - component: {fileID: 907858615550413092}
+  - component: {fileID: 907858615550413091}
+  - component: {fileID: 907858615550413090}
+  - component: {fileID: 907858615550413089}
   m_Layer: 0
   m_Name: Jacob 1
   m_TagString: Untagged
@@ -33531,8 +33738,8 @@ MonoBehaviour:
   title: Lock Movement
   rect:
     serializedVersion: 2
-    x: -380
-    y: 320
+    x: -620
+    y: 380
     width: 160
     height: 45
   parent: {fileID: 907858615550413040}
@@ -33561,8 +33768,8 @@ MonoBehaviour:
   title: Perform Attack
   rect:
     serializedVersion: 2
-    x: -440
-    y: 380
+    x: -640
+    y: 480
     width: 160
     height: 45
   parent: {fileID: 907858615550413040}
@@ -33591,8 +33798,8 @@ MonoBehaviour:
   title: Navigate To Attack
   rect:
     serializedVersion: 2
-    x: -620
-    y: 380
+    x: -840
+    y: 480
     width: 160
     height: 45
   parent: {fileID: 907858615550413040}
@@ -33621,8 +33828,8 @@ MonoBehaviour:
   title: Get Mellee Attack
   rect:
     serializedVersion: 2
-    x: -700
-    y: 320
+    x: -860
+    y: 380
     width: 160
     height: 45
   parent: {fileID: 907858615550413040}
@@ -33651,8 +33858,8 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: -540
-    y: 260
+    x: -740
+    y: 320
     width: 160
     height: 45
   parent: {fileID: 907858615550413041}
@@ -33680,8 +33887,8 @@ MonoBehaviour:
   title: Is TP low?
   rect:
     serializedVersion: 2
-    x: -540
-    y: 120
+    x: -740
+    y: 140
     width: 160
     height: 45
   parent: {fileID: 907858615550413050}
@@ -33712,11 +33919,11 @@ MonoBehaviour:
   title: Is HP high?
   rect:
     serializedVersion: 2
-    x: -120
-    y: 320
+    x: -180
+    y: 440
     width: 160
     height: 45
-  parent: {fileID: 907858615550413044}
+  parent: {fileID: 907858615550413076}
   children:
   - {fileID: 907858615550413055}
   behaviourTree: {fileID: 0}
@@ -33745,7 +33952,7 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: 240
+    x: 260
     y: 320
     width: 160
     height: 45
@@ -33774,16 +33981,16 @@ MonoBehaviour:
   title: Selector
   rect:
     serializedVersion: 2
-    x: 160
-    y: 200
+    x: 360
+    y: 180
     width: 160
     height: 45
   parent: {fileID: 907858615550413049}
   children:
-  - {fileID: 907858615550413042}
-  - {fileID: 907858615550413056}
+  - {fileID: 907858615550413077}
   - {fileID: 907858615550413043}
   - {fileID: 907858615550413045}
+  - {fileID: 907858615550413075}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -33811,8 +34018,8 @@ MonoBehaviour:
   children:
   - {fileID: 907858615550413060}
   - {fileID: 907858615550413059}
-  - {fileID: 907858615550413058}
   - {fileID: 907858615550413057}
+  - {fileID: 907858615550413058}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -33832,13 +34039,13 @@ MonoBehaviour:
   title: In player Trigger Zone?
   rect:
     serializedVersion: 2
-    x: 620
-    y: 120
+    x: 1360
+    y: 100
     width: 160
     height: 45
   parent: {fileID: 907858615550413050}
   children:
-  - {fileID: 907858615550413065}
+  - {fileID: 907858615550413083}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -33864,10 +34071,10 @@ MonoBehaviour:
   title: Not in player Trigger Zone?
   rect:
     serializedVersion: 2
-    x: 160
-    y: 120
+    x: 360
+    y: 100
     width: 160
-    height: 59
+    height: 45
   parent: {fileID: 907858615550413050}
   children:
   - {fileID: 907858615550413044}
@@ -33925,8 +34132,8 @@ MonoBehaviour:
   title: Was attacked?
   rect:
     serializedVersion: 2
-    x: -1320
-    y: 100
+    x: -1500
+    y: 120
     width: 160
     height: 45
   parent: {fileID: 907858615550413050}
@@ -33957,8 +34164,8 @@ MonoBehaviour:
   title: Seek
   rect:
     serializedVersion: 2
-    x: 60
-    y: 440
+    x: 20
+    y: 560
     width: 160
     height: 45
   parent: {fileID: 907858615550413053}
@@ -33987,8 +34194,8 @@ MonoBehaviour:
   title: Time Limit
   rect:
     serializedVersion: 2
-    x: 60
-    y: 380
+    x: 20
+    y: 500
     width: 160
     height: 45
   parent: {fileID: 907858615550413056}
@@ -34019,8 +34226,8 @@ MonoBehaviour:
   title: Seek
   rect:
     serializedVersion: 2
-    x: -120
-    y: 440
+    x: -180
+    y: 560
     width: 160
     height: 45
   parent: {fileID: 907858615550413055}
@@ -34049,8 +34256,8 @@ MonoBehaviour:
   title: Time Limit
   rect:
     serializedVersion: 2
-    x: -120
-    y: 380
+    x: -180
+    y: 500
     width: 160
     height: 45
   parent: {fileID: 907858615550413042}
@@ -34081,11 +34288,11 @@ MonoBehaviour:
   title: Player distance in range X?
   rect:
     serializedVersion: 2
-    x: 60
-    y: 320
+    x: 20
+    y: 440
     width: 160
     height: 45
-  parent: {fileID: 907858615550413044}
+  parent: {fileID: 907858615550413076}
   children:
   - {fileID: 907858615550413053}
   behaviourTree: {fileID: 0}
@@ -34099,7 +34306,7 @@ MonoBehaviour:
     key: 
     constantValue: 0
   minDistance: 0
-  maxDistance: 0
+  maxDistance: 2.5
 --- !u!114 &907858615550413057
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -34115,7 +34322,7 @@ MonoBehaviour:
   title: Lock Movement
   rect:
     serializedVersion: 2
-    x: 720
+    x: 660
     y: 380
     width: 160
     height: 45
@@ -34145,7 +34352,7 @@ MonoBehaviour:
   title: Perform Attack
   rect:
     serializedVersion: 2
-    x: 700
+    x: 660
     y: 440
     width: 160
     height: 45
@@ -34175,7 +34382,7 @@ MonoBehaviour:
   title: Navigate To Attack
   rect:
     serializedVersion: 2
-    x: 640
+    x: 580
     y: 500
     width: 160
     height: 45
@@ -34205,7 +34412,7 @@ MonoBehaviour:
   title: Get Special Attack
   rect:
     serializedVersion: 2
-    x: 540
+    x: 500
     y: 560
     width: 160
     height: 45
@@ -34235,7 +34442,7 @@ MonoBehaviour:
   title: Lock Movement
   rect:
     serializedVersion: 2
-    x: 380
+    x: 360
     y: 380
     width: 160
     height: 45
@@ -34265,7 +34472,7 @@ MonoBehaviour:
   title: Perform Attack
   rect:
     serializedVersion: 2
-    x: 360
+    x: 340
     y: 440
     width: 160
     height: 45
@@ -34295,7 +34502,7 @@ MonoBehaviour:
   title: Navigate To Attack
   rect:
     serializedVersion: 2
-    x: 300
+    x: 280
     y: 500
     width: 160
     height: 45
@@ -34340,96 +34547,6 @@ MonoBehaviour:
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
---- !u!114 &907858615550413065
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 60820143}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Flee
-  rect:
-    serializedVersion: 2
-    x: 620
-    y: 200
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413048}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  somePropertyRef:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
---- !u!114 &907858615550413066
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1620920984}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Get Range Attack
-  rect:
-    serializedVersion: 2
-    x: -1380
-    y: 600
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413068}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  somePropertyRef:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
---- !u!114 &907858615550413067
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 2037568040}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Flee
-  rect:
-    serializedVersion: 2
-    x: -1460
-    y: 520
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413068}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  somePropertyRef:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
 --- !u!114 &907858615550413068
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -34445,14 +34562,14 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: -1320
-    y: 440
+    x: -1500
+    y: 400
     width: 160
     height: 45
   parent: {fileID: 907858615550413069}
   children:
-  - {fileID: 907858615550413067}
-  - {fileID: 907858615550413066}
+  - {fileID: 907858615550413088}
+  - {fileID: 907858615550413105}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -34472,8 +34589,8 @@ MonoBehaviour:
   title: Is HP low?
   rect:
     serializedVersion: 2
-    x: -1320
-    y: 360
+    x: -1500
+    y: 320
     width: 160
     height: 45
   parent: {fileID: 907858615550413070}
@@ -34505,7 +34622,7 @@ MonoBehaviour:
   title: Selector
   rect:
     serializedVersion: 2
-    x: -1320
+    x: -1500
     y: 180
     width: 160
     height: 45
@@ -34533,12 +34650,13 @@ MonoBehaviour:
   title: Is HP high?
   rect:
     serializedVersion: 2
-    x: -1100
-    y: 360
+    x: -1200
+    y: 320
     width: 160
     height: 45
   parent: {fileID: 907858615550413070}
-  children: []
+  children:
+  - {fileID: 907858615550413093}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -34565,8 +34683,8 @@ MonoBehaviour:
   title: Destroy Self
   rect:
     serializedVersion: 2
-    x: -1600
-    y: 340
+    x: -1840
+    y: 400
     width: 160
     height: 45
   parent: {fileID: 907858615550413073}
@@ -34595,8 +34713,8 @@ MonoBehaviour:
   title: Check if AI dead?
   rect:
     serializedVersion: 2
-    x: -1600
-    y: 260
+    x: -1840
+    y: 320
     width: 160
     height: 45
   parent: {fileID: 907858615550413070}
@@ -34612,3 +34730,905 @@ MonoBehaviour:
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
+--- !u!114 &907858615550413074
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 423185407}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Wait Mode
+  rect:
+    serializedVersion: 2
+    x: 860
+    y: 380
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413075}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413075
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2370820ab6f42c8449d09456ac02d66d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Cooldown
+  rect:
+    serializedVersion: 2
+    x: 860
+    y: 320
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413044}
+  children:
+  - {fileID: 907858615550413074}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  abort: 0
+  time:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 4
+  resetOnChildFailure: 0
+--- !u!114 &907858615550413076
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: -80
+    y: 380
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413077}
+  children:
+  - {fileID: 907858615550413042}
+  - {fileID: 907858615550413056}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &907858615550413077
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2370820ab6f42c8449d09456ac02d66d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Cooldown
+  rect:
+    serializedVersion: 2
+    x: -80
+    y: 320
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413044}
+  children:
+  - {fileID: 907858615550413076}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  abort: 0
+  time:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 3
+  resetOnChildFailure: 0
+--- !u!114 &907858615550413078
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1781757564}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Flee
+  rect:
+    serializedVersion: 2
+    x: 1539
+    y: 406
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413084}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413079
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2006044139}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Lock Movement
+  rect:
+    serializedVersion: 2
+    x: 1300
+    y: 460
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413080}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413080
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: 1198
+    y: 389
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413085}
+  children:
+  - {fileID: 907858615550413082}
+  - {fileID: 907858615550413081}
+  - {fileID: 907858615550413079}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &907858615550413081
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 703351755}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Perform Attack
+  rect:
+    serializedVersion: 2
+    x: 1200
+    y: 520
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413080}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413082
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1342851587}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Get Mellee Attack
+  rect:
+    serializedVersion: 2
+    x: 1100
+    y: 460
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413080}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413083
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: 1362
+    y: 185
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413048}
+  children:
+  - {fileID: 907858615550413085}
+  - {fileID: 907858615550413084}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &907858615550413084
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 570115816}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Is HP low?
+  rect:
+    serializedVersion: 2
+    x: 1540
+    y: 320
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413083}
+  children:
+  - {fileID: 907858615550413078}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  abort: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+  lowHP: 0
+--- !u!114 &907858615550413085
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1484536233}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Is HP high?
+  rect:
+    serializedVersion: 2
+    x: 1200
+    y: 320
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413083}
+  children:
+  - {fileID: 907858615550413080}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  abort: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+  pointWhereHpIsLow: 0
+--- !u!114 &907858615550413088
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1980169374}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Flee
+  rect:
+    serializedVersion: 2
+    x: -1700
+    y: 520
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413068}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413089
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1403337150}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Lock Movement
+  rect:
+    serializedVersion: 2
+    x: -1060
+    y: 480
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413093}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413090
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2128755925}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Perform Attack
+  rect:
+    serializedVersion: 2
+    x: -1120
+    y: 560
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413093}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413091
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2098737617}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Navigate To Attack
+  rect:
+    serializedVersion: 2
+    x: -1300
+    y: 560
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413093}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413092
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1597533045}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Get Mellee Attack
+  rect:
+    serializedVersion: 2
+    x: -1340
+    y: 480
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413093}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413093
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: -1200
+    y: 400
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413071}
+  children:
+  - {fileID: 907858615550413092}
+  - {fileID: 907858615550413091}
+  - {fileID: 907858615550413090}
+  - {fileID: 907858615550413089}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &907858615550413094
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1403337150}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Lock Movement
+  rect:
+    serializedVersion: 2
+    x: -1180
+    y: 720
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413098}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413095
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2128755925}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Perform Attack
+  rect:
+    serializedVersion: 2
+    x: -1140
+    y: 820
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413098}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413096
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2098737617}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Navigate To Attack
+  rect:
+    serializedVersion: 2
+    x: -1320
+    y: 820
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413098}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413097
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 623563237}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Get Range Attack
+  rect:
+    serializedVersion: 2
+    x: -1440
+    y: 740
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413098}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413098
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: -1300
+    y: 660
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413105}
+  children:
+  - {fileID: 907858615550413097}
+  - {fileID: 907858615550413096}
+  - {fileID: 907858615550413094}
+  - {fileID: 907858615550413095}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &907858615550413099
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1245795585}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Player playing offensively?
+  rect:
+    serializedVersion: 2
+    x: -1640
+    y: 660
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413105}
+  children:
+  - {fileID: 907858615550413102}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  abort: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+  attacksInLastMinToBeOffensive: 0
+  damageInLastMinToBeOffensive: 0
+--- !u!114 &907858615550413100
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1403337150}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Lock Movement
+  rect:
+    serializedVersion: 2
+    x: -1480
+    y: 820
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413102}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413101
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2128755925}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Perform Attack
+  rect:
+    serializedVersion: 2
+    x: -1540
+    y: 900
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413102}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413102
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: -1640
+    y: 740
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413099}
+  children:
+  - {fileID: 907858615550413104}
+  - {fileID: 907858615550413103}
+  - {fileID: 907858615550413101}
+  - {fileID: 907858615550413100}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &907858615550413103
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2098737617}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Navigate To Attack
+  rect:
+    serializedVersion: 2
+    x: -1720
+    y: 900
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413102}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413104
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1986749217}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Get Special Attack
+  rect:
+    serializedVersion: 2
+    x: -1800
+    y: 820
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413102}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+--- !u!114 &907858615550413105
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Selector
+  rect:
+    serializedVersion: 2
+    x: -1500
+    y: 580
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413068}
+  children:
+  - {fileID: 907858615550413099}
+  - {fileID: 907858615550413098}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
