@@ -32,6 +32,8 @@ public class CheckConditions : MonoBehaviour
 
     public event System.Action<Attack> AttackImplem;
     public event System.Action<AnimationClip> NextAttackAnimChange;
+    public event System.Action<bool> waitModeOnOff;
+    
 
 
 	public bool GetWasAttacked()
@@ -114,6 +116,11 @@ public class CheckConditions : MonoBehaviour
     public void StartAttackCooldown()
     {
        //make a coroutine for this 
+    }
+
+    public void WaitModeEventCaller(bool state)
+    {
+        waitModeOnOff?.Invoke(state); 
     }
 
     IEnumerator AttackCooldown(Attack attackdata)

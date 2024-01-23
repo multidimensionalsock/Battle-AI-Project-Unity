@@ -384,17 +384,18 @@ public class StandStill : Leaf
 {
 	public BoolReference somePropertyRef = new BoolReference();
 	float timeToFreeze;
+    CheckConditions conditions; 
 
-	// These two methods are optional, override only when needed
-	// public override void OnAllowInterrupt() {}
-	public override void OnEnter() 
+    // These two methods are optional, override only when needed
+    // public override void OnAllowInterrupt() {}
+    public override void OnEnter() 
 	{
 		//get distance from player and player velocity
 		//work out how long it will take the player to get to you
 		//then -1 so you have time to make a choice 
 		//this is how long you freeze for 
 		GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
-		CheckConditions conditions= GetComponent<CheckConditions>();
+		conditions= GetComponent<CheckConditions>();
 		float distanceFromPlayer = Mathf.Abs(Vector3.Distance(conditions.playerRef.transform.position, transform.position));
 		float playerSpeed = conditions.playerRef.GetComponent<Rigidbody>().velocity.magnitude;
 		timeToFreeze = (distanceFromPlayer / playerSpeed) - 1;
@@ -402,6 +403,7 @@ public class StandStill : Leaf
 		{
 			timeToFreeze = distanceFromPlayer;
 		}
+        conditions.WaitModeEventCaller(true);
 
 	}
 
@@ -409,10 +411,12 @@ public class StandStill : Leaf
 	public override NodeResult Execute()
 	{
 		timeToFreeze -= Time.deltaTime;
+        if (conditions.triggerWithPlayer) { conditions.WaitModeEventCaller(false); return NodeResult.success; }
 		if (timeToFreeze <-0)
 		{
-			return NodeResult.success;
-		}
+            conditions.WaitModeEventCaller(false);
+            return NodeResult.success;
+        }
 		return NodeResult.running;
 	}
 

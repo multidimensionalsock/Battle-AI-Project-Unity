@@ -18,6 +18,7 @@ public class BTAnimationController : MonoBehaviour
         m_controller = new AnimatorOverrideController(m_animator.runtimeAnimatorController);
         m_animator.runtimeAnimatorController = m_controller;
         transform.parent.GetComponent<CheckConditions>().AttackImplem += AttackAnimation;
+        transform.parent.GetComponent<CheckConditions>().waitModeOnOff += WaitMode;
     }
 
     // Update is called once per frame
@@ -44,6 +45,11 @@ public class BTAnimationController : MonoBehaviour
     {
         m_controller["Attack"] = attackData.associatedAnimation;
         m_animator.SetTrigger("Attack");
+    }
+
+    void WaitMode(bool mode)
+    {
+        m_animator.SetBool("Wait", mode);
     }
 
     
