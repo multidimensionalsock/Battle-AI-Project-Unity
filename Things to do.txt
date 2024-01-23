@@ -4,7 +4,6 @@ condition: is health high?
 condition: is health low?
 check how offensively the player is playing 
 
-
 needs coding:
 Attack aniamtion
 fast and slow run (depending on speed)
@@ -15,11 +14,10 @@ work on finite state machine animation
 change time limit for wait mode (make it serialze field?)
 hp and tp UI (player and AI)
 player only regain TP when attack actually hits
-sapwn helpers function 
 maybe a way to pick attacks based on TP?
-was attacked not working (or attacks not working?)
-player jump not working 
-
+very slow moving down when Y isnt locked, because fallins it getting set to first frame speed instead of getting faster. need to read current veloctiy and mke changes to that without changing Y
+fix overhead UI for enemy
+controller controls
 
 done: 
 response to being attacked
@@ -27,15 +25,5 @@ child rotation issue
 fix pathfinding for range attacks
 make it so range attacks can lose tp
 make a check distance node 
-
-check if youve been attacked 
-check if colliding 
-or not colliding 
-then check health 
-
-after attack 
-check how ffensively playing is 
-if very then special attack 
-if not then range 
-flee if hp low first 
-if not low then mellee 
+was attacked not working (or attacks not working?)
+sapwn helpers function 

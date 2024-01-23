@@ -432,5 +432,42 @@ public class StandStill : Leaf
 	}
 }
 
+[MBTNode(name = "CustomNode/Spawn Helpers")]
+public class SpawnHelpers : Leaf
+{
+    public BoolReference somePropertyRef = new BoolReference();
+    float timeToFreeze;
+    CheckConditions conditions;
+    [SerializeField] GameObject miniEnemys;
+    [SerializeField] int MinNoToSpawn;
+    [SerializeField] int MaxNoToSpawn;
+
+    // These two methods are optional, override only when needed
+    // public override void OnAllowInterrupt() {}
+
+    // This is called every tick as long as node is executed
+    public override NodeResult Execute()
+    {
+        if (miniEnemys == null) { return NodeResult.failure; }
+        int noToSpawn = UnityEngine.Random.Range(MinNoToSpawn, MaxNoToSpawn);
+        for (int i = 0; i < noToSpawn; i++)
+        {
+            Instantiate(miniEnemys, transform.position, Quaternion.Euler(0f, (360f /noToSpawn * i), 0f));
+        }
+        return NodeResult.running;
+    }
+
+    // These two methods are optional, override only when needed
+    // public override void OnExit() {}
+    // public override void OnDisallowInterrupt() {}
+
+    // Usually there is no needed to override this method
+    public override bool IsValid()
+    {
+        // You can do some custom validation here
+        return !somePropertyRef.isInvalid;
+    }
+}
+
 #endregion
 

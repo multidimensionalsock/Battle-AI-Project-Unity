@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     void MoveStart(InputAction.CallbackContext context)
     {
         Vector2 m_movement = context.ReadValue<Vector2>();
-        m_movementDirection = new Vector3(m_movement.x, 0, m_movement.y).normalized;
+        m_movementDirection = new Vector3(m_movement.x, 0f, m_movement.y).normalized;
         m_movementCoroutine = StartCoroutine(Move());
     }
 
