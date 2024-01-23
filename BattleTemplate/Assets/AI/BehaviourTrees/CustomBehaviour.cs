@@ -412,7 +412,7 @@ public class StandStill : Leaf
 	{
 		timeToFreeze -= Time.deltaTime;
         if (conditions.triggerWithPlayer) { conditions.WaitModeEventCaller(false); return NodeResult.success; }
-		if (timeToFreeze <-0)
+		if (timeToFreeze <= 0)
 		{
             conditions.WaitModeEventCaller(false);
             return NodeResult.success;
