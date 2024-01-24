@@ -411,7 +411,8 @@ public class StandStill : Leaf
 	public override NodeResult Execute()
 	{
 		timeToFreeze -= Time.deltaTime;
-        if (conditions.triggerWithPlayer) { conditions.WaitModeEventCaller(false); return NodeResult.success; }
+        if (conditions.triggerWithPlayer) 
+        { conditions.WaitModeEventCaller(false); return NodeResult.success; }
 		if (timeToFreeze <= 0)
 		{
             conditions.WaitModeEventCaller(false);
