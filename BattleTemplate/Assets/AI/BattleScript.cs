@@ -6,6 +6,7 @@ public class BattleScript : MonoBehaviour
 {
     [SerializeField] public float m_HP;
     [SerializeField] protected int m_TP;
+    [SerializeField] public float m_maxHP;
     [SerializeField] public int m_MaxTP;
     [SerializeField] public int m_Attack;
     [SerializeField] protected int m_Defence;
