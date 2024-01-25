@@ -124,7 +124,8 @@ public class PlayerMovement : MonoBehaviour
 
             m_rigidBody.AddForce(cameraLook.transform.forward * m_movementDirection.z * m_movementForce);
             m_rigidBody.AddForce(cameraLook.transform.right * m_movementDirection.x * m_movementForce);
-            m_rigidBody.velocity = Vector3.ClampMagnitude(m_rigidBody.velocity, m_maxSpeed);
+            m_rigidBody.velocity = Vector3.ClampMagnitude(Vector3.ProjectOnPlane(m_rigidBody.velocity, Vector3.up), m_maxSpeed) + (Vector3.up * m_rigidBody.velocity.y);
+            //m_rigidBody.velocity = Vector3.ClampMagnitude(m_rigidBody.velocity, m_maxSpeed);
             
             Quaternion targetRot = cameraLook.transform.rotation * Quaternion.LookRotation(m_movementDirection, Vector3.up);
             model.transform.rotation = Quaternion.Slerp(model.transform.rotation, targetRot, m_rotationSpeed);
