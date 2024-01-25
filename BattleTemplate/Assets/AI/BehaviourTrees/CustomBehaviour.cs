@@ -130,7 +130,7 @@ public class GetMelleeAttack : Leaf
         CheckConditions condition = GetComponent<CheckConditions>();
         if (!condition.ableToAttack) { return NodeResult.failure; } 
         if (!condition.meleeAttacks.Any()) { return NodeResult.failure; }
-        condition.nextAttack = condition.meleeAttacks[UnityEngine.Random.Range(0, condition.meleeAttacks.Count)];
+        condition.SetNextAttack(condition.meleeAttacks[UnityEngine.Random.Range(0, condition.meleeAttacks.Count)]);
         return NodeResult.success;
     }
 
@@ -161,7 +161,7 @@ public class GetRangeAttack : Leaf
         CheckConditions condition = GetComponent<CheckConditions>();
         if (!condition.ableToAttack) { return NodeResult.failure; }
         if (!condition.rangeAttacks.Any()) { return NodeResult.failure; }
-        condition.nextAttack = condition.rangeAttacks[UnityEngine.Random.Range(0, condition.rangeAttacks.Count)];
+        condition.SetNextAttack(condition.rangeAttacks[UnityEngine.Random.Range(0, condition.rangeAttacks.Count)]);
         return NodeResult.success;
     }
 
@@ -192,8 +192,7 @@ public class GetSpecialAttack : Leaf
         CheckConditions condition = GetComponent<CheckConditions>();
         if (!condition.ableToSpecialAttack) { return NodeResult.failure; }
         if (!condition.specialAttacks.Any()) { return NodeResult.failure; }
-        condition.nextAttack = condition.specialAttacks[UnityEngine.Random.Range(0, condition.specialAttacks.Count)];
-        Debug.Log(condition.nextAttack);
+        condition.SetNextAttack(condition.specialAttacks[UnityEngine.Random.Range(0, condition.specialAttacks.Count)]);
         return NodeResult.success;
     }
 
@@ -221,9 +220,11 @@ public class AttackNavigate : Leaf
     // This is called every tick as long as node is executed
     public override NodeResult Execute()
     {
-        Attack attack = GetComponent<CheckConditions>().nextAttack;
+        CheckConditions conditions = GetComponent<CheckConditions>();
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        Attack attack = conditions.GetNextAttack();
         //if (attack.attackType == AttackType.melee) { GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.seek, GetComponent<CheckConditions>().playerRef); return NodeResult.running; }
-        float distanceFromPlayer = Mathf.Abs(Vector3.Distance(GetComponent<CheckConditions>().playerRef.transform.position, transform.position));
+        float distanceFromPlayer = Mathf.Abs(Vector3.Distance(conditions.playerRef.transform.position, transform.position));
         if (attack.attackType == AttackType.melee)
         {
             if (GetComponent<CheckConditions>().triggerWithPlayer)
@@ -234,11 +235,16 @@ public class AttackNavigate : Leaf
             GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.seek, GetComponent<CheckConditions>().playerRef);
             return NodeResult.running;
         }
-        else if (distanceFromPlayer > attack.maxDistanceToPerform || distanceFromPlayer < attack.minDistanceToPerform)
+        else if (distanceFromPlayer > attack.maxDistanceToPerform)
+        {
+            GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.seek, conditions.playerRef);
+            return NodeResult.running;
+        }
+        else if (distanceFromPlayer < attack.minDistanceToPerform)
         {
             //Vector3 PlayerLocation = blackboard.get
             //pathfinderRef.SetNewNavigation(pathfindingState.seek, playerRef);
-            GetComponent<Pathfinding>().SetNewNavigation(attack);
+            GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.flee, conditions.playerRef);
             return NodeResult.running;
 
         }
@@ -278,7 +284,7 @@ public class PerformAttack : Leaf
     {
         Debug.Log("performattack");
         CheckConditions conditions = GetComponent<CheckConditions>();
-        Attack attack = conditions.nextAttack;
+        Attack attack = conditions.GetNextAttack();
         conditions.CallAttackEvent(attack);
         if (GetComponent<BattleScript>().GetTP() < attack.TPDecrease) { return NodeResult.failure; }
         if (attack.attackObject == null)
@@ -357,8 +363,99 @@ public class LockMovement : Leaf
     public override NodeResult Execute()
     {
         if (GetComponent<CheckConditions>() == null) { return NodeResult.failure; }
-        if (GetComponent <CheckConditions>().MovementLocked == true ) { return NodeResult.running; }
+        if (GetComponent<CheckConditions>().MovementLocked == true ) { return NodeResult.running; }
         return NodeResult.success;
+    }
+
+    // These two methods are optional, override only when needed
+    // public override void OnExit() {}
+    // public override void OnDisallowInterrupt() {}
+
+    // Usually there is no needed to override this method
+    public override bool IsValid()
+    {
+        // You can do some custom validation here
+        return !somePropertyRef.isInvalid;
+    }
+}
+
+[MBTNode(name = "CustomNode/Wait Mode")]
+public class StandStill : Leaf
+{
+	public BoolReference somePropertyRef = new BoolReference();
+	float timeToFreeze;
+    CheckConditions conditions; 
+
+    // These two methods are optional, override only when needed
+    // public override void OnAllowInterrupt() {}
+    public override void OnEnter() 
+	{
+		//get distance from player and player velocity
+		//work out how long it will take the player to get to you
+		//then -1 so you have time to make a choice 
+		//this is how long you freeze for 
+		GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
+		conditions= GetComponent<CheckConditions>();
+		float distanceFromPlayer = Mathf.Abs(Vector3.Distance(conditions.playerRef.transform.position, transform.position));
+		float playerSpeed = conditions.playerRef.GetComponent<Rigidbody>().velocity.magnitude;
+		timeToFreeze = (distanceFromPlayer / playerSpeed) - 1;
+		if (playerSpeed == 0)
+		{
+			timeToFreeze = distanceFromPlayer;
+		}
+        conditions.WaitModeEventCaller(true);
+
+	}
+
+	// This is called every tick as long as node is executed
+	public override NodeResult Execute()
+	{
+		timeToFreeze -= Time.deltaTime;
+        if (conditions.triggerWithPlayer) 
+        { conditions.WaitModeEventCaller(false); return NodeResult.success; }
+		if (timeToFreeze <= 0)
+		{
+            conditions.WaitModeEventCaller(false);
+            return NodeResult.success;
+        }
+		return NodeResult.running;
+	}
+
+	// These two methods are optional, override only when needed
+	// public override void OnExit() {}
+	// public override void OnDisallowInterrupt() {}
+
+	// Usually there is no needed to override this method
+	public override bool IsValid()
+	{
+		// You can do some custom validation here
+		return !somePropertyRef.isInvalid;
+	}
+}
+
+[MBTNode(name = "CustomNode/Spawn Helpers")]
+public class SpawnHelpers : Leaf
+{
+    public BoolReference somePropertyRef = new BoolReference();
+    float timeToFreeze;
+    CheckConditions conditions;
+    [SerializeField] GameObject miniEnemys;
+    [SerializeField] int MinNoToSpawn;
+    [SerializeField] int MaxNoToSpawn;
+
+    // These two methods are optional, override only when needed
+    // public override void OnAllowInterrupt() {}
+
+    // This is called every tick as long as node is executed
+    public override NodeResult Execute()
+    {
+        if (miniEnemys == null) { return NodeResult.failure; }
+        int noToSpawn = UnityEngine.Random.Range(MinNoToSpawn, MaxNoToSpawn);
+        for (int i = 0; i < noToSpawn; i++)
+        {
+            Instantiate(miniEnemys, transform.position, Quaternion.Euler(0f, (360f /noToSpawn * i), 0f));
+        }
+        return NodeResult.running;
     }
 
     // These two methods are optional, override only when needed

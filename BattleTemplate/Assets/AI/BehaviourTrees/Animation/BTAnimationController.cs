@@ -13,17 +13,20 @@ public class BTAnimationController : MonoBehaviour
     // Start is called before the first frame update
     private void OnEnable()
     {
-        m_animator = GetComponent<Animator>();
-        m_agent = transform.parent.GetComponent<NavMeshAgent>(); 
+		m_agent = transform.parent.GetComponent<NavMeshAgent>();
+		m_animator = GetComponent<Animator>();
         m_controller = new AnimatorOverrideController(m_animator.runtimeAnimatorController);
-        m_animator.GetComponent<Animator>().runtimeAnimatorController = m_controller;
+        m_animator.runtimeAnimatorController = m_controller;
         transform.parent.GetComponent<CheckConditions>().AttackImplem += AttackAnimation;
+        transform.parent.GetComponent<CheckConditions>().waitModeOnOff += WaitMode;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //need to check speed maybe bc too sow and stil running
+		transform.rotation = transform.parent.transform.rotation;
+        transform.position = transform.parent.transform.position;
+
         if (m_agent.velocity.x != 0 || m_agent.velocity.z != 0 ) 
         {
             m_animator.SetBool("Moving", true);
@@ -40,10 +43,16 @@ public class BTAnimationController : MonoBehaviour
 
     void AttackAnimation(Attack attackData)
     {
-        //code to switch in attack anim once this anim is finisghed anim attack finished needs calling 
         m_controller["Attack"] = attackData.associatedAnimation;
         m_animator.SetTrigger("Attack");
     }
+
+    void WaitMode(bool mode)
+    {
+        m_animator.SetBool("Wait", mode);
+    }
+
+    
 
     private void OnCollisionEnter(Collision collision)
     {

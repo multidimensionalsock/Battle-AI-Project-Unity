@@ -15,6 +15,7 @@ public struct Attack
     public string attackName;
     public float attackDamage;
     public GameObject attackObject;
+    public float AnimationNumber;
     public AnimationClip associatedAnimation;
     public AttackType attackType;
     public float minDistanceToPerform;
