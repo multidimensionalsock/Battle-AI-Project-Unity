@@ -27,3 +27,4 @@ make it so range attacks can lose tp
 make a check distance node 
 was attacked not working (or attacks not working?)
 sapwn helpers function 
+issue: on attacked not calling any fucntions below  (lower attack cooldown or have different ones for range and mellee?)
