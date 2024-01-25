@@ -1,7 +1,5 @@
 untested:
 last minute stats 
-condition: is health high?
-condition: is health low?
 check how offensively the player is playing 
 
 needs coding:
@@ -10,12 +8,11 @@ fast and slow run (depending on speed)
 work on finite state machine enemy
 work on finite state machine animation 
 change time limit for wait mode (make it serialze field?)
-hp and tp UI (player and AI)
 player only regain TP when attack actually hits
 maybe a way to pick attacks based on TP?
 very slow moving down when Y isnt locked, because fallins it getting set to first frame speed instead of getting faster. need to read current veloctiy and mke changes to that without changing Y
 fix overhead UI for enemy
-controller controls
 
 done: 
 issue: on attacked not calling any fucntions below  (lower attack cooldown or have different ones for range and mellee?)
+hp and tp UI (player)
