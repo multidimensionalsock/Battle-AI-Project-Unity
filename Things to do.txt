@@ -7,8 +7,6 @@ check how offensively the player is playing
 needs coding:
 Attack aniamtion
 fast and slow run (depending on speed)
-make new conditions based on AI strategy questionaire 
-apply things in the questionaire to behaviour tree and change chances 
 work on finite state machine enemy
 work on finite state machine animation 
 change time limit for wait mode (make it serialze field?)
@@ -20,11 +18,4 @@ fix overhead UI for enemy
 controller controls
 
 done: 
-response to being attacked
-child rotation issue 
-fix pathfinding for range attacks
-make it so range attacks can lose tp
-make a check distance node 
-was attacked not working (or attacks not working?)
-sapwn helpers function 
 issue: on attacked not calling any fucntions below  (lower attack cooldown or have different ones for range and mellee?)
