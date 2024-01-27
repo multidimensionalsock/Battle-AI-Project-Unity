@@ -12,6 +12,9 @@ player only regain TP when attack actually hits
 maybe a way to pick attacks based on TP?
 fix overhead UI for enemy
 
+tomorrow:
+animation and behaviour tree adjusting 
+
 done: 
 issue: on attacked not calling any fucntions below  (lower attack cooldown or have different ones for range and mellee?)
 hp and tp UI (player)
