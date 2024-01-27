@@ -34993,9 +34993,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 907858615550413082}
+  selectedEditorNode: {fileID: 0}
   repeatOnFinish: 1
-  maxExecutionsPerTick: 1
+  maxExecutionsPerTick: 3
   parent: {fileID: 0}
 --- !u!114 &907858615550413012
 MonoBehaviour:

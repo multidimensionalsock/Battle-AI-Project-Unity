@@ -442,6 +442,7 @@ public class SpawnHelpers : Leaf
     [SerializeField] GameObject miniEnemys;
     [SerializeField] int MinNoToSpawn;
     [SerializeField] int MaxNoToSpawn;
+    [SerializeField] int maxEnemiesInScene;
 
     // These two methods are optional, override only when needed
     // public override void OnAllowInterrupt() {}
@@ -450,11 +451,24 @@ public class SpawnHelpers : Leaf
     public override NodeResult Execute()
     {
         if (miniEnemys == null) { return NodeResult.failure; }
+
+        conditions = GetComponent<CheckConditions>();
+        //would be more efficeint to always have a count of them in the scene
+        //and then minus them from an event when they get destroyed.
+        int numMiniEnemies = conditions.GetNumberMiniEnemies(); //this line not working
+        if (numMiniEnemies >= MaxNoToSpawn) { return NodeResult.failure; }
+
         int noToSpawn = UnityEngine.Random.Range(MinNoToSpawn, MaxNoToSpawn);
+        if (noToSpawn > MaxNoToSpawn - numMiniEnemies)
+            noToSpawn = MaxNoToSpawn - numMiniEnemies;
+
         for (int i = 0; i < noToSpawn; i++)
         {
             Instantiate(miniEnemys, transform.position, Quaternion.Euler(0f, (360f /noToSpawn * i), 0f));
         }
+
+        conditions.AddMiniEnemys(noToSpawn);
+
         return NodeResult.running;
     }
 

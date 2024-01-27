@@ -21,6 +21,7 @@ public class CheckConditions : MonoBehaviour
     [SerializeField] float specialAttackCoolDownTime;
     float SpecialAttackCoolDownTimeRemaining;
 	[SerializeField] float lockMovementTime;
+    private int MiniEnemiesInScene;
 
     public int attacksInTheLastMinute;
     public float damageInTheLastMinute;
@@ -34,14 +35,6 @@ public class CheckConditions : MonoBehaviour
     public event System.Action<AnimationClip> NextAttackAnimChange;
     public event System.Action<bool> waitModeOnOff;
     
-
-
-	public bool GetWasAttacked()
-    {
-        if (attacked == false) return false;
-        if (attacked == true) attacked = false; return true;
-    }
-
     private void OnEnable()
     {
         LoadAttacks();
@@ -57,6 +50,8 @@ public class CheckConditions : MonoBehaviour
         {
             LastMinuteStatList.Add(empty);
         }
+
+        MiniEnemyFinite.Death += MiniEnemyDied;
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -234,5 +229,26 @@ public class CheckConditions : MonoBehaviour
     public Attack GetNextAttack()
     {
         return nextAttack;
+    }
+
+    public void AddMiniEnemys(int numberAdded)
+    {
+        MiniEnemiesInScene += numberAdded;
+    }
+
+    public void MiniEnemyDied()
+    {
+        MiniEnemiesInScene -= 1;
+    }
+
+    public int GetNumberMiniEnemies()
+    {
+        return MiniEnemiesInScene;
+    }
+
+    public bool GetWasAttacked()
+    {
+        if (attacked == false) return false;
+        if (attacked == true) attacked = false; return true;
     }
 }

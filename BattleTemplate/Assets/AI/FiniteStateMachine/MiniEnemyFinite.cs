@@ -32,6 +32,8 @@ public class MiniEnemyFinite : MonoBehaviour
     bool m_playerCollision = false;
     bool lockAttack;
 
+    public static event System.Action MiniEnemyDead;
+
     private void Start()
     {
         GetComponent<BattleScript>().HPreduce += TransitionAny;
