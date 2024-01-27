@@ -12,8 +12,6 @@ maybe a way to pick attacks based on TP?
 animation and behaviour tree adjusting 
 wait modes going on to often?
 face player while in waitmode??
-mini enemy needs setting up on creation to have player refs 
-
 
 done: 
 issue: on attacked not calling any fucntions below  (lower attack cooldown or have different ones for range and mellee?)
@@ -23,3 +21,4 @@ ui anchoring
 condiiton check if can attack for when in range and then flee if not 
 player only regain TP when attack actually hits
 enemys allowed to be spawned limit
+mini enemy needs setting up on creation to have player refs 

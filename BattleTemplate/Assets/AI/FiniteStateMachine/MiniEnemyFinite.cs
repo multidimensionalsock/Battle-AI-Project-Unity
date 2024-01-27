@@ -34,6 +34,12 @@ public class MiniEnemyFinite : MonoBehaviour
 
     public static event System.Action MiniEnemyDead;
 
+    public void OnInstantiation(GameObject playerReference, GameObject bossReference)
+    {
+        m_playerRef = playerReference;
+        m_bossRef = bossReference;
+    }
+
     private void Start()
     {
         GetComponent<BattleScript>().HPreduce += TransitionAny;

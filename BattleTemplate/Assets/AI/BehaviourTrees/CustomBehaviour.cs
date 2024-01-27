@@ -464,7 +464,8 @@ public class SpawnHelpers : Leaf
 
         for (int i = 0; i < noToSpawn; i++)
         {
-            Instantiate(miniEnemys, transform.position, Quaternion.Euler(0f, (360f /noToSpawn * i), 0f));
+            GameObject temp = Instantiate(miniEnemys, transform.position, Quaternion.Euler(0f, (360f /noToSpawn * i), 0f));
+            temp.GetComponent<MiniEnemyFinite>().OnInstantiation(conditions.playerRef, gameObject);
         }
 
         conditions.AddMiniEnemys(noToSpawn);

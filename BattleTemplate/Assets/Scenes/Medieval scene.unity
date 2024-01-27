@@ -1028,6 +1028,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
+--- !u!1 &143771176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2653641988187876908, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+  m_PrefabInstance: {fileID: 1262077237}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &148137080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3166,6 +3171,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
+--- !u!115 &375910758
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: SpawnHelpers
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &382621005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34961,6 +34981,7 @@ GameObject:
   - component: {fileID: 907858615550413110}
   - component: {fileID: 907858615550413109}
   - component: {fileID: 907858615550413113}
+  - component: {fileID: 907858615550413114}
   m_Layer: 0
   m_Name: Jacob 1
   m_TagString: Enemy
@@ -34993,7 +35014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 0}
+  selectedEditorNode: {fileID: 907858615550413114}
   repeatOnFinish: 1
   maxExecutionsPerTick: 3
   parent: {fileID: 0}
@@ -35547,6 +35568,7 @@ MonoBehaviour:
   parent: {fileID: 907858615550413017}
   children:
   - {fileID: 907858615550413051}
+  - {fileID: 907858615550413114}
   - {fileID: 907858615550413041}
   - {fileID: 907858615550413049}
   - {fileID: 907858615550413048}
@@ -37159,3 +37181,37 @@ MonoBehaviour:
   runtimePriority: 0
   breakpoint: 0
   random: 0
+--- !u!114 &907858615550413114
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 375910758}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Spawn Helpers
+  rect:
+    serializedVersion: 2
+    x: -580
+    y: -0
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413050}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+  miniEnemys: {fileID: 143771176}
+  MinNoToSpawn: 1
+  MaxNoToSpawn: 1
+  maxEnemiesInScene: 5
