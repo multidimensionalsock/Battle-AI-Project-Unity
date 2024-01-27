@@ -1,6 +1,4 @@
 untested:
-last minute stats 
-check how offensively the player is playing 
 
 needs coding:
 Attack aniamtion
@@ -12,6 +10,10 @@ maybe a way to pick attacks based on TP?
 animation and behaviour tree adjusting 
 wait modes going on to often?
 face player while in waitmode??
+
+not working
+last minute stats 
+check how offensively the player is playing 
 
 done: 
 issue: on attacked not calling any fucntions below  (lower attack cooldown or have different ones for range and mellee?)
