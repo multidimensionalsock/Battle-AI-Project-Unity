@@ -4,19 +4,19 @@ check how offensively the player is playing
 
 needs coding:
 Attack aniamtion
+death animation 
 fast and slow run (depending on speed)
 work on finite state machine enemy
 work on finite state machine animation 
-change time limit for wait mode (make it serialze field?)
-player only regain TP when attack actually hits
 maybe a way to pick attacks based on TP?
-fix overhead UI for enemy
-
-tomorrow:
 animation and behaviour tree adjusting 
+wait modes going on to often?
+face player while in waitmode??
 
 done: 
 issue: on attacked not calling any fucntions below  (lower attack cooldown or have different ones for range and mellee?)
 hp and tp UI (player)
 very slow moving down when moving on jump
 ui anchoring 
+condiiton check if can attack for when in range and then flee if not 
+player only regain TP when attack actually hits

@@ -34957,10 +34957,10 @@ GameObject:
   - component: {fileID: 907858615550413091}
   - component: {fileID: 907858615550413090}
   - component: {fileID: 907858615550413089}
-  - component: {fileID: 907858615550413107}
   - component: {fileID: 907858615550413108}
   - component: {fileID: 907858615550413110}
   - component: {fileID: 907858615550413109}
+  - component: {fileID: 907858615550413113}
   m_Layer: 0
   m_Name: Jacob 1
   m_TagString: Enemy
@@ -34993,7 +34993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 0}
+  selectedEditorNode: {fileID: 907858615550413082}
   repeatOnFinish: 1
   maxExecutionsPerTick: 1
   parent: {fileID: 0}
@@ -36309,7 +36309,7 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 1300
-    y: 600
+    y: 540
     width: 160
     height: 45
   parent: {fileID: 907858615550413080}
@@ -36339,10 +36339,10 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 1200
-    y: 520
+    y: 480
     width: 160
     height: 45
-  parent: {fileID: 907858615550413107}
+  parent: {fileID: 907858615550413113}
   children:
   - {fileID: 907858615550413082}
   - {fileID: 907858615550413081}
@@ -36366,8 +36366,8 @@ MonoBehaviour:
   title: Perform Attack
   rect:
     serializedVersion: 2
-    x: 1200
-    y: 660
+    x: 1220
+    y: 600
     width: 160
     height: 45
   parent: {fileID: 907858615550413080}
@@ -36396,8 +36396,8 @@ MonoBehaviour:
   title: Get Mellee Attack
   rect:
     serializedVersion: 2
-    x: 1100
-    y: 600
+    x: 1080
+    y: 540
     width: 160
     height: 45
   parent: {fileID: 907858615550413080}
@@ -36492,7 +36492,7 @@ MonoBehaviour:
     height: 45
   parent: {fileID: 907858615550413083}
   children:
-  - {fileID: 907858615550413107}
+  - {fileID: 907858615550413113}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -37042,32 +37042,6 @@ MonoBehaviour:
   runtimePriority: 0
   breakpoint: 0
   random: 0
---- !u!114 &907858615550413107
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Selector
-  rect:
-    serializedVersion: 2
-    x: 1199
-    y: 413
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413085}
-  children:
-  - {fileID: 907858615550413080}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
 --- !u!114 &907858615550413108
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -37159,3 +37133,29 @@ MonoBehaviour:
     key: 
     constantValue: 4
   randomDeviation: 0
+--- !u!114 &907858615550413113
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Selector
+  rect:
+    serializedVersion: 2
+    x: 1194
+    y: 400
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413085}
+  children:
+  - {fileID: 907858615550413080}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0

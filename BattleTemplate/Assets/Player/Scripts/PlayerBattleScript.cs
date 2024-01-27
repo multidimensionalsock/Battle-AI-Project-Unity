@@ -21,6 +21,7 @@ public class PlayerBattleScript : BattleScript
 
     void AttackOther(InputAction.CallbackContext context)
     {
+        if (currentCollision == null) { return; }
         m_TP += 1;
         currentCollision.Attack(m_Attack);
     }
