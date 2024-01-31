@@ -1028,6 +1028,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
+--- !u!1 &143771176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2653641988187876908, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+  m_PrefabInstance: {fileID: 1262077237}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &148137080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10479,21 +10484,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
---- !u!115 &1245795585
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: PlayerOffensiveCheck
-  m_Namespace: 
-  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &1248410104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12676,6 +12666,8 @@ MonoBehaviour:
   m_SpecialDefence: 0
   deathByScript: 1
   m_battleObject: {fileID: 4063635816943371586, guid: ccdecd56f1d30e94d806700f09b75277, type: 3}
+  attackCooldown: 0
+  damageCooldown: 0
 --- !u!1001 &1528529513
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14248,6 +14240,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2e14d87834a62041a457f0dcc62b265, type: 3}
+--- !u!115 &1751829913
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: PlayerOffensiveCheck
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!4 &1759122154 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1529183203402686330, guid: 3148b0057757c5e49a1d7284d605de90, type: 3}
@@ -33726,6 +33733,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8139306236123809429, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
   m_PrefabInstance: {fileID: 1207480486}
   m_PrefabAsset: {fileID: 0}
+--- !u!115 &2014367878
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: SpawnHelpers
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
 --- !u!4 &2017000675 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5495456392353531464, guid: 7bbef63b5bd52bc4bb03cdc6cbb94a6f, type: 3}
@@ -34942,7 +34964,6 @@ GameObject:
   - component: {fileID: 907858615550413071}
   - component: {fileID: 907858615550413070}
   - component: {fileID: 907858615550413069}
-  - component: {fileID: 907858615550413068}
   - component: {fileID: 907858615550413074}
   - component: {fileID: 907858615550413075}
   - component: {fileID: 907858615550413077}
@@ -34961,7 +34982,6 @@ GameObject:
   - component: {fileID: 907858615550413102}
   - component: {fileID: 907858615550413101}
   - component: {fileID: 907858615550413100}
-  - component: {fileID: 907858615550413099}
   - component: {fileID: 907858615550413098}
   - component: {fileID: 907858615550413097}
   - component: {fileID: 907858615550413096}
@@ -34977,6 +34997,12 @@ GameObject:
   - component: {fileID: 907858615550413109}
   - component: {fileID: 907858615550413113}
   - component: {fileID: 907858615550413114}
+  - component: {fileID: 907858615550413117}
+  - component: {fileID: 907858615550413116}
+  - component: {fileID: 907858615550413115}
+  - component: {fileID: 907858615550413118}
+  - component: {fileID: 907858615550413119}
+  - component: {fileID: 907858615550413120}
   m_Layer: 0
   m_Name: Jacob 1
   m_TagString: Enemy
@@ -35009,7 +35035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 907858615550413099}
+  selectedEditorNode: {fileID: 907858615550413116}
   repeatOnFinish: 1
   maxExecutionsPerTick: 3
   parent: {fileID: 0}
@@ -35134,7 +35160,7 @@ MonoBehaviour:
   ableToAttack: 0
   ableToSpecialAttack: 0
   MovementLocked: 0
-  attackCoolDownTime: 0.5
+  attackCoolDownTime: 3
   specialAttackCoolDownTime: 20
   lockMovementTime: 0
   attacksInTheLastMinute: 0
@@ -36000,33 +36026,6 @@ MonoBehaviour:
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
---- !u!114 &907858615550413068
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Sequence
-  rect:
-    serializedVersion: 2
-    x: -1500
-    y: 400
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413069}
-  children:
-  - {fileID: 907858615550413088}
-  - {fileID: 907858615550413105}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
 --- !u!114 &907858615550413069
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -36042,13 +36041,13 @@ MonoBehaviour:
   title: Is HP low?
   rect:
     serializedVersion: 2
-    x: -1500
-    y: 320
+    x: -1700
+    y: 480
     width: 160
     height: 45
-  parent: {fileID: 907858615550413070}
+  parent: {fileID: 907858615550413119}
   children:
-  - {fileID: 907858615550413068}
+  - {fileID: 907858615550413088}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -36082,7 +36081,7 @@ MonoBehaviour:
   parent: {fileID: 907858615550413051}
   children:
   - {fileID: 907858615550413073}
-  - {fileID: 907858615550413069}
+  - {fileID: 907858615550413118}
   - {fileID: 907858615550413071}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -36536,10 +36535,10 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: -1700
-    y: 520
+    y: 560
     width: 160
     height: 45
-  parent: {fileID: 907858615550413068}
+  parent: {fileID: 907858615550413069}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -36565,8 +36564,8 @@ MonoBehaviour:
   title: Lock Movement
   rect:
     serializedVersion: 2
-    x: -1060
-    y: 480
+    x: -1120
+    y: 560
     width: 160
     height: 45
   parent: {fileID: 907858615550413093}
@@ -36595,8 +36594,8 @@ MonoBehaviour:
   title: Perform Attack
   rect:
     serializedVersion: 2
-    x: -1120
-    y: 560
+    x: -1040
+    y: 500
     width: 160
     height: 45
   parent: {fileID: 907858615550413093}
@@ -36693,8 +36692,8 @@ MonoBehaviour:
   children:
   - {fileID: 907858615550413092}
   - {fileID: 907858615550413091}
-  - {fileID: 907858615550413090}
   - {fileID: 907858615550413089}
+  - {fileID: 907858615550413090}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -36714,8 +36713,8 @@ MonoBehaviour:
   title: Lock Movement
   rect:
     serializedVersion: 2
-    x: -1180
-    y: 720
+    x: -1100
+    y: 760
     width: 160
     height: 45
   parent: {fileID: 907858615550413098}
@@ -36744,7 +36743,7 @@ MonoBehaviour:
   title: Perform Attack
   rect:
     serializedVersion: 2
-    x: -1140
+    x: -1200
     y: 820
     width: 160
     height: 45
@@ -36774,7 +36773,7 @@ MonoBehaviour:
   title: Navigate To Attack
   rect:
     serializedVersion: 2
-    x: -1320
+    x: -1380
     y: 820
     width: 160
     height: 45
@@ -36842,46 +36841,12 @@ MonoBehaviour:
   children:
   - {fileID: 907858615550413097}
   - {fileID: 907858615550413096}
-  - {fileID: 907858615550413094}
   - {fileID: 907858615550413095}
+  - {fileID: 907858615550413094}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
   random: 0
---- !u!114 &907858615550413099
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907858615550413009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1245795585}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Player playing offensively?
-  rect:
-    serializedVersion: 2
-    x: -1640
-    y: 660
-    width: 160
-    height: 45
-  parent: {fileID: 907858615550413105}
-  children:
-  - {fileID: 907858615550413102}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  abort: 0
-  somePropertyRef:
-    useConstant: 0
-    mode: 1
-    blackboard: {fileID: 0}
-    key: 
-    constantValue: 0
-  attacksInLastMinToBeOffensive: 5
-  damageInLastMinToBeOffensive: 5
 --- !u!114 &907858615550413100
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -36897,8 +36862,8 @@ MonoBehaviour:
   title: Lock Movement
   rect:
     serializedVersion: 2
-    x: -1480
-    y: 820
+    x: -1440
+    y: 940
     width: 160
     height: 45
   parent: {fileID: 907858615550413102}
@@ -36928,7 +36893,7 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: -1540
-    y: 900
+    y: 980
     width: 160
     height: 45
   parent: {fileID: 907858615550413102}
@@ -36957,14 +36922,14 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: -1640
-    y: 740
+    x: -1620
+    y: 840
     width: 160
     height: 45
-  parent: {fileID: 907858615550413099}
+  parent: {fileID: 907858615550413117}
   children:
   - {fileID: 907858615550413104}
-  - {fileID: 907858615550413103}
+  - {fileID: 907858615550413120}
   - {fileID: 907858615550413101}
   - {fileID: 907858615550413100}
   behaviourTree: {fileID: 0}
@@ -36987,10 +36952,10 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: -1720
-    y: 900
+    y: 1060
     width: 160
     height: 45
-  parent: {fileID: 907858615550413102}
+  parent: {fileID: 907858615550413120}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -37017,7 +36982,7 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: -1800
-    y: 820
+    y: 940
     width: 160
     height: 45
   parent: {fileID: 907858615550413102}
@@ -37050,9 +37015,9 @@ MonoBehaviour:
     y: 580
     width: 160
     height: 45
-  parent: {fileID: 907858615550413068}
+  parent: {fileID: 907858615550413119}
   children:
-  - {fileID: 907858615550413099}
+  - {fileID: 907858615550413117}
   - {fileID: 907858615550413098}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -37208,3 +37173,190 @@ MonoBehaviour:
     key: 
     constantValue: 0
   pointWhereHpIsLow: 15
+--- !u!114 &907858615550413115
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2370820ab6f42c8449d09456ac02d66d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Cooldown
+  rect:
+    serializedVersion: 2
+    x: -1980
+    y: 840
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413117}
+  children:
+  - {fileID: 907858615550413116}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  abort: 0
+  time:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 20
+  resetOnChildFailure: 0
+--- !u!114 &907858615550413116
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2014367878}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Spawn Helpers
+  rect:
+    serializedVersion: 2
+    x: -1980
+    y: 920
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413115}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+  miniEnemys: {fileID: 143771176}
+  MinNoToSpawn: 1
+  MaxNoToSpawn: 3
+  maxEnemiesInScene: 7
+--- !u!114 &907858615550413117
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Selector
+  rect:
+    serializedVersion: 2
+    x: -1800
+    y: 720
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413105}
+  children:
+  - {fileID: 907858615550413115}
+  - {fileID: 907858615550413102}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 1
+--- !u!114 &907858615550413118
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1751829913}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Player playing offensively?
+  rect:
+    serializedVersion: 2
+    x: -1504
+    y: 281
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413070}
+  children:
+  - {fileID: 907858615550413119}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  abort: 0
+  somePropertyRef:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 0
+  attacksInLastMinToBeOffensive: 0
+  damageInLastMinToBeOffensive: 0
+--- !u!114 &907858615550413119
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Selector
+  rect:
+    serializedVersion: 2
+    x: -1500
+    y: 380
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413118}
+  children:
+  - {fileID: 907858615550413069}
+  - {fileID: 907858615550413105}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &907858615550413120
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907858615550413009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cab6356732c8c443a6fa2d180a5697b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Time Limit
+  rect:
+    serializedVersion: 2
+    x: -1720
+    y: 1000
+    width: 160
+    height: 45
+  parent: {fileID: 907858615550413102}
+  children:
+  - {fileID: 907858615550413103}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  time:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 3
+  randomDeviation: 0

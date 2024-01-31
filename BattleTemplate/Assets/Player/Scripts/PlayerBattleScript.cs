@@ -8,6 +8,10 @@ public class PlayerBattleScript : BattleScript
     PlayerInput m_input;
     BattleScript currentCollision = null;
 	[SerializeField] protected GameObject m_battleObject;
+    bool canAttack;
+    [SerializeField] float attackCooldown;
+    [SerializeField] float damageCooldown;
+
     // Start is called before the first frame update
     void Start()
     {

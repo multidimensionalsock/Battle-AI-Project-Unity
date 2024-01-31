@@ -3,23 +3,24 @@ untested:
 needs coding:
 Attack aniamtion
 death animation 
-fast and slow run (depending on speed)
 work on finite state machine enemy
 work on finite state machine animation 
-maybe a way to pick attacks based on TP?
+maybe a way to pick attacks based on TP? (decision tree)
 animation and behaviour tree adjusting 
 wait modes going on to often?
+player attack cooldown
+make more attacks
+
+not working:
+naviagte to attack still not working sometimes??
+when mini enemies spawn main enemy teleports
 
 done: 
-issue: on attacked not calling any fucntions below  (lower attack cooldown or have different ones for range and mellee?)
-hp and tp UI (player)
-very slow moving down when moving on jump
-ui anchoring 
-condiiton check if can attack for when in range and then flee if not 
-player only regain TP when attack actually hits
 enemys allowed to be spawned limit
 mini enemy needs setting up on creation to have player refs 
 face player when attacking //janky
 face player while in waitmode //janky
 last minute stats 
 check how offensively the player is playing 
+mini enemies spawn disabled
+

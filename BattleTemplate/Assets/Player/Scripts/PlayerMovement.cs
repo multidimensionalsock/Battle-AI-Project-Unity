@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     bool m_movementLock = false;
     Coroutine cameraMovco;
 	[SerializeField] GameObject m_SpecialAttackObject;
+    
 
     public float GetSpeed()
     {
@@ -41,8 +42,6 @@ public class PlayerMovement : MonoBehaviour
         m_input.currentActionMap.FindAction("Defence").performed += DefenceStart;
         m_input.currentActionMap.FindAction("Defence").canceled += DefenceEnd;
         //m_distance = Mathf.Abs(Vector3.Distance(transform.position, m_camera.transform.position));
-
-           
     }
 
 

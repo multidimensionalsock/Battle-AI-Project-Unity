@@ -123,7 +123,7 @@ public class CheckConditions : MonoBehaviour
     IEnumerator AttackCooldown(Attack attackdata)
     {
         ableToAttack = false;
-        yield return new WaitForSeconds(attackCoolDownTime + attackdata.freezeTime);
+        yield return new WaitForSeconds(attackCoolDownTime);
         ableToAttack = true;
     }
 
