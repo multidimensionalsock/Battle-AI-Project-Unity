@@ -283,9 +283,14 @@ public class PerformAttack : Leaf
     public override NodeResult Execute()
     {
         Debug.Log("performattack");
+
         CheckConditions conditions = GetComponent<CheckConditions>();
         Attack attack = conditions.GetNextAttack();
         conditions.CallAttackEvent(attack);
+
+        Vector3 look= conditions.playerRef.transform.position - transform.position;
+        transform.rotation = Quaternion.LookRotation(look);
+
         if (GetComponent<BattleScript>().GetTP() < attack.TPDecrease) { return NodeResult.failure; }
         if (attack.attackObject == null)
         {
@@ -413,7 +418,9 @@ public class StandStill : Leaf
 		timeToFreeze -= Time.deltaTime;
         if (conditions.triggerWithPlayer) 
         { conditions.WaitModeEventCaller(false); return NodeResult.success; }
-		if (timeToFreeze <= 0)
+        Vector3 look = conditions.playerRef.transform.position - transform.position;
+        transform.rotation = Quaternion.LookRotation(look);
+        if (timeToFreeze <= 0)
 		{
             conditions.WaitModeEventCaller(false);
             return NodeResult.success;

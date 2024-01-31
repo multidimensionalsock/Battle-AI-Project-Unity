@@ -1028,11 +1028,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
---- !u!1 &143771176 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2653641988187876908, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
-  m_PrefabInstance: {fileID: 1262077237}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &148137080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3171,7 +3166,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceda9be89f930ac42b32ff5ae10598cd, type: 3}
---- !u!115 &375910758
+--- !u!115 &379954786
 MonoScript:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3183,7 +3178,7 @@ MonoScript:
   m_Icon: {fileID: 0}
   m_Type: 0
   m_ExecutionOrder: 0
-  m_ClassName: SpawnHelpers
+  m_ClassName: HPhigh
   m_Namespace: 
   m_AssemblyName: Assembly-CSharp
 --- !u!1001 &382621005
@@ -35014,7 +35009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 907858615550413114}
+  selectedEditorNode: {fileID: 907858615550413099}
   repeatOnFinish: 1
   maxExecutionsPerTick: 3
   parent: {fileID: 0}
@@ -35172,7 +35167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c09174b1bed504eb252b001470d2ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HP: 10
+  m_HP: 50
   m_TP: 10
   m_maxHP: 0
   m_MaxTP: 10
@@ -35394,7 +35389,7 @@ MonoBehaviour:
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
-  pointWhereHpIsLow: 5
+  pointWhereHpIsLow: 20
 --- !u!114 &907858615550413043
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -35568,7 +35563,6 @@ MonoBehaviour:
   parent: {fileID: 907858615550413017}
   children:
   - {fileID: 907858615550413051}
-  - {fileID: 907858615550413114}
   - {fileID: 907858615550413041}
   - {fileID: 907858615550413049}
   - {fileID: 907858615550413048}
@@ -35624,7 +35618,7 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 20
-    y: 560
+    y: 620
     width: 160
     height: 45
   parent: {fileID: 907858615550413053}
@@ -35654,7 +35648,7 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 20
-    y: 500
+    y: 560
     width: 160
     height: 45
   parent: {fileID: 907858615550413056}
@@ -35748,10 +35742,10 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 20
-    y: 440
+    y: 500
     width: 160
     height: 45
-  parent: {fileID: 907858615550413108}
+  parent: {fileID: 907858615550413114}
   children:
   - {fileID: 907858615550413053}
   behaviourTree: {fileID: 0}
@@ -35991,8 +35985,8 @@ MonoBehaviour:
   title: Get Range Attack
   rect:
     serializedVersion: 2
-    x: 140
-    y: 620
+    x: 180
+    y: 660
     width: 160
     height: 45
   parent: {fileID: 907858615550413043}
@@ -36065,7 +36059,7 @@ MonoBehaviour:
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
-  lowHP: 10
+  lowHP: 25
 --- !u!114 &907858615550413070
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -36126,7 +36120,7 @@ MonoBehaviour:
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
-  pointWhereHpIsLow: 5
+  pointWhereHpIsLow: 25
 --- !u!114 &907858615550413072
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -36492,7 +36486,7 @@ MonoBehaviour:
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
-  lowHP: 0
+  lowHP: 10
 --- !u!114 &907858615550413085
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -36886,8 +36880,8 @@ MonoBehaviour:
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
-  attacksInLastMinToBeOffensive: 0
-  damageInLastMinToBeOffensive: 0
+  attacksInLastMinToBeOffensive: 5
+  damageInLastMinToBeOffensive: 5
 --- !u!114 &907858615550413100
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -37086,7 +37080,7 @@ MonoBehaviour:
   parent: {fileID: 907858615550413077}
   children:
   - {fileID: 907858615550413042}
-  - {fileID: 907858615550413056}
+  - {fileID: 907858615550413114}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -37170,7 +37164,7 @@ MonoBehaviour:
   title: Selector
   rect:
     serializedVersion: 2
-    x: 1194
+    x: 1200
     y: 400
     width: 160
     height: 45
@@ -37190,28 +37184,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 907858615550413009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 375910758}
+  m_Script: {fileID: 379954786}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Spawn Helpers
+  title: Is HP high?
   rect:
     serializedVersion: 2
-    x: -580
-    y: -0
+    x: 20
+    y: 440
     width: 160
     height: 45
-  parent: {fileID: 907858615550413050}
-  children: []
+  parent: {fileID: 907858615550413108}
+  children:
+  - {fileID: 907858615550413056}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
+  abort: 0
   somePropertyRef:
     useConstant: 0
-    mode: 0
+    mode: 1
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
-  miniEnemys: {fileID: 143771176}
-  MinNoToSpawn: 1
-  MaxNoToSpawn: 1
-  maxEnemiesInScene: 5
+  pointWhereHpIsLow: 15
