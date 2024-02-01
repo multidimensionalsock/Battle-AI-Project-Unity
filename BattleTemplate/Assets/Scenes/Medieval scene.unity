@@ -1619,7 +1619,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5910065917347830137, guid: d2a198c4cfe32244299c19d14622be9e, type: 3}
       propertyPath: m_movementForce
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5910065917347830137, guid: d2a198c4cfe32244299c19d14622be9e, type: 3}
       propertyPath: m_movementSpeed
@@ -35035,7 +35035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 907858615550413116}
+  selectedEditorNode: {fileID: 0}
   repeatOnFinish: 1
   maxExecutionsPerTick: 3
   parent: {fileID: 0}
@@ -36011,8 +36011,8 @@ MonoBehaviour:
   title: Get Range Attack
   rect:
     serializedVersion: 2
-    x: 180
-    y: 660
+    x: 220
+    y: 620
     width: 160
     height: 45
   parent: {fileID: 907858615550413043}
@@ -37282,8 +37282,8 @@ MonoBehaviour:
   title: Player playing offensively?
   rect:
     serializedVersion: 2
-    x: -1504
-    y: 281
+    x: -1500
+    y: 280
     width: 160
     height: 45
   parent: {fileID: 907858615550413070}
