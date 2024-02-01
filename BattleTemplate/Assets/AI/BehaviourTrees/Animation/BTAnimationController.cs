@@ -27,7 +27,7 @@ public class BTAnimationController : MonoBehaviour
 		transform.rotation = transform.parent.transform.rotation;
         transform.position = transform.parent.transform.position;
 
-        if (m_agent.velocity.x != 0 || m_agent.velocity.z != 0 ) 
+        if (m_agent.velocity != Vector3.zero) 
         {
             m_animator.SetBool("Moving", true);
         }

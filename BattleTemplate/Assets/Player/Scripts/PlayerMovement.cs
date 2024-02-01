@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     bool m_movementLock = false;
     Coroutine cameraMovco;
 	[SerializeField] GameObject m_SpecialAttackObject;
+    
 
     public float GetSpeed()
     {
@@ -41,8 +42,6 @@ public class PlayerMovement : MonoBehaviour
         m_input.currentActionMap.FindAction("Defence").performed += DefenceStart;
         m_input.currentActionMap.FindAction("Defence").canceled += DefenceEnd;
         //m_distance = Mathf.Abs(Vector3.Distance(transform.position, m_camera.transform.position));
-
-           
     }
 
 
@@ -60,7 +59,8 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 m_movement = context.ReadValue<Vector2>();
         m_movementDirection = new Vector3(m_movement.x, 0f, m_movement.y).normalized;
-        m_movementCoroutine = StartCoroutine(Move());
+        if (m_movementCoroutine == null)
+            m_movementCoroutine = StartCoroutine(Move());
     }
 
     void MoveEnd(InputAction.CallbackContext context)
@@ -124,36 +124,12 @@ public class PlayerMovement : MonoBehaviour
 
             m_rigidBody.AddForce(cameraLook.transform.forward * m_movementDirection.z * m_movementForce);
             m_rigidBody.AddForce(cameraLook.transform.right * m_movementDirection.x * m_movementForce);
-            m_rigidBody.velocity = Vector3.ClampMagnitude(m_rigidBody.velocity, m_maxSpeed);
-
-            if (m_movementDirection.z > 0)
-            {
-                //rotate to look away from camera
-                model.transform.rotation = Quaternion.Slerp(model.transform.rotation, cameraLook.transform.rotation, m_rotationSpeed);
-                
-                //transform.position += cameraLook.transform.forward * m_movementSpeed * Time.fixedDeltaTime;
-            }
-            else if (m_movementDirection.z < 0)
-            {
-                //rotate to look towards camera
-                model.transform.rotation = Quaternion.Slerp(model.transform.rotation, cameraLook.transform.rotation * Quaternion.Euler(0, 180f, 0), m_rotationSpeed);
-                
-                //transform.position -= cameraLook.transform.forward * m_movementSpeed * Time.fixedDeltaTime;
-            }
-
-            if (m_movementDirection.x > 0)
-            {
-                //rotate to camera right 
-                model.transform.rotation = Quaternion.Slerp(model.transform.rotation, cameraLook.transform.rotation * Quaternion.Euler(0, 90f, 0), m_rotationSpeed);
-                //transform.position += cameraLook.transform.right * m_movementSpeed * Time.fixedDeltaTime;
-            }
-            else if (m_movementDirection.x < 0)
-            {
-                //rotate to camerta left 
-                model.transform.rotation = Quaternion.Slerp(model.transform.rotation, cameraLook.transform.rotation * Quaternion.Euler(0, -90f, 0), m_rotationSpeed);
-                //transform.position -= cameraLook.transform.right * m_movementSpeed * Time.fixedDeltaTime;
-            }
+            m_rigidBody.velocity = Vector3.ClampMagnitude(Vector3.ProjectOnPlane(m_rigidBody.velocity, Vector3.up), m_maxSpeed) + (Vector3.up * m_rigidBody.velocity.y);
+            //m_rigidBody.velocity = Vector3.ClampMagnitude(m_rigidBody.velocity, m_maxSpeed);
             
+            Quaternion targetRot = cameraLook.transform.rotation * Quaternion.LookRotation(m_movementDirection, Vector3.up);
+            model.transform.rotation = Quaternion.Slerp(model.transform.rotation, targetRot, m_rotationSpeed);
+
             yield return new WaitForFixedUpdate();
         }
         //m_rigidBody.velocity = Vector3.zero;

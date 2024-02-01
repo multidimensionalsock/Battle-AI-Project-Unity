@@ -8,6 +8,10 @@ public class PlayerBattleScript : BattleScript
     PlayerInput m_input;
     BattleScript currentCollision = null;
 	[SerializeField] protected GameObject m_battleObject;
+    bool canAttack;
+    [SerializeField] float attackCooldown;
+    [SerializeField] float damageCooldown;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +25,7 @@ public class PlayerBattleScript : BattleScript
 
     void AttackOther(InputAction.CallbackContext context)
     {
+        if (currentCollision == null) { return; }
         m_TP += 1;
         currentCollision.Attack(m_Attack);
     }

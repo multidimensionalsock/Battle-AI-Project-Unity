@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealthBar : MonoBehaviour
 {
     [SerializeField] PlayerBattleScript playerBattleScript;
-    Slider HPbar;
-    Slider TPbar;
+    [SerializeField] Slider HPbar;
+    [SerializeField] Slider TPbar;
+    [SerializeField] TextMeshProUGUI HPnumber;
+    [SerializeField] TextMeshProUGUI TPnumber;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,14 +21,18 @@ public class PlayerHealthBar : MonoBehaviour
         //set nmax and current value
         HPbar.maxValue = playerBattleScript.m_maxHP;
         HPbar.value = HPbar.maxValue;
+        HPnumber.text = HPbar.value.ToString();
 
         TPbar.maxValue = playerBattleScript.m_MaxTP;
         TPbar.value = TPbar.maxValue;
+        TPnumber.text = TPbar.value.ToString();
     }
 
     private void Update()
     {
         HPbar.value = playerBattleScript.GetHp();
         TPbar.value = playerBattleScript.GetTP();
+        HPnumber.text = HPbar.value.ToString();
+        TPnumber.text = TPbar.value.ToString();
     }
 }
