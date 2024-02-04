@@ -138,9 +138,17 @@ public class Pathfinding : MonoBehaviour
         float distanceFromPlayer = Mathf.Abs(Vector3.Distance(m_objectToPathfind.transform.position, transform.position));
         while (distanceFromPlayer < attack.minDistanceToPerform || distanceFromPlayer > attack.maxDistanceToPerform)
         {
-            Vector3 anglefromPlayer = (m_objectToPathfind.transform.position - transform.position).normalized;
-            Vector3 pos = m_objectToPathfind.transform.position + (anglefromPlayer * ((attack.maxDistanceToPerform + attack.minDistanceToPerform)/2));
-            SetNewNavigation(pathfindingState.seek, pos);
+            if (distanceFromPlayer > attack.maxDistanceToPerform)
+            {
+                m_targetPosition = m_objectToPathfind.transform.position;
+                m_agent.SetDestination(m_targetPosition);
+            }
+            if (distanceFromPlayer < attack.minDistanceToPerform)
+            {
+                Vector3 anglefromPlayer = (m_objectToPathfind.transform.position - transform.position).normalized;
+                m_targetPosition = transform.position + (anglefromPlayer * m_distanceToFlee);
+            }
+            
             yield return new WaitForFixedUpdate();
         }
         SetNewNavigation(pathfindingState.nullptr);

@@ -14,49 +14,29 @@ using System;
 public class Seek : Leaf
 {
     public BoolReference somePropertyRef = new BoolReference();
-    //Transform playerRef;
-
-    // These two methods are optional, override only when needed
-    // public override void OnAllowInterrupt() {}
-
-    // This is called every tick as long as node is executed
     public override NodeResult Execute()
     {
         Debug.Log("Seeking");
         if (GetComponent<CheckConditions>().triggerWithPlayer != true)
         {
-            //Vector3 PlayerLocation = blackboard.get
-            //pathfinderRef.SetNewNavigation(pathfindingState.seek, playerRef);
             GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.seek, GetComponent<CheckConditions>().playerRef);
             return NodeResult.running;
-            
         }
         GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
         return NodeResult.success;
     }
 
-    // These two methods are optional, override only when needed
-    // public override void OnExit() {}
-    // public override void OnDisallowInterrupt() {}
-
-    // Usually there is no needed to override this method
     public override bool IsValid()
     {
-        // You can do some custom validation here
         return !somePropertyRef.isInvalid;
     }
-} //working
+}
 
-[MBTNode(name = "CustomNode/FacePlayer")] //working?
+[MBTNode(name = "CustomNode/FacePlayer")] 
 public class FacePlayer : Leaf
 {
     public BoolReference somePropertyRef = new BoolReference();
 
-    // These two methods are optional, override only when needed
-    // public override void OnAllowInterrupt() {}
-    // public override void OnEnter() {}
-
-    // This is called every tick as long as node is executed
     public override NodeResult Execute()
     {
         Debug.Log("FacePlayer");
@@ -66,14 +46,8 @@ public class FacePlayer : Leaf
         return NodeResult.success;
     }
 
-    // These two methods are optional, override only when needed
-    // public override void OnExit() {}
-    // public override void OnDisallowInterrupt() {}
-
-    // Usually there is no needed to override this method
     public override bool IsValid()
     {
-        // You can do some custom validation here
         return !somePropertyRef.isInvalid;
     }
 }
@@ -83,11 +57,6 @@ public class Flee : Leaf
 {
     public BoolReference somePropertyRef = new BoolReference();
 
-    // These two methods are optional, override only when needed
-    // public override void OnAllowInterrupt() {}
-    // public override void OnEnter() {}
-
-    // This is called every tick as long as node is executed
     public override NodeResult Execute()
     {
         //check distance from player 
@@ -98,64 +67,41 @@ public class Flee : Leaf
         {
             pathfinder.SetNewNavigation(pathfindingState.flee, checkConditions.playerRef);
             return NodeResult.running;
-
         }
         return NodeResult.success;
     }
 
-    // These two methods are optional, override only when needed
-    // public override void OnExit() {}
-    // public override void OnDisallowInterrupt() {}
-
-    // Usually there is no needed to override this method
     public override bool IsValid()
     {
-        // You can do some custom validation here
         return !somePropertyRef.isInvalid;
     }
-} //need testing
+}
 
 [MBTNode(name = "CustomNode/Get Mellee Attack")]
 public class GetMelleeAttack : Leaf
 {
     public BoolReference somePropertyRef = new BoolReference();
-    //Transform playerRef;
 
-    // These two methods are optional, override only when needed
-    // public override void OnAllowInterrupt() {}
-
-    // This is called every tick as long as node is executed
     public override NodeResult Execute()
     {
         CheckConditions condition = GetComponent<CheckConditions>();
-        if (!condition.ableToAttack) { return NodeResult.failure; } 
+        if (!condition.ableToAttack) { return NodeResult.failure; }
         if (!condition.meleeAttacks.Any()) { return NodeResult.failure; }
         condition.SetNextAttack(condition.meleeAttacks[UnityEngine.Random.Range(0, condition.meleeAttacks.Count)]);
         return NodeResult.success;
     }
 
-    // These two methods are optional, override only when needed
-    // public override void OnExit() {}
-    // public override void OnDisallowInterrupt() {}
-
-    // Usually there is no needed to override this method
     public override bool IsValid()
     {
-        // You can do some custom validation here
         return !somePropertyRef.isInvalid;
     }
-} //needs testing
+}
 
 [MBTNode(name = "CustomNode/Get Range Attack")]
 public class GetRangeAttack : Leaf
 {
     public BoolReference somePropertyRef = new BoolReference();
-    //Transform playerRef;
 
-    // These two methods are optional, override only when needed
-    // public override void OnAllowInterrupt() {}
-
-    // This is called every tick as long as node is executed
     public override NodeResult Execute()
     {
         CheckConditions condition = GetComponent<CheckConditions>();
@@ -165,28 +111,16 @@ public class GetRangeAttack : Leaf
         return NodeResult.success;
     }
 
-    // These two methods are optional, override only when needed
-    // public override void OnExit() {}
-    // public override void OnDisallowInterrupt() {}
-
-    // Usually there is no needed to override this method
     public override bool IsValid()
     {
-        // You can do some custom validation here
         return !somePropertyRef.isInvalid;
     }
-} //needs testing
+} 
 
 [MBTNode(name = "CustomNode/Get Special Attack")]
 public class GetSpecialAttack : Leaf
 {
     public BoolReference somePropertyRef = new BoolReference();
-    //Transform playerRef;
-
-    // These two methods are optional, override only when needed
-    // public override void OnAllowInterrupt() {}
-
-    // This is called every tick as long as node is executed
     public override NodeResult Execute()
     {
         CheckConditions condition = GetComponent<CheckConditions>();
@@ -196,28 +130,17 @@ public class GetSpecialAttack : Leaf
         return NodeResult.success;
     }
 
-    // These two methods are optional, override only when needed
-    // public override void OnExit() {}
-    // public override void OnDisallowInterrupt() {}
-
-    // Usually there is no needed to override this method
     public override bool IsValid()
     {
-        // You can do some custom validation here
         return !somePropertyRef.isInvalid;
     }
-} //needs testing
+} 
 
 [MBTNode(name = "CustomNode/Navigate To Attack")]
 public class AttackNavigate : Leaf
 {
     public BoolReference somePropertyRef = new BoolReference();
-    //Transform playerRef;
 
-    // These two methods are optional, override only when needed
-    // public override void OnAllowInterrupt() {}
-
-    // This is called every tick as long as node is executed
     public override NodeResult Execute()
     {
         CheckConditions conditions = GetComponent<CheckConditions>();
@@ -242,8 +165,6 @@ public class AttackNavigate : Leaf
         }
         else if (distanceFromPlayer < attack.minDistanceToPerform)
         {
-            //Vector3 PlayerLocation = blackboard.get
-            //pathfinderRef.SetNewNavigation(pathfindingState.seek, playerRef);
             GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.flee, conditions.playerRef);
             return NodeResult.running;
 
@@ -257,17 +178,11 @@ public class AttackNavigate : Leaf
         return NodeResult.failure;
     }
 
-    // These two methods are optional, override only when needed
-    // public override void OnExit() {}
-    // public override void OnDisallowInterrupt() {}
-
-    // Usually there is no needed to override this method
     public override bool IsValid()
     {
-        // You can do some custom validation here
         return !somePropertyRef.isInvalid;
     }
-} //needs testing
+} 
 
 
 [MBTNode(name = "CustomNode/Perform Attack")]
@@ -275,11 +190,6 @@ public class PerformAttack : Leaf
 {
     public BoolReference somePropertyRef = new BoolReference();
 
-    // These two methods are optional, override only when needed
-    // public override void OnAllowInterrupt() {}
-    // public override void OnEnter() {}
-
-    // This is called every tick as long as node is executed
     public override NodeResult Execute()
     {
         Debug.Log("performattack");
@@ -288,8 +198,8 @@ public class PerformAttack : Leaf
         Attack attack = conditions.GetNextAttack();
         conditions.CallAttackEvent(attack);
 
-        Vector3 look= conditions.playerRef.transform.position - transform.position;
-        transform.rotation = Quaternion.LookRotation(look);
+        //Vector3 look= conditions.playerRef.transform.position - transform.position;
+        //transform.rotation = Quaternion.LookRotation(look);
 
         if (GetComponent<BattleScript>().GetTP() < attack.TPDecrease) { return NodeResult.failure; }
         if (attack.attackObject == null)
@@ -311,17 +221,11 @@ public class PerformAttack : Leaf
             }
             return NodeResult.success;
         }
-        //return NodeResult.failure;
+        
     }
 
-    // These two methods are optional, override only when needed
-    // public override void OnExit() {}
-    // public override void OnDisallowInterrupt() {}
-
-    // Usually there is no needed to override this method
     public override bool IsValid()
     {
-        // You can do some custom validation here
         return !somePropertyRef.isInvalid;
     }
 }
@@ -332,25 +236,14 @@ public class DestroySelf : Leaf
 {
     public BoolReference somePropertyRef = new BoolReference();
 
-    // These two methods are optional, override only when needed
-    // public override void OnAllowInterrupt() {}
-    // public override void OnEnter() {}
-
-    // This is called every tick as long as node is executed
     public override NodeResult Execute()
     {
         Destroy(gameObject);
         return NodeResult.success;
     }
 
-    // These two methods are optional, override only when needed
-    // public override void OnExit() {}
-    // public override void OnDisallowInterrupt() {}
-
-    // Usually there is no needed to override this method
     public override bool IsValid()
     {
-        // You can do some custom validation here
         return !somePropertyRef.isInvalid;
     }
 }
@@ -360,11 +253,6 @@ public class LockMovement : Leaf
 {
     public BoolReference somePropertyRef = new BoolReference();
 
-    // These two methods are optional, override only when needed
-    // public override void OnAllowInterrupt() {}
-    // public override void OnEnter() {}
-
-    // This is called every tick as long as node is executed
     public override NodeResult Execute()
     {
         if (GetComponent<CheckConditions>() == null) { return NodeResult.failure; }
@@ -372,14 +260,8 @@ public class LockMovement : Leaf
         return NodeResult.success;
     }
 
-    // These two methods are optional, override only when needed
-    // public override void OnExit() {}
-    // public override void OnDisallowInterrupt() {}
-
-    // Usually there is no needed to override this method
     public override bool IsValid()
     {
-        // You can do some custom validation here
         return !somePropertyRef.isInvalid;
     }
 }
@@ -391,14 +273,8 @@ public class StandStill : Leaf
 	float timeToFreeze;
     CheckConditions conditions; 
 
-    // These two methods are optional, override only when needed
-    // public override void OnAllowInterrupt() {}
     public override void OnEnter() 
 	{
-		//get distance from player and player velocity
-		//work out how long it will take the player to get to you
-		//then -1 so you have time to make a choice 
-		//this is how long you freeze for 
 		GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
 		conditions= GetComponent<CheckConditions>();
 		float distanceFromPlayer = Mathf.Abs(Vector3.Distance(conditions.playerRef.transform.position, transform.position));
@@ -412,14 +288,13 @@ public class StandStill : Leaf
 
 	}
 
-	// This is called every tick as long as node is executed
 	public override NodeResult Execute()
 	{
 		timeToFreeze -= Time.deltaTime;
         if (conditions.triggerWithPlayer) 
         { conditions.WaitModeEventCaller(false); return NodeResult.success; }
-        Vector3 look = conditions.playerRef.transform.position - transform.position;
-        transform.rotation = Quaternion.LookRotation(look);
+        //Vector3 look = conditions.playerRef.transform.position - transform.position;
+        //transform.rotation = Quaternion.LookRotation(look);
         if (timeToFreeze <= 0)
 		{
             conditions.WaitModeEventCaller(false);
@@ -428,14 +303,8 @@ public class StandStill : Leaf
 		return NodeResult.running;
 	}
 
-	// These two methods are optional, override only when needed
-	// public override void OnExit() {}
-	// public override void OnDisallowInterrupt() {}
-
-	// Usually there is no needed to override this method
 	public override bool IsValid()
 	{
-		// You can do some custom validation here
 		return !somePropertyRef.isInvalid;
 	}
 }
@@ -451,18 +320,12 @@ public class SpawnHelpers : Leaf
     [SerializeField] int MaxNoToSpawn;
     [SerializeField] int maxEnemiesInScene;
 
-    // These two methods are optional, override only when needed
-    // public override void OnAllowInterrupt() {}
-
-    // This is called every tick as long as node is executed
     public override NodeResult Execute()
     {
         if (miniEnemys == null) { return NodeResult.failure; }
 
         conditions = GetComponent<CheckConditions>();
-        //would be more efficeint to always have a count of them in the scene
-        //and then minus them from an event when they get destroyed.
-        int numMiniEnemies = conditions.GetNumberMiniEnemies(); //this line not working
+        int numMiniEnemies = conditions.GetNumberMiniEnemies(); 
         if (numMiniEnemies >= MaxNoToSpawn) { return NodeResult.failure; }
 
         int noToSpawn = UnityEngine.Random.Range(MinNoToSpawn, MaxNoToSpawn);
@@ -481,14 +344,8 @@ public class SpawnHelpers : Leaf
         return NodeResult.running;
     }
 
-    // These two methods are optional, override only when needed
-    // public override void OnExit() {}
-    // public override void OnDisallowInterrupt() {}
-
-    // Usually there is no needed to override this method
     public override bool IsValid()
     {
-        // You can do some custom validation here
         return !somePropertyRef.isInvalid;
     }
 }
