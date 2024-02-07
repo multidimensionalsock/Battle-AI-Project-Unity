@@ -797,10 +797,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerRef: {fileID: 0}
   m_bossRef: {fileID: 0}
-  m_distanceToSeek: 0
-  m_distanceToDefend: 0
-  m_minAttackDamage: 0
-  m_maxAttackDamage: 0
+  m_distanceToSeek: 6
+  m_distanceToDefend: 2
+  m_minAttackDamage: 1
+  m_maxAttackDamage: 3
 --- !u!114 &6020086140756091014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -815,10 +815,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HP: 0
   m_TP: 0
+  m_maxHP: 0
+  m_MaxTP: 0
   m_Attack: 0
   m_Defence: 0
   m_SpecialAttack: 0
   m_SpecialDefence: 0
+  deathByScript: 1
 --- !u!114 &6900560556672485268
 MonoBehaviour:
   m_ObjectHideFlags: 0

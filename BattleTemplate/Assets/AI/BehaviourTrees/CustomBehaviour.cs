@@ -6,6 +6,7 @@ using UnityEngine.AI;
 using JetBrains.Annotations;
 using System.Linq;
 using System;
+using Unity.VisualScripting;
 
 [AddComponentMenu("CustomBehaviour")]
 
@@ -271,7 +272,8 @@ public class StandStill : Leaf
 {
 	public BoolReference somePropertyRef = new BoolReference();
 	float timeToFreeze;
-    CheckConditions conditions; 
+    CheckConditions conditions;
+    [SerializeField] float maxWaitTime = 2f;
 
     public override void OnEnter() 
 	{
@@ -284,6 +286,7 @@ public class StandStill : Leaf
 		{
 			timeToFreeze = distanceFromPlayer;
 		}
+        if (timeToFreeze > maxWaitTime) { timeToFreeze = maxWaitTime; }
         conditions.WaitModeEventCaller(true);
 
 	}
