@@ -38,6 +38,7 @@ public class MiniEnemyFinite : MonoBehaviour
     {
         m_playerRef = playerReference;
         m_bossRef = bossReference;
+        Physics.IgnoreLayerCollision(9, 8);
     }
 
     private void Start()
