@@ -32,7 +32,7 @@ public class PlayerHealthBar : MonoBehaviour
     {
         HPbar.value = playerBattleScript.GetHp();
         TPbar.value = playerBattleScript.GetTP();
-        HPnumber.text = HPbar.value.ToString();
+        HPnumber.text = Mathf.RoundToInt(HPbar.value).ToString();
         TPnumber.text = TPbar.value.ToString();
     }
 }
