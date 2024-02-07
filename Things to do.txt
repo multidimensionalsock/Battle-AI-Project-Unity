@@ -7,7 +7,6 @@ ui number round for hp so it doesnt decimalise
 needs coding:
 Attack aniamtion
 death animation 
-work on finite state machine animation 
 maybe a way to pick attacks based on TP? (decision tree)
 make more attacks
 player attack animation cooldown
@@ -17,6 +16,7 @@ wait time after attakcs too long (or wait mode being called too often?) maybe ad
 sfx
 mini enemy needs attack cooldown maybe
 comment code 
+mini enemy anim script not reigsting that its moving 
 
 not working:
 when mini enemies spawn main enemy teleports (ignore collision layer needs adding)

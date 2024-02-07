@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 //public enum MiniEnemyStates
 //{
@@ -17,18 +18,18 @@ using UnityEngine;
 public class MiniEnemyAnim : MonoBehaviour
 {
     Animator m_animator;
-    Rigidbody m_rigidbody;
+    NavMeshAgent m_agent;
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<MiniEnemyFSM>().StateChange += SetAnimation;
         m_animator = GetComponent<Animator>();
-        m_rigidbody = GetComponent<Rigidbody>();
+        m_agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
-        if (Mathf.Abs( m_rigidbody.velocity.x) == 0 || Mathf.Abs(m_rigidbody.velocity.z) == 0)
+        if (Mathf.Abs(m_agent.velocity.x) == 0 || Mathf.Abs(m_agent.velocity.z) == 0)
         {
             m_animator.SetBool("Moving", false);
         }
