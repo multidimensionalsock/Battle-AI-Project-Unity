@@ -29,13 +29,13 @@ public class MiniEnemyAnim : MonoBehaviour
 
     private void Update()
     {
-        if (Mathf.Abs(m_agent.velocity.x) == 0 || Mathf.Abs(m_agent.velocity.z) == 0)
+        if (m_agent.velocity == Vector3.zero) //m agent is null causing this issue 
         {
             m_animator.SetBool("Moving", false);
         }
         else
         {
-            m_animator.SetBool("Moving", true);
+            m_animator.SetBool("Moving", true); //this var isnt being set to true 
         }
     }
 
