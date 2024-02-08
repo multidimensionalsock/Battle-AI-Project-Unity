@@ -14,6 +14,9 @@ fix the too fast rotataion with toms fix
 add sppecial attack back to player 
 sfx
 comment code 
+man ai still moving when min enemies are trigger 
+player special not working afterr 2 still taking tp needs longer cooldown
+naviate to special attack causing issues if player is colliding it deosnt move 
 
 not working:
 when mini enemies spawn main enemy teleports (ignore collision layer needs adding)
@@ -25,3 +28,5 @@ cooldown to wait mode after attakcs or since last waitmode
 player not grounding sometimes and getting stuck in jump 
 mini enemy moves while attacking sometimes 
 player attack animation cooldown
+slow camera rot speed 
+sepcial attack getting called too often - reset the attakc in last minute once a speicla attack has been erfomeed from it

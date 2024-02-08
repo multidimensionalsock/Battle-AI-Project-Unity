@@ -7,7 +7,6 @@ using UnityEngine.Windows;
 
 public class PlayerAnimator : MonoBehaviour
 {
-
     Animator m_animator;
     PlayerInput m_input;
     Rigidbody m_rigidbody;
@@ -25,6 +24,11 @@ public class PlayerAnimator : MonoBehaviour
         m_input.currentActionMap.FindAction("Defence").performed += DefenceStart;
         m_input.currentActionMap.FindAction("Defence").canceled += DefenceEnd;
         GetComponent<PlayerBattleScript>().AttackCall += Attack;
+
+        var destroy = new AnimationEvent();
+        destroy.functionName = "DestroySelf";
+        destroy.time = 2f;
+
     }
 
     private void Update()
@@ -80,6 +84,11 @@ public class PlayerAnimator : MonoBehaviour
             CurrentCollisions = 0;
             m_animator.SetBool("Grounded", false);
         }
+    }
+
+    public void DestroyPlayer()
+    {
+        Destroy(gameObject);
     }
 
 }
