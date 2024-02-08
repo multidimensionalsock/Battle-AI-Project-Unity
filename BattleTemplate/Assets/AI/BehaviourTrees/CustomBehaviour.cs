@@ -7,6 +7,8 @@ using JetBrains.Annotations;
 using System.Linq;
 using System;
 using Unity.VisualScripting;
+using static UnityEditor.SceneView;
+using UnityEngine.InputSystem.HID;
 
 [AddComponentMenu("CustomBehaviour")]
 
@@ -33,25 +35,25 @@ public class Seek : Leaf
     }
 }
 
-[MBTNode(name = "CustomNode/FacePlayer")] 
-public class FacePlayer : Leaf
-{
-    public BoolReference somePropertyRef = new BoolReference();
+//[MBTNode(name = "CustomNode/FacePlayer")] 
+//public class FacePlayer : Leaf
+//{
+//    public BoolReference somePropertyRef = new BoolReference();
 
-    public override NodeResult Execute()
-    {
-        Debug.Log("FacePlayer");
-        Vector3 lookRot = GetComponent<CheckConditions>().playerRef.transform.position - transform.position;
-        transform.rotation = Quaternion.LookRotation(lookRot);
+//    public override NodeResult Execute()
+//    {
+//        Debug.Log("FacePlayer");
+//        Vector3 lookRot = GetComponent<CheckConditions>().playerRef.transform.position - transform.position;
+//        transform.rotation = Quaternion.LookRotation(lookRot);
         
-        return NodeResult.success;
-    }
+//        return NodeResult.success;
+//    }
 
-    public override bool IsValid()
-    {
-        return !somePropertyRef.isInvalid;
-    }
-}
+//    public override bool IsValid()
+//    {
+//        return !somePropertyRef.isInvalid;
+//    }
+//}
 
 [MBTNode(name = "CustomNode/Flee")]
 public class Flee : Leaf
@@ -199,7 +201,10 @@ public class PerformAttack : Leaf
         Attack attack = conditions.GetNextAttack();
         conditions.CallAttackEvent(attack);
 
-        //Vector3 look= conditions.playerRef.transform.position - transform.position;
+        Vector3 look = conditions.playerRef.transform.position - transform.position;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(look), 0.01f);
+
+        //
         //transform.rotation = Quaternion.LookRotation(look);
 
         if (GetComponent<BattleScript>().GetTP() < attack.TPDecrease) { return NodeResult.failure; }
@@ -296,8 +301,8 @@ public class StandStill : Leaf
 		timeToFreeze -= Time.deltaTime;
         if (conditions.triggerWithPlayer) 
         { conditions.WaitModeEventCaller(false); return NodeResult.success; }
-        //Vector3 look = conditions.playerRef.transform.position - transform.position;
-        //transform.rotation = Quaternion.LookRotation(look);
+        Vector3 look = conditions.playerRef.transform.position - transform.position;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(look), 0.01f);
         if (timeToFreeze <= 0)
 		{
             conditions.WaitModeEventCaller(false);
