@@ -66,7 +66,8 @@ public class PlayerAnimator : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         m_animator.SetTrigger("Collision");
-        m_animator.SetBool("Grounded", true);
+        if (collision.gameObject.tag == "Floor")
+            m_animator.SetBool("Grounded", true);
         if (CurrentCollisions < 0) { CurrentCollisions = 0; }
         CurrentCollisions += 1;
     }

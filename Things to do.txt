@@ -12,15 +12,16 @@ make more attacks
 player attack animation cooldown
 lock movement sometimes lasts too long tbh (TIME LIMIT ON IT AND WAIT MODE?)
 fix the too fast rotataion with toms fix
-wait time after attakcs too long (or wait mode being called too often?) maybe add a cooldown to it 
 sfx
-mini enemy needs attack cooldown maybe
 comment code 
-mini enemy anim script says navmesh agent and aniamtor are null.
+mini enemy moves while attacking sometimes 
 
 not working:
 when mini enemies spawn main enemy teleports (ignore collision layer needs adding)
 
 done: 
 naviagte to attack still not working sometimes??
+mini animations
+cooldown to wait mode after attakcs or since last waitmode 
+player not grounding sometimes and getting stuck in jump 
 

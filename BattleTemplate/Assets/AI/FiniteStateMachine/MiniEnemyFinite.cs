@@ -163,6 +163,7 @@ public class MiniEnemyFinite : MonoBehaviour
     IEnumerator Attack()
     {
         if (lockAttack) { yield break; }
+        m_pathfinder.SetNewNavigation(pathfindingState.nullptr);
         FacePlayer();
         //take away HP if colliding
         if (m_playerCollision)

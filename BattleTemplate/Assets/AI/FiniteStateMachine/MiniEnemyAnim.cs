@@ -22,7 +22,7 @@ public class MiniEnemyAnim : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<MiniEnemyFSM>().StateChange += SetAnimation;
+        GetComponent<MiniEnemyFinite>().StateChange += SetAnimation;
         m_animator = GetComponent<Animator>();
         m_agent = GetComponent<NavMeshAgent>();
     }
