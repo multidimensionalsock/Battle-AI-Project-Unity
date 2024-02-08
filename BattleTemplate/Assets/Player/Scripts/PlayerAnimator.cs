@@ -22,9 +22,9 @@ public class PlayerAnimator : MonoBehaviour
         m_input.currentActionMap.FindAction("Movement").performed += MoveStart;
         m_input.currentActionMap.FindAction("Movement").canceled += MoveEnd;
         //m_input.currentActionMap.FindAction("Jump").performed += Jump;
-        m_input.currentActionMap.FindAction("Attack").performed += Attack;
         m_input.currentActionMap.FindAction("Defence").performed += DefenceStart;
         m_input.currentActionMap.FindAction("Defence").canceled += DefenceEnd;
+        GetComponent<PlayerBattleScript>().AttackCall += Attack;
     }
 
     private void Update()
@@ -46,7 +46,7 @@ public class PlayerAnimator : MonoBehaviour
         m_animator.SetBool("Moving", false);
     }
 
-    void Attack(InputAction.CallbackContext context)
+    void Attack()
     {
         m_animator.SetBool("Moving", false);
         m_animator.SetBool("Defence", false);

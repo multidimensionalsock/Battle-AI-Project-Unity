@@ -11,6 +11,8 @@ public class PlayerBattleScript : BattleScript
     bool canAttack = true;
     [SerializeField] float attackCooldown;
 
+    public event System.Action AttackCall;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,7 @@ public class PlayerBattleScript : BattleScript
     void AttackOther(InputAction.CallbackContext context)
     {
         if (!canAttack) { return; }
+        AttackCall?.Invoke();
         if (currentCollision == null) { return; }
         m_TP += 1;
         currentCollision.Attack(m_Attack);
