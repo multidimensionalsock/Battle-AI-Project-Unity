@@ -8,9 +8,10 @@ public class PlayerBattleScript : BattleScript
     PlayerInput m_input;
     BattleScript currentCollision = null;
 	[SerializeField] protected GameObject m_battleObject;
-    bool canAttack;
+    bool canAttack = true;
     [SerializeField] float attackCooldown;
-    [SerializeField] float damageCooldown;
+
+    public event System.Action AttackCall;
 
     // Start is called before the first frame update
     void Start()
@@ -25,13 +26,18 @@ public class PlayerBattleScript : BattleScript
 
     void AttackOther(InputAction.CallbackContext context)
     {
+        if (!canAttack) { return; }
+        AttackCall?.Invoke();
         if (currentCollision == null) { return; }
         m_TP += 1;
         currentCollision.Attack(m_Attack);
+        StartCoroutine(Cooldown());
+
     }
 
     void SpecialAttackOther(InputAction.CallbackContext context)
     {
+        if (!canAttack) { return; }
         //currentCollision.SpecialAttack(m_SpecialAttack);
         //create distance attack
         m_TP -= 4;
@@ -42,6 +48,14 @@ public class PlayerBattleScript : BattleScript
 		GameObject m_attackObj = Instantiate(m_battleObject);
 		m_attackObj.transform.position = transform.position;
 		m_attackObj.GetComponent<SpecialSlashAttack>().CreateAttack(m_Attack, gameObject.transform.GetChild(1).gameObject.transform.rotation);
+        StartCoroutine(Cooldown());
+    }
+
+    IEnumerator Cooldown()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(attackCooldown);
+        canAttack = true;
     }
 
     void DefenceStart(InputAction.CallbackContext context)

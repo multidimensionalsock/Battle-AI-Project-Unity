@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     bool m_movementLock = false;
     Coroutine cameraMovco;
 	[SerializeField] GameObject m_SpecialAttackObject;
-    
+
 
     public float GetSpeed()
     {

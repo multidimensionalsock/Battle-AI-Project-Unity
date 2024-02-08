@@ -38,6 +38,7 @@ public class MiniEnemyFinite : MonoBehaviour
     {
         m_playerRef = playerReference;
         m_bossRef = bossReference;
+        Physics.IgnoreLayerCollision(9, 8);
     }
 
     private void Start()
@@ -67,22 +68,24 @@ public class MiniEnemyFinite : MonoBehaviour
 
     IEnumerator Idle()
     {
+        float idleTime = 0;
         m_pathfinder.SetNewNavigation(pathfindingState.nullptr);
 		do
 		{
-			IdleTransition();
+            idleTime += 0.02f;
+			IdleTransition(idleTime);
 			yield return new WaitForFixedUpdate();
 		} while (m_currentState == MiniEnemyStates.Idle);
 
 	}
 
-    void IdleTransition()
+    void IdleTransition(float timeInIdle)
     {
         if (InPlayerVercinity())
         {
             StateChange?.Invoke(MiniEnemyStates.Seek);
         }
-        else if (!InPlayerVercinity())
+        else if (!InPlayerVercinity() && timeInIdle > 2)
         {
             StateChange?.Invoke(MiniEnemyStates.Wander);
         }
@@ -160,6 +163,7 @@ public class MiniEnemyFinite : MonoBehaviour
     IEnumerator Attack()
     {
         if (lockAttack) { yield break; }
+        m_pathfinder.SetNewNavigation(pathfindingState.nullptr);
         FacePlayer();
         //take away HP if colliding
         if (m_playerCollision)

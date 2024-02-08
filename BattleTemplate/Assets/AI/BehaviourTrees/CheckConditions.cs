@@ -30,6 +30,7 @@ public class CheckConditions : MonoBehaviour
     bool attacked = false;
     [SerializeField] float damageInLastMinuteToUnlockSpecialAttack;
     [SerializeField] float attacksInLastMinuteToUnlockSpecialAttack;
+    List<float[,]> emptyList = new List<float[,]>();
 
     public event System.Action<Attack> AttackImplem;
     public event System.Action<AnimationClip> NextAttackAnimChange;
@@ -51,6 +52,7 @@ public class CheckConditions : MonoBehaviour
         {
             LastMinuteStatList.Add(empty);
         }
+        emptyList = LastMinuteStatList;
         StartCoroutine(lastMinuteStats());
 
         MiniEnemyFinite.Death += MiniEnemyDied;
@@ -157,6 +159,10 @@ public class CheckConditions : MonoBehaviour
         {
             if (attacksInTheLastMinute > attacksInLastMinuteToUnlockSpecialAttack)
             {
+                //the attakcs in last minute and special attack list needs reverting to 0 when this happens 
+                LastMinuteStatList = emptyList;
+                attacksInTheLastMinute = 0;
+                damageInTheLastMinute = 0;
                 ableToSpecialAttack = true;
                 yield break;
             }

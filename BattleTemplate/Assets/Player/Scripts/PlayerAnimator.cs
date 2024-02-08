@@ -7,7 +7,6 @@ using UnityEngine.Windows;
 
 public class PlayerAnimator : MonoBehaviour
 {
-
     Animator m_animator;
     PlayerInput m_input;
     Rigidbody m_rigidbody;
@@ -22,9 +21,14 @@ public class PlayerAnimator : MonoBehaviour
         m_input.currentActionMap.FindAction("Movement").performed += MoveStart;
         m_input.currentActionMap.FindAction("Movement").canceled += MoveEnd;
         //m_input.currentActionMap.FindAction("Jump").performed += Jump;
-        m_input.currentActionMap.FindAction("Attack").performed += Attack;
         m_input.currentActionMap.FindAction("Defence").performed += DefenceStart;
         m_input.currentActionMap.FindAction("Defence").canceled += DefenceEnd;
+        GetComponent<PlayerBattleScript>().AttackCall += Attack;
+
+        var destroy = new AnimationEvent();
+        destroy.functionName = "DestroySelf";
+        destroy.time = 2f;
+
     }
 
     private void Update()
@@ -46,7 +50,7 @@ public class PlayerAnimator : MonoBehaviour
         m_animator.SetBool("Moving", false);
     }
 
-    void Attack(InputAction.CallbackContext context)
+    void Attack()
     {
         m_animator.SetBool("Moving", false);
         m_animator.SetBool("Defence", false);
@@ -66,7 +70,8 @@ public class PlayerAnimator : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         m_animator.SetTrigger("Collision");
-        m_animator.SetBool("Grounded", true);
+        if (collision.gameObject.tag == "Floor")
+            m_animator.SetBool("Grounded", true);
         if (CurrentCollisions < 0) { CurrentCollisions = 0; }
         CurrentCollisions += 1;
     }
@@ -79,6 +84,11 @@ public class PlayerAnimator : MonoBehaviour
             CurrentCollisions = 0;
             m_animator.SetBool("Grounded", false);
         }
+    }
+
+    public void DestroyPlayer()
+    {
+        Destroy(gameObject);
     }
 
 }
