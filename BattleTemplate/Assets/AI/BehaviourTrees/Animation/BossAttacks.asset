@@ -16,6 +16,7 @@ MonoBehaviour:
   - attackName: Roundhouse Kick
     attackDamage: 5
     attackObject: {fileID: 0}
+    AnimationNumber: 4
     associatedAnimation: {fileID: -203655887218126122, guid: 057e3bb305402674a8c9727b408d60db, type: 3}
     attackType: 0
     minDistanceToPerform: 1
@@ -25,6 +26,7 @@ MonoBehaviour:
   - attackName: Simple Distance Attack
     attackDamage: 10
     attackObject: {fileID: 5007704334088862137, guid: 3910fda84fc2ef34b90300b3afddf8d5, type: 3}
+    AnimationNumber: 1
     associatedAnimation: {fileID: -203655887218126122, guid: 05898b59a8e84e04fa349b62dfed593b, type: 3}
     attackType: 1
     minDistanceToPerform: 2
@@ -34,6 +36,7 @@ MonoBehaviour:
   - attackName: ' 3 Bolt Attack'
     attackDamage: 5
     attackObject: {fileID: 2945111965641052108, guid: 6cf3a35c04591834a8dbc9e9dda28ea7, type: 3}
+    AnimationNumber: 3
     associatedAnimation: {fileID: -203655887218126122, guid: 05898b59a8e84e04fa349b62dfed593b, type: 3}
     attackType: 2
     minDistanceToPerform: 3

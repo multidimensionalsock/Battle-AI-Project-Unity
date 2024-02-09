@@ -7,7 +7,6 @@ using UnityEngine.AI;
 public class BTAnimationController : MonoBehaviour
 {
     Animator m_animator;
-    AnimatorOverrideController m_controller;
     public event System.Action AttackAnimFinished;
     NavMeshAgent m_agent;
     // Start is called before the first frame update
@@ -15,8 +14,6 @@ public class BTAnimationController : MonoBehaviour
     {
 		m_agent = transform.parent.GetComponent<NavMeshAgent>();
 		m_animator = GetComponent<Animator>();
-        m_controller = new AnimatorOverrideController(m_animator.runtimeAnimatorController);
-        m_animator.runtimeAnimatorController = m_controller;
         transform.parent.GetComponent<CheckConditions>().AttackImplem += AttackAnimation;
         transform.parent.GetComponent<CheckConditions>().waitModeOnOff += WaitMode;
     }
@@ -43,8 +40,9 @@ public class BTAnimationController : MonoBehaviour
 
     void AttackAnimation(Attack attackData)
     {
-        m_controller["Attack"] = attackData.associatedAnimation;
+        m_animator.SetFloat("AttackNumber", attackData.AnimationNumber);
         m_animator.SetTrigger("Attack");
+        
     }
 
     void WaitMode(bool mode)

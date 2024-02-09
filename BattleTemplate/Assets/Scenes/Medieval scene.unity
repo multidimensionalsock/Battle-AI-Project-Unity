@@ -1985,7 +1985,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -110.25, y: 78}
+  m_AnchoredPosition: {x: -110, y: 78}
   m_SizeDelta: {x: 189.185, y: 43.484894}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &153854646
@@ -14986,7 +14986,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -110.25, y: 35}
+  m_AnchoredPosition: {x: -110, y: 35}
   m_SizeDelta: {x: 189.185, y: 43.484894}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1787196708
@@ -35446,7 +35446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 907858615550413115}
+  selectedEditorNode: {fileID: 907858615550413118}
   repeatOnFinish: 1
   maxExecutionsPerTick: 3
   parent: {fileID: 0}
@@ -37711,8 +37711,8 @@ MonoBehaviour:
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
-  attacksInLastMinToBeOffensive: 0
-  damageInLastMinToBeOffensive: 0
+  attacksInLastMinToBeOffensive: 5
+  damageInLastMinToBeOffensive: 20
 --- !u!114 &907858615550413119
 MonoBehaviour:
   m_ObjectHideFlags: 2
