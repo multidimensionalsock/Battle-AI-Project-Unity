@@ -2,7 +2,6 @@ untested:
 fsm stay in idle for longer before wander 
 bt wait modew still going over max time issue: subtracting deltatime may not work as intended
 fsm make area where in player range bigger so they seek more 
-ui number round for hp so it doesnt decimalise
 
 needs coding:
 Attack aniamtion
@@ -10,13 +9,12 @@ death animation
 maybe a way to pick attacks based on TP? (decision tree)
 make more attacks
 lock movement sometimes lasts too long tbh (TIME LIMIT ON IT AND WAIT MODE?)
-fix the too fast rotataion with toms fix
-add sppecial attack back to player 
 sfx
 comment code 
-man ai still moving when min enemies are trigger 
+main ai still moving when min enemies are trigger 
 player special not working afterr 2 still taking tp needs longer cooldown
 naviate to special attack causing issues if player is colliding it deosnt move 
+mini enemy not seeking player when in range 
 
 not working:
 when mini enemies spawn main enemy teleports (ignore collision layer needs adding)
@@ -30,3 +28,5 @@ mini enemy moves while attacking sometimes
 player attack animation cooldown
 slow camera rot speed 
 sepcial attack getting called too often - reset the attakc in last minute once a speicla attack has been erfomeed from it
+fix the too fast rotataion with toms fix
+ui number round for hp so it doesnt decimalise
