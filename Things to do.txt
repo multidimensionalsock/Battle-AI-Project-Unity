@@ -3,24 +3,26 @@ fsm stay in idle for longer before wander
 bt wait modew still going over max time issue: subtracting deltatime may not work as intended
 fsm make area where in player range bigger so they seek more 
 
-needs coding:
-death animation 
-maybe a way to pick attacks based on TP? (decision tree)
-make more attacks
+most important:
 lock movement sometimes lasts too long tbh (TIME LIMIT ON IT AND WAIT MODE?)
-sfx
-comment code 
-player special not working afterr 2 still taking tp needs longer cooldown
 mini enemy not seeking player when in range 
-freeze times need adjusting 
 not looking at player sometimes while doing attack anim
-aniamton being perfromed late 
+attack needs delaying until x seconds into aniamtion (half of freeze time) call attack anim when wait start instead maybe?
+enemy starts psawning special attacks too often (LAST MIN TRAKC NOT WORKING PROPERLY)
+main enemy moving while doing attack anims (even now i set it to null ptr)
 
 not working:
 when mini enemies spawn main enemy teleports (ignore collision layer needs adding)
+
+stretch goals:
+death animation 
+maybe a way to pick attacks based on TP? (decision tree)
+make more attacks
+sfx
+comment code 
 
 done: 
 fix anim again 
 nav to attack fix again and ad on enter function 
 floating main enemy
-
+freeze times need adjusting 

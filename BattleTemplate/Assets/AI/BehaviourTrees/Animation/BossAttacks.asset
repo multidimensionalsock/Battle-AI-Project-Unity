@@ -31,7 +31,7 @@ MonoBehaviour:
     attackType: 1
     minDistanceToPerform: 2
     maxDistanceToPerform: 5
-    freezeTime: 1
+    freezeTime: 3
     TPDecrease: 0
   - attackName: ' 3 Bolt Attack'
     attackDamage: 5
@@ -41,5 +41,5 @@ MonoBehaviour:
     attackType: 2
     minDistanceToPerform: 3
     maxDistanceToPerform: 20
-    freezeTime: 2
+    freezeTime: 3
     TPDecrease: 0

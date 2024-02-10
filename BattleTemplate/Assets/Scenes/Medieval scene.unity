@@ -1629,6 +1629,10 @@ PrefabInstance:
       propertyPath: m_rotationSpeed
       value: 0.075
       objectReference: {fileID: 0}
+    - target: {fileID: 5910065917347830137, guid: d2a198c4cfe32244299c19d14622be9e, type: 3}
+      propertyPath: m_SpecialAttackObject
+      value: 
+      objectReference: {fileID: 4063635816943371586, guid: ccdecd56f1d30e94d806700f09b75277, type: 3}
     - target: {fileID: 5910065917347830141, guid: d2a198c4cfe32244299c19d14622be9e, type: 3}
       propertyPath: m_Mass
       value: 1
@@ -11038,7 +11042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2653641988187876908, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6020086140756091014, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
       propertyPath: m_HP
@@ -13069,7 +13073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HP: 50
-  m_TP: 4
+  m_TP: 20
   m_maxHP: 50
   m_MaxTP: 20
   m_Attack: 3
@@ -35446,7 +35450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 907858615550413118}
+  selectedEditorNode: {fileID: 0}
   repeatOnFinish: 1
   maxExecutionsPerTick: 3
   parent: {fileID: 0}

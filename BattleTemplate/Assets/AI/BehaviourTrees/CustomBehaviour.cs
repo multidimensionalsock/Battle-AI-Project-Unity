@@ -211,8 +211,7 @@ public class PerformAttack : Leaf
         Vector3 look = conditions.playerRef.transform.position - transform.position;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(look), 0.01f);
 
-        //
-        //transform.rotation = Quaternion.LookRotation(look);
+        GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
 
         if (GetComponent<BattleScript>().GetTP() < attack.TPDecrease) { return NodeResult.failure; }
         if (attack.attackObject == null)
