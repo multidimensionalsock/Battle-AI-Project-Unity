@@ -10,13 +10,14 @@ make more attacks
 lock movement sometimes lasts too long tbh (TIME LIMIT ON IT AND WAIT MODE?)
 sfx
 comment code 
-main ai still moving when min enemies are trigger 
 player special not working afterr 2 still taking tp needs longer cooldown
-nav to attack still causing issues 
+nav to attack fix again and ad on enter function 
 mini enemy not seeking player when in range 
+freeze times need adjusting 
 
 not working:
 when mini enemies spawn main enemy teleports (ignore collision layer needs adding)
 
 done: 
+fix anim again 
 

@@ -172,13 +172,9 @@ public class AttackNavigate : Leaf
             return NodeResult.running;
 
         }
-        else if (distanceFromPlayer <= attack.maxDistanceToPerform || distanceFromPlayer >= attack.minDistanceToPerform)
-        {
-            GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
-            return NodeResult.success;
-        }
         GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
-        return NodeResult.failure;
+        return NodeResult.success;
+        
     }
 
     public override bool IsValid()

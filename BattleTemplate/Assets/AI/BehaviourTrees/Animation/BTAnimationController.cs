@@ -40,7 +40,7 @@ public class BTAnimationController : MonoBehaviour
 
     void AttackAnimation(Attack attackData)
     {
-        m_animator.SetFloat("AttackNumber", attackData.AnimationNumber);
+        m_animator.SetInteger("AttackNumber", (int)attackData.AnimationNumber);
         m_animator.SetTrigger("Attack");
         
     }
