@@ -143,32 +143,43 @@ public class GetSpecialAttack : Leaf
 public class AttackNavigate : Leaf
 {
     public BoolReference somePropertyRef = new BoolReference();
+    CheckConditions conditions;
+    NavMeshAgent agent;
+    Attack attack;
+    Pathfinding pathfinding;
+
+    public override void OnEnter()
+    {
+        conditions = GetComponent<CheckConditions>();
+        agent = GetComponent<NavMeshAgent>();
+        attack = conditions.GetNextAttack();
+        pathfinding = GetComponent<Pathfinding>();
+    }
 
     public override NodeResult Execute()
     {
-        CheckConditions conditions = GetComponent<CheckConditions>();
-        NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        Attack attack = conditions.GetNextAttack();
+        
         //if (attack.attackType == AttackType.melee) { GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.seek, GetComponent<CheckConditions>().playerRef); return NodeResult.running; }
         float distanceFromPlayer = Mathf.Abs(Vector3.Distance(conditions.playerRef.transform.position, transform.position));
         if (attack.attackType == AttackType.melee)
         {
             if (GetComponent<CheckConditions>().triggerWithPlayer)
             {
-                GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
+                pathfinding.SetNewNavigation(pathfindingState.nullptr);
                 return NodeResult.success;
             }
-            GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.seek, GetComponent<CheckConditions>().playerRef);
+            agent.SetDestination(conditions.playerRef.transform.position);
             return NodeResult.running;
         }
         else if (distanceFromPlayer > attack.maxDistanceToPerform)
         {
-            GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.seek, conditions.playerRef);
+            agent.SetDestination(conditions.playerRef.transform.position);
             return NodeResult.running;
         }
         else if (distanceFromPlayer < attack.minDistanceToPerform)
         {
-            GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.flee, conditions.playerRef);
+            pathfinding.SetDistanceToFlee(attack.maxDistanceToPerform);
+            pathfinding.SetNewNavigation(pathfindingState.flee, conditions.playerRef);
             return NodeResult.running;
 
         }

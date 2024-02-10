@@ -11,13 +11,14 @@ lock movement sometimes lasts too long tbh (TIME LIMIT ON IT AND WAIT MODE?)
 sfx
 comment code 
 player special not working afterr 2 still taking tp needs longer cooldown
-nav to attack fix again and ad on enter function 
 mini enemy not seeking player when in range 
 freeze times need adjusting 
+not looking at player sometimes while doing attack anim
 
 not working:
 when mini enemies spawn main enemy teleports (ignore collision layer needs adding)
 
 done: 
 fix anim again 
+nav to attack fix again and ad on enter function 
 
