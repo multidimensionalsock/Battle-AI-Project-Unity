@@ -202,16 +202,20 @@ public class PerformAttack : Leaf
 
     public override NodeResult Execute()
     {
-        Debug.Log("performattack");
+        GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
 
         CheckConditions conditions = GetComponent<CheckConditions>();
         Attack attack = conditions.GetNextAttack();
-        conditions.CallAttackEvent(attack);
+        
 
         Vector3 look = conditions.playerRef.transform.position - transform.position;
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(look), 0.01f);
+        if (transform.rotation != Quaternion.LookRotation(look))
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(look), 0.01f);
+            return NodeResult.running;
+        }
 
-        GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
+        conditions.CallAttackEvent(attack);
 
         if (GetComponent<BattleScript>().GetTP() < attack.TPDecrease) { return NodeResult.failure; }
         if (attack.attackObject == null)

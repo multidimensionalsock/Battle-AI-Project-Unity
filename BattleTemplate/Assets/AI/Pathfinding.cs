@@ -54,6 +54,7 @@ public class Pathfinding : MonoBehaviour
                 break;
 			case pathfindingState.nullptr:
                 StopAllCoroutines();
+                m_agent.SetDestination(transform.position);
                 break;
 
 		}
@@ -73,6 +74,7 @@ public class Pathfinding : MonoBehaviour
                 break;
             case pathfindingState.nullptr:
                 StopAllCoroutines();
+                m_agent.SetDestination(transform.position);
                 break;
 
         }
@@ -89,6 +91,7 @@ public class Pathfinding : MonoBehaviour
                 break;
             case pathfindingState.nullptr:
                 StopAllCoroutines();
+                m_agent.SetDestination(transform.position);
                 break;
 
         }
