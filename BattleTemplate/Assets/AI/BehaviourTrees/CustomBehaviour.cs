@@ -127,6 +127,7 @@ public class GetSpecialAttack : Leaf
     public override NodeResult Execute()
     {
         CheckConditions condition = GetComponent<CheckConditions>();
+        if (!condition.ableToAttack) { return NodeResult.failure; }
         if (!condition.ableToSpecialAttack) { return NodeResult.failure; }
         if (!condition.specialAttacks.Any()) { return NodeResult.failure; }
         condition.SetNextAttack(condition.specialAttacks[UnityEngine.Random.Range(0, condition.specialAttacks.Count)]);
