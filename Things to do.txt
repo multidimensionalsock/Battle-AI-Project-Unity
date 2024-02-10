@@ -14,6 +14,7 @@ player special not working afterr 2 still taking tp needs longer cooldown
 mini enemy not seeking player when in range 
 freeze times need adjusting 
 not looking at player sometimes while doing attack anim
+aniamton being perfromed late 
 
 not working:
 when mini enemies spawn main enemy teleports (ignore collision layer needs adding)
@@ -21,4 +22,5 @@ when mini enemies spawn main enemy teleports (ignore collision layer needs addin
 done: 
 fix anim again 
 nav to attack fix again and ad on enter function 
+floating main enemy
 
