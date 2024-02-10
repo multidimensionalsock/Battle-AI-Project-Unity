@@ -195,7 +195,7 @@ public class AttackNavigate : Leaf
 } 
 
 
-[MBTNode(name = "CustomNode/Perform Attack")]
+[MBTNode(name = "CustomNode/Perform Attack")]   
 public class PerformAttack : Leaf 
 {
     public BoolReference somePropertyRef = new BoolReference();
@@ -207,9 +207,10 @@ public class PerformAttack : Leaf
         CheckConditions conditions = GetComponent<CheckConditions>();
         Attack attack = conditions.GetNextAttack();
         
-
+        //gettign stuck ehre when player is moving need to add a range 
         Vector3 look = conditions.playerRef.transform.position - transform.position;
-        if (transform.rotation != Quaternion.LookRotation(look))
+        float angle = 180 -  Mathf.Abs(Quaternion.Dot(Quaternion.LookRotation(look), transform.rotation) * 180);
+        if (angle > 15)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(look), 0.01f);
             return NodeResult.running;

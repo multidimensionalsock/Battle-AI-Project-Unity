@@ -8,12 +8,9 @@ mini enemy not seeking player when in range
 attack needs delaying until x seconds into aniamtion (half of freeze time) call attack anim when wait start instead maybe?
 enemy starts psawning special attacks too often (LAST MIN TRAKC NOT WORKING PROPERLY)
 make it so speical atack cant happen right after nromal  (like special to normal attack cooldown maybe)
-make sure enemy is facing the player before initialitng attack 
 
 not working:
 when mini enemies spawn main enemy teleports (ignore collision layer needs adding)
-enemy still moving when attackign even when it should be set to its own pos. 
-
 
 stretch goals:
 death animation 
@@ -30,3 +27,5 @@ floating main enemy
 freeze times need adjusting 
 not looking at player sometimes while doing attack anim
 main enemy moving while doing attack anims (even now i set it to null ptr)
+getting stuck on perfrom attack because rtoation is never equal to look rot if player is moving 
+enemy still moving when attackign even when it should be set to its own pos. 
