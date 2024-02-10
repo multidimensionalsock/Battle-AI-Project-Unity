@@ -208,7 +208,6 @@ public class PerformAttack : Leaf
         CheckConditions conditions = GetComponent<CheckConditions>();
         Attack attack = conditions.GetNextAttack();
         
-        //gettign stuck ehre when player is moving need to add a range 
         Vector3 look = conditions.playerRef.transform.position - transform.position;
         float angle = 180 -  Mathf.Abs(Quaternion.Dot(Quaternion.LookRotation(look), transform.rotation) * 180);
         if (angle > 15)
