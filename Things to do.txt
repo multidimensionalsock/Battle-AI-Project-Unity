@@ -7,7 +7,6 @@ enemy starts psawning special attacks too often (LAST MIN TRAKC NOT WORKING PROP
 mini enemies acting almost the same after spawn makes them feel unrealistic
 fuzzy state machine 
 change where mini enemies spawn 
-change how player vicinity and vicinity from enemy works to make it fuzzy 
 
 not working:
 
@@ -38,7 +37,9 @@ lock movement sometimes lasts too long tbh (TIME LIMIT ON IT AND WAIT MODE?)
 
 
 
+
 done: 
+change how player vicinity and vicinity from enemy works to make it fuzzy 
 fix anim again 
 nav to attack fix again and ad on enter function 
 floating main enemy

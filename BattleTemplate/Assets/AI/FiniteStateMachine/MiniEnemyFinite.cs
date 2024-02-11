@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -52,6 +53,9 @@ public class MiniEnemyFinite : MonoBehaviour
         m_pathfinder.SetDistanceToFlee(m_distanceToSeek * 1.25f);
         StateChange += CallStateChange;
         m_attackDamage = Random.Range(m_minAttackDamage, m_maxAttackDamage);
+        m_distanceToDefend = Random.Range(m_distanceToDefend * 0.5f, m_distanceToDefend * 1.5f);
+        m_distanceToSeek = Random.Range(m_distanceToSeek * 0.5f, m_distanceToSeek * 1.5f);
+
 
         StateChange?.Invoke(MiniEnemyStates.Seek);
     }
