@@ -33,6 +33,8 @@ public class Pathfinding : MonoBehaviour
 		m_distanceToFlee = distance;
 	}
 
+    public void SetObjectToNaviagte(GameObject obj) { m_objectToPathfind = obj; }
+
 	public void SetNewNavigation(pathfindingState newState, GameObject objectPos)
 	{
         if (objectPos != null)

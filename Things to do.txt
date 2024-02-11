@@ -1,18 +1,15 @@
 untested:
-fsm stay in idle for longer before wander 
 bt wait modew still going over max time issue: subtracting deltatime may not work as intended
-fsm make area where in player range bigger so they seek more 
 
 most important:
-mini enemy not seeking player when in range 
 attack needs delaying until x seconds into aniamtion (half of freeze time) call attack anim when wait start instead maybe?
 enemy starts psawning special attacks too often (LAST MIN TRAKC NOT WORKING PROPERLY)
-mini enemy movinig away from player on attack when main enemy is in the scene (print out when entering state?)
-mini enemy causing damage without attack anim (also too often)
-mini enemy attack cooldown
+mini enemies acting almost the same after spawn makes them feel unrealistic
+fuzzy state machine 
+change where mini enemies spawn 
+change how player vicinity and vicinity from enemy works to make it fuzzy 
 
 not working:
-when mini enemies spawn main enemy teleports (ignore collision layer needs adding)
 
 stretch goals:
 death animation 
@@ -21,6 +18,25 @@ make more attacks
 sfx
 comment code 
 lock movement sometimes lasts too long tbh (TIME LIMIT ON IT AND WAIT MODE?)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 done: 
 fix anim again 
@@ -34,3 +50,9 @@ enemy still moving when attackign even when it should be set to its own pos.
 make it so speical atack cant happen right after nromal  (like special to normal attack cooldown maybe)
 player trigger may be too big 
 sort out mini enemy transitions
+fsm stay in idle for longer before wander 
+mini enemy not seeking player when in range 
+mini enemy attack cooldown
+fsm make area where in player range bigger so they seek more 
+mini enemy causing damage without attack anim
+when mini enemies spawn main enemy teleports (ignore collision layer needs adding)

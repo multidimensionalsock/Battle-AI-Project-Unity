@@ -31,8 +31,9 @@ public class MiniEnemyFinite : MonoBehaviour
     float m_attackDamage;
     Coroutine m_currentStateCoroutine; //use it so theres no memory leaks or other coroutines runnign to delete it specificallt 
     bool m_playerCollision = false;
-    bool lockAttack;
+    bool lockAttack = false;
     [SerializeField] float maxTimeInState;
+    [SerializeField] float attackCooldown;
 
     public static event System.Action MiniEnemyDead;
 
@@ -47,11 +48,12 @@ public class MiniEnemyFinite : MonoBehaviour
     {
         GetComponent<BattleScript>().HPreduce += TransitionAny;
         m_pathfinder = GetComponent<Pathfinding>();
+        m_pathfinder.SetObjectToNaviagte(m_playerRef);
         m_pathfinder.SetDistanceToFlee(m_distanceToSeek * 1.25f);
         StateChange += CallStateChange;
         m_attackDamage = Random.Range(m_minAttackDamage, m_maxAttackDamage);
 
-        StateChange?.Invoke(MiniEnemyStates.Idle);
+        StateChange?.Invoke(MiniEnemyStates.Seek);
     }
 
     void TransitionAny(float hpDec)
@@ -180,7 +182,7 @@ public class MiniEnemyFinite : MonoBehaviour
             Debug.Log("Attack");
         }
         lockAttack = true;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(attackCooldown);
         lockAttack = false;
         AttackTransition();
     }
@@ -303,4 +305,5 @@ public class MiniEnemyFinite : MonoBehaviour
             m_playerCollision = false;
         }
     }
+
 }
