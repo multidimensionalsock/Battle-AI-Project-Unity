@@ -1989,7 +1989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -110, y: 78}
+  m_AnchoredPosition: {x: -110, y: 0}
   m_SizeDelta: {x: 189.185, y: 43.484894}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &153854646
@@ -6100,7 +6100,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b980f44a5e7686e4988cd921acb262ea, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.107
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -11042,23 +11042,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2653641988187876908, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6020086140756091014, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
       propertyPath: m_HP
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 6900560556672485268, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_objectToPathfind
+      value: 
+      objectReference: {fileID: 1514811546}
     - target: {fileID: 7129271214926754890, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
       propertyPath: m_bossRef
       value: 
-      objectReference: {fileID: 1695071246}
+      objectReference: {fileID: 907858615550413009}
     - target: {fileID: 7129271214926754890, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
       propertyPath: m_playerRef
       value: 
       objectReference: {fileID: 1514811546}
     - target: {fileID: 7129271214926754890, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
-      propertyPath: m_distanceToSeek
+      propertyPath: maxTimeInState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129271214926754890, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_distanceToSeek
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7129271214926754890, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
       propertyPath: m_maxAttackDamage
@@ -14990,7 +14998,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -110, y: 35}
+  m_AnchoredPosition: {x: -110, y: 0}
   m_SizeDelta: {x: 189.185, y: 43.484894}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1787196708
@@ -34603,7 +34611,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -145, y: 117}
+  m_AnchoredPosition: {x: -145, y: 0}
   m_SizeDelta: {x: 372.19067, y: 224.6243}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2051272312
@@ -35424,7 +35432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &907858615550413010
 MonoBehaviour:
   m_ObjectHideFlags: 0

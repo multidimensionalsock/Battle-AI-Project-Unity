@@ -7,6 +7,9 @@ most important:
 mini enemy not seeking player when in range 
 attack needs delaying until x seconds into aniamtion (half of freeze time) call attack anim when wait start instead maybe?
 enemy starts psawning special attacks too often (LAST MIN TRAKC NOT WORKING PROPERLY)
+mini enemy movinig away from player on attack when main enemy is in the scene (print out when entering state?)
+mini enemy causing damage without attack anim (also too often)
+mini enemy attack cooldown
 
 not working:
 when mini enemies spawn main enemy teleports (ignore collision layer needs adding)
@@ -30,3 +33,4 @@ getting stuck on perfrom attack because rtoation is never equal to look rot if p
 enemy still moving when attackign even when it should be set to its own pos. 
 make it so speical atack cant happen right after nromal  (like special to normal attack cooldown maybe)
 player trigger may be too big 
+sort out mini enemy transitions

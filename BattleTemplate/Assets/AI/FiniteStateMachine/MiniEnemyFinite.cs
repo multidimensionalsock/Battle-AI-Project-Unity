@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -31,6 +32,7 @@ public class MiniEnemyFinite : MonoBehaviour
     Coroutine m_currentStateCoroutine; //use it so theres no memory leaks or other coroutines runnign to delete it specificallt 
     bool m_playerCollision = false;
     bool lockAttack;
+    [SerializeField] float maxTimeInState;
 
     public static event System.Action MiniEnemyDead;
 
@@ -50,7 +52,6 @@ public class MiniEnemyFinite : MonoBehaviour
         m_attackDamage = Random.Range(m_minAttackDamage, m_maxAttackDamage);
 
         StateChange?.Invoke(MiniEnemyStates.Idle);
-
     }
 
     void TransitionAny(float hpDec)
@@ -81,11 +82,11 @@ public class MiniEnemyFinite : MonoBehaviour
 
     void IdleTransition(float timeInIdle)
     {
-        if (InPlayerVercinity())
+        if (InPlayerVercinity()) // works 
         {
             StateChange?.Invoke(MiniEnemyStates.Seek);
         }
-        else if (!InPlayerVercinity() && timeInIdle > 2)
+        if (timeInIdle >= maxTimeInState) //works
         {
             StateChange?.Invoke(MiniEnemyStates.Wander);
         }
@@ -105,14 +106,16 @@ public class MiniEnemyFinite : MonoBehaviour
 
     void SeekTransition()
     {
-        if (m_playerCollision)
+        ////attack when colliding with player 
+        if (m_playerCollision) //working
         {
             StateChange?.Invoke(MiniEnemyStates.Attack);
         }
-		if (!InPlayerVercinity())
-		{
-			StateChange?.Invoke(MiniEnemyStates.Wander);
-		}
+        ////idle if not in players vicinity
+        if (!InPlayerVercinity()) 
+        {
+            StateChange?.Invoke(MiniEnemyStates.Idle);
+        }
     }
 
     IEnumerator Wander()
@@ -127,14 +130,17 @@ public class MiniEnemyFinite : MonoBehaviour
 
     void WanderTransition()
     {
-        if (InPlayerVercinity())
+        //seek if in players vicinity
+        if (InPlayerVercinity()) //works
         {
-            StateChange.Invoke(MiniEnemyStates.Seek);
+            StateChange?.Invoke(MiniEnemyStates.Seek);
         }
-        if (PlayerInBossVercinity())
+        ////defend if player in boss vicnity
+        if (PlayerInBossVercinity()) //works
         {
             StateChange?.Invoke(MiniEnemyStates.Defend);
         }
+        
     }
 
     IEnumerator Defend()
@@ -150,13 +156,15 @@ public class MiniEnemyFinite : MonoBehaviour
 
     void DefendTransition()
     {
+        ////seek if player not in boss vicinity
+        if (!PlayerInBossVercinity()) //works
+        {
+            StateChange?.Invoke(MiniEnemyStates.Seek);
+        }
+        ////attack if colliding with player 
         if (m_playerCollision)
         {
             StateChange?.Invoke(MiniEnemyStates.Attack);
-        }
-        if (!PlayerInBossVercinity())
-        {
-            StateChange?.Invoke(MiniEnemyStates.Wander);
         }
     }
 
@@ -179,31 +187,30 @@ public class MiniEnemyFinite : MonoBehaviour
 
     void AttackTransition()
     {
+        //idle after done 
         StateChange?.Invoke(MiniEnemyStates.Idle);
     }
 
     //hasnt been tested
     IEnumerator Flee()
     {
+        float fleeTime = 0;
         m_pathfinder.SetNewNavigation(pathfindingState.flee, m_playerRef);
         while (m_currentState == MiniEnemyStates.Flee)
         {
-            FleeTransition();
+            fleeTime += 0.02f;
+            FleeTransition(fleeTime);
             yield return new WaitForFixedUpdate();
         }
     }
 
-    void FleeTransition()
+    void FleeTransition(float fleeTime)
     {
-        if (PlayerInBossVercinity())
+        //idle if out of players vicinity or time limit reached
+        if (!InPlayerVercinity() || fleeTime >= maxTimeInState)
         {
-            StateChange?.Invoke(MiniEnemyStates.Defend);
+            StateChange?.Invoke(MiniEnemyStates.Idle);
         }
-        if (Mathf.Abs(Vector3.Distance(m_playerRef.transform.position, transform.position)) <= m_distanceToSeek * 1.5f) //out of player range and a half
-        {
-            StateChange?.Invoke(MiniEnemyStates.Wander);
-        }
-
     }
 
     void CallStateChange(MiniEnemyStates newState)
@@ -215,7 +222,6 @@ public class MiniEnemyFinite : MonoBehaviour
         {
             case MiniEnemyStates.Idle:
 				StopAllCoroutines();
-                GetComponent<NavMeshAgent>().isStopped = true;
                 m_currentStateCoroutine = StartCoroutine(Idle());
                 break;
             case MiniEnemyStates.Seek:
@@ -238,9 +244,19 @@ public class MiniEnemyFinite : MonoBehaviour
 				m_currentStateCoroutine = StartCoroutine("Attack");
                 break;
             case MiniEnemyStates.Attacked:
+                if (m_currentStateCoroutine != null) { StopCoroutine(m_currentStateCoroutine); }
+                int random = Random.Range(0, 1);
+                if (random == 0)
+                {
+                    if (m_playerCollision)
+                    {
+                        m_currentState = MiniEnemyStates.Attack;
+                        StateChange?.Invoke(MiniEnemyStates.Attack);
+                        break;
+                    }
+                }
                 m_currentState = MiniEnemyStates.Flee;
-				if (m_currentStateCoroutine != null) { StopCoroutine(m_currentStateCoroutine); }
-				m_currentStateCoroutine = StartCoroutine("Flee");
+                StateChange?.Invoke(MiniEnemyStates.Flee);
                 break; 
         }
     }
@@ -271,18 +287,18 @@ public class MiniEnemyFinite : MonoBehaviour
         Vector3 lookRot = m_playerRef.transform.position - transform.position;
         transform.rotation = Quaternion.LookRotation(lookRot);
     }
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject == m_playerRef)
+        if (other.gameObject.tag == "Player")
         {
             m_playerCollision = true;
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject == m_playerRef)
+        
+        if (other.gameObject.tag == "Player")
         {
             m_playerCollision = false;
         }
