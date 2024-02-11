@@ -1,32 +1,61 @@
 untested:
-fsm stay in idle for longer before wander 
 bt wait modew still going over max time issue: subtracting deltatime may not work as intended
-fsm make area where in player range bigger so they seek more 
-ui number round for hp so it doesnt decimalise
 
-needs coding:
-Attack aniamtion
+most important:
+attack needs delaying until x seconds into aniamtion (half of freeze time) call attack anim when wait start instead maybe?
+enemy starts psawning special attacks too often - when ever player attacks its immeditely reactivsitng able to special attack and it never gets set back,neither does attack in the last minute cooldown works normally when no attacks have been perfoemed 
+- reset last minute stats after every special attack possibly  
+mini enemies acting almost the same after spawn makes them feel unrealistic
+get mini enemy out of the floor
+
+not working:
+
+stretch goals:
 death animation 
 maybe a way to pick attacks based on TP? (decision tree)
 make more attacks
-lock movement sometimes lasts too long tbh (TIME LIMIT ON IT AND WAIT MODE?)
-fix the too fast rotataion with toms fix
-add sppecial attack back to player 
 sfx
 comment code 
-man ai still moving when min enemies are trigger 
-player special not working afterr 2 still taking tp needs longer cooldown
-naviate to special attack causing issues if player is colliding it deosnt move 
+lock movement sometimes lasts too long tbh (TIME LIMIT ON IT AND WAIT MODE?)
 
-not working:
-when mini enemies spawn main enemy teleports (ignore collision layer needs adding)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 done: 
-naviagte to attack still not working sometimes??
-mini animations
-cooldown to wait mode after attakcs or since last waitmode 
-player not grounding sometimes and getting stuck in jump 
-mini enemy moves while attacking sometimes 
-player attack animation cooldown
-slow camera rot speed 
-sepcial attack getting called too often - reset the attakc in last minute once a speicla attack has been erfomeed from it
+change how player vicinity and vicinity from enemy works to make it fuzzy 
+fix anim again 
+nav to attack fix again and ad on enter function 
+floating main enemy
+freeze times need adjusting 
+not looking at player sometimes while doing attack anim
+main enemy moving while doing attack anims (even now i set it to null ptr)
+getting stuck on perfrom attack because rtoation is never equal to look rot if player is moving 
+enemy still moving when attackign even when it should be set to its own pos. 
+make it so speical atack cant happen right after nromal  (like special to normal attack cooldown maybe)
+player trigger may be too big 
+sort out mini enemy transitions
+fsm stay in idle for longer before wander 
+mini enemy not seeking player when in range 
+mini enemy attack cooldown
+fsm make area where in player range bigger so they seek more 
+mini enemy causing damage without attack anim
+when mini enemies spawn main enemy teleports (ignore collision layer needs adding)
+change where mini enemies spawn (random)

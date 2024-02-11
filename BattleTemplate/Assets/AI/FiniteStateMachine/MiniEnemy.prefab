@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 230275032978134311}
   m_LocalRotation: {x: 0.042527784, y: 0.45664024, z: 0.051288176, w: 0.88715315}
-  m_LocalPosition: {x: -0.0003035651, y: 0.031854946, z: 0.00029592423}
+  m_LocalPosition: {x: -0.0066, y: 0.05, z: -0.009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -704,7 +704,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2653641988187876908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2475257, y: 0.138, z: 1.7233765}
+  m_LocalPosition: {x: 2.2475257, y: 0.1346, z: 1.7233765}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -732,10 +732,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.016940951
-  m_Height: 0.09988046
+  m_Radius: 0.03610921
+  m_Height: 0.103053376
   m_Direction: 1
-  m_Center: {x: 0.0069972277, y: 0.046888113, z: 0}
+  m_Center: {x: -0.000997901, y: 0.060829215, z: 0}
 --- !u!54 &8340553903596301226
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -802,6 +802,8 @@ MonoBehaviour:
   m_distanceToDefend: 2
   m_minAttackDamage: 1
   m_maxAttackDamage: 3
+  maxTimeInState: 0
+  attackCooldown: 0
 --- !u!114 &6020086140756091014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,7 +847,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2653641988187876908}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.05
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -854,7 +856,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 0.1
   m_BaseOffset: -0.018
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

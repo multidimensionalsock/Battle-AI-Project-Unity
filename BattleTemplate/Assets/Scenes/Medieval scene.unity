@@ -1629,6 +1629,10 @@ PrefabInstance:
       propertyPath: m_rotationSpeed
       value: 0.075
       objectReference: {fileID: 0}
+    - target: {fileID: 5910065917347830137, guid: d2a198c4cfe32244299c19d14622be9e, type: 3}
+      propertyPath: m_SpecialAttackObject
+      value: 
+      objectReference: {fileID: 4063635816943371586, guid: ccdecd56f1d30e94d806700f09b75277, type: 3}
     - target: {fileID: 5910065917347830141, guid: d2a198c4cfe32244299c19d14622be9e, type: 3}
       propertyPath: m_Mass
       value: 1
@@ -1985,7 +1989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -110.25, y: 78}
+  m_AnchoredPosition: {x: -110, y: 0}
   m_SizeDelta: {x: 189.185, y: 43.484894}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &153854646
@@ -4342,7 +4346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459858436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -500, y: 0, z: -500}
+  m_LocalPosition: {x: -500, y: 0.08, z: -500}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6096,7 +6100,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b980f44a5e7686e4988cd921acb262ea, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.107
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -11038,23 +11042,83 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2653641988187876908, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2778915567793599822, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2778915567793599822, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.055
+      objectReference: {fileID: 0}
+    - target: {fileID: 2778915567793599822, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002724182975468475, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_Height
+      value: 0.16162263
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002724182975468475, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_Radius
+      value: 0.03490831
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002724182975468475, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_Center.x
+      value: 0.006997235
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002724182975468475, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_Center.y
+      value: 0.0777592
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002724182975468475, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_Center.z
+      value: 0.017967358
+      objectReference: {fileID: 0}
+    - target: {fileID: 4331808531867571451, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653627769867098204, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_Speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653627769867098204, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_Height
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653627769867098204, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_Radius
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6020086140756091014, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
       propertyPath: m_HP
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 6900560556672485268, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_objectToPathfind
+      value: 
+      objectReference: {fileID: 1514811546}
     - target: {fileID: 7129271214926754890, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
       propertyPath: m_bossRef
       value: 
-      objectReference: {fileID: 1695071246}
+      objectReference: {fileID: 907858615550413009}
     - target: {fileID: 7129271214926754890, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
       propertyPath: m_playerRef
       value: 
       objectReference: {fileID: 1514811546}
     - target: {fileID: 7129271214926754890, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
-      propertyPath: m_distanceToSeek
+      propertyPath: attackCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129271214926754890, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: maxTimeInState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129271214926754890, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_distanceToSeek
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7129271214926754890, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
       propertyPath: m_maxAttackDamage
@@ -13069,7 +13133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HP: 50
-  m_TP: 4
+  m_TP: 20
   m_maxHP: 50
   m_MaxTP: 20
   m_Attack: 3
@@ -14986,7 +15050,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -110.25, y: 35}
+  m_AnchoredPosition: {x: -110, y: 0}
   m_SizeDelta: {x: 189.185, y: 43.484894}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1787196708
@@ -34599,7 +34663,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -145, y: 117}
+  m_AnchoredPosition: {x: -145, y: 0}
   m_SizeDelta: {x: 372.19067, y: 224.6243}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2051272312
@@ -35420,7 +35484,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &907858615550413010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35446,7 +35510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 907858615550413115}
+  selectedEditorNode: {fileID: 0}
   repeatOnFinish: 1
   maxExecutionsPerTick: 3
   parent: {fileID: 0}
@@ -37711,8 +37775,8 @@ MonoBehaviour:
     blackboard: {fileID: 0}
     key: 
     constantValue: 0
-  attacksInLastMinToBeOffensive: 0
-  damageInLastMinToBeOffensive: 0
+  attacksInLastMinToBeOffensive: 5
+  damageInLastMinToBeOffensive: 20
 --- !u!114 &907858615550413119
 MonoBehaviour:
   m_ObjectHideFlags: 2
