@@ -9,6 +9,7 @@ using System;
 using Unity.VisualScripting;
 using static UnityEditor.SceneView;
 using UnityEngine.InputSystem.HID;
+using MBTExample;
 
 [AddComponentMenu("CustomBehaviour")]
 
@@ -353,7 +354,7 @@ public class SpawnHelpers : Leaf
 
         for (int i = 0; i < noToSpawn; i++)
         {
-            GameObject temp = Instantiate(miniEnemys, transform.position, Quaternion.Euler(0f, (360f /noToSpawn * i), 0f));
+            GameObject temp = Instantiate(miniEnemys, RandomPosition(), Quaternion.Euler(0f, (360f /noToSpawn * i), 0f));
             temp.GetComponent<MiniEnemyFinite>().OnInstantiation(conditions.playerRef, gameObject);
             temp.gameObject.SetActive(true);
         }
@@ -361,6 +362,14 @@ public class SpawnHelpers : Leaf
         conditions.AddMiniEnemys(noToSpawn);
 
         return NodeResult.running;
+    }
+
+    private Vector3 RandomPosition()
+    {
+        Vector3 pos;
+        Vector2 pointInCircle = UnityEngine.Random.insideUnitCircle * 10f;
+        pos = new Vector3(pointInCircle.x, -1.51f, pointInCircle.y);
+        return pos;
     }
 
     public override bool IsValid()
