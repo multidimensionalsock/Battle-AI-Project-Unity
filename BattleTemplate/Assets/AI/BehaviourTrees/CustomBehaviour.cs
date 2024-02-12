@@ -291,9 +291,12 @@ public class StandStill : Leaf
 	float timeToFreeze;
     CheckConditions conditions;
     [SerializeField] float maxWaitTime = 2f;
+    bool stopFreeze;
 
     public override void OnEnter() 
 	{
+        stopFreeze = false;
+        StartCoroutine(WaitFor());
 		GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
 		conditions= GetComponent<CheckConditions>();
 		float distanceFromPlayer = Mathf.Abs(Vector3.Distance(conditions.playerRef.transform.position, transform.position));
@@ -310,18 +313,19 @@ public class StandStill : Leaf
 
 	public override NodeResult Execute()
 	{
-		timeToFreeze -= Time.deltaTime;
-        if (conditions.triggerWithPlayer) 
-        { conditions.WaitModeEventCaller(false); return NodeResult.success; }
+        if (stopFreeze) { return NodeResult.success; }
+        if (conditions.triggerWithPlayer) { conditions.WaitModeEventCaller(false); return NodeResult.success; }
+
         Vector3 look = conditions.playerRef.transform.position - transform.position;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(look), 0.01f);
-        if (timeToFreeze <= 0)
-		{
-            conditions.WaitModeEventCaller(false);
-            return NodeResult.success;
-        }
 		return NodeResult.running;
 	}
+
+    IEnumerator WaitFor()
+    {
+        yield return new WaitForSeconds(timeToFreeze);
+        stopFreeze = true;
+    }
 
 	public override bool IsValid()
 	{

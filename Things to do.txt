@@ -1,5 +1,4 @@
 untested:
-bt wait modew still going over max time issue: subtracting deltatime may not work as intended
 
 most important:
 attack needs delaying until x seconds into aniamtion (half of freeze time) call attack anim when wait start instead maybe?
@@ -59,4 +58,6 @@ mini enemy causing damage without attack anim
 when mini enemies spawn main enemy teleports (ignore collision layer needs adding)
 change where mini enemies spawn (random)
 get mini enemy out of the floor
+bounding box + sfx higher 
 specila attack reset issue (half fixed)
+bt wait modew still going over max time issue: subtracting deltatime may not work as intended
