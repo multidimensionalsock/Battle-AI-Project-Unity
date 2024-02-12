@@ -4,6 +4,7 @@ most important:
 attack needs delaying until x seconds into aniamtion (half of freeze time) call attack anim when wait start instead maybe?
 mini enemies acting almost the same after spawn makes them feel unrealistic
 sepcial attack resetting after two attakcnot 5 not sure why but at least ti kinda works???/
+adjust max wait time 
 
 not working:
 

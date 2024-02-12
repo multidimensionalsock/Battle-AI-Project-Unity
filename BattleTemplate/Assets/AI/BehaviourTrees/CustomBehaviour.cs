@@ -290,7 +290,7 @@ public class StandStill : Leaf
 	public BoolReference somePropertyRef = new BoolReference();
 	float timeToFreeze;
     CheckConditions conditions;
-    [SerializeField] float maxWaitTime = 2f;
+    [SerializeField] float maxWaitTime = 4f;
     bool stopFreeze;
 
     public override void OnEnter() 
