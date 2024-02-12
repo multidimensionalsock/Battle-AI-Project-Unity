@@ -3,10 +3,8 @@ bt wait modew still going over max time issue: subtracting deltatime may not wor
 
 most important:
 attack needs delaying until x seconds into aniamtion (half of freeze time) call attack anim when wait start instead maybe?
-enemy starts psawning special attacks too often - when ever player attacks its immeditely reactivsitng able to special attack and it never gets set back,neither does attack in the last minute cooldown works normally when no attacks have been perfoemed 
-- reset last minute stats after every special attack possibly  
 mini enemies acting almost the same after spawn makes them feel unrealistic
-get mini enemy out of the floor
+sepcial attack resetting after two attakcnot 5 not sure why but at least ti kinda works???/
 
 not working:
 
@@ -17,6 +15,7 @@ make more attacks
 sfx
 comment code 
 lock movement sometimes lasts too long tbh (TIME LIMIT ON IT AND WAIT MODE?)
+
 
 
 
@@ -59,3 +58,5 @@ fsm make area where in player range bigger so they seek more
 mini enemy causing damage without attack anim
 when mini enemies spawn main enemy teleports (ignore collision layer needs adding)
 change where mini enemies spawn (random)
+get mini enemy out of the floor
+specila attack reset issue (half fixed)
