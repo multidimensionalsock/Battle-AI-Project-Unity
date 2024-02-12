@@ -42,6 +42,7 @@ public class MiniEnemyFinite : MonoBehaviour
     {
         m_playerRef = playerReference;
         m_bossRef = bossReference;
+        maxTimeInState = Random.Range(maxTimeInState * 0.5f, maxTimeInState * 1.5f);
     }
 
     private void Start()
@@ -223,6 +224,7 @@ public class MiniEnemyFinite : MonoBehaviour
         if (lockAttack) { return; }
 		m_currentState = newState;
         GetComponent<NavMeshAgent>().isStopped = false;
+        maxTimeInState = Random.Range(maxTimeInState * 0.5f, maxTimeInState * 1.5f);
         switch (newState)
         {
             case MiniEnemyStates.Idle:

@@ -2,7 +2,9 @@ untested:
 
 most important:
 mini enemies acting almost the same after spawn makes them feel unrealistic
-special attack resetting after two attack not 5 not sure why but at least ti kinda works???/
+main enemy still moving while attacking 
+mini enemy stops working when main enemy dies 
+symeetecl amnovemernt still an issue addd more cgabfes btween condidiotns 
 
 not working:
 
@@ -62,3 +64,4 @@ get mini enemy out of the floor
 bounding box + sfx higher 
 specila attack reset issue (half fixed)
 bt wait modew still going over max time issue: subtracting deltatime may not work as intended
+special attack reset
