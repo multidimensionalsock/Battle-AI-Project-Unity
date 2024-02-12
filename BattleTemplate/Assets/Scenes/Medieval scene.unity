@@ -2199,7 +2199,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -110, y: 0}
+  m_AnchoredPosition: {x: -110, y: 75.9}
   m_SizeDelta: {x: 189.185, y: 43.484894}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &153854646
@@ -16565,7 +16565,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -110, y: 0}
+  m_AnchoredPosition: {x: -110, y: 28.1}
   m_SizeDelta: {x: 189.185, y: 43.484894}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1787196708
@@ -36457,7 +36457,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -145, y: 0}
+  m_AnchoredPosition: {x: -145, y: 114.3}
   m_SizeDelta: {x: 372.19067, y: 224.6243}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2051272312
@@ -37539,8 +37539,8 @@ MonoBehaviour:
   lockMovementTime: 0
   attacksInTheLastMinute: 0
   damageInTheLastMinute: 0
-  damageInLastMinuteToUnlockSpecialAttack: 5
-  attacksInLastMinuteToUnlockSpecialAttack: 20
+  damageInLastMinuteToUnlockSpecialAttack: 20
+  attacksInLastMinuteToUnlockSpecialAttack: 5
 --- !u!114 &907858615550413028
 MonoBehaviour:
   m_ObjectHideFlags: 2
