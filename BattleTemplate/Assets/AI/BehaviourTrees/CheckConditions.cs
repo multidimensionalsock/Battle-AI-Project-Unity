@@ -216,12 +216,13 @@ public class CheckConditions : MonoBehaviour
     {
         StartCoroutine(MovementLockCoroutine(attackData.freezeTime));
         AttackImplem?.Invoke(attackData);
+        StartCoroutine(AttackCooldown());
         if (attackData.attackType == AttackType.special)
         {
             specialCooldown = StartCoroutine(SpecialAttackCooldown());
+            
             return;
         }
-        StartCoroutine(AttackCooldown());
         if (attackData.attackType == AttackType.melee)
         {
             GetComponent<BattleScript>().SetTP(-1);
