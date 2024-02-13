@@ -35484,7 +35484,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &907858615550413010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35637,11 +35637,11 @@ MonoBehaviour:
   MovementLocked: 0
   attackCoolDownTime: 3
   specialAttackCoolDownTime: 20
-  lockMovementTime: 0
+  lockMovementTime: 2
   attacksInTheLastMinute: 0
   damageInTheLastMinute: 0
-  damageInLastMinuteToUnlockSpecialAttack: 0
-  attacksInLastMinuteToUnlockSpecialAttack: 0
+  damageInLastMinuteToUnlockSpecialAttack: 20
+  attacksInLastMinuteToUnlockSpecialAttack: 5
 --- !u!114 &907858615550413028
 MonoBehaviour:
   m_ObjectHideFlags: 2
