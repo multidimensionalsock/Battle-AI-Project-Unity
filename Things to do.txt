@@ -1,10 +1,7 @@
 untested:
 
 most important:
-get mini enemy out of the floor
-main enemy spawning rnage attack right after special - dont allow 
-fix bounding box again 
-fix UI 
+make player special attack look better 
 
 not working:
 
@@ -17,6 +14,8 @@ comment code
 lock movement sometimes lasts too long tbh (TIME LIMIT ON IT AND WAIT MODE?)
 attack needs delaying until x seconds into aniamtion (half of freeze time) call attack anim when wait start instead maybe?
 area avoid for mini enemies 
+
+
 
 
 
@@ -62,3 +61,7 @@ change where mini enemies spawn (random)
 enemy starts psawning special attacks too often - when ever player attacks its immeditely reactivsitng able to special attack and it never gets set back,neither does attack in the last minute cooldown works normally when no attacks have been perfoemed 
 reset last minute stats after every special attack possibly  
 bt wait modew still going over max time issue: subtracting deltatime may not work as intended
+main enemy spawning rnage attack right after special - dont allow 
+get mini enemy out of the floor
+fix bounding box again 
+fix UI 
