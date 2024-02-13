@@ -2,11 +2,14 @@ untested:
 bt wait modew still going over max time issue: subtracting deltatime may not work as intended
 
 most important:
-attack needs delaying until x seconds into aniamtion (half of freeze time) call attack anim when wait start instead maybe?
+
 enemy starts psawning special attacks too often - when ever player attacks its immeditely reactivsitng able to special attack and it never gets set back,neither does attack in the last minute cooldown works normally when no attacks have been perfoemed 
-- reset last minute stats after every special attack possibly  
+reset last minute stats after every special attack possibly  
 mini enemies acting almost the same after spawn makes them feel unrealistic
 get mini enemy out of the floor
+main enemy spawning rnage attack right after special - dont allow 
+fix bounding box again 
+fix UI 
 
 not working:
 
@@ -17,6 +20,7 @@ make more attacks
 sfx
 comment code 
 lock movement sometimes lasts too long tbh (TIME LIMIT ON IT AND WAIT MODE?)
+attack needs delaying until x seconds into aniamtion (half of freeze time) call attack anim when wait start instead maybe?
 
 
 
