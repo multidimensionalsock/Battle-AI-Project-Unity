@@ -37,6 +37,10 @@ PrefabInstance:
       value: -0.014
       objectReference: {fileID: 0}
     - target: {fileID: 6343046996770555025, guid: 7b3bba344eabcab4ca4b7b68a7feefa0, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6343046996770555025, guid: 7b3bba344eabcab4ca4b7b68a7feefa0, type: 3}
       propertyPath: ShapeModule.type
       value: 13
       objectReference: {fileID: 0}
@@ -163,6 +167,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8093449309334872734, guid: 7b3bba344eabcab4ca4b7b68a7feefa0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7079068357930120380}
+    - targetCorrespondingSourceObject: {fileID: 8093449309334872734, guid: 7b3bba344eabcab4ca4b7b68a7feefa0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1684352915185217530}
+    - targetCorrespondingSourceObject: {fileID: 8093449309334872734, guid: 7b3bba344eabcab4ca4b7b68a7feefa0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4795619978793118106}
   m_SourcePrefab: {fileID: 100100000, guid: 7b3bba344eabcab4ca4b7b68a7feefa0, type: 3}
 --- !u!1 &6307464267694328704 stripped
 GameObject:
@@ -185,3 +195,38 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.5, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &1684352915185217530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307464267694328704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ccc55abe337cc24fbc37df3a2d9170d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iceAttack: {fileID: 0}
+  damage: 0
+--- !u!65 &4795619978793118106
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307464267694328704}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 3, z: 1}
+  m_Center: {x: 0.5, y: 1, z: 0}
