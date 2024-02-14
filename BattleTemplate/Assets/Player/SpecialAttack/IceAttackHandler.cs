@@ -56,7 +56,7 @@ public class IceAttackHandler : MonoBehaviour
         yield return new WaitForSeconds(timeToSpawnNext);
         if (colliding) { yield break; }
         //make a new object set spawn to across from 
-        Vector3 spawnPos = transform.position + (transform.right * -1) * spawnDistance;
+        Vector3 spawnPos = transform.position + (transform.forward) * spawnDistance;
         GameObject ice = Instantiate(iceAttack, spawnPos, transform.rotation);
         //set rotation
         //change rotation of child objects mayeb different fo rthe two 
@@ -70,7 +70,7 @@ public class IceAttackHandler : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //might cause issue when it colliders with the floor
-        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Floor") { return; }
+        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Floor" || other.gameObject.tag == "Player") { return; }
 
         colliding = true;
         if (other.gameObject.tag == "Player")
