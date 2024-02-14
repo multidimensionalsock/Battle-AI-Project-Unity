@@ -211,7 +211,7 @@ public class PerformAttack : Leaf
         
         Vector3 look = conditions.playerRef.transform.position - transform.position;
         float angle = 180 -  Mathf.Abs(Quaternion.Dot(Quaternion.LookRotation(look), transform.rotation) * 180);
-        if (angle > 15)
+        if (angle > 5)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(look), 0.01f);
             return NodeResult.running;

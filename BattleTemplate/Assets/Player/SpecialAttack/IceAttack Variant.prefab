@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iceAttack: {fileID: 6307464267694328704}
-  damage: 1
+  damage: 3
   colliding: 0
   timeToSpawnNext: 0.1
   spawnDistance: 1
