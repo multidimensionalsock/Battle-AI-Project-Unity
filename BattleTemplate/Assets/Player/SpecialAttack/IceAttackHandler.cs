@@ -25,6 +25,21 @@ public class IceAttackHandler : MonoBehaviour
             Color c = materials[i].material.color;
             materials[i].material.color = new Color(c.r, c.g, c.b, opacity);
         }
+
+        //ice spike random rotation
+        float rotationOffsetY = Random.Range(-0.1f, 0.1f);
+        float rotationOffsetZ = Random.Range(-0.1f, 0.1f);
+        Transform iceSpikes = transform.GetChild(0).transform;
+        iceSpikes.rotation = new Quaternion(iceSpikes.rotation.x, iceSpikes.rotation.y + rotationOffsetY, iceSpikes.rotation.z + rotationOffsetZ, iceSpikes.rotation.w);
+        //odnt rouch x but touch y and z, only touch y for rock flat
+
+        //rock flat random rotation
+        rotationOffsetY = Random.Range(-0.1f, 0.1f);
+        Transform rockFlat = transform.GetChild(2).transform;
+        rockFlat.rotation = new Quaternion(rockFlat.rotation.x, rockFlat.rotation.y, rockFlat.rotation.z, rockFlat.rotation.w);
+
+        //randomise scale?
+
         StartCoroutine(FadeIn());
     }
 
