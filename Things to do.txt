@@ -1,10 +1,7 @@
 untested:
 
 most important:
-make player special attack look better 
 make speical attack damage enemy 
-apply special attack to player and make sure it works right 
-cahnge angle to attack
 
 not working:
 
@@ -66,3 +63,6 @@ get mini enemy out of the floor
 fix bounding box again 
 fix UI 
 special attack collision not stopping them spawning
+apply special attack to player and make sure it works right 
+cahnge angle to attack
+make player special attack look better 
