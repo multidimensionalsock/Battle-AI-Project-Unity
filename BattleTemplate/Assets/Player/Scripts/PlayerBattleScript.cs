@@ -46,7 +46,6 @@ public class PlayerBattleScript : BattleScript
             return;
         }
 		GameObject m_attackObj = Instantiate(m_battleObject, transform.position + (transform.GetChild(1).transform.forward), transform.GetChild(1).transform.rotation);
-		//m_attackObj.GetComponent<SpecialSlashAttack>().CreateAttack(m_Attack, gameObject.transform.GetChild(1).gameObject.transform.rotation);
         StartCoroutine(Cooldown());
     }
 

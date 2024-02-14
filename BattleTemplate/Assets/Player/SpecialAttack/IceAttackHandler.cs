@@ -31,7 +31,7 @@ public class IceAttackHandler : MonoBehaviour
     //function to fade in 
     IEnumerator FadeIn()
     {
-        while (opacity <= 1)
+        while (opacity < 1)
         {
             opacity += 1 / (lifeTime / 2) / 50;
             for (int i = 0; i < materials.Length; i++)
@@ -41,12 +41,22 @@ public class IceAttackHandler : MonoBehaviour
             }
             yield return new WaitForFixedUpdate();
         }
-        yield break;
+        StartCoroutine(FadeOut());
     }
 
     IEnumerator FadeOut()
     {
-        yield break;
+        while (opacity > 0)
+        {
+            opacity -= 1 / (lifeTime / 2) / 50;
+            for (int i = 0; i < materials.Length; i++)
+            {
+                Color c = materials[i].material.color;
+                materials[i].material.color = new Color(c.r, c.g, c.b, opacity);
+            }
+            yield return new WaitForFixedUpdate();
+        }
+        Destroy(gameObject);
     }
     //function to fade out
 
