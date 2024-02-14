@@ -215,6 +215,7 @@ MonoBehaviour:
   colliding: 0
   timeToSpawnNext: 0.1
   spawnDistance: 1
+  lifeTime: 10
 --- !u!65 &4795619978793118106
 BoxCollider:
   m_ObjectHideFlags: 0

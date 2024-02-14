@@ -10,15 +10,44 @@ public class IceAttackHandler : MonoBehaviour
     float opacity = 0;
     [SerializeField] float timeToSpawnNext;
     [SerializeField] float spawnDistance;
+    [SerializeField] float lifeTime;
+    Renderer[] materials;
     //Vector3 spawnPos = playerPos + playerDirection*spawnDistance;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(SpawnNext());
+        
+        materials = GetComponentsInChildren<Renderer>();
+        for (int i = 0; i < materials.Length; i++)
+        {
+            Color c = materials[i].material.color;
+            materials[i].material.color = new Color(c.r, c.g, c.b, opacity);
+        }
+        StartCoroutine(FadeIn());
     }
 
     //function to fade in 
+    IEnumerator FadeIn()
+    {
+        while (opacity <= 1)
+        {
+            opacity += 1 / (lifeTime / 2) / 50;
+            for (int i = 0; i < materials.Length; i++)
+            { 
+                Color c = materials[i].material.color;
+                materials[i].material.color = new Color(c.r, c.g, c.b, opacity);
+            }
+            yield return new WaitForFixedUpdate();
+        }
+        yield break;
+    }
+
+    IEnumerator FadeOut()
+    {
+        yield break;
+    }
     //function to fade out
 
     //ienum to spawn next one after x seconds
@@ -30,6 +59,7 @@ public class IceAttackHandler : MonoBehaviour
         Vector3 spawnPos = transform.position + (transform.right * -1) * spawnDistance;
         GameObject ice = Instantiate(iceAttack, spawnPos, transform.rotation);
         //set rotation
+        //change rotation of child objects mayeb different fo rthe two 
 
         //random rot
         //randomise scale
