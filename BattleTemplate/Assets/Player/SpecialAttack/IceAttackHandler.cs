@@ -6,9 +6,11 @@ public class IceAttackHandler : MonoBehaviour
 {
     [SerializeField] GameObject iceAttack;
     [SerializeField] float damage;
-    bool colliding = false;
+    public bool colliding = false;
     float opacity = 0;
     [SerializeField] float timeToSpawnNext;
+    [SerializeField] float spawnDistance;
+    //Vector3 spawnPos = playerPos + playerDirection*spawnDistance;
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +25,14 @@ public class IceAttackHandler : MonoBehaviour
     IEnumerator SpawnNext()
     {
         yield return new WaitForSeconds(timeToSpawnNext);
-        if (colliding) { yield break; } 
+        if (colliding) { yield break; }
         //make a new object set spawn to across from 
+        Vector3 spawnPos = transform.position + (transform.right * -1) * spawnDistance;
+        GameObject ice = Instantiate(iceAttack, spawnPos, transform.rotation);
         //set rotation
+
+        //random rot
+        //randomise scale
         //set new trandofmr it it and aaaaaaaa work out where would be across by x
     }
 
@@ -33,14 +40,16 @@ public class IceAttackHandler : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //might cause issue when it colliders with the floor
-        if (other.gameObject.tag != "Enemy" && other.gameObject.tag != "Floor") { colliding = true; }
+        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Floor") { return; }
 
+        colliding = true;
         if (other.gameObject.tag == "Player")
         {
             other.GetComponent<PlayerBattleScript>().Attack(damage * opacity);
         }
 
     }
+
 
     //damage is affected by object opacity 
 
