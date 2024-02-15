@@ -3,6 +3,16 @@ make speical attack damage enemy
 
 most important:
 bt needs to attack more maybe 
+the mini enmeys like no tbeing attacked too  much
+i fyou special attack when in collision of enemy it will push you back 
+mian enemy doesnt di ehwne under 0 hp 
+slide when attacking 
+special attack stoppin at enemy looks fucked 
+hit animation for main enemy 
+flee tim elimit 
+when player colllides while moving run animaiton stops 
+can take damage in free but is not checked 
+abort seeking behaviours 
 
 not working:
 

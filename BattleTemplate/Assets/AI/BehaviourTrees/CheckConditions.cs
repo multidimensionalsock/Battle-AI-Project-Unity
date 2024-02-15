@@ -174,7 +174,6 @@ public class CheckConditions : MonoBehaviour
                 yield break;
             }
             SpecialAttackCoolDownTimeRemaining -= 1f * Time.fixedDeltaTime;
-            Debug.Log(SpecialAttackCoolDownTimeRemaining);
             yield return new WaitForFixedUpdate();
         }
         ableToSpecialAttack = true;

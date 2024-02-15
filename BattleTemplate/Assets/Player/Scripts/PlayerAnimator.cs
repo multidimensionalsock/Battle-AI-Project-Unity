@@ -76,6 +76,11 @@ public class PlayerAnimator : MonoBehaviour
         CurrentCollisions += 1;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        m_animator.SetBool("Grounded", true);
+    }
+
     private void OnCollisionExit(Collision collision)
     {
         CurrentCollisions -= 1;

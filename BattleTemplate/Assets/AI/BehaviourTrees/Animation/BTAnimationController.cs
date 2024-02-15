@@ -54,7 +54,6 @@ public class BTAnimationController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.tag == "Floor")
         {
             m_animator.SetBool("Grounded", true);

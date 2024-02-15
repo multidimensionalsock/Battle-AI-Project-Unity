@@ -20,7 +20,6 @@ public class Seek : Leaf
     public BoolReference somePropertyRef = new BoolReference();
     public override NodeResult Execute()
     {
-        Debug.Log("Seeking");
         if (GetComponent<CheckConditions>().triggerWithPlayer != true)
         {
             GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.seek, GetComponent<CheckConditions>().playerRef);
