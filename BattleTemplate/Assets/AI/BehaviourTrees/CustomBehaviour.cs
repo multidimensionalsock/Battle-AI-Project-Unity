@@ -20,7 +20,6 @@ public class Seek : Leaf
     public BoolReference somePropertyRef = new BoolReference();
     public override NodeResult Execute()
     {
-        Debug.Log("Seeking");
         if (GetComponent<CheckConditions>().triggerWithPlayer != true)
         {
             GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.seek, GetComponent<CheckConditions>().playerRef);
@@ -211,7 +210,7 @@ public class PerformAttack : Leaf
         
         Vector3 look = conditions.playerRef.transform.position - transform.position;
         float angle = 180 -  Mathf.Abs(Quaternion.Dot(Quaternion.LookRotation(look), transform.rotation) * 180);
-        if (angle > 15)
+        if (angle > 5)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(look), 0.01f);
             return NodeResult.running;
@@ -287,46 +286,49 @@ public class LockMovement : Leaf
 [MBTNode(name = "CustomNode/Wait Mode")]
 public class StandStill : Leaf
 {
-	public BoolReference somePropertyRef = new BoolReference();
-	float timeToFreeze;
+    public BoolReference somePropertyRef = new BoolReference();
+    float timeToFreeze;
     CheckConditions conditions;
-    [SerializeField] float maxWaitTime = 2f;
+    [SerializeField] float maxWaitTime = 4f;
+    bool stopFreeze;
 
-    public override void OnEnter() 
-	{
-		GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
-		conditions= GetComponent<CheckConditions>();
-		float distanceFromPlayer = Mathf.Abs(Vector3.Distance(conditions.playerRef.transform.position, transform.position));
-		float playerSpeed = conditions.playerRef.GetComponent<Rigidbody>().velocity.magnitude;
-		timeToFreeze = (distanceFromPlayer / playerSpeed) - 1;
-		if (playerSpeed == 0)
-		{
-			timeToFreeze = distanceFromPlayer;
-		}
+    public override void OnEnter()
+    {
+        stopFreeze = false;
+        StartCoroutine(WaitFor());
+        GetComponent<Pathfinding>().SetNewNavigation(pathfindingState.nullptr);
+        conditions = GetComponent<CheckConditions>();
+        float distanceFromPlayer = Mathf.Abs(Vector3.Distance(conditions.playerRef.transform.position, transform.position));
+        float playerSpeed = conditions.playerRef.GetComponent<Rigidbody>().velocity.magnitude;
+        timeToFreeze = (distanceFromPlayer / playerSpeed) - 1;
+        if (playerSpeed == 0)
+        {
+            timeToFreeze = distanceFromPlayer;
+        }
         if (timeToFreeze > maxWaitTime) { timeToFreeze = maxWaitTime; }
         conditions.WaitModeEventCaller(true);
+    }
 
-	}
+    public override NodeResult Execute()
+    {
+        if (stopFreeze) { return NodeResult.success; }
+        if (conditions.triggerWithPlayer) { conditions.WaitModeEventCaller(false); return NodeResult.success; }
 
-	public override NodeResult Execute()
-	{
-		timeToFreeze -= Time.deltaTime;
-        if (conditions.triggerWithPlayer) 
-        { conditions.WaitModeEventCaller(false); return NodeResult.success; }
         Vector3 look = conditions.playerRef.transform.position - transform.position;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(look), 0.01f);
-        if (timeToFreeze <= 0)
-		{
-            conditions.WaitModeEventCaller(false);
-            return NodeResult.success;
-        }
-		return NodeResult.running;
-	}
+        return NodeResult.running;
+    }
 
-	public override bool IsValid()
-	{
-		return !somePropertyRef.isInvalid;
-	}
+    IEnumerator WaitFor()
+    {
+        yield return new WaitForSeconds(timeToFreeze);
+        stopFreeze = true;
+    }
+
+    public override bool IsValid()
+    {
+        return !somePropertyRef.isInvalid;
+    }
 }
 
 [MBTNode(name = "CustomNode/Spawn Helpers")]

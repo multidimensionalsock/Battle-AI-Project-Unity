@@ -20,7 +20,7 @@ public class CheckConditions : MonoBehaviour
     [SerializeField] float attackCoolDownTime;
     [SerializeField] float specialAttackCoolDownTime;
     float SpecialAttackCoolDownTimeRemaining;
-	[SerializeField] float lockMovementTime;
+    [SerializeField] float lockMovementTime;
     private int MiniEnemiesInScene;
 
     public int attacksInTheLastMinute;
@@ -31,11 +31,12 @@ public class CheckConditions : MonoBehaviour
     [SerializeField] float damageInLastMinuteToUnlockSpecialAttack;
     [SerializeField] float attacksInLastMinuteToUnlockSpecialAttack;
     List<float[,]> emptyList = new List<float[,]>();
+    Coroutine specialCooldown;
 
     public event System.Action<Attack> AttackImplem;
     public event System.Action<AnimationClip> NextAttackAnimChange;
     public event System.Action<bool> waitModeOnOff;
-    
+
     private void OnEnable()
     {
         LoadAttacks();
@@ -43,7 +44,7 @@ public class CheckConditions : MonoBehaviour
         ableToAttack = true;
         ableToSpecialAttack = false;
         StartCoroutine(StartSpecialAttackCooldown());
-        
+
         //transform.GetChild(0).GetComponent<BTAnimationController>().AttackAnimFinished += EndMovementLock;
 
         LastMinuteStatList = new List<float[,]>();
@@ -56,6 +57,19 @@ public class CheckConditions : MonoBehaviour
         StartCoroutine(lastMinuteStats());
 
         MiniEnemyFinite.Death += MiniEnemyDied;
+    }
+
+    private void Update()
+    {
+        if (ableToSpecialAttack) { return; }
+        if (damageInTheLastMinute > damageInLastMinuteToUnlockSpecialAttack || attacksInTheLastMinute > attacksInLastMinuteToUnlockSpecialAttack)
+        {
+            StopCoroutine(specialCooldown);
+            ableToSpecialAttack = true;
+            damageInTheLastMinute = 0;
+            attacksInTheLastMinute = 0;
+            LastMinuteStatList = emptyList;
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -114,47 +128,35 @@ public class CheckConditions : MonoBehaviour
 
     public void StartAttackCooldown()
     {
-       //make a coroutine for this 
+        //make a coroutine for this 
     }
 
     public void WaitModeEventCaller(bool state)
     {
-        waitModeOnOff?.Invoke(state); 
+        waitModeOnOff?.Invoke(state);
     }
 
-    IEnumerator AttackCooldown(Attack attackdata)
+    IEnumerator AttackCooldown()
     {
         ableToAttack = false;
         yield return new WaitForSeconds(attackCoolDownTime);
         ableToAttack = true;
     }
 
-    IEnumerator SpecialAttackCooldown(Attack attackdata)
+    IEnumerator SpecialAttackCooldown()
     {
         ableToSpecialAttack = false;
-        SpecialAttackCoolDownTimeRemaining = specialAttackCoolDownTime; 
-        while (SpecialAttackCoolDownTimeRemaining > 0)
-        {
-            if (attacksInTheLastMinute > attacksInLastMinuteToUnlockSpecialAttack)
-            {
-                ableToSpecialAttack = true;
-                yield break;
-            }
-            if (damageInTheLastMinute > damageInLastMinuteToUnlockSpecialAttack)
-            {
-                ableToSpecialAttack = true;
-                yield break;
-            }
-            SpecialAttackCoolDownTimeRemaining -= 1f * Time.fixedDeltaTime;
-            yield return new WaitForFixedUpdate();
-        }
+        damageInTheLastMinute = 0;
+        attacksInTheLastMinute = 0;
+        LastMinuteStatList = emptyList;
+        yield return new WaitForSeconds(specialAttackCoolDownTime);
         ableToSpecialAttack = true;
     }
 
     IEnumerator StartSpecialAttackCooldown()
     {
         ableToSpecialAttack = false;
-        SpecialAttackCoolDownTimeRemaining = specialAttackCoolDownTime; 
+        SpecialAttackCoolDownTimeRemaining = specialAttackCoolDownTime;
         while (SpecialAttackCoolDownTimeRemaining > 0)
         {
             if (attacksInTheLastMinute > attacksInLastMinuteToUnlockSpecialAttack)
@@ -172,7 +174,6 @@ public class CheckConditions : MonoBehaviour
                 yield break;
             }
             SpecialAttackCoolDownTimeRemaining -= 1f * Time.fixedDeltaTime;
-            Debug.Log(SpecialAttackCoolDownTimeRemaining);
             yield return new WaitForFixedUpdate();
         }
         ableToSpecialAttack = true;
@@ -205,7 +206,7 @@ public class CheckConditions : MonoBehaviour
             }
             damageInTheLastMinute -= LastMinuteStatList[0][0, 0];
             LastMinuteStatList.RemoveAt(0);
-            
+
             yield return new WaitForSeconds(1.0f);
         }
     }
@@ -214,12 +215,13 @@ public class CheckConditions : MonoBehaviour
     {
         StartCoroutine(MovementLockCoroutine(attackData.freezeTime));
         AttackImplem?.Invoke(attackData);
+        StartCoroutine(AttackCooldown());
         if (attackData.attackType == AttackType.special)
         {
-            StartCoroutine(SpecialAttackCooldown(attackData));
+            specialCooldown = StartCoroutine(SpecialAttackCooldown());
+            
             return;
         }
-        StartCoroutine(AttackCooldown(attackData));
         if (attackData.attackType == AttackType.melee)
         {
             GetComponent<BattleScript>().SetTP(-1);
