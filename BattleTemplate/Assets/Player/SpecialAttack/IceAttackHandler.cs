@@ -12,7 +12,6 @@ public class IceAttackHandler : MonoBehaviour
     [SerializeField] float spawnDistance;
     [SerializeField] float lifeTime;
     Renderer[] materials;
-    //Vector3 spawnPos = playerPos + playerDirection*spawnDistance;
 
     // Start is called before the first frame update
     void Start()

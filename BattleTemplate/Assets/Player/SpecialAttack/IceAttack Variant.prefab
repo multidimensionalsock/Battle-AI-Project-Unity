@@ -307,7 +307,7 @@ MonoBehaviour:
   damage: 3
   colliding: 0
   timeToSpawnNext: 0.1
-  spawnDistance: 1
+  spawnDistance: 0.75
   lifeTime: 5
 --- !u!65 &4795619978793118106
 BoxCollider:
