@@ -95,7 +95,7 @@ public class IceAttackHandler : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //might cause issue when it colliders with the floor
-        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Floor" || other.gameObject.tag == "Player") { return; }
+        if (other.gameObject.tag == "Floor" || other.gameObject.tag == "Player") { return; }
 
         colliding = true;
         if (other.gameObject.tag == "Player")

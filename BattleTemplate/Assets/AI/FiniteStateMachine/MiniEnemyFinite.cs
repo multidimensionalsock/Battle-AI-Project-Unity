@@ -35,6 +35,7 @@ public class MiniEnemyFinite : MonoBehaviour
     bool lockAttack = false;
     [SerializeField] float maxTimeInState;
     [SerializeField] float attackCooldown;
+    float intelligenceValue;
 
     public static event System.Action MiniEnemyDead;
 
@@ -51,9 +52,10 @@ public class MiniEnemyFinite : MonoBehaviour
         m_pathfinder.SetObjectToNaviagte(m_playerRef);
         m_pathfinder.SetDistanceToFlee(m_distanceToSeek * 1.25f);
         StateChange += CallStateChange;
-        m_attackDamage = Random.Range(m_minAttackDamage, m_maxAttackDamage);
-        m_distanceToDefend = Random.Range(m_distanceToDefend * 0.5f, m_distanceToDefend * 1.5f);
-        m_distanceToSeek = Random.Range(m_distanceToSeek * 0.5f, m_distanceToSeek * 1.5f);
+        //m_attackDamage = Random.Range(m_minAttackDamage, m_maxAttackDamage);
+        //m_distanceToDefend = Random.Range(m_distanceToDefend * 0.5f, m_distanceToDefend * 1.5f);
+        //m_distanceToSeek = Random.Range(m_distanceToSeek * 0.5f, m_distanceToSeek * 1.5f);
+        intelligenceValue = Random.Range(0.5f, 1.0f);
 
 
         StateChange?.Invoke(MiniEnemyStates.Seek);
@@ -282,7 +284,7 @@ public class MiniEnemyFinite : MonoBehaviour
     bool InPlayerVercinity()
     {
         if (m_playerRef == null) { return false; }
-        if (Mathf.Abs(Vector3.Distance(m_playerRef.transform.position, transform.position)) <= m_distanceToSeek)
+        if (Mathf.Abs(Vector3.Distance(m_playerRef.transform.position, transform.position)) <= m_distanceToSeek * intelligenceValue)
         {
             return true;
         }
@@ -292,7 +294,7 @@ public class MiniEnemyFinite : MonoBehaviour
     bool PlayerInBossVercinity()
     {
         if (m_playerRef == null || m_bossRef == null) { return false; }
-        if (Mathf.Abs(Vector3.Distance(m_playerRef.transform.position, m_bossRef.transform.position)) < m_distanceToDefend)
+        if (Mathf.Abs(Vector3.Distance(m_playerRef.transform.position, m_bossRef.transform.position)) < m_distanceToDefend * intelligenceValue)
         {
             return true;
         }

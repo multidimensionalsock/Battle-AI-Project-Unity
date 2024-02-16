@@ -1,20 +1,14 @@
 untested:
 make speical attack damage enemy 
+flee time limit 
 
 most important:
 bt needs to attack more maybe 
-the mini enmeys like no tbeing attacked too  much
-i fyou special attack when in collision of enemy it will push you back 
-mian enemy doesnt di ehwne under 0 hp when it is in a navigateion behaviour 
-slide when attacking 
-special attack stoppin at enemy looks fucked 
+slide when attacking (player)
 hit animation for main enemy 
-flee tim elimit 
-when player colllides while moving run animaiton stops 
-can take damage in free but is not checked 
-abort seeking behaviours
-mini enemy lifts player into air  
-mini enemy fuzzy 
+when player colllides while moving run animaiton stops on enemy
+mini enemy lifts player into air 
+delay in starting behaviour based on intelligence value
 
 not working:
 
@@ -50,3 +44,5 @@ area avoid for mini enemies
 
 done: 
 mini enemy no longer crashes it - problem was that attack was making it loop
+mian enemy doesnt di ehwne under 0 hp when it is in a navigateion behaviour 
+if you special attack when in collision of enemy it will teleort enemy and stop attack 
