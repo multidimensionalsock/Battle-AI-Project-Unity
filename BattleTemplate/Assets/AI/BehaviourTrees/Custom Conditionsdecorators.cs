@@ -236,6 +236,7 @@ public class DeathCheck : Condition
     public override bool Check()
     {
         BattleScript battleScript = GetComponent<BattleScript>();
+        Debug.Log(battleScript.GetHp());
         if (battleScript.GetHp() <= 0) { return true; }
         return false; 
     }
