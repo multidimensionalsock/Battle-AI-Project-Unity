@@ -52,10 +52,10 @@ public class MiniEnemyFinite : MonoBehaviour
         m_pathfinder.SetObjectToNaviagte(m_playerRef);
         m_pathfinder.SetDistanceToFlee(m_distanceToSeek * 1.25f);
         StateChange += CallStateChange;
-        //m_attackDamage = Random.Range(m_minAttackDamage, m_maxAttackDamage);
-        //m_distanceToDefend = Random.Range(m_distanceToDefend * 0.5f, m_distanceToDefend * 1.5f);
-        //m_distanceToSeek = Random.Range(m_distanceToSeek * 0.5f, m_distanceToSeek * 1.5f);
-        intelligenceValue = Random.Range(0.5f, 1.0f);
+        m_attackDamage = Random.Range(m_minAttackDamage, m_maxAttackDamage);
+        m_distanceToDefend = Random.Range(m_distanceToDefend * 0.5f, m_distanceToDefend * 1.5f);
+        m_distanceToSeek = Random.Range(m_distanceToSeek * 0.5f, m_distanceToSeek * 1.5f);
+        intelligenceValue = Random.Range(0.5f, 4f);
 
 
         StateChange?.Invoke(MiniEnemyStates.Seek);
@@ -101,6 +101,7 @@ public class MiniEnemyFinite : MonoBehaviour
 
     IEnumerator Seek()
     {
+        yield return new WaitForSeconds(intelligenceValue);
         //seek to player
         m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef);
         
@@ -127,6 +128,7 @@ public class MiniEnemyFinite : MonoBehaviour
 
     IEnumerator Wander()
     {
+        yield return new WaitForSeconds(intelligenceValue);
         m_pathfinder.SetNewNavigation(pathfindingState.wander);
         do
         {
@@ -152,6 +154,7 @@ public class MiniEnemyFinite : MonoBehaviour
 
     IEnumerator Defend()
     {
+        yield return new WaitForSeconds(intelligenceValue);
         m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef);
         while (m_currentState == MiniEnemyStates.Defend)
         {
@@ -202,12 +205,17 @@ public class MiniEnemyFinite : MonoBehaviour
     void AttackTransition()
     {
         //idle after done 
+        if (m_playerCollision == false)
+        {
+            StateChange?.Invoke(MiniEnemyStates.Seek);
+        }
         StateChange?.Invoke(MiniEnemyStates.Idle);
     }
 
     //hasnt been tested
     IEnumerator Flee()
     {
+        yield return new WaitForSeconds(intelligenceValue);
         float fleeTime = 0;
         m_pathfinder.SetNewNavigation(pathfindingState.flee, m_playerRef);
         while (m_currentState == MiniEnemyStates.Flee)
@@ -232,7 +240,8 @@ public class MiniEnemyFinite : MonoBehaviour
         Debug.Log(newState);
         //if (lockAttack) { return; }
 		m_currentState = newState;
-        GetComponent<NavMeshAgent>().isStopped = false;
+        m_pathfinder.SetNewNavigation(pathfindingState.nullptr);
+        //GetComponent<NavMeshAgent>().isStopped = false;
         switch (newState)
         {
             case MiniEnemyStates.Idle:
