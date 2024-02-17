@@ -11439,7 +11439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2653641988187876908, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2778915567793599822, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36381,7 +36381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &907858615550413010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36407,7 +36407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 907858615550413121}
+  selectedEditorNode: {fileID: 907858615550413073}
   repeatOnFinish: 1
   maxExecutionsPerTick: 3
   parent: {fileID: 0}
@@ -37547,7 +37547,7 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  abort: 2
+  abort: 0
   somePropertyRef:
     useConstant: 0
     mode: 1
