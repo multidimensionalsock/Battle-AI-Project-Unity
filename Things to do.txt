@@ -6,8 +6,6 @@ bt needs to attack more maybe
 slide when attacking 
 make collision event for special attack more dramatic like a particle effect on collision to signify its actually hit. 
 hit animation for main enemy 
-when player collides while moving run animaiton stops 
-mini enemy fuzzy 
 player anim rep attack issue 
 
 not working:
@@ -48,3 +46,4 @@ changed speical attack from obstcle so no teleporting
 flee tim elimit 
 mini enemy no longer makes player float 
 player cnat get trapped anymore (MINI ENEMY IS trigger now) 
+mini enemy fuzzy 
