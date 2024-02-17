@@ -4,14 +4,14 @@ flee time limit
 
 most important:
 bt needs to attack more maybe 
-slide when attacking (player)
+slide when attacking 
+make collision event for special attack more dramatic like a particle effect on collision to signify its actually hit. 
 hit animation for main enemy 
-when player colllides while moving run animaiton stops on enemy
-mini enemy lifts player into air 
-delay in starting behaviour based on intelligence value
+when player colllides while moving run animaiton stops 
+mini enemy lifts player into air  
+mini enemy fuzzy 
 
 not working:
-
 stretch goals:
 death animation 
 maybe a way to pick attacks based on TP? (decision tree)
@@ -44,5 +44,5 @@ area avoid for mini enemies
 
 done: 
 mini enemy no longer crashes it - problem was that attack was making it loop
-mian enemy doesnt di ehwne under 0 hp when it is in a navigateion behaviour 
-if you special attack when in collision of enemy it will teleort enemy and stop attack 
+changed speical attack from obstcle so no teleporting 
+flee tim elimit 

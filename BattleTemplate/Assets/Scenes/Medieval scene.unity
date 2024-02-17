@@ -11493,6 +11493,14 @@ PrefabInstance:
       propertyPath: m_HP
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 6020086140756091014, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_Attack
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020086140756091014, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
+      propertyPath: m_Defence
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6900560556672485268, guid: 9746c384e9ccb044585d82af9a3c2c46, type: 3}
       propertyPath: m_objectToPathfind
       value: 
