@@ -1,17 +1,16 @@
 untested:
 make speical attack damage enemy 
-flee time limit 
 
 most important:
 bt needs to attack more maybe 
 slide when attacking 
 make collision event for special attack more dramatic like a particle effect on collision to signify its actually hit. 
 hit animation for main enemy 
-when player colllides while moving run animaiton stops 
-mini enemy lifts player into air  
+when player collides while moving run animaiton stops 
 mini enemy fuzzy 
 
 not working:
+
 stretch goals:
 death animation 
 maybe a way to pick attacks based on TP? (decision tree)
@@ -46,3 +45,4 @@ done:
 mini enemy no longer crashes it - problem was that attack was making it loop
 changed speical attack from obstcle so no teleporting 
 flee tim elimit 
+mini enemy no longer makes player float 
