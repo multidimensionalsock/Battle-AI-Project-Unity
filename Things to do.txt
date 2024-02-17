@@ -3,16 +3,10 @@ make speical attack damage enemy
 
 most important:
 bt needs to attack more maybe 
-the mini enmeys like no tbeing attacked too  much
-i fyou special attack when in collision of enemy it will push you back 
-mian enemy doesnt di ehwne under 0 hp when it is in a navigateion behaviour 
 slide when attacking 
-special attack stoppin at enemy looks fucked 
+make collision event for special attack more dramatic like a particle effect on collision to signify its actually hit. 
 hit animation for main enemy 
-flee tim elimit 
 when player colllides while moving run animaiton stops 
-can take damage in free but is not checked 
-abort seeking behaviours
 mini enemy lifts player into air  
 mini enemy fuzzy 
 
@@ -50,3 +44,5 @@ area avoid for mini enemies
 
 done: 
 mini enemy no longer crashes it - problem was that attack was making it loop
+changed speical attack from obstcle so no teleporting 
+flee tim elimit 
