@@ -1,5 +1,6 @@
 untested:
 make speical attack damage enemy 
+flee time limit 
 
 most important:
 bt needs to attack more maybe 
@@ -11,7 +12,6 @@ mini enemy lifts player into air
 mini enemy fuzzy 
 
 not working:
-
 stretch goals:
 death animation 
 maybe a way to pick attacks based on TP? (decision tree)

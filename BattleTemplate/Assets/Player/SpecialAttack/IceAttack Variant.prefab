@@ -307,7 +307,7 @@ MonoBehaviour:
   damage: 3
   colliding: 0
   timeToSpawnNext: 0.1
-  spawnDistance: 1
+  spawnDistance: 0.75
   lifeTime: 5
 --- !u!65 &4795619978793118106
 BoxCollider:
@@ -328,8 +328,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.89632, y: 3, z: 1.5301723}
-  m_Center: {x: 0.05035168, y: 1, z: 0.008346379}
+  m_Size: {x: 0.8910566, y: 3, z: 1.2198058}
+  m_Center: {x: 0.052983373, y: 1, z: -0.1377756}
 --- !u!54 &3104696610045163966
 Rigidbody:
   m_ObjectHideFlags: 0
