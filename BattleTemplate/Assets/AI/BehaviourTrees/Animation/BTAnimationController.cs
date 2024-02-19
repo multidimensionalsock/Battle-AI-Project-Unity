@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -16,6 +17,12 @@ public class BTAnimationController : MonoBehaviour
 		m_animator = GetComponent<Animator>();
         transform.parent.GetComponent<CheckConditions>().AttackImplem += AttackAnimation;
         transform.parent.GetComponent<CheckConditions>().waitModeOnOff += WaitMode;
+        transform.parent.GetComponent<BattleScript>().HPreduce += Attacked;
+    }
+
+    void Attacked(float hpred)
+    {
+        m_animator.SetTrigger("Attacked");
     }
 
     // Update is called once per frame
