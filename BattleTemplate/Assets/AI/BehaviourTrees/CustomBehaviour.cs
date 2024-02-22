@@ -7,7 +7,6 @@ using JetBrains.Annotations;
 using System.Linq;
 using System;
 using Unity.VisualScripting;
-using static UnityEditor.SceneView;
 using UnityEngine.InputSystem.HID;
 using MBTExample;
 
