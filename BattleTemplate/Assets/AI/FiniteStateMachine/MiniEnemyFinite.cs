@@ -35,6 +35,7 @@ public class MiniEnemyFinite : MonoBehaviour
     bool lockAttack = false;
     [SerializeField] float maxTimeInState;
     [SerializeField] float attackCooldown;
+    float intelligenceValue;
 
     public static event System.Action MiniEnemyDead;
 
@@ -54,6 +55,7 @@ public class MiniEnemyFinite : MonoBehaviour
         m_attackDamage = Random.Range(m_minAttackDamage, m_maxAttackDamage);
         m_distanceToDefend = Random.Range(m_distanceToDefend * 0.5f, m_distanceToDefend * 1.5f);
         m_distanceToSeek = Random.Range(m_distanceToSeek * 0.5f, m_distanceToSeek * 1.5f);
+        intelligenceValue = Random.Range(0.5f, 4f);
 
 
         StateChange?.Invoke(MiniEnemyStates.Seek);
@@ -99,6 +101,7 @@ public class MiniEnemyFinite : MonoBehaviour
 
     IEnumerator Seek()
     {
+        yield return new WaitForSeconds(intelligenceValue);
         //seek to player
         m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef);
         
@@ -112,7 +115,7 @@ public class MiniEnemyFinite : MonoBehaviour
     void SeekTransition()
     {
         ////attack when colliding with player 
-        if (m_playerCollision) //working
+        if (m_playerCollision && lockAttack == false) //working
         {
             StateChange?.Invoke(MiniEnemyStates.Attack);
         }
@@ -125,6 +128,7 @@ public class MiniEnemyFinite : MonoBehaviour
 
     IEnumerator Wander()
     {
+        yield return new WaitForSeconds(intelligenceValue);
         m_pathfinder.SetNewNavigation(pathfindingState.wander);
         do
         {
@@ -150,6 +154,7 @@ public class MiniEnemyFinite : MonoBehaviour
 
     IEnumerator Defend()
     {
+        yield return new WaitForSeconds(intelligenceValue);
         m_pathfinder.SetNewNavigation(pathfindingState.seek, m_playerRef);
         while (m_currentState == MiniEnemyStates.Defend)
         {
@@ -167,15 +172,16 @@ public class MiniEnemyFinite : MonoBehaviour
             StateChange?.Invoke(MiniEnemyStates.Seek);
         }
         ////attack if colliding with player 
-        if (m_playerCollision)
+        if (m_playerCollision && lockAttack == false)
         {
             StateChange?.Invoke(MiniEnemyStates.Attack);
         }
     }
 
-    IEnumerator Attack()
+    void AttackCall()
     {
-        if (lockAttack) { yield break; }
+        if (lockAttack) { AttackTransition(); }
+
         m_pathfinder.SetNewNavigation(pathfindingState.nullptr);
         FacePlayer();
         //take away HP if colliding
@@ -183,22 +189,33 @@ public class MiniEnemyFinite : MonoBehaviour
         {
             m_playerRef.GetComponent<BattleScript>().Attack(m_attackDamage);
             Debug.Log("Attack");
+            StartCoroutine(AttackCooldown());
         }
+        
+        AttackTransition();
+    }
+
+    IEnumerator AttackCooldown()
+    {
         lockAttack = true;
         yield return new WaitForSeconds(attackCooldown);
         lockAttack = false;
-        AttackTransition();
     }
 
     void AttackTransition()
     {
         //idle after done 
+        if (m_playerCollision == false)
+        {
+            StateChange?.Invoke(MiniEnemyStates.Seek);
+        }
         StateChange?.Invoke(MiniEnemyStates.Idle);
     }
 
     //hasnt been tested
     IEnumerator Flee()
     {
+        yield return new WaitForSeconds(intelligenceValue);
         float fleeTime = 0;
         m_pathfinder.SetNewNavigation(pathfindingState.flee, m_playerRef);
         while (m_currentState == MiniEnemyStates.Flee)
@@ -220,33 +237,40 @@ public class MiniEnemyFinite : MonoBehaviour
 
     void CallStateChange(MiniEnemyStates newState)
     {
-        if (lockAttack) { return; }
+        Debug.Log(newState);
+        //if (lockAttack) { return; }
 		m_currentState = newState;
-        GetComponent<NavMeshAgent>().isStopped = false;
+        m_pathfinder.SetNewNavigation(pathfindingState.nullptr);
+        //GetComponent<NavMeshAgent>().isStopped = false;
         switch (newState)
         {
             case MiniEnemyStates.Idle:
-				StopAllCoroutines();
+                if (m_currentStateCoroutine != null) { StopCoroutine(m_currentStateCoroutine); }
                 m_currentStateCoroutine = StartCoroutine(Idle());
                 break;
             case MiniEnemyStates.Seek:
-				//if (m_currentStateCoroutine != null) { StopCoroutine(m_currentStateCoroutine); }
+				if (m_currentStateCoroutine != null) { StopCoroutine(m_currentStateCoroutine); }
 				m_currentStateCoroutine = StartCoroutine(Seek());
                 break;
             case MiniEnemyStates.Wander: 
                 m_currentState = newState;
 				if (m_currentStateCoroutine != null) { StopCoroutine(m_currentStateCoroutine); }
-				m_currentStateCoroutine = StartCoroutine("Wander");
+				m_currentStateCoroutine = StartCoroutine(Wander());
                 break;
             case MiniEnemyStates.Defend: 
                 m_currentState = newState;
 				if (m_currentStateCoroutine != null) { StopCoroutine(m_currentStateCoroutine); }
-				m_currentStateCoroutine = StartCoroutine("Defend");
+				m_currentStateCoroutine = StartCoroutine(Defend());
                 break;
             case MiniEnemyStates.Attack:
                 m_currentState = newState;
 				if (m_currentStateCoroutine != null) { StopCoroutine(m_currentStateCoroutine); }
-				m_currentStateCoroutine = StartCoroutine("Attack");
+                AttackCall();
+                break;
+            case MiniEnemyStates.Flee:
+                m_currentState = newState;
+                if (m_currentStateCoroutine != null) { StopCoroutine(m_currentStateCoroutine); }
+                m_currentStateCoroutine = StartCoroutine(Flee());
                 break;
             case MiniEnemyStates.Attacked:
                 if (m_currentStateCoroutine != null) { StopCoroutine(m_currentStateCoroutine); }
@@ -269,7 +293,7 @@ public class MiniEnemyFinite : MonoBehaviour
     bool InPlayerVercinity()
     {
         if (m_playerRef == null) { return false; }
-        if (Mathf.Abs(Vector3.Distance(m_playerRef.transform.position, transform.position)) <= m_distanceToSeek)
+        if (Mathf.Abs(Vector3.Distance(m_playerRef.transform.position, transform.position)) <= m_distanceToSeek * intelligenceValue)
         {
             return true;
         }
@@ -279,7 +303,7 @@ public class MiniEnemyFinite : MonoBehaviour
     bool PlayerInBossVercinity()
     {
         if (m_playerRef == null || m_bossRef == null) { return false; }
-        if (Mathf.Abs(Vector3.Distance(m_playerRef.transform.position, m_bossRef.transform.position)) < m_distanceToDefend)
+        if (Mathf.Abs(Vector3.Distance(m_playerRef.transform.position, m_bossRef.transform.position)) < m_distanceToDefend * intelligenceValue)
         {
             return true;
         }

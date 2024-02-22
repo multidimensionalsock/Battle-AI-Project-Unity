@@ -3,16 +3,9 @@ make speical attack damage enemy
 
 most important:
 bt needs to attack more maybe 
-the mini enmeys like no tbeing attacked too  much
-i fyou special attack when in collision of enemy it will push you back 
-mian enemy doesnt di ehwne under 0 hp 
 slide when attacking 
-special attack stoppin at enemy looks fucked 
-hit animation for main enemy 
-flee tim elimit 
-when player colllides while moving run animaiton stops 
-can take damage in free but is not checked 
-abort seeking behaviours 
+hit naiamtion doesnt play right from attacked
+player anim rep attack issue 
 
 not working:
 
@@ -47,34 +40,10 @@ area avoid for mini enemies
 
 
 done: 
-change how player vicinity and vicinity from enemy works to make it fuzzy 
-fix anim again 
-nav to attack fix again and ad on enter function 
-floating main enemy
-freeze times need adjusting 
-not looking at player sometimes while doing attack anim
-main enemy moving while doing attack anims (even now i set it to null ptr)
-getting stuck on perfrom attack because rtoation is never equal to look rot if player is moving 
-enemy still moving when attackign even when it should be set to its own pos. 
-make it so speical atack cant happen right after nromal  (like special to normal attack cooldown maybe)
-player trigger may be too big 
-sort out mini enemy transitions
-fsm stay in idle for longer before wander 
-mini enemy not seeking player when in range 
-mini enemy attack cooldown
-fsm make area where in player range bigger so they seek more 
-mini enemy causing damage without attack anim
-when mini enemies spawn main enemy teleports (ignore collision layer needs adding)
-change where mini enemies spawn (random)
-enemy starts psawning special attacks too often - when ever player attacks its immeditely reactivsitng able to special attack and it never gets set back,neither does attack in the last minute cooldown works normally when no attacks have been perfoemed 
-reset last minute stats after every special attack possibly  
-bt wait modew still going over max time issue: subtracting deltatime may not work as intended
-main enemy spawning rnage attack right after special - dont allow 
-get mini enemy out of the floor
-fix bounding box again 
-fix UI 
-special attack collision not stopping them spawning
-apply special attack to player and make sure it works right 
-cahnge angle to attack
-make player special attack look better 
-simple distance look sbetter 
+mini enemy no longer crashes it - problem was that attack was making it loop
+changed speical attack from obstcle so no teleporting 
+flee tim elimit 
+mini enemy no longer makes player float 
+player cnat get trapped anymore (MINI ENEMY IS trigger now) 
+mini enemy fuzzy 
+make collision event for special attack more dramatic like a particle effect on collision to signify its actually hit. 
